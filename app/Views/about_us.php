@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>about_us</title>
-</head>
-<body>
-    annyeong 
-</body>
-</html>
+<?= $this->extends('layout/template') ?>
+
+<?= $this->section('content') ?>
+
+<h2>Halaman Home</h2>
+<p>Ini isi body halaman</p>
+
+<?= $this->endSection() ?>
