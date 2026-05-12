@@ -12,4 +12,8 @@ class Home extends BaseController
     {
         return view('about_us');
     }
+    public function darah_suci($namanya){
+        echo "hai, nama saya " . $namanya;
+
+    }
 }
