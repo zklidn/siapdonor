@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-class Dashboard extends BaseController
+class DashboardPMI extends BaseController
 {
     public function matahari($namanya,$hewan){
         echo "hai, kamu seperti " . $namanya;
