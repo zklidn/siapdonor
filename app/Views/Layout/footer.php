@@ -1,5 +1,5 @@
     <footer>
-        Ini footer saya
+         <p>© 2026 Siap Donor - All rights reserved.</p>
     </footer>
 
 </body>

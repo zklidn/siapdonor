@@ -7,6 +7,11 @@
 </head>
 <body>
     <header>
-        <h1> Ini header saya</h1>
-        <hr>
-    </header>
+    <div class="logo">
+      <img src="logo.png" alt="Logo Siap Donor">
+      <h2>Siap Donor</h2>
+    </div>
+    <nav>
+      <a href="#">Tentang</a>
+    </nav>
+  </header>
