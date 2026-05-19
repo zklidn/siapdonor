@@ -8,4 +8,8 @@ class Register extends BaseController
         echo view('register');
 
     }
+     public function proses()
+    {
+        return redirect()->to('/dashboard');
+    }
 }
