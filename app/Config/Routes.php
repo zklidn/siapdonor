@@ -28,3 +28,5 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 /*------------------dashboard---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
 
+/*------------------dashboard---------------*/
+$routes->get('/dashboard', 'Dashboard::index');
