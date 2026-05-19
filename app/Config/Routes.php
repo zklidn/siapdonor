@@ -12,8 +12,19 @@ $routes->get('/darah/(:any)','HalamanAwal::darah_suci/$1');
 $routes->get('/cuaca/(:any)/(:any)','DashboardPMI::matahari/$1/$2');
 $routes->get('/tampilan','HalamanAwal::tampilanbaru');
 
+
+
+/*------------------halaman awal----------------*/
+$routes->get('/halamanawal', 'HalamanAwal::index');
+
 /*------------------login----------------*/
 $routes->get('/login', 'Login::index');
 
 /*------------------register---------------*/
 $routes->get('/register', 'Register::index');
+
+/*------------------verifikasi---------------*/
+$routes->get('/verifikasi', 'Verifikasi::index');
+
+/*------------------verifikasi---------------*/
+$routes->get('/dashboard', 'Dashboard::index');
