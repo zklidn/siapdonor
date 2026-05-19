@@ -13,7 +13,11 @@
         /* Navbar */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
         .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .brand i { color: #8b0000; font-size: 24px; }
+        
+        /* CSS Pengatur Ukuran Logo Baru */
+        .logo-nav { height: 40px; width: auto; object-fit: contain; }
+        .logo-footer { height: 30px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
+
         .brand-text { display: flex; flex-direction: column; }
         .brand-text strong { font-size: 18px; color: #333; }
         .brand-text span { font-size: 10px; color: #6b7280; }
@@ -48,7 +52,7 @@
 
     <nav class="navbar">
         <a href="#" class="brand">
-            <i class="fa-solid fa-droplet"></i>
+            <img src="<?= base_url('logo.jpg') ?>" alt="Logo SiapDonor" class="logo-nav">
             <div class="brand-text">
                 <strong>SiapDonor</strong>
                 <span>Sistem Informasi Donor Darah</span>
@@ -64,7 +68,7 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Bersama, Selamatkan Lebih Banyak Nyawa</h1>
-            <p>SiapDonor adalah sistem informasi yang menghubungkan PMI, Rumah Sakit, dan Donor untuk kebutuhan darah yang lebih cepat dan tepat.</p>
+            <p>SiapDonor adalah sistem informasi yang menghubungkan PMI, Rumah Sakit, and Donor untuk kebutuhan darah yang lebih cepat dan tepat.</p>
             <div class="hero-buttons">
                 <a href="/login" class="btn-solid"><i class="fa-solid fa-arrow-right-to-bracket"></i> Masuk</a>
                 <a href="/register" class="btn-outline">Daftar Akun</a>
@@ -77,7 +81,7 @@
 
     <footer class="footer">
         <div class="brand" style="color: white;">
-            <i class="fa-solid fa-droplet" style="color: white;"></i>
+            <img src="<?= base_url('logo.jpeg') ?>" alt="Logo SiapDonor" class="logo-footer">
             <span style="font-weight: 600; margin-left: 5px;">SiapDonor</span>
         </div>
         <div>&copy; 2026 SiapDonor. All rights reserved.</div>

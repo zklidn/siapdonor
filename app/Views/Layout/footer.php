@@ -14,11 +14,7 @@
     </style>
 
     <footer>
-<<<<<<< HEAD
-        Ini footer saya
-=======
         <p>© 2026 Siap Donor - All rights reserved.</p>
->>>>>>> baekhyun
     </footer>
 
 </body>
