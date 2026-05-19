@@ -1,23 +1,29 @@
 <style>
-    /* Desain form langsung ditaruh di sini */
+    /* CSS Khusus Kotak Form Login */
     .auth-card { background-color: #ffffff; width: 100%; max-width: 420px; padding: 40px 32px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
     .brand-header { text-align: center; margin-bottom: 30px; }
     .brand-logo-container { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 5px; }
     .brand-icon { color: #990000; font-size: 28px; }
     .brand-name { font-size: 22px; font-weight: 700; color: #333; }
     .brand-subtitle { font-size: 11px; color: #6b7280; }
+    
     .form-header { text-align: center; margin-bottom: 25px; }
     .form-header h2 { font-size: 20px; font-weight: 600; color: #111827; margin-bottom: 8px; }
     .form-header p { font-size: 13px; color: #4b5563; }
+    
     .form-group { margin-bottom: 18px; }
     .form-group label { display: block; font-size: 12px; font-weight: 500; color: #374151; margin-bottom: 6px; }
     .form-control { width: 100%; padding: 12px 14px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 13px; color: #1f2937; transition: border-color 0.2s; }
     .form-control:focus { outline: none; border-color: #990000; }
+    
     .password-wrapper { position: relative; }
     .password-toggle { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); color: #6b7280; cursor: pointer; border: none; background: none; }
+    
     select.form-control { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 14px center; background-size: 14px; cursor: pointer; }
+    
     .btn-primary { width: 100%; background-color: #8b0000; color: white; padding: 12px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background-color 0.2s; }
     .btn-primary:hover { background-color: #6b0000; }
+    
     .auth-footer { text-align: center; margin-top: 20px; font-size: 13px; color: #4b5563; }
     .auth-footer a { color: #8b0000; font-weight: 600; text-decoration: none; }
     .auth-footer a:hover { text-decoration: underline; }
@@ -67,7 +73,7 @@
     </form>
 
     <div class="auth-footer">
-        Belum punya akun? <a href="<?= base_url('register') ?>">Daftar sekarang</a>
+        Belum punya akun? <a href="template.php?page=register">Daftar sekarang</a>
     </div>
 </div>
 
