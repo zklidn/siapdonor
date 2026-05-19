@@ -25,7 +25,7 @@ class Database extends Config
         'hostname'     => '',
         'username'     => '',
         'password'     => '',
-        'database'     => '',
+        'database'     => 'siap_donor',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

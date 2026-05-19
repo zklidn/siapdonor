@@ -4,9 +4,8 @@ namespace App\Controllers;
 
 class Awalan extends BaseController
 {
-    public function index(): string
-    {
-        return view('awalan');
+    public function index() {
+        echo view('awalan');
     }
     
 }
