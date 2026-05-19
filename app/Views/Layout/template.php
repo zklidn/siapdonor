@@ -1,7 +1,7 @@
 <?= $this->include('layout/header') ?>
 
 <main>
-    <?= $this->renderSection('content') ?>
+    <?= $this->include($nama_file) ?>
 </main>
 
 <?= $this->include('layout/footer') ?>

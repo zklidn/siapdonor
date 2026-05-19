@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Login extends BaseController
+class Dashboard extends BaseController
 {
     public function index(){
-        echo view('login');
+        echo view('dashboard');
 
     }
 }
