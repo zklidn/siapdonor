@@ -21,3 +21,16 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 /*------------------dashboard---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
 // Hapus duplikat rute dashboard di bawahnya
+
+/*------------------dashboard admin---------------*/
+// Mengelompokkan semua URL yang berawalan '/admin'
+$routes->group('admin', static function ($routes) {
+    // URL: localhost:8080/admin
+    $routes->get('/', 'DashboardAdmin::index');
+    
+    // URL: localhost:8080/admin/data_donor
+    $routes->get('data_donor', 'DashboardAdmin::data_donor');
+    
+    // URL: localhost:8080/admin/cari_donor
+    $routes->get('cari_donor', 'DashboardAdmin::cari_donor');
+});
