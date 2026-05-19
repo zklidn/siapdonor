@@ -8,7 +8,7 @@ class CreatePasienTabel extends Migration
 {
     public function up()
     {
-        $this->forge->addFie([
+        $this->forge->addField([
             'id_pasien' => [
                 'type'  => 'INT',
                 'unsigned' => true,
