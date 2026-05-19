@@ -16,7 +16,7 @@ $routes->get('/tampilan','HalamanAwal::tampilanbaru');
 
 
 /*------------------halaman awal----------------*/
-$routes->get('/halamanawal', 'HalamanAwal::index');
+$routes->get('/awalan', 'Awalan::index');
 
 /*------------------login----------------*/
 $routes->get('/login', 'Login::index');
@@ -29,6 +29,3 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 
 /*------------------verifikasi---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
-=======
- * @var RouteCollection $routes
->>>>>>> sunflower

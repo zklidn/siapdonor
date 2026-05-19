@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -190,4 +190,4 @@
         <p>&copy; 2026 Siap Donor - All rights reserved.</p>
     </footer>
 </body>
-</html>
+</html> -->
