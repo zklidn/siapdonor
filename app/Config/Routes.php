@@ -3,6 +3,7 @@
 use CodeIgniter\Router\RouteCollection;
 
 /**
+<<<<<<< HEAD
  * @var RouteCollection $routes
  */
 $routes->get('/home', 'Home::index');
@@ -28,3 +29,6 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 
 /*------------------verifikasi---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
+=======
+ * @var RouteCollection $routes
+>>>>>>> sunflower

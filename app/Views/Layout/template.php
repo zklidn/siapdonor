@@ -4,4 +4,3 @@
     <?= $this->include($nama_file) ?>
 </main>
 
-<?= $this->include('layout/footer') ?>
