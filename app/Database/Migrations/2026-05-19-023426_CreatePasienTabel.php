@@ -30,7 +30,7 @@ class CreatePasienTabel extends Migration
                 'type' => 'VARCHAR',
                 'constraint'=> 255,
             ],
-            'golongan darah' => [
+            'golongan_darah' => [
                 'type' => 'VARCHAR',
                 'constraint' => 5,
             ],

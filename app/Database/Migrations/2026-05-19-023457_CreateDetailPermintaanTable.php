@@ -36,6 +36,7 @@ class CreateDetailPermintaanTable extends Migration
         ]);
         $this->forge->addKey('id_detail', true);
         $this->forge->addForeignKey('id_permintaan', 'permintaan_darah', 'id_permintaan', 'CASCADE', 'CASCADE');
+        $this->forge->createTable('detail_permintaan'); 
     }
 
     public function down()

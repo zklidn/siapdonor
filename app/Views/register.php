@@ -41,6 +41,7 @@
     <div class="form-header">
         <h2>Buat Akun Baru</h2>
         <p>Isi data berikut untuk membuat akun</p>
+
     </div>
 
     <form action="#" method="POST">

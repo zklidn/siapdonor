@@ -1,203 +1,74 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SiapDonor - Dashboard Admin</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-    }
-    .sidebar-active {
-      background-color: #fee2e2;
-      color: #b91c1c;
-      border-left: 4px solid #b91c1c;
-    }
-  </style>
-</head>
-<body class="bg-gray-50">
+<style>
+    .page-title { margin-bottom: 20px; }
+    .page-title h1 { font-size: 24px; font-weight: 600; color: #111827; }
+    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 20px 0; }
+    .stat-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .stat-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 18px; margin-bottom: 10px; }
+    
+    .card-red .stat-icon { background: #fee2e2; color: #ef4444; }
+    .card-green .stat-icon { background: #dcfce3; color: #22c55e; }
+    .card-orange .stat-icon { background: #ffedd5; color: #f97316; }
+    
+    .bottom-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+    .box { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; margin-top: 15px;}
+    th { color: #6b7280; padding-bottom: 12px; font-weight: 500; border-bottom: 1px solid #e5e7eb; }
+    td { padding: 12px 0; border-bottom: 1px solid #f3f4f6; }
+    .btn-quick { width: 100%; background: #8b0000; color: white; border: none; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 500; margin-bottom: 10px;}
 
-  <!-- HEADER -->
-  <header class="bg-[#9f1239] text-white">
-    <div class="flex items-center justify-between px-6 py-3">
-      <div class="flex items-center gap-3">
-        <i class="fas fa-droplet text-3xl"></i>
-        <div>
-          <h1 class="text-2xl font-bold">SiapDonor</h1>
-          <p class="text-xs -mt-1">Donor Darah Cepat</p>
-        </div>
-      </div>
-      
-      <button class="lg:hidden text-2xl">
-        <i class="fas fa-bars"></i>
-      </button>
+    @media (max-width: 768px) {
+        .bottom-grid { grid-template-columns: 1fr; }
+    }
+</style>
 
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-2 bg-white/20 px-3 py-1 rounded-lg">
-          <img src="https://i.pravatar.cc/32" alt="Admin" class="w-8 h-8 rounded-full">
-          <div>
-            <p class="text-sm font-medium">Admin Utama</p>
-            <p class="text-xs text-white/70">Admin</p>
-          </div>
-        </div>
-      </div>
+<div class="page-title">
+    <h1>Dashboard</h1>
+    <p style="font-size: 14px; color: #6b7280;">Selamat datang, Admin Utama!</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card card-red">
+        <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+        <h3 style="font-size: 24px;">120</h3>
+        <p style="font-size: 13px; color: #6b7280;">Total Donor</p>
     </div>
-  </header>
+    <div class="stat-card card-green">
+        <div class="stat-icon"><i class="fa-solid fa-user-check"></i></div>
+        <h3 style="font-size: 24px;">85</h3>
+        <p style="font-size: 13px; color: #6b7280;">Donor Aktif</p>
+    </div>
+    <div class="stat-card card-orange">
+        <div class="stat-icon"><i class="fa-solid fa-file-lines"></i></div>
+        <h3 style="font-size: 24px;">18</h3>
+        <p style="font-size: 13px; color: #6b7280;">Permintaan Masuk</p>
+    </div>
+</div>
 
-  <div class="flex">
-
-    <!-- SIDEBAR -->
-    <aside class="w-64 bg-white border-r min-h-screen hidden lg:block">
-      <nav class="mt-6">
-        <a href="#" class="sidebar-active flex items-center gap-3 px-6 py-3 text-sm font-medium">
-          <i class="fas fa-home w-5"></i>
-          <span>Dashboard</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
-          <i class="fas fa-users w-5"></i>
-          <span>Data Donor</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
-          <i class="fas fa-search w-5"></i>
-          <span>Cari Donor</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
-          <i class="fas fa-hand-holding-medical w-5"></i>
-          <span>Permintaan Darah</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
-          <i class="fas fa-history w-5"></i>
-          <span>Riwayat</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
-          <i class="fas fa-user-cog w-5"></i>
-          <span>Pengguna</span>
-        </a>
-        <a href="#" class="flex items-center gap-3 px-6 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50 mt-8">
-          <i class="fas fa-sign-out-alt w-5"></i>
-          <span>Logout</span>
-        </a>
-      </nav>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="flex-1 p-6">
-      <h1 class="text-2xl font-bold mb-1">Dashboard</h1>
-      <p class="text-gray-600 mb-6">Selamat datang, <span class="font-semibold text-red-700">Admin Utama!</span></p>
-
-      <!-- STAT CARDS -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl shadow-sm p-6 flex items-center gap-4">
-          <div class="w-14 h-14 bg-red-100 text-red-600 rounded-2xl flex items-center justify-center text-3xl">
-            👤
-          </div>
-          <div>
-            <p class="text-4xl font-bold text-gray-800">120</p>
-            <p class="text-gray-600">Total Donor</p>
-          </div>
-          <a href="#" class="ml-auto text-red-600 text-sm font-medium hover:underline">Lihat detail →</a>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl shadow-sm p-6 flex items-center gap-4">
-          <div class="w-14 h-14 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center text-3xl">
-            👤
-          </div>
-          <div>
-            <p class="text-4xl font-bold text-gray-800">85</p>
-            <p class="text-gray-600">Donor Aktif</p>
-          </div>
-          <a href="#" class="ml-auto text-green-600 text-sm font-medium hover:underline">Lihat detail →</a>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl shadow-sm p-6 flex items-center gap-4">
-          <div class="w-14 h-14 bg-orange-100 text-orange-600 rounded-2xl flex items-center justify-center text-3xl">
-            🔒
-          </div>
-          <div>
-            <p class="text-4xl font-bold text-gray-800">18</p>
-            <p class="text-gray-600">Permintaan Masuk</p>
-          </div>
-          <a href="#" class="ml-auto text-orange-600 text-sm font-medium hover:underline">Lihat detail →</a>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-        <!-- AKTIVITAS TERBARU -->
-        <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm p-6">
-          <div class="flex justify-between items-center mb-4">
-            <h2 class="font-semibold text-lg">Aktivitas Terbaru</h2>
-            <a href="#" class="text-red-600 text-sm hover:underline">Lihat semua aktivitas →</a>
-          </div>
-          
-          <table class="w-full">
+<div class="bottom-grid">
+    <div class="box">
+        <h3 style="font-size: 16px;">Aktivitas Terbaru</h3>
+        <table>
             <thead>
-              <tr class="border-b">
-                <th class="text-left py-3 text-sm font-medium text-gray-500">No</th>
-                <th class="text-left py-3 text-sm font-medium text-gray-500">Aktivitas</th>
-                <th class="text-left py-3 text-sm font-medium text-gray-500">Tanggal</th>
-                <th class="text-left py-3 text-sm font-medium text-gray-500">Oleh</th>
-              </tr>
+                <tr>
+                    <th>Aktivitas</th>
+                    <th>Tanggal</th>
+                </tr>
             </thead>
-            <tbody class="text-sm">
-              <tr class="border-b">
-                <td class="py-3">1</td>
-                <td class="py-3">Donor baru ditambahkan</td>
-                <td class="py-3">20 Mei 2025</td>
-                <td class="py-3 text-red-600">PMI Makassar</td>
-              </tr>
-              <tr class="border-b">
-                <td class="py-3">2</td>
-                <td class="py-3">Permintaan darah baru</td>
-                <td class="py-3">20 Mei 2025</td>
-                <td class="py-3 text-red-600">RS Wahidin</td>
-              </tr>
-              <tr class="border-b">
-                <td class="py-3">3</td>
-                <td class="py-3">Status permintaan diperbarui</td>
-                <td class="py-3">19 Mei 2025</td>
-                <td class="py-3 text-red-600">PMI Makassar</td>
-              </tr>
-              <tr>
-                <td class="py-3">4</td>
-                <td class="py-3">Donor diperbarui</td>
-                <td class="py-3">19 Mei 2025</td>
-                <td class="py-3">Admin</td>
-              </tr>
+            <tbody>
+                <tr>
+                    <td>Donor baru ditambahkan</td>
+                    <td>20 Mei 2026</td>
+                </tr>
+                <tr>
+                    <td>Permintaan darah baru</td>
+                    <td>20 Mei 2026</td>
+                </tr>
             </tbody>
-          </table>
-        </div>
-
-        <!-- AKSI CEPAT -->
-        <div>
-          <div class="bg-white rounded-2xl shadow-sm p-6 mb-6">
-            <h2 class="font-semibold mb-4">Aksi Cepat</h2>
-            <button class="w-full bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-medium flex items-center justify-center gap-2 mb-3">
-              <i class="fas fa-plus"></i>
-              Tambah Donor
-            </button>
-            <button class="w-full border border-red-600 text-red-600 hover:bg-red-50 py-3 rounded-xl font-medium">
-              Cari Donor
-            </button>
-          </div>
-
-          <!-- INFORMASI -->
-          <div class="bg-white rounded-2xl shadow-sm p-6">
-            <h3 class="font-semibold mb-2">Informasi</h3>
-            <p class="text-sm text-gray-600">
-              Pastikan data donor selalu diperbarui agar pencarian donor lebih akurat dan cepat.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </main>
-  </div>
-
-</body>
-</html>
+        </table>
+    </div>
+    <div class="box">
+        <h3 style="font-size: 16px; margin-bottom:15px;">Aksi Cepat</h3>
+        <button class="btn-quick">+ Tambah Donor</button>
+        <button class="btn-quick" style="background: white; color: #8b0000; border: 1px solid #8b0000;">Cari Donor</button>
+    </div>
+</div>

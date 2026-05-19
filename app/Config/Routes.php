@@ -2,9 +2,6 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-/**
- * @var RouteCollection $routes
- */
 $routes->get('/home', 'Home::index');
 $routes->get('/about_us', 'Home::about_us');
 
@@ -19,9 +16,11 @@ $routes->get('/halamanawal', 'HalamanAwal::index');
 
 /*------------------login----------------*/
 $routes->get('/login', 'Login::index');
+$routes->post('/login/proses', 'Login::proses');
 
 /*------------------register---------------*/
 $routes->get('/register', 'Register::index');
+$routes->post('/register/proses', 'register::proses');
 
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
