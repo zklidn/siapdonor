@@ -30,3 +30,5 @@ $routes->get('/dashboard', 'Dashboard::index');
 
 /*------------------dashboard---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
+
+$routes->get('/donor', 'DataDonor::index');

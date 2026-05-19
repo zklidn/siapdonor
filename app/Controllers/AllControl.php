@@ -36,6 +36,7 @@ class Register extends BaseController
     {
         return redirect()->to('/dashboard');
     }
+    
 }
 
 /*------------------verifikasi----------------*/
@@ -56,6 +57,14 @@ class Dashboard extends BaseController
 {
     public function index(){
         echo view('dashboard');
+
+    }
+}
+
+class data_donor extends BaseController
+{
+    public function index(){
+        echo view('data_donor');
 
     }
 }
