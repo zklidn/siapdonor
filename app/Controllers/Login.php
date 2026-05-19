@@ -8,4 +8,8 @@ class Login extends BaseController
         echo view('login');
 
     }
+    public function proses()
+    {
+        return redirect()->to('/dashboard');
+    }
 }

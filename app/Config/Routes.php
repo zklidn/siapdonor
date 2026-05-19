@@ -20,15 +20,14 @@ $routes->get('/halamanawal', 'HalamanAwal::index');
 
 /*------------------login----------------*/
 $routes->get('/login', 'Login::index');
+$routes->post('/login/proses', 'Login::proses');
 
 /*------------------register---------------*/
 $routes->get('/register', 'Register::index');
+$routes->post('/register/proses', 'register::proses');
 
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
 
 /*------------------verifikasi---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
-=======
- * @var RouteCollection $routes
->>>>>>> sunflower
