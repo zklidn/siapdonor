@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class HalamanAwal extends BaseController
+class awalan extends BaseController
 {
     public function index(){
-        echo view('halamanAwal');
+        echo view('awalan');
 
     }
 }

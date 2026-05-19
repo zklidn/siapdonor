@@ -12,7 +12,7 @@ $routes->get('/tampilan','HalamanAwal::tampilanbaru');
 
 
 /*------------------halaman awal----------------*/
-$routes->get('/halamanawal', 'HalamanAwal::index');
+$routes->get('/awalan', 'Awalan::index');
 
 /*------------------login----------------*/
 $routes->get('/login', 'Login::index');
@@ -25,5 +25,6 @@ $routes->post('/register/proses', 'register::proses');
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
 
-/*------------------verifikasi---------------*/
+/*------------------dashboard---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
+
