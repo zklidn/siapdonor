@@ -9,6 +9,7 @@ class HalamanAwal extends BaseController
         echo view('halamanAwal');
 
     }
+   
 }
 
 /*------------------login----------------*/
@@ -21,6 +22,9 @@ class Login extends BaseController
     public function proses()
     {
         return redirect()->to('/dashboard');
+    }
+    public function regis(){
+        return redirect()->to('/register');
     }
 }
 
@@ -36,6 +40,10 @@ class Register extends BaseController
     {
         return redirect()->to('/dashboard');
     }
+       public function fikasi()
+    {
+        return redirect()->to('/verifications');
+    }
 }
 
 /*------------------verifikasi----------------*/
@@ -43,9 +51,10 @@ class Register extends BaseController
 class Verifikasi extends BaseController
 {
     public function index(){
-        echo view('verifications');
+        echo view('verifikasi');
 
     }
+   
 }
 
 

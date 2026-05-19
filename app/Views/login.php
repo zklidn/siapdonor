@@ -74,7 +74,7 @@
     </form>
 
     <div class="auth-footer">
-        Belum punya akun? <a href="template.php?page=register">Daftar sekarang</a>
+        Belum punya akun? <a href="/register" class="btn btn-daftar">Daftar</a>
     </div>
 </div>
 

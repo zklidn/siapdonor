@@ -17,10 +17,12 @@ $routes->get('/awalan', 'Awalan::index');
 /*------------------login----------------*/
 $routes->get('/login', 'Login::index');
 $routes->post('/login/proses', 'Login::proses');
+$routes->post('/login/regis', 'Login::regis');
 
 /*------------------register---------------*/
 $routes->get('/register', 'Register::index');
-$routes->post('/register/proses', 'register::proses');
+$routes->post('/register/proses', 'Register::proses');
+$routes->post('/register/fikasi', 'Register::fikasi');
 
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');

@@ -44,7 +44,7 @@
 
     </div>
 
-    <form action="#" method="POST">
+    <form action="/register/fikasi" method="POST">
         <div class="form-group">
             <label for="nama_instansi">Nama Instansi</label>
             <input type="text" id="nama_instansi" name="nama_instansi" class="form-control" placeholder="Contoh: RS Wahidin Sudirohusodo" required>
@@ -89,7 +89,7 @@
     </form>
 
     <div class="auth-footer">
-        Sudah punya akun? <a href="template.php?page=login">Masuk sekarang</a>
+        Sudah punya akun? Sudah punya akun? <a href="/verifikasi">Masuk Sekarang</a>
     </div>
 </div>
 
