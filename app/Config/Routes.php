@@ -12,5 +12,8 @@ $routes->get('/darah/(:any)','HalamanAwal::darah_suci/$1');
 $routes->get('/cuaca/(:any)/(:any)','DashboardPMI::matahari/$1/$2');
 $routes->get('/tampilan','HalamanAwal::tampilanbaru');
 
+/*------------------login----------------*/
+$routes->get('/login', 'Login::index');
 
-$routes->get('/login', 'login::index');
+/*------------------register---------------*/
+$routes->get('/register', 'Register::index');

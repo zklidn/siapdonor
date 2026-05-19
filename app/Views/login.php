@@ -1,4 +1,4 @@
-<?php include 'header.php'; ?>
+<?= $this->include('Layout/header'); ?>
 
 <div class="auth-card">
     </div>
@@ -237,4 +237,4 @@
 </body>
 </html>
 
-<?php include 'footer.php'; ?>
+<?= $this->include('Layout/footer'); ?>
