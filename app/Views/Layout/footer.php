@@ -1,4 +1,4 @@
-    <footer>
+<footer>
         Ini footer saya
     </footer>
 
