@@ -1,5 +1,4 @@
 vendor
 .env
-writable/logs/
-
-
+writable/logs/*
+!writable/logs/index.html
