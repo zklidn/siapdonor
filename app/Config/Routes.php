@@ -12,7 +12,7 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login/proses', 'Login::proses');
 
 /*------------------register---------------*/
-$routes->get('/register', 'Register::index');
+$routes->get('/register', 'Register::register');
 $routes->post('/register/proses', 'Register::proses'); // Gunakan R besar
 
 /*------------------verifikasi---------------*/
