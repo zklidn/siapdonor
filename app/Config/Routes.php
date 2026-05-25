@@ -8,26 +8,18 @@ $routes->get('/', 'Awalan::index');
 $routes->get('/awalan', 'Awalan::index');
 
 /*------------------login----------------*/
-$routes->get('/login', 'Login::index');
+$routes->get('/login', 'Login::login');
 $routes->post('/login/proses', 'Login::proses');
-$routes->post('/login/regis', 'Login::regis');
 
 /*------------------register---------------*/
-<<<<<<< HEAD
 $routes->get('/register', 'Register::register');
-$routes->post('/register/proses', 'Register::proses'); // Gunakan R besar
-=======
-$routes->get('/register', 'Register::index');
 $routes->post('/register/proses', 'Register::proses');
->>>>>>> iki
 
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
-$routes->post('/verifikasi/proses', 'Verifikasi::proses');
 
 /*------------------dashboard---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
-// Hapus duplikat rute dashboard di bawahnya
 
 
 /*------------------dashboard admin---------------*/
@@ -35,9 +27,6 @@ $routes->get('/dashboard', 'Dashboard::index');
 $routes->group('admin', static function ($routes) {
     // URL: localhost:8080/admin
     $routes->get('/', 'DashboardAdmin::index');
-  
-    // Logout
-    $routes->get('logout', 'DashboardAdmin::logout');
     
     // URL: localhost:8080/admin/data_donor
     $routes->get('data_donor', 'DashboardAdmin::data_donor');
@@ -89,4 +78,3 @@ $routes->group('pmi', static function ($routes) {
     // URL: localhost:8080/pmi/stok_darah
     $routes->get('stok_darah', 'DashboardPMI::stok_darah');
 });
-
