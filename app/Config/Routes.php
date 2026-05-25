@@ -33,6 +33,9 @@ $routes->group('admin', static function ($routes) {
     
     // URL: localhost:8080/admin/cari_donor
     $routes->get('cari_donor', 'DashboardAdmin::cari_donor');
+
+     // URL: localhost:8080/admin/kelola_user
+    $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
 });
 
 
