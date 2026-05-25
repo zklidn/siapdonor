@@ -13,13 +13,8 @@ $routes->post('/login/proses', 'Login::proses');
 $routes->post('/login/regis', 'Login::regis');
 
 /*------------------register---------------*/
-<<<<<<< HEAD
-$routes->get('/register', 'Register::register');
-$routes->post('/register/proses', 'Register::proses'); // Gunakan R besar
-=======
 $routes->get('/register', 'Register::index');
 $routes->post('/register/proses', 'Register::proses');
->>>>>>> iki
 
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
