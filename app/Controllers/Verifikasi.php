@@ -8,4 +8,7 @@ class Verifikasi extends BaseController
         echo view('verifications');
 
     }
+     public function proses() {
+        return redirect()->to('admin');
+    }
 }

@@ -14,9 +14,11 @@ $routes->post('/login/regis', 'Login::regis');
 
 /*------------------register---------------*/
 $routes->get('/register', 'Register::index');
+$routes->post('/register/proses', 'Register::proses');
 
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
+$routes->post('/verifikasi/proses', 'Verifikasi::proses');
 
 /*------------------dashboard---------------*/
 $routes->get('/dashboard', 'Dashboard::index');
@@ -28,6 +30,9 @@ $routes->get('/dashboard', 'Dashboard::index');
 $routes->group('admin', static function ($routes) {
     // URL: localhost:8080/admin
     $routes->get('/', 'DashboardAdmin::index');
+  
+    // Logout
+    $routes->get('logout', 'DashboardAdmin::logout');
     
     // URL: localhost:8080/admin/data_donor
     $routes->get('data_donor', 'DashboardAdmin::data_donor');

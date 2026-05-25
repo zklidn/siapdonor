@@ -10,6 +10,14 @@ class DashboardAdmin extends BaseController
         // Memanggil file: app/Views/Tampilan_Admin/dashboard.php
         return view('Tampilan_Admin/dashboard');
     }
+     
+    // Logout
+    public function logout()
+    {
+        session()->destroy();
+
+        return redirect()->to('/login');
+    }
 
     // Fungsi untuk halaman data donor
     public function data_donor()

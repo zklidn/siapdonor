@@ -26,5 +26,10 @@
         <div class="loader"></div>
         <div class="redirect-text">Mengalihkan...</div>
     </div>
+    <script>
+        setTimeout(function () {
+            window.location.href = "<?= base_url('/admin') ?>";
+        }, 2000); 
+    </script>
 </body>
 </html>

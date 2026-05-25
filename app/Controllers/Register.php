@@ -4,10 +4,13 @@ namespace App\Controllers;
 
 class Register extends BaseController
 {
-    public function register() {
+    public function index() {
         echo view('register');
     }
-    public function registerProses() {
+    public function proses() {
         return redirect()->to('/verifikasi');
     }
 }
+
+
+
