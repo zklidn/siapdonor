@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 class Login extends BaseController
 {
-   public function login() {
+   public function index() {
         echo view('login');
     }
-    public function loginProses() {
-        return redirect()->to('/dashboard');
+    public function proses() {
+        return redirect()->to('admin');
     }
 }

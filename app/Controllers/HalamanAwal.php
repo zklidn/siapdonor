@@ -8,4 +8,8 @@ class awalan extends BaseController
         echo view('awalan');
 
     }
+      public function proses()
+    {
+        return redirect()->to('login');
+    }
 }
