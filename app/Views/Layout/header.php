@@ -83,7 +83,7 @@
             <div class="user-area" id="profileDropdownToggle">
                 <div class="user-text">
                     <div class="name">Admin Utama</div>
-                    <div class="role">Admin</div>
+                    <div class="role">Admin Sistem</div>
                 </div>
                 <i class="fa-solid fa-circle-user fa-2xl"></i>
                 <i class="fa-solid fa-chevron-down fa-xs" style="margin-left: 2px;"></i>
