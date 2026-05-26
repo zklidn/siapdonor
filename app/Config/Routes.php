@@ -5,14 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 
 /*------------------halaman awal----------------*/
 $routes->get('/', 'Awalan::index');
-$routes->get('/awalan', 'Awalan::index');
 
 /*------------------login----------------*/
-$routes->get('/login', 'Login::login');
+$routes->get('/login', 'Login::index');
 $routes->post('/login/proses', 'Login::proses');
 
 /*------------------register---------------*/
-$routes->get('/register', 'Register::register');
+$routes->get('/register', 'Register::index');
 $routes->post('/register/proses', 'Register::proses');
 
 /*------------------verifikasi---------------*/
