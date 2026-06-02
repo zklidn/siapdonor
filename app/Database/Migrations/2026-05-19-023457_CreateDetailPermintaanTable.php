@@ -33,6 +33,10 @@ class CreateDetailPermintaanTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'delete_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
         $this->forge->addKey('id_detail', true);
         $this->forge->addForeignKey('id_permintaan', 'permintaan_darah', 'id_permintaan', 'CASCADE', 'CASCADE');
