@@ -7,8 +7,14 @@ class UserModel extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
-    
+    protected $useAutoIncrement = true;
+    protected $returnType = 'array';
+    protected $useSoftDeletes = true;
+    protected $protectFields = true;
     protected $allowedFields = ['name', 'email', 'password'];
 
     protected $useTimestamps = true;
+    protected $dateFormat = 'datetime';
+    protected $createFields = 'created_at';
+    protected $updateField = 'update_at';
 }
