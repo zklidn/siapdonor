@@ -5,9 +5,10 @@ namespace App\Controllers;
 class DashboardPMI extends BaseController
 {
     // Halaman utama Dashboard PMI
-    public function index()
+    public function pmi()
     {
-        return view('Tampilan_PMI/dashboard_PMI');
+        // Memanggil file: app/Views/Tampilan_PMI/dashboard_PMI.php
+        return view('Tampilan_PMI/dashboard');
     }
 
     // Halaman Data Pendonor
