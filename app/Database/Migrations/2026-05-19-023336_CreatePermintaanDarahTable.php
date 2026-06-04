@@ -36,6 +36,10 @@ class CreatePermintaanDarahTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'delete_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
 
         $this->forge->addKey('id_permintaan', true);

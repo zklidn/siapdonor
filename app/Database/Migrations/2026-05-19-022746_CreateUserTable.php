@@ -35,6 +35,10 @@ class CreateUserTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
+            'delete_at' => [
+                'type' => 'DATETIME',
+                'null' => true,
+            ],
         ]);
 
         $this->forge->addKey('id', true);
