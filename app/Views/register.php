@@ -259,7 +259,6 @@
                         <option value="" disabled selected hidden>Pilih peran</option>
                         <option value="pmi">PMI</option>
                         <option value="rumah_sakit">Rumah Sakit</option>
-                        <option value="admin">Admin</option>
                     </select>
                 </div>
 

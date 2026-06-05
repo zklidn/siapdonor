@@ -148,16 +148,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="role">Login sebagai</label>
-                    <select id="role" name="role" class="form-control" required>
-                        <option value="" disabled selected hidden>Pilih peran</option>
-                        <option value="pmi">PMI</option>
-                        <option value="rumah_sakit">Rumah Sakit</option>
-                        <option value="admin">Admin</option>
-                    </select>
-                </div>
-
                 <button type="submit" class="btn-primary">Masuk</button>
             </form>
 
