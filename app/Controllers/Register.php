@@ -2,21 +2,32 @@
 
 namespace App\Controllers;
 
-use App\Models\UserModel;
+use App\Models\usermodels;
 
 class Register extends BaseController
 {
-    public function index() 
+    public function index()
     {
         return view('register');
     }
 
-    public function proses() 
+    public function proses()
     {
-        $model = new UserModel();
+        // Cek apakah password dan konfirmasi password sama
+        if (
+            $this->request->getPost('password_reg') !=
+            $this->request->getPost('konfirmasi_password')
+        ) {
+            return redirect()->back()->with(
+                'error',
+                'Konfirmasi password tidak cocok'
+            );
+        }
+
+        $model = new usermodels();
 
         $model->insert([
-            'nama'     => $this->request->getPost('nama_instansi'), // Ubah jadi 'nama'
+            'nama'     => $this->request->getPost('nama_instansi'),
             'email'    => $this->request->getPost('email_reg'),
             'role'     => $this->request->getPost('role_reg'),
             'password' => password_hash(
@@ -25,6 +36,9 @@ class Register extends BaseController
             )
         ]);
 
-        return redirect()->to('/verifikasi');
+        return redirect()->to('/verifikasi')->with(
+            'success',
+            'Pendaftaran berhasil, silakan login.'
+        );
     }
 }

@@ -32,6 +32,12 @@
 
     </div>
 
+    <?php if (session()->getFlashdata('error')) : ?>
+        <div style="background:#fee2e2;color:#b91c1c;padding:10px;border-radius:5px;margin-bottom:15px;">
+            <?= session()->getFlashdata('error') ?>
+        </div>
+    <?php endif; ?>
+
     <form action="/register/fikasi" method="POST">
         <div class="form-group">
             <label for="nama_instansi">Nama Instansi</label>
