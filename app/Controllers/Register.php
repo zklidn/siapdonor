@@ -36,9 +36,6 @@ class Register extends BaseController
             )
         ]);
 
-        return redirect()->to('/verifikasi')->with(
-            'success',
-            'Pendaftaran berhasil, silakan login.'
-        );
+        return redirect()->to('/login');
     }
 }
