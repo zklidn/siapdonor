@@ -11,7 +11,6 @@ class Login extends BaseController
         return view('login');
     }
 
-
     public function processLogin()
     {
         $model = new usermodels();
@@ -19,38 +18,33 @@ class Login extends BaseController
         $email    = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         
-
-        // Cari user berdasarkan email
+        // 1. Cari user berdasarkan email di database
         $user = $model->where('email', $email)->first();
 
-        // Jika email tidak ditemukan
+        // 2. Jika email tidak ditemukan
         if (!$user) {
             return redirect()->back()
                 ->with('error', 'Email tidak terdaftar');
         }
 
-        // Jika password salah
+        // 3. Jika password salah
         if (!password_verify($password, $user['password'])) {
             return redirect()->back()
                 ->with('error', 'Password salah');
         }
 
-        // Jika role tidak sesuai
-        if ($user['role'] != $role) {
-            return redirect()->back()
-                ->with('error', 'Role tidak sesuai');
-        }
+        // KODE PENGECEKAN ROLE YANG ERROR SEBELUMNYA SUDAH DIHAPUS DI SINI
 
-        // Simpan data user ke session
+        // 4. Simpan data user (termasuk role dari database) ke session
         session()->set([
             'user_id'    => $user['id'],
             'nama'       => $user['nama'],
             'email'      => $user['email'],
-            'role'       => $user['role'],
+            'role'       => $user['role'], // <--- Role diambil langsung dari database
             'isLoggedIn' => true
         ]);
 
-        // Redirect sesuai role
+        // 5. Redirect otomatis sesuai role masing-masing
         switch ($user['role']) {
             case 'admin':
                 return redirect()->to('/admin');
@@ -62,8 +56,9 @@ class Login extends BaseController
                 return redirect()->to('/rs');
 
             default:
+                // Jika role di database kosong atau salah ketik
                 return redirect()->back()
-                    ->with('error', 'Role tidak dikenali');
+                    ->with('error', 'Role akun Anda tidak dikenali sistem');
         }
     }
 
