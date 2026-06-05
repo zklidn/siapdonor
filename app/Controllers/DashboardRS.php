@@ -5,9 +5,10 @@ namespace App\Controllers;
 class DashboardRS extends BaseController
 {
     // Halaman utama Dashboard RS
-    public function index()
+    public function rs()
     {
-        return view('Tampilan_RS/dashboard_RS');
+        // Memanggil file: app/Views/Tampilan_RS/dashboard_RS.php
+        return view('Tampilan_RS/dashboard');
     }
 
     // Halaman Cari Donor

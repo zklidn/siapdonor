@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 class DashboardAdmin extends BaseController
 {
-    // Fungsi default saat controller ini dipanggil
+    // Ubah nama fungsi dari admin() menjadi index() agar sesuai dengan Routes
     public function index()
     {
         // Memanggil file: app/Views/Tampilan_Admin/dashboard.php
@@ -15,7 +15,6 @@ class DashboardAdmin extends BaseController
     public function logout()
     {
         session()->destroy();
-
         return redirect()->to('/login');
     }
 
@@ -33,10 +32,10 @@ class DashboardAdmin extends BaseController
         return view('Tampilan_Admin/cari_donor');
     }
 
-     // Fungsi untuk halaman cari donor
+     // Fungsi untuk halaman kelola user
     public function kelola_user()
     {
-        // Memanggil file: app/Views/Tampilan_Admin/cari_donor.php
+        // Memanggil file: app/Views/Tampilan_Admin/kelola_user.php
         return view('Tampilan_Admin/kelola_user');
     }
 }
