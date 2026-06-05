@@ -2,14 +2,12 @@
 
 namespace App\Controllers;
 
-// Jangan lupa panggil UserModel agar bisa menyimpan ke database
 use App\Models\UserModel;
 
 class Register extends BaseController
 {
     public function index() 
     {
-        // Di CodeIgniter 4, disarankan menggunakan 'return' daripada 'echo'
         return view('register');
     }
 
@@ -17,19 +15,16 @@ class Register extends BaseController
     {
         $model = new UserModel();
 
-        // 1. Simpan data inputan dari form ke database
         $model->insert([
-            'nama'     => $this->request->getPost('nama'),
-            'email'    => $this->request->getPost('email'),
-            'role'     => $this->request->getPost('role'), // Pastikan form registermu punya input/select name="role"
+            'nama'     => $this->request->getPost('nama_instansi'), // Ubah jadi 'nama'
+            'email'    => $this->request->getPost('email_reg'),
+            'role'     => $this->request->getPost('role_reg'),
             'password' => password_hash(
-                $this->request->getPost('password'),
+                $this->request->getPost('password_reg'),
                 PASSWORD_DEFAULT
             )
         ]);
 
-        // 2. Redirect ke halaman verifikasi dengan pesan sukses
-        return redirect()->to('/verifikasi')->with('success', 'Pendaftaran berhasil, silakan lakukan verifikasi.');
+        return redirect()->to('/verifikasi');
     }
 }
-

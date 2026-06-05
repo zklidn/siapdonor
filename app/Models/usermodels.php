@@ -15,6 +15,6 @@ class UserModel extends Model
 
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
-    protected $createFields = 'created_at';
-    protected $updateField = 'update_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
 }

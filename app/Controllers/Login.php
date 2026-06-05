@@ -30,11 +30,13 @@ class Login extends BaseController
         if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
 
             // Set session, pastikan ada kolom 'role' di tabel database-mu (isinya: admin, pmi, atau rs)
+           // Set session
             session()->set([
                 'user_id'    => $user['id'],
-                'nama'       => $user['nama'],
+                'nama'       => $user['nama'], // Ubah ini dari 'name' menjadi 'nama'
                 'role'       => $user['role'], 
                 'isLoggedIn' => true
+        
             ]);
 
             // Arahkan ke rute URL berdasarkan role
