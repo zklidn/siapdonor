@@ -11,10 +11,6 @@ class Login extends BaseController
         return view('login');
     }
 
-    public function register()
-    {
-        return view('register');
-    }
 
     public function processLogin()
     {
@@ -22,7 +18,7 @@ class Login extends BaseController
 
         $email    = $this->request->getPost('email');
         $password = $this->request->getPost('password');
-        $role     = $this->request->getPost('role');
+        
 
         // Cari user berdasarkan email
         $user = $model->where('email', $email)->first();
@@ -39,11 +35,7 @@ class Login extends BaseController
                 ->with('error', 'Password salah');
         }
 
-        // Jika role tidak sesuai
-        if ($user['role'] != $role) {
-            return redirect()->back()
-                ->with('error', 'Role tidak sesuai');
-        }
+       
 
         // Simpan data user ke session
         session()->set([
