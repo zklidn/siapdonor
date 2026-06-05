@@ -16,8 +16,8 @@
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .logo-nav { height: 40px; width: auto; object-fit: contain; }
         .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-        .brand-text strong { font-size: 20px; color: #333; font-weight: 700; } /* Warna Hitam */
-        .brand-text span { font-size: 11px; color: #6b7280; font-weight: 400; } /* Warna Abu-abu */
+        .brand-text strong { font-size: 20px; color: #333; font-weight: 700; } 
+        .brand-text span { font-size: 11px; color: #6b7280; font-weight: 400; } 
         .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: #333; font-weight: 500; font-size: 14px; }
         .btn-outline { border: 1px solid #8b0000; color: #8b0000; padding: 8px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.2s; }
@@ -127,7 +127,7 @@
             z-index: 2; 
             background-color: #ffffff; 
             width: 100%; 
-            max-width: 450px; /* Sedikit lebih lebar dari login karena formnya lebih banyak */
+            max-width: 450px; 
             padding: 40px 35px; 
             border-radius: 24px; 
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); 
@@ -136,8 +136,8 @@
         .brand-header { text-align: center; margin-bottom: 30px; }
         .brand-logo-container { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 5px; }
         .brand-icon { height: 35px; width: auto; object-fit: contain; } 
-        .brand-name { font-size: 22px; font-weight: 700; color: #333; } /* Warna Hitam */
-        .brand-subtitle { font-size: 11px; color: #6b7280; } /* Warna Abu-abu */
+        .brand-name { font-size: 22px; font-weight: 700; color: #333; } 
+        .brand-subtitle { font-size: 11px; color: #6b7280; } 
         
         .form-header { text-align: center; margin-bottom: 25px; }
         .form-header h2 { font-size: 22px; font-weight: 600; color: #111827; margin-bottom: 8px; }
@@ -162,6 +162,31 @@
 
         /* ================= FOOTER ================= */
         .footer { background: #8b0000; color: white; padding: 20px 5%; display: flex; justify-content: center; align-items: center; font-size: 13px; }
+
+        /* ================= POP-UP MODAL CANTIK ================= */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(3px);
+            display: flex; justify-content: center; align-items: center; 
+            z-index: 1000; opacity: 0; visibility: hidden; transition: 0.3s ease; 
+        }
+        .modal-overlay.show { opacity: 1; visibility: visible; }
+        .modal-box { 
+            background: white; padding: 30px; border-radius: 20px; 
+            text-align: center; width: 90%; max-width: 350px; 
+            transform: translateY(-20px) scale(0.95); 
+            transition: 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.15); 
+        }
+        .modal-overlay.show .modal-box { transform: translateY(0) scale(1); }
+        .modal-icon { font-size: 45px; color: #dc2626; margin-bottom: 15px; }
+        .modal-title { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+        .modal-text { font-size: 14px; color: #4b5563; margin-bottom: 25px; line-height: 1.5; }
+        .btn-modal { 
+            background: #8b0000; color: white; border: none; padding: 12px 20px; 
+            border-radius: 10px; font-weight: 600; cursor: pointer; 
+            width: 100%; transition: 0.2s; font-size: 14px; font-family: 'Inter', sans-serif;
+        }
+        .btn-modal:hover { background: #6b0000; }
     </style>
 </head>
 <body>
@@ -197,7 +222,7 @@
                 <p>Isi data berikut untuk membuat akun</p>
             </div>
 
-            <form action="/register/proses" method="POST">
+            <form action="/register/proses" method="POST" onsubmit="return validatePassword()">
                 <div class="form-group">
                     <label for="nama_instansi">Nama Instansi</label>
                     <input type="text" id="nama_instansi" name="nama_instansi" class="form-control" placeholder="Contoh: RS Wahidin Sudirohusodo" required>
@@ -251,6 +276,16 @@
         <div>&copy; 2026 SiapDonor. All rights reserved.</div>
     </footer>
 
+    <!-- BAGIAN YANG DITAMBAHKAN: HTML Pop-Up Modal -->
+    <div id="customAlert" class="modal-overlay">
+        <div class="modal-box">
+            <i class="fa-solid fa-circle-exclamation modal-icon"></i>
+            <h3 class="modal-title">Peringatan!</h3>
+            <p class="modal-text">Password dan Konfirmasi Password tidak cocok. Silakan periksa kembali ketikan Anda.</p>
+            <button class="btn-modal" onclick="closeAlert()">Mengerti</button>
+        </div>
+    </div>
+
     <script>
         function togglePassword(inputId, button) {
             const input = document.getElementById(inputId);
@@ -264,6 +299,24 @@
                 icon.classList.remove('fa-eye');
                 icon.classList.add('fa-eye-slash');
             }
+        }
+
+        // BAGIAN YANG DITAMBAHKAN: Logika memunculkan dan menutup Modal
+        function validatePassword() {
+            const password = document.getElementById('password_reg').value;
+            const konfirmasi = document.getElementById('konfirmasi_password').value;
+
+            if (password !== konfirmasi) {
+                // Tampilkan Modal
+                document.getElementById('customAlert').classList.add('show');
+                return false; // Membatalkan pengiriman data
+            }
+            return true; // Lanjutkan proses pendaftaran
+        }
+
+        // Fungsi untuk menutup Modal saat tombol "Mengerti" diklik
+        function closeAlert() {
+            document.getElementById('customAlert').classList.remove('show');
         }
     </script>
 </body>
