@@ -5,7 +5,7 @@ namespace App\Controllers;
 class DashboardAdmin extends BaseController
 {
     // Ubah nama fungsi dari admin() menjadi index() agar sesuai dengan Routes
-    public function index()
+    public function admin()
     {
         // Memanggil file: app/Views/Tampilan_Admin/dashboard.php
         return view('Tampilan_Admin/dashboard');

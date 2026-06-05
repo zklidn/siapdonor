@@ -8,7 +8,7 @@ class DashboardRS extends BaseController
     public function rs()
     {
         // Memanggil file: app/Views/Tampilan_RS/dashboard_RS.php
-        return view('Tampilan_RS/dashboard');
+        return view('Tampilan_RS/dashboard_RS');
     }
 
     // Halaman Cari Donor

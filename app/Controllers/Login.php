@@ -35,7 +35,11 @@ class Login extends BaseController
                 ->with('error', 'Password salah');
         }
 
-       
+        // Jika role tidak sesuai
+        if ($user['role'] != $role) {
+            return redirect()->back()
+                ->with('error', 'Role tidak sesuai');
+        }
 
         // Simpan data user ke session
         session()->set([

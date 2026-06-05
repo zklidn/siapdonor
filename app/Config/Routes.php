@@ -25,7 +25,7 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 
 /*------------------dashboard admin---------------*/
 $routes->group('admin', static function ($routes) {
-    $routes->get('/', 'DashboardAdmin::index');
+    $routes->get('/', 'DashboardAdmin::admin');
     $routes->get('data_donor', 'DashboardAdmin::data_donor');
     $routes->get('cari_donor', 'DashboardAdmin::cari_donor');
     $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
@@ -34,7 +34,7 @@ $routes->group('admin', static function ($routes) {
 
 /*------------------dashboard RS---------------*/
 $routes->group('rs', static function ($routes) {
-    $routes->get('/', 'DashboardRS::index');
+    $routes->get('/', 'DashboardRS::rs');
     $routes->get('cari_donor', 'DashboardRS::cari_donor');
     $routes->get('data_pasien', 'DashboardRS::data_pasien');
     $routes->get('permintaan_darah', 'DashboardRS::permintaan_darah');
@@ -44,7 +44,7 @@ $routes->group('rs', static function ($routes) {
 
 /*------------------dashboard PMI---------------*/
 $routes->group('pmi', static function ($routes) {
-    $routes->get('/', 'DashboardPMI::index');
+    $routes->get('/', 'DashboardPMI::pmi');
     $routes->get('data_pendonor', 'DashboardPMI::data_pendonor');
     $routes->get('laporan', 'DashboardPMI::laporan');
     $routes->get('permintaan_darah', 'DashboardPMI::permintaan_darah');
