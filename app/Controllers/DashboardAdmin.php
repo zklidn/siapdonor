@@ -38,4 +38,10 @@ class DashboardAdmin extends BaseController
         // Memanggil file: app/Views/Tampilan_Admin/kelola_user.php
         return view('Tampilan_Admin/kelola_user');
     }
+
+    public function riwayat()
+    {
+        // Memanggil file: app/Views/Tampilan_Admin/kelola_user.php
+        return view('Tampilan_Admin/riwayat');
+    }
 }
