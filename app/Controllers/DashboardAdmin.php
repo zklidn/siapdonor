@@ -25,12 +25,6 @@ class DashboardAdmin extends BaseController
         return view('Tampilan_Admin/data_donor');
     }
 
-    // Fungsi untuk halaman cari donor
-    public function cari_donor()
-    {
-        // Memanggil file: app/Views/Tampilan_Admin/cari_donor.php
-        return view('Tampilan_Admin/cari_donor');
-    }
 
      // Fungsi untuk halaman kelola user
     public function kelola_user()

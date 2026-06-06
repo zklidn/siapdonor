@@ -2,20 +2,17 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('dashboard') ?>" class="menu-item">
+    <a href="<?= base_url('admin') ?>" class="menu-item">
         <i class="fa-solid fa-gauge"></i> Dashboard
     </a>
-    <a href="<?= base_url('kelola-user') ?>" class="menu-item">
+    <a href="<?= base_url('admin/kelola_user') ?>" class="menu-item">
         <i class="fa-solid fa-users-gear"></i> Kelola User
     </a>
-    <a href="<?= base_url('data-donor') ?>" class="menu-item menu-active">
+    <a href="<?= base_url('admin/data_donor') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-droplet"></i> Data Donor
     </a>
-    <a href="#" class="menu-item">
+    <a href="<?= base_url('admin/riwayat') ?>"  class="menu-item">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
-    </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-file-invoice"></i> Laporan
     </a>
 </aside>
     
