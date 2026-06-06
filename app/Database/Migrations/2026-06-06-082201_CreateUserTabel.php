@@ -19,6 +19,10 @@ class CreateUserTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
+            'nama_instansi' => [
+                'type'          => 'VARCHAR',
+                'constraint'    => 100,
+            ],
             'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
@@ -27,9 +31,21 @@ class CreateUserTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'nomor_telepon' => [
+                'type'        => 'CHAR',
+                'constraint'  => 12,
+            ],
+            'alamat' => [
+                'type'        => 'VARCHAR',
+                'constraint'  => 100,
+            ],
             'role' => [
                 'type'       => 'ENUM',
                 'constraint' => ['admin', 'pmi', 'rumah_sakit'],
+            ],
+            'file_foto' => [
+                'type' => 'LONGBLOB',
+                'null' => true,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
