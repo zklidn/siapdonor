@@ -14,12 +14,6 @@
     <a href="#" class="menu-item">
         <i class="fa-solid fa-globe"></i> Riwayat
     </a>
-    
-    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </a>
-    </div>
 </aside>
 
 <main class="content-area">
@@ -43,9 +37,6 @@
                 </select>
             </div>
 
-            <button style="background: #8b0000; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; transition: 0.2s;">
-                <i class="fa-solid fa-plus"></i> Tambah User
-            </button>
         </div>
 
         <div style="overflow-x: auto;">
