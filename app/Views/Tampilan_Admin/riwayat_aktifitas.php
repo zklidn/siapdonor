@@ -2,21 +2,24 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('dashboard') ?>" class="menu-item">
-        <i class="fa-solid fa-gauge"></i> Dashboard
-    </a>
-    <a href="<?= base_url('kelola-user') ?>" class="menu-item">
-        <i class="fa-solid fa-users-gear"></i> Kelola User
-    </a>
-    <a href="<?= base_url('data-donor') ?>" class="menu-item">
-        <i class="fa-solid fa-droplet"></i> Data Donor
-    </a>
-    <a href="<?= base_url('riwayat') ?>" class="menu-item menu-active">
-        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+    <a href="<?= base_url('dashboard') ?>" class="menu-item menu-active">
+        <i class="fa-solid fa-house"></i> Dashboard
     </a>
     <a href="#" class="menu-item">
-        <i class="fa-solid fa-file-invoice"></i> Laporan
+        <i class="fa-solid fa-users-gear"></i> Kelola User
     </a>
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-hand-holding-droplet"></i> Data Donor
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-globe"></i> Riwayat
+    </a>
+    
+    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+        <a href="#" class="menu-item">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
+        </a>
+    </div>
 </aside>
 
 <main class="content-area">
