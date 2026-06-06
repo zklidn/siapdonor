@@ -2,39 +2,41 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('dashboard') ?>" class="menu-item">
-        <i class="fa-solid fa-gauge"></i> Dashboard
+    <a href="<?= base_url('dashboard') ?>" class="menu-item menu-active">
+        <i class="fa-solid fa-house"></i> Dashboard
     </a>
-    <a href="<?= base_url('kelola-user') ?>" class="menu-item">
+    <a href="#" class="menu-item">
         <i class="fa-solid fa-users-gear"></i> Kelola User
     </a>
-    <a href="<?= base_url('data-donor') ?>" class="menu-item menu-active">
-        <i class="fa-solid fa-droplet"></i> Data Donor
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-hand-holding-droplet"></i> Data Donor
     </a>
     <a href="#" class="menu-item">
-        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+        <i class="fa-solid fa-globe"></i> Riwayat
     </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-file-invoice"></i> Laporan
-    </a>
-</aside>
-    
-    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </a>
-    </div>
 </aside>
 
 <main class="content-area">
     
+    <?php
+        $nama_hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+        $nama_bulan = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+        
+        $hari_ini = $nama_hari[date('w')];
+        $tanggal_ini = date('d');
+        $bulan_ini = $nama_bulan[date('n')];
+        $tahun_ini = date('Y');
+        
+        $tanggal_sekarang = $hari_ini . ", " . $tanggal_ini . " " . $bulan_ini . " " . $tahun_ini;
+    ?>
+
     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
         <div>
             <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Dashboard</h1>
             <p style="color: #6b7280; font-size: 14px;">Selamat datang, Admin!</p>
         </div>
         <div style="color: #6b7280; font-size: 13px; display: flex; align-items: center; gap: 8px; background: white; padding: 8px 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
-            <i class="fa-regular fa-calendar"></i> Selasa, 20 Mei 2025
+            <i class="fa-regular fa-calendar"></i> <?= $tanggal_sekarang ?>
         </div>
     </div>
     
@@ -161,5 +163,4 @@
     </div>
 
 </main>
-
 <?= $this->endSection() ?>

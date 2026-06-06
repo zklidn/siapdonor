@@ -14,12 +14,6 @@
     <a href="#" class="menu-item">
         <i class="fa-solid fa-globe"></i> Riwayat
     </a>
-    
-    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </a>
-    </div>
 </aside>
 
 <main class="content-area">
@@ -48,7 +42,8 @@
         </div>
 
         <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
+            <table style="width: 100%; borde
+            r-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
                 <thead>
                     <tr style="border-bottom: 2px solid #f3f4f6;">
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">No</th>
@@ -166,5 +161,10 @@
         
     </div>
 </main>
+
+<?= $this->include('Tampilan_Admin/tambah_donor') ?>
+</main>
+
+<?= $this->endSection() ?>
 
 <?= $this->endSection() ?>
