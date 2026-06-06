@@ -1,135 +1,175 @@
 <?= $this->extend('layout/template') ?>
-
 <?= $this->section('content') ?>
-<style>
-    /* Style Khusus Konten Dashboard RS */
-    .dashboard-header { margin-bottom: 30px; }
-    .dashboard-header h1 { font-size: 24px; font-weight: 700; color: #111827; margin-bottom: 5px; }
-    .dashboard-header p { font-size: 14px; color: #6b7280; }
 
-    /* 3 Kotak Statistik Versi RS */
-    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 35px; }
-    .stat-card { background: white; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #f3f4f6; }
-    .stat-label { font-size: 13px; font-weight: 600; color: #6b7280; text-transform: uppercase; tracking: 0.5px; margin-bottom: 12px; }
-    .stat-main { display: flex; align-items: center; justify-content: space-between; }
-    .stat-value { font-size: 32px; font-weight: 700; color: #111827; }
-    .stat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+<aside class="sidebar" id="sidebar">
+    <a href="<?= base_url('dashboard-pmi') ?>" class="menu-item menu-active">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-hand-holding-droplet"></i> Data Donor
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan
+    </a>
+    <a href="#" class="menu-item">
+        <i class="fa-solid fa-globe"></i> Riwayat
+    </a>
     
-    /* Variasi Warna Ikon Statistik */
-    .icon-total { background: #fee2e2; color: #990000; }
-    .icon-process { background: #fef3c7; color: #d97706; }
-    .icon-success { background: #d1fae5; color: #059669; }
-
-    /* Grid untuk Aksi Cepat & Tabel Permintaan */
-    .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 25px; }
-    
-    /* Bagian Kiri: Tabel Permintaan Darah RS */
-    .table-container { background: white; padding: 24px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #f3f4f6; }
-    .panel-title { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 20px; display: flex; align-items: center; gap: 8px; }
-    
-    .custom-table { width: 100%; border-collapse: collapse; text-align: left; }
-    .custom-table th { font-size: 13px; font-weight: 600; color: #4b5563; padding: 14px 16px; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
-    .custom-table td { padding: 14px 16px; font-size: 14px; color: #374151; border-bottom: 1px solid #f3f4f6; }
-    
-    /* Status Badges */
-    .badge { padding: 6px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; display: inline-block; }
-    .badge-pending { background: #fef3c7; color: #d97706; }
-    .badge-process { background: #e0f2fe; color: #0284c7; }
-    .badge-success { background: #d1fae5; color: #059669; }
-
-    /* Bagian Kanan: Tombol Aksi Cepat (Quick Actions) */
-    .actions-container { display: flex; flex-direction: column; gap: 15px; }
-    .action-card { background: white; padding: 20px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid #f3f4f6; text-align: center; cursor: pointer; transition: all 0.2s; text-decoration: none; display: block; }
-    .action-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(139,0,0,0.08); border-color: #8b0000; }
-    .action-card i { font-size: 28px; color: #8b0000; margin-bottom: 12px; }
-    .action-card h3 { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px; }
-    .action-card p { font-size: 12px; color: #6b7280; }
-</style>
-
-<div class="dashboard-header">
-    <h1>Selamat Datang di Panel Rumah Sakit</h1>
-    <p>Pantau permohonan darah pasien dan temukan pendonor darurat dengan cepat.</p>
-</div>
-
-<div class="stats-grid">
-    <div class="stat-card">
-        <div class="stat-label">Total Permintaan Darah</div>
-        <div class="stat-main">
-            <div class="stat-value">42</div>
-            <div class="stat-icon icon-total"><i class="fa-solid fa-file-medical"></i></div>
-        </div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Sedang Diproses PMI</div>
-        <div class="stat-main">
-            <div class="stat-value">5</div>
-            <div class="stat-icon icon-process"><i class="fa-solid fa-spinner fa-spin"></i></div>
-        </div>
-    </div>
-    <div class="stat-card">
-        <div class="stat-label">Permintaan Berhasil</div>
-        <div class="stat-main">
-            <div class="stat-value">37</div>
-            <div class="stat-icon icon-success"><i class="fa-solid fa-circle-check"></i></div>
-        </div>
-    </div>
-</div>
-
-<div class="dashboard-grid">
-    
-    <div class="table-container">
-        <div class="panel-title">
-            <i class="fa-solid fa-clock-rotate-left" style="color: #8b0000;"></i> Status Permintaan Darah Terbaru
-        </div>
-        <table class="custom-table">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Pasien</th>
-                    <th>Gol. Darah</th>
-                    <th>Jumlah</th>
-                    <th>Status Sistem</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Suryadi Atmoko</td>
-                    <td><strong>A+</strong></td>
-                    <td>2 Kantong</td>
-                    <td><span class="badge badge-pending">Menunggu PMI</span></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Rani Wijaya</td>
-                    <td><strong>O-</strong></td>
-                    <td>1 Kantong</td>
-                    <td><span class="badge badge-process">Sedang Dikirim</span></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Budi Santoso</td>
-                    <td><strong>B+</strong></td>
-                    <td>4 Kantong</td>
-                    <td><span class="badge badge-success">Selesai</span></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="actions-container">
-        <a href="#" class="action-card">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <h3>Cari Donor Darurat</h3>
-            <p>Cari kontak pendonor aktif berdasarkan lokasi terdekat.</p>
-        </a>
-        <a href="#" class="action-card">
-            <i class="fa-solid fa-plus"></i>
-            <h3>Buat Permintaan Baru</h3>
-            <p>Input data pasien yang membutuhkan transfusi darah.</p>
+    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+        <a href="#" class="menu-item">
+            <i class="fa-solid fa-right-from-bracket"></i> Logout
         </a>
     </div>
+</aside>
 
-</div>
+<main class="content-area">
+    
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+        <div>
+            <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Dashboard</h1>
+            <p style="color: #6b7280; font-size: 14px;">Selamat datang, PMI Makassar!</p>
+        </div>
+        <div style="color: #6b7280; font-size: 13px; display: flex; align-items: center; gap: 8px; background: white; padding: 8px 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+            <i class="fa-regular fa-calendar"></i> Selasa, 20 Mei 2025
+        </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
+        
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div style="background: #fee2e2; color: #dc2626; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <div>
+                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total Donor</p>
+                    <h3 style="font-size: 22px; color: #111827;">1.245</h3>
+                </div>
+            </div>
+            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+        </div>
+
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div style="background: #dcfce7; color: #16a34a; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                    <i class="fa-solid fa-user-check"></i>
+                </div>
+                <div>
+                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Donor Aktif</p>
+                    <h3 style="font-size: 22px; color: #111827;">892</h3>
+                </div>
+            </div>
+            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+        </div>
+
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div style="background: #ffedd5; color: #ea580c; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                    <i class="fa-solid fa-file-invoice"></i>
+                </div>
+                <div>
+                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
+                    <h3 style="font-size: 22px; color: #111827;">24</h3>
+                </div>
+            </div>
+            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+        </div>
+
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div style="background: #f3e8ff; color: #9333ea; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                </div>
+                <div>
+                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Riwayat Permintaan</p>
+                    <h3 style="font-size: 22px; color: #111827;">156</h3>
+                </div>
+            </div>
+            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+        </div>
+
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 20px;">
+        
+        <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <h3 style="margin-bottom: 20px; font-size: 16px; color: #111827;">Aktivitas Terbaru</h3>
+            
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+                <thead>
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">No</th>
+                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">Aktivitas</th>
+                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">Tanggal</th>
+                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">Oleh</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 15px 0; color: #4b5563;">1</td>
+                        <td style="padding: 15px 0; color: #111827;">Donor baru ditambahkan</td>
+                        <td style="padding: 15px 0; color: #4b5563;">20 Mei 2025</td>
+                        <td style="padding: 15px 0; color: #111827;">PMI Makassar</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 15px 0; color: #4b5563;">2</td>
+                        <td style="padding: 15px 0; color: #111827;">Permintaan darah baru</td>
+                        <td style="padding: 15px 0; color: #4b5563;">20 Mei 2025</td>
+                        <td style="padding: 15px 0; color: #111827;">RS Wahidin</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 15px 0; color: #4b5563;">3</td>
+                        <td style="padding: 15px 0; color: #111827;">Donor diperbarui</td>
+                        <td style="padding: 15px 0; color: #4b5563;">19 Mei 2025</td>
+                        <td style="padding: 15px 0; color: #111827;">PMI Makassar</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 15px 0; color: #4b5563;">4</td>
+                        <td style="padding: 15px 0; color: #111827;">Status permintaan diubah</td>
+                        <td style="padding: 15px 0; color: #4b5563;">19 Mei 2025</td>
+                        <td style="padding: 15px 0; color: #111827;">PMI Makassar</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 15px 0; color: #4b5563;">5</td>
+                        <td style="padding: 15px 0; color: #111827;">Donor baru ditambahkan</td>
+                        <td style="padding: 15px 0; color: #4b5563;">18 Mei 2025</td>
+                        <td style="padding: 15px 0; color: #111827;">PMI Makassar</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div style="margin-top: 20px;">
+                <a href="#" style="color: #dc2626; font-size: 13px; font-weight: 600; text-decoration: none;">Lihat semua aktivitas</a>
+            </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 20px; align-self: start;">
+            
+            <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
+                <h3 style="margin-bottom: 15px; font-size: 16px; color: #111827;">Aksi Cepat</h3>
+                <button style="background: #8b0000; color: white; width: 100%; padding: 10px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; margin-bottom: 10px; transition: 0.2s;">+ Tambah Donor</button>
+                <button style="background: white; color: #8b0000; width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #8b0000; cursor: pointer; font-weight: 600; margin-bottom: 10px; transition: 0.2s;">Cari Donor</button>
+                <button style="background: white; color: #8b0000; width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #8b0000; cursor: pointer; font-weight: 600; transition: 0.2s;">Buat Permintaan</button>
+            </div>
+
+            <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
+                <h3 style="margin-bottom: 15px; font-size: 16px; color: #111827;">Informasi</h3>
+                <p style="color: #6b7280; font-size: 13px; line-height: 1.6;">
+                    Pastikan data donor selalu diperbarui agar pencarian donor lebih akurat dan cepat.
+                </p>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
+        &copy; 2025 SiapDonor. All rights reserved.
+    </div>
+
+</main>
 
 <?= $this->endSection() ?>
