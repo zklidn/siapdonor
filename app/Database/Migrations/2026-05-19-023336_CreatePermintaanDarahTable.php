@@ -36,7 +36,7 @@ class CreatePermintaanDarahTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
-            'delete_at' => [
+            'deleted_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],

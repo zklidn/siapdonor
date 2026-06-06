@@ -3,7 +3,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class usermodels extends Model
+class   Usermodels extends Model
 {
     protected $table = 'users';
     protected $primaryKey = 'id';
@@ -11,7 +11,7 @@ class usermodels extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = true;
     protected $protectFields = true;
-    protected $allowedFields = ['nama', 'email', 'password', 'role'];
+    protected $allowedFields = ['nama', 'email', 'password','nama_instansi','alamat','nomor_telepon','role'];
 
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
