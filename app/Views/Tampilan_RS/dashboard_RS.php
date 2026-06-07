@@ -2,24 +2,24 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('dashboard-rs') ?>" class="menu-item menu-active">
+    <a href="<?= base_url('rs') ?>" class="menu-item">
         <i class="fa-solid fa-house"></i> Dashboard
     </a>
-    <a href="#" class="menu-item">
+    <a href="<?= base_url('rs/cari_donor') ?>" class="menu-item">
         <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
     </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-clipboard-list"></i> Permintaan Darah
+    <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+        <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan Darah
     </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
+    <a href="<?= base_url('rs/data_pasien') ?>" class="menu-item">
+        <i class="fa-solid fa-hospital-user"></i> Data Pasien / Kebutuhan
     </a>
-    
-    <div style="margin-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
-        <a href="#" class="menu-item">
-            <i class="fa-solid fa-right-from-bracket"></i> Logout
-        </a>
-    </div>
+    <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
+    </a>
+    <a href="<?= base_url('rs/laporan_RS') ?>" class="menu-item">
+        <i class="fa-solid fa-file-lines"></i> Laporan
+    </a>
 </aside>
 
 <main class="content-area">

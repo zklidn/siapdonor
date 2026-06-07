@@ -1,192 +1,99 @@
-<?= $this->include('layout/header') ?> <style>
+<?= $this->extend('layout/template') ?>
+<?= $this->section('content') ?>
 
-    .page-header { 
-        margin-bottom: 30px; 
-    }
-    .page-header h1 { 
-        font-size: 26px; 
-        font-weight: 700; 
-        color: #111827; 
-        margin-bottom: 4px; 
-    }
-    .page-header p { 
-        font-size: 14px; 
-        color: #6b7280; 
-    }
+<aside class="sidebar" id="sidebar">
+    <a href="<?= base_url('rs') ?>" class="menu-item">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+    <a href="<?= base_url('rs/cari_donor') ?>" class="menu-item">
+        <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
+    </a>
+    <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+        <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan Darah
+    </a>
+    <a href="<?= base_url('rs/data_pasien') ?>" class="menu-item">
+        <i class="fa-solid fa-hospital-user"></i> Data Pasien / Kebutuhan
+    </a>
+    <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
+    </a>
+    <a href="<?= base_url('rs/laporan_RS') ?>" class="menu-item">
+        <i class="fa-solid fa-file-lines"></i> Laporan
+    </a>
+</aside>
 
-    /* CARD CONTAINER FORM */
-    .form-card {
-        background: #ffffff;
-        padding: 30px;
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        border: 1px solid #e5e7eb;
-        max-width: 800px;
-    }
+<main class="content-area">
+    <div style="margin-bottom: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+            <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Permintaan Darah</h1>
+            <p style="color: #6b7280; font-size: 14px;">Buat dan kelola permintaan darah untuk pasien</p>
+        </div>
+        <button style="background: #8b0000; color: white; padding: 10px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer;">
+            + Buat Permintaan
+        </button>
+    </div>
 
-    /* GRID UNTUK FIELD FORM */
-    .form-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        margin-bottom: 25px;
-    }
-    .form-group-full {
-        grid-column: span 2;
-    }
-
-    .form-group {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-    .form-group label {
-        font-size: 14px;
-        font-weight: 600;
-        color: #374151;
-    }
-    .form-control {
-        width: 100%;
-        padding: 12px 14px;
-        border: 1.5px solid #e5e7eb;
-        border-radius: 10px;
-        font-size: 14px;
-        color: #1f2937;
-        background-color: #fff;
-        outline: none;
-        transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .form-control:focus {
-        border-color: #8b0000;
-        box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
-    }
-    textarea.form-control {
-        resize: vertical;
-        min-height: 100px;
-    }
-
-    /* TOMBOL AKSI DI BAWAH */
-    .form-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 12px;
-        border-top: 1px solid #f3f4f6;
-        padding-top: 20px;
-    }
-    .btn {
-        padding: 12px 24px;
-        border-radius: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: 0.2s;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-    }
-    .btn-cancel {
-        background: #f3f4f6;
-        color: #4b5563;
-        border: 1px solid #e5e7eb;
-    }
-    .btn-cancel:hover {
-        background: #e5e7eb;
-    }
-    .btn-submit {
-        background: #8b0000;
-        color: white;
-        border: none;
-        box-shadow: 0 4px 10px rgba(139, 0, 0, 0.15);
-    }
-    .btn-submit:hover {
-        background: #6b0000;
-        transform: translateY(-1px);
-    }
-</style>
-
-<div class="page-header">
-    <h1>Form Permintaan Darah</h1>
-    <p>Silakan isi data pasien dan detail kebutuhan komponen darah untuk diajukan ke pihak PMI.</p>
-</div>
-
-<div class="form-card">
-    <form action="#" method="POST">
+    <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
         
-        <div class="form-grid">
-            <div class="form-group">
-                <label for="nama_pasien">Nama Lengkap Pasien</label>
-                <input type="text" id="nama_pasien" name="nama_pasien" class="form-control" placeholder="Masukkan nama pasien" required>
-            </div>
-
-            <div class="form-group">
-                <label for="no_rm">Nomor Rekam Medis (No. RM)</label>
-                <input type="text" id="no_rm" name="no_rm" class="form-control" placeholder="Contoh: RM-001234" required>
-            </div>
-
-            <div class="form-group">
-                <label for="gol_darah">Golongan Darah</label>
-                <select id="gol_darah" name="gol_darah" class="form-control" required>
-                    <option value="">Pilih Golongan Darah</option>
-                    <option value="A">A</option>
-                    <option value="B">B</option>
-                    <option value="AB">AB</option>
-                    <option value="O">O</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="rhesus">Rhesus</label>
-                <select id="rhesus" name="rhesus" class="form-control" required>
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="komponen">Komponen Darah</label>
-                <select id="komponen" name="komponen" class="form-control" required>
-                    <option value="">Pilih Komponen</option>
-                    <option value="WB">Whole Blood (Darah Lengkap)</option>
-                    <option value="PRC">Packed Red Cells</option>
-                    <option value="TC">Thrombocyte Concentrate</option>
-                    <option value="FFP">Fresh Frozen Plasma</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="jumlah_kantong">Jumlah Kebutuhan (Kantong)</label>
-                <input type="number" id="jumlah_kantong" name="jumlah_kantong" class="form-control" min="1" placeholder="Contoh: 2" required>
-            </div>
-
-            <div class="form-group">
-                <label for="urgensi">Tingkat Urgensi</label>
-                <select id="urgensi" name="urgensi" class="form-control" required>
-                    <option value="Normal">Normal / Terencana</option>
-                    <option value="Darurat">Darurat (Cepat)</option>
-                    <option value="Sangat Darurat">Sangat Darurat (A+B / Langsung)</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="tanggal_butuh">Batas Waktu Dibutuhkan</label>
-                <input type="datetime-local" id="tanggal_butuh" name="tanggal_butuh" class="form-control" required>
-            </div>
-
-            <div class="form-group form-group-full">
-                <label for="keterangan">Keterangan Klinis / Diagnosis Medis</label>
-                <textarea id="keterangan" name="keterangan" class="form-control" placeholder="Tulis alasan kebutuhan transfusi darah (misal: Pasien Operasi Sesar, Thalassemia, dll)"></textarea>
-            </div>
+        <div style="display: flex; gap: 30px; border-bottom: 1px solid #e5e7eb; margin-bottom: 25px;">
+            <span style="padding-bottom: 15px; color: #6b7280; cursor: pointer;">Semua Permintaan</span>
+            <span style="padding-bottom: 15px; color: #8b0000; cursor: pointer; border-bottom: 2px solid #8b0000; font-weight: 600;">Permintaan Aktif</span>
+            <span style="padding-bottom: 15px; color: #6b7280; cursor: pointer;">Permintaan Selesai</span>
+            <span style="padding-bottom: 15px; color: #6b7280; cursor: pointer;">Draft</span>
         </div>
 
-        <div class="form-actions">
-            <a href="#" class="btn btn-cancel">Batal</a>
-            <button type="submit" class="btn btn-submit">
-                <i class="fa-solid fa-paper-plane"></i> Kirim ke PMI
-            </button>
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
+                <thead>
+                    <tr style="border-bottom: 2px solid #f3f4f6; color: #6b7280;">
+                        <th style="padding: 15px 10px;">No</th>
+                        <th style="padding: 15px 10px;">Tanggal</th>
+                        <th style="padding: 15px 10px;">Pasien</th>
+                        <th style="padding: 15px 10px;">Gol. Darah</th>
+                        <th style="padding: 15px 10px;">Jumlah</th>
+                        <th style="padding: 15px 10px;">Kebutuhan</th>
+                        <th style="padding: 15px 10px;">Lokasi</th>
+                        <th style="padding: 15px 10px;">Status</th>
+                        <th style="padding: 15px 10px;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody style="color: #4b5563;">
+                    <tr style="border-bottom: 1px solid #f3f4f6;">
+                        <td style="padding: 18px 10px;">1</td>
+                        <td style="padding: 18px 10px;">20 Mei 2025, 10:30</td>
+                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Andi Saputra</td>
+                        <td style="padding: 18px 10px;">O+</td>
+                        <td style="padding: 18px 10px;">3 Kantong</td>
+                        <td style="padding: 18px 10px;">Operasi</td>
+                        <td style="padding: 18px 10px;">ICU RSUD Sejahtera</td>
+                        <td style="padding: 18px 10px;">
+                            <span style="background: #ffedd5; color: #ea580c; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Proses</span>
+                        </td>
+                        <td style="padding: 18px 10px;"><i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;"></i></td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f3f4f6;">
+                        <td style="padding: 18px 10px;">2</td>
+                        <td style="padding: 18px 10px;">20 Mei 2025, 08:45</td>
+                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Dewi Lestari</td>
+                        <td style="padding: 18px 10px;">B+</td>
+                        <td style="padding: 18px 10px;">4 Kantong</td>
+                        <td style="padding: 18px 10px;">Trauma</td>
+                        <td style="padding: 18px 10px;">IGD RSUD Sejahtera</td>
+                        <td style="padding: 18px 10px;">
+                            <span style="background: #e0e7ff; color: #4338ca; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Baru</span>
+                        </td>
+                        <td style="padding: 18px 10px;"><i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;"></i></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
-    </form>
-</div>
-
-<?= $this->include('layout/footer') ?> ```
+        <div style="display: flex; justify-content: flex-end; margin-top: 25px; gap: 5px;">
+             <span style="padding: 6px 14px; background: #8b0000; color: white; border-radius: 6px; cursor: pointer;">1</span>
+             <span style="padding: 6px 14px; cursor: pointer; border: 1px solid #e5e7eb; border-radius: 6px;">2</span>
+             <span style="padding: 6px 14px;">...</span>
+             <span style="padding: 6px 14px; cursor: pointer; border: 1px solid #e5e7eb; border-radius: 6px;">5</span>
+        </div>
+    </div>
+</main>
+<?= $this->endSection() ?>

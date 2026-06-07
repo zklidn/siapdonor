@@ -2,22 +2,22 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('dashboard-pmi') ?>" class="menu-item">
+    <a href="<?= base_url('pmi') ?>" class="menu-item">
         <i class="fa-solid fa-house"></i> Dashboard
     </a>
-    <a href="<?= base_url('data-donor') ?>" class="menu-item">
-        <i class="fa-solid fa-hand-holding-droplet"></i> Data Donor
+    <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item">
+        <i class="fa-solid fa-users"></i> Data Pendonor
     </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
+    <a href="<?= base_url('pmi/stok_darah') ?>" class="menu-item">
+        <i class="fa-solid fa-droplet"></i> Stok Darah
     </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan
+    <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item">
+        <i class="fa-solid fa-file-invoice"></i> Permintaan Darah
     </a>
-    <a href="#" class="menu-item">
-        <i class="fa-solid fa-globe"></i> Riwayat
+    <a href="<?= base_url('pmi/riwayat_donor') ?>" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Donor
     </a>
-    <a href="#" class="menu-item menu-active">
+    <a href="<?= base_url('pmi/laporan') ?>" class="menu-item">
         <i class="fa-solid fa-file-lines"></i> Laporan
     </a>
 </aside>
@@ -159,10 +159,6 @@
             </div>
         </div>
 
-    </div>
-
-    <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
-        &copy; 2026 SiapDonor. All rights reserved.
     </div>
 
 </main>
