@@ -19,10 +19,6 @@ class CreateUserTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
-            'nama_instansi' => [
-                'type'          => 'VARCHAR',
-                'constraint'    => 100,
-            ],
             'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
