@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\DonorModel;
+
 class DashboardAdmin extends BaseController
 {
     // Ubah nama fungsi dari admin() menjadi index() agar sesuai dengan Routes
@@ -21,8 +23,13 @@ class DashboardAdmin extends BaseController
     // Fungsi untuk halaman data donor
     public function data_donor()
     {
+
+        $donorModel = new DonorModel();
+
+        $data['donor'] = $donorModel->findAll();
+
         // Memanggil file: app/Views/Tampilan_Admin/data_donor.php
-        return view('Tampilan_Admin/data_donor');
+        return view('Tampilan_Admin/data_donor', $data);
     }
 
 
