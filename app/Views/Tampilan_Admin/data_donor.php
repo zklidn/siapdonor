@@ -11,7 +11,7 @@
     <a href="<?= base_url('admin/data_donor') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-droplet"></i> Data Donor
     </a>
-    <a href="<?= base_url('admin/riwayat') ?>"  class="menu-item">
+    <a href="<?= base_url('admin/riwayat') ?>" class="menu-item">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
     </a>
 </aside>
@@ -49,69 +49,58 @@
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700; text-align: center;">Rhesus</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Status</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Kontak</th>
+                        <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (!empty($donor)) : ?>
                         <?php $no = 1; ?>
-
-                    <?php foreach ($donor as $d) : ?>
-                        <tr style="border-bottom: 1px solid #f3f4f6;">
-                            <td style="padding:18px 10px;">
-                                <?= $no++ ?>
-                            </td>
-
-                            <td style="padding:18px 10px; font-weight:600;">
-                                <?= esc($d['nama']) ?>
-                            </td>
-
-                            <td style="padding:18px 10px;">
-                                <?= esc($d['kota']) ?>
-                            </td>
-
-                            <td style="padding:18px 10px; text-align:center;">
-                                <?= esc($d['golongan_darah']) ?>
-                            </td>
-
-                            <td style="padding:18px 10px; text-align:center;">
-                                <?= esc($d['rhesus']) ?>
-                            </td>
-
-                            <td style="padding:18px 10px;">
-                                <?php if ($d['status'] == 'Aktif') : ?>
-                                    <span style="background:#dcfce7;color:#166534;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
-                                        Aktif
-                                    </span>
-                                <?php else : ?>
-                                    <span style="background:#ffedd5;color:#c2410c;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
-                                        Nonaktif
-                                    </span>
-                                <?php endif; ?>
-                            </td>
-
-                            <td style="padding:18px 10px;">
-                                <?= esc($d['no_hp']) ?>
-                            </td>
-
-                            <td style="padding:18px 10px; display:flex; gap:12px;">
-                                <i class="fa-solid fa-eye" style="color:#9ca3af; cursor:pointer;"></i>
-
-                                <i class="fa-solid fa-pen-to-square" style="color:#9ca3af; cursor:pointer;"></i>
-
-                                <i class="fa-solid fa-trash" style="color:#ef4444; cursor:pointer;"></i>
+                        <?php foreach ($donor as $d) : ?>
+                            <tr style="border-bottom: 1px solid #f3f4f6;">
+                                <td style="padding:18px 10px;">
+                                    <?= $no++ ?>
+                                </td>
+                                <td style="padding:18px 10px; font-weight:600;">
+                                    <?= esc($d['nama']) ?>
+                                </td>
+                                <td style="padding:18px 10px;">
+                                    <?= esc($d['kota']) ?>
+                                </td>
+                                <td style="padding:18px 10px; text-align:center;">
+                                    <?= esc($d['golongan_darah']) ?>
+                                </td>
+                                <td style="padding:18px 10px; text-align:center;">
+                                    <?= esc($d['rhesus']) ?>
+                                </td>
+                                <td style="padding:18px 10px;">
+                                    <?php if ($d['status'] == 'Aktif') : ?>
+                                        <span style="background:#dcfce7;color:#166534;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
+                                            Aktif
+                                        </span>
+                                    <?php else : ?>
+                                        <span style="background:#ffedd5;color:#c2410c;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
+                                            Nonaktif
+                                        </span>
+                                    <?php endif; ?>
+                                </td>
+                                <td style="padding:18px 10px;">
+                                    <?= esc($d['no_hp']) ?>
+                                </td>
+                                <td style="padding:18px 10px; display:flex; gap:12px;">
+                                    <i class="fa-solid fa-eye" style="color:#9ca3af; cursor:pointer;"></i>
+                                    <i class="fa-solid fa-pen-to-square" style="color:#9ca3af; cursor:pointer;"></i>
+                                    <i class="fa-solid fa-trash" style="color:#ef4444; cursor:pointer;"></i>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <tr>
+                            <td colspan="8" style="text-align:center; padding:20px;">
+                                Data donor belum tersedia
                             </td>
                         </tr>
-                    <?php endforeach; ?>
-
-                <?php else : ?>
-                    <tr>
-                        <td colspan="8" style="text-align:center; padding:20px;">
-                            Data donor belum tersedia
-                        </td>
->>>>>>> iki
-                    </tr>
-                <?php endif; ?>
-            </tbody>
+                    <?php endif; ?>
+                </tbody>
             </table>
         </div>
 
@@ -132,8 +121,4 @@
     </div>
 </main>
 
-<?= $this->include('Tampilan_Admin/tambah_donor') ?>
-</main>
-
 <?= $this->endSection() ?>
-
