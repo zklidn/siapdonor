@@ -20,6 +20,7 @@ $routes->post('/register/proses', 'Register::proses');
 
 
 $routes->get('/biodata', 'Biodata::index');
+$routes->post('profile/simpan_biodata', 'Biodata::simpan_biodata');
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
 

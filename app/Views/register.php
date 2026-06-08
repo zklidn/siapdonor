@@ -224,11 +224,6 @@
 
             <form action="/register/proses" method="POST" onsubmit="return validatePassword()">
                 <div class="form-group">
-                    <label for="nama_instansi">Nama Instansi</label>
-                    <input type="text" id="nama_instansi" name="nama_instansi" class="form-control" placeholder="Contoh: RS Wahidin Sudirohusodo" required>
-                </div>
-
-                <div class="form-group">
                     <label for="email_reg">Email</label>
                     <input type="email" id="email_reg" name="email_reg" class="form-control" placeholder="Masukkan email" required>
                 </div>

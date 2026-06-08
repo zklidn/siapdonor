@@ -27,7 +27,6 @@ class Register extends BaseController
         $model = new usermodels();
 
         $model->insert([
-            'nama'     => $this->request->getPost('nama_instansi'),
             'email'    => $this->request->getPost('email_reg'),
             'role'     => $this->request->getPost('role_reg'),
             'password' => password_hash(
@@ -36,6 +35,6 @@ class Register extends BaseController
             )
         ]);
 
-        return redirect()->to('/login');
+        return redirect()->to('/biodata');
     }
 }
