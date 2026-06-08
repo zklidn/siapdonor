@@ -52,66 +52,65 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">1</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Andi Saputra</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Palu Barat</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">O</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-3456-7890</td>
-                    </tr>
+                    <?php if (!empty($donor)) : ?>
+                        <?php $no = 1; ?>
 
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">2</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Siti Nurhaliza</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Palu Timur</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">A</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-2222-3333</td>
-                    </tr>
+                    <?php foreach ($donor as $d) : ?>
+                        <tr style="border-bottom: 1px solid #f3f4f6;">
+                            <td style="padding:18px 10px;">
+                                <?= $no++ ?>
+                            </td>
 
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">3</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Muhammad Rizki</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Palu Selatan</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">B</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">-</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0813-4444-5555</td>
-                    </tr>
+                            <td style="padding:18px 10px; font-weight:600;">
+                                <?= esc($d['nama']) ?>
+                            </td>
 
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">4</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Fadilah Aulia</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Mantikulore</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">AB</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Nonaktif</span>
-                        </td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-6666-7777</td>
-                    </tr>
+                            <td style="padding:18px 10px;">
+                                <?= esc($d['kota']) ?>
+                            </td>
 
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">5</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Rudi Hartono</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Tatanga</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">O</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">-</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
+                            <td style="padding:18px 10px; text-align:center;">
+                                <?= esc($d['golongan_darah']) ?>
+                            </td>
+
+                            <td style="padding:18px 10px; text-align:center;">
+                                <?= esc($d['rhesus']) ?>
+                            </td>
+
+                            <td style="padding:18px 10px;">
+                                <?php if ($d['status'] == 'Aktif') : ?>
+                                    <span style="background:#dcfce7;color:#166534;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
+                                        Aktif
+                                    </span>
+                                <?php else : ?>
+                                    <span style="background:#ffedd5;color:#c2410c;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
+                                        Nonaktif
+                                    </span>
+                                <?php endif; ?>
+                            </td>
+
+                            <td style="padding:18px 10px;">
+                                <?= esc($d['no_hp']) ?>
+                            </td>
+
+                            <td style="padding:18px 10px; display:flex; gap:12px;">
+                                <i class="fa-solid fa-eye" style="color:#9ca3af; cursor:pointer;"></i>
+
+                                <i class="fa-solid fa-pen-to-square" style="color:#9ca3af; cursor:pointer;"></i>
+
+                                <i class="fa-solid fa-trash" style="color:#ef4444; cursor:pointer;"></i>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+
+                <?php else : ?>
+                    <tr>
+                        <td colspan="8" style="text-align:center; padding:20px;">
+                            Data donor belum tersedia
                         </td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-8888-9999</td>
                     </tr>
-                </tbody>
+                <?php endif; ?>
+            </tbody>
             </table>
         </div>
 

@@ -68,7 +68,7 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
-                <h3 style="font-size: 22px; color: #111827;">24</h3>
+                <h3 style="font-size: 22px; color: #111827;"><?= $totalPermintaan ?></h3>
             </div>
         </div>
 

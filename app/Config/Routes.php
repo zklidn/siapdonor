@@ -29,6 +29,7 @@ $routes->group('admin', static function ($routes) {
     $routes->get('data_donor', 'DashboardAdmin::data_donor');
     $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
     $routes->get('riwayat', 'DashboardAdmin::riwayat');
+    $routes->post('donor', 'DashboardAdmin::donor');
 });
 
 
