@@ -11,7 +11,7 @@
     <a href="<?= base_url('admin/data_donor') ?>" class="menu-item">
         <i class="fa-solid fa-droplet"></i> Data Donor
     </a>
-    <a href="<?= base_url('admin/riwayat') ?>"  class="menu-item">
+    <a href="<?= base_url('admin/riwayat') ?>"  class="menu-item menu-active">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
     </a>
 </aside>

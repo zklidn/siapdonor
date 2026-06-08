@@ -11,7 +11,7 @@
     <a href="<?= base_url('pmi/stok_darah') ?>" class="menu-item">
         <i class="fa-solid fa-droplet"></i> Stok Darah
     </a>
-    <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item">
+    <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-file-invoice"></i> Permintaan Darah
     </a>
     <a href="<?= base_url('pmi/riwayat_donor') ?>" class="menu-item">
@@ -59,7 +59,7 @@
         </div>
 
         <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 800px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
                 <thead>
                     <tr style="border-bottom: 2px solid #f3f4f6;">
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">No</th>
@@ -83,7 +83,24 @@
                         <td style="padding: 18px 10px;">
                             <span style="background: #e0e7ff; color: #4338ca; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Baru</span>
                         </td>
-                        <td style="padding: 18px 10px;"><i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;"></i></td>
+                        <td style="padding: 18px 10px;">
+                            <a href="<?= base_url('pmi/detail_permintaan/1') ?>" 
+                               style="background: #2563eb; 
+                                      color: white; 
+                                      padding: 8px 16px; 
+                                      border-radius: 8px; 
+                                      text-decoration: none; 
+                                      font-size: 13px; 
+                                      font-weight: 700; 
+                                      display: inline-flex; 
+                                      align-items: center; 
+                                      gap: 8px; 
+                                      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.4); 
+                                      transition: 0.2s;">
+                                <i class="fa-solid fa-file-signature"></i> 
+                                Proses Permintaan
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>

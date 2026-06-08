@@ -11,10 +11,7 @@
     <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
         <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan Darah
     </a>
-    <a href="<?= base_url('rs/data_pasien') ?>" class="menu-item">
-        <i class="fa-solid fa-hospital-user"></i> Data Pasien / Kebutuhan
-    </a>
-    <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+    <a href="<?= base_url('rs/riwayat_perminntaan') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
     </a>
     <a href="<?= base_url('rs/laporan_RS') ?>" class="menu-item">
@@ -105,4 +102,5 @@
         </div>
     </div>
 </main>
+
 <?= $this->endSection() ?>
