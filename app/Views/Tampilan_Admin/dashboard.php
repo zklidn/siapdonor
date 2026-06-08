@@ -48,7 +48,7 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total User</p>
-                <h3 style="font-size: 22px; color: #111827;">24</h3>
+                <h3 style="font-size: 22px; color: #111827;"><?= $totalUser ?></h3>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total Donor</p>
-                <h3 style="font-size: 22px; color: #111827;">1.245</h3>
+                <h3 style="font-size: 22px; color: #111827;"><?= number_format($totalDonor, 0, ',', '.') ?></h3>
             </div>
         </div>
 
@@ -68,7 +68,7 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
-                <h3 style="font-size: 22px; color: #111827;">24</h3>
+                <h3 style="font-size: 22px; color: #111827;"><?= $totalPermintaan ?></h3>
             </div>
         </div>
 
