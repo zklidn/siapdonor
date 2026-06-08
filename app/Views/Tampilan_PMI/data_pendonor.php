@@ -5,7 +5,7 @@
     <a href="<?= base_url('pmi') ?>" class="menu-item">
         <i class="fa-solid fa-house"></i> Dashboard
     </a>
-    <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item">
+    <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-users"></i> Data Pendonor
     </a>
     <a href="<?= base_url('pmi/stok_darah') ?>" class="menu-item">
@@ -28,13 +28,11 @@
     <div style="background: white; border-radius: 12px; border: 1px solid #e5e7eb; padding: 25px;">
         
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
-            
             <div style="display: flex; gap: 15px; flex: 1;">
                 <div style="position: relative; width: 280px;">
                     <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 12px; color: #9ca3af;"></i>
                     <input type="text" placeholder="Cari nama donor..." style="width: 100%; padding: 10px 15px 10px 40px; border: 1px solid #e5e7eb; border-radius: 8px; outline: none; font-size: 14px; background: #f9fafb;">
                 </div>
-                
                 <select style="padding: 10px 15px; border: 1px solid #e5e7eb; border-radius: 8px; outline: none; font-size: 14px; color: #4b5563; cursor: pointer; background: #f9fafb;">
                     <option>Semua Status</option>
                     <option>Aktif</option>
@@ -42,9 +40,9 @@
                 </select>
             </div>
 
-            <button style="background: #8b0000; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; transition: 0.2s;">
+            <a href="<?= base_url('pmi/tambah_donor') ?>" style="background: #8b0000; color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; text-decoration: none; transition: 0.2s;">
                 <i class="fa-solid fa-plus"></i> Tambah Donor
-            </button>
+            </a>
         </div>
 
         <div style="overflow-x: auto;">
@@ -53,7 +51,7 @@
                     <tr style="border-bottom: 2px solid #f3f4f6;">
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">No</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Nama</th>
-                        <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Kota</th>
+                        <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Kecamatan</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700; text-align: center;">Gol. Darah</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700; text-align: center;">Rhesus</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Status</th>
@@ -65,106 +63,62 @@
                     <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
                         <td style="padding: 18px 10px; color: #4b5563;">1</td>
                         <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Andi Saputra</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Makassar</td>
+                        <td style="padding: 18px 10px; color: #4b5563;">Palu Barat</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">O</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
+                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span></td>
                         <td style="padding: 18px 10px; color: #4b5563;">0812-3456-7890</td>
                         <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Lihat Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
+                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
+                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
+                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
                         </td>
                     </tr>
-
                     <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
                         <td style="padding: 18px 10px; color: #4b5563;">2</td>
                         <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Siti Nurhaliza</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Gowa</td>
+                        <td style="padding: 18px 10px; color: #4b5563;">Palu Timur</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">A</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
+                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span></td>
                         <td style="padding: 18px 10px; color: #4b5563;">0812-2222-3333</td>
                         <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Lihat Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
+                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
+                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
+                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
                         </td>
                     </tr>
-
                     <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
                         <td style="padding: 18px 10px; color: #4b5563;">3</td>
                         <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Muhammad Rizki</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Maros</td>
+                        <td style="padding: 18px 10px; color: #4b5563;">Palu Selatan</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">B</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">-</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
+                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span></td>
                         <td style="padding: 18px 10px; color: #4b5563;">0813-4444-5555</td>
                         <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Lihat Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
+                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
+                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
+                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
                         </td>
                     </tr>
-
                     <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
                         <td style="padding: 18px 10px; color: #4b5563;">4</td>
                         <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Fadilah Aulia</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Makassar</td>
+                        <td style="padding: 18px 10px; color: #4b5563;">Mantikulore</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">AB</td>
                         <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Nonaktif</span>
-                        </td>
+                        <td style="padding: 18px 10px;"><span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Nonaktif</span></td>
                         <td style="padding: 18px 10px; color: #4b5563;">0812-6666-7777</td>
                         <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Lihat Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
-                        </td>
-                    </tr>
-
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">5</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Rudi Hartono</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Makassar</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">O</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">-</td>
-                        <td style="padding: 18px 10px;">
-                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
-                        </td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-8888-9999</td>
-                        <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Lihat Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
+                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
+                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
+                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; font-size: 14px; color: #6b7280; flex-wrap: wrap; gap: 15px;">
-            <div>Menampilkan 1 - 5 dari 120 data</div>
-            
-            <div style="display: flex; gap: 8px; align-items: center;">
-                <span style="padding: 6px 10px; cursor: pointer; color: #9ca3af;"><i class="fa-solid fa-chevron-left"></i></span>
-                <span style="background: #8b0000; color: white; padding: 6px 14px; border-radius: 6px; font-weight: 600; cursor: pointer;">1</span>
-                <span style="padding: 6px 14px; cursor: pointer; border-radius: 6px; transition: 0.2s;">2</span>
-                <span style="padding: 6px 14px; cursor: pointer; border-radius: 6px; transition: 0.2s;">3</span>
-                <span style="color: #9ca3af; padding: 0 5px;">...</span>
-                <span style="padding: 6px 14px; cursor: pointer; border-radius: 6px; transition: 0.2s;">24</span>
-                <span style="padding: 6px 10px; cursor: pointer; color: #4b5563;"><i class="fa-solid fa-chevron-right"></i></span>
-            </div>
-        </div>
-        
     </div>
 </main>
-
 <?= $this->endSection() ?>
