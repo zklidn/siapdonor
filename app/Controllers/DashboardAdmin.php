@@ -2,21 +2,52 @@
 
 namespace App\Controllers;
 
+use App\Models\usermodels;
+use App\Models\DonorModel;
+use App\Models\PermintaanDarahModel;
+use App\Models\DetailPermintaanModel;
+
 class DashboardAdmin extends BaseController
 {
-    // Ubah nama fungsi dari admin() menjadi index() agar sesuai dengan Routes
+    protected $userModel;
+    protected $donorModel;
+    protected $permintaanModel;
+    protected $detailPermintaanModel;
+
+    public function __construct()
+    {
+        $this->userModel = new usermodels();
+        $this->donorModel = new DonorModel();
+        $this->permintaanModel = new PermintaanDarahModel();
+        $this->detailPermintaanModel = new DetailPermintaanModel();
+    }
+
+
     public function admin()
     {
-        // Memanggil file: app/Views/Tampilan_Admin/dashboard.php
-        return view('Tampilan_Admin/dashboard');
+        $data['totalUser'] = $this->userModel->countAllResults();
+
+        $data['totalDonor'] = $this->donorModel->countAllResults();
+
+        $data['totalPermintaan'] = $this->permintaanModel->countAllResults();
+
+        $data['totalAktivitas'] = $this->detailPermintaanModel->countAllResults();
+
+        $data['aktivitasTerbaru'] = $this->permintaanModel
+            ->select('permintaan_darah.*, users.nama')
+            ->join('users', 'users.id = permintaan_darah.id_user')
+            ->orderBy('permintaan_darah.created_at', 'DESC')
+            ->findAll(5);
+
+        return view('Tampilan_Admin/dashboard', $data);
     }
-     
-    // Logout
+
     public function logout()
     {
         session()->destroy();
         return redirect()->to('/login');
     }
+
 
     // Fungsi untuk halaman data donor
     public function data_donor()
