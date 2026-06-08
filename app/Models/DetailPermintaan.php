@@ -11,13 +11,13 @@ class DetailPermintaanModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType ='array';
     protected $useSoftDeletes =true;
-     protected $protectFields = true;
+    protected $protectFields = true;
     protected $allowedFields = ['id_permintaan', 'jenis_darah','jumlah'];
 
     protected $useTimestamps =true;
     protected $dateFormat ='datetime';
     protected $createdField ='created_at';
     protected $updatedField ='updated_at';
-    protected $deletedField ='deleted_at';
+    protected $deleteField ='deleted_at';
 
 }

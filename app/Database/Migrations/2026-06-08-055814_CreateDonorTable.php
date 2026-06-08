@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreatePermintaanDarahTable extends Migration
+class CreateDonorTable extends Migration
 {
     public function up()
     {
         $this->forge->addField([
-            'id_permintaan' => [
+            'id_donor' => [
                 'type'           => 'INT',
                 'unsigned'       => true,
                 'auto_increment' => true,
@@ -18,15 +18,29 @@ class CreatePermintaanDarahTable extends Migration
                 'type'     => 'INT',
                 'unsigned' => true,
             ],
-            'tgl_permintaan' => [
-                'type' => 'DATE',
+            'nama' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'golongan_darah' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 5,
+            ],
+            'rhesus' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 5,
+            ],
+            'kota' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
             ],
             'status' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'type'       => 'ENUM',
+                'constraint' => ['Aktif', 'Nonaktif'],
             ],
-            'jumlah_kantong' => [
-                'type' => 'INT',
+            'no_hp' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 20,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -36,19 +50,19 @@ class CreatePermintaanDarahTable extends Migration
                 'type' => 'DATETIME',
                 'null' => true,
             ],
-            'delete_at' => [
+            'deleted_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
         ]);
 
-        $this->forge->addKey('id_permintaan', true);
+        $this->forge->addKey('id_donor', true);
         $this->forge->addForeignKey('id_user', 'users', 'id', 'CASCADE', 'CASCADE');
-        $this->forge->createTable('permintaan_darah');
+        $this->forge->createTable('donor');
     }
 
     public function down()
     {
-        $this->forge->dropTable('permintaan_darah');
+        $this->forge->dropTable('donor');
     }
 }
