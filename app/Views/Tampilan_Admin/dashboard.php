@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('admin') ?>" class="menu-item">
+    <a href="<?= base_url('admin') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-gauge"></i> Dashboard
     </a>
     <a href="<?= base_url('admin/kelola_user') ?>" class="menu-item">
@@ -42,56 +42,44 @@
     
     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
         
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #fee2e2; color: #dc2626; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-id-badge"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total User</p>
-                    <h3 style="font-size: 22px; color: #111827;">24</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #fee2e2; color: #dc2626; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-id-badge"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total User</p>
+                <h3 style="font-size: 22px; color: #111827;">24</h3>
+            </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #dcfce7; color: #16a34a; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-user-plus"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total Donor</p>
-                    <h3 style="font-size: 22px; color: #111827;">1.245</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #dcfce7; color: #16a34a; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-user-plus"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total Donor</p>
+                <h3 style="font-size: 22px; color: #111827;">1.245</h3>
+            </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #ffedd5; color: #ea580c; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-file-invoice"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
-                    <h3 style="font-size: 22px; color: #111827;">24</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #ffedd5; color: #ea580c; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-file-invoice"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
+                <h3 style="font-size: 22px; color: #111827;">24</h3>
+            </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #f3e8ff; color: #9333ea; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Aktivitas Permintaan</p>
-                    <h3 style="font-size: 22px; color: #111827;">156</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #f3e8ff; color: #9333ea; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-clock-rotate-left"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Aktivitas Permintaan</p>
+                <h3 style="font-size: 22px; color: #111827;">156</h3>
+            </div>
         </div>
 
     </div>
@@ -145,7 +133,7 @@
             </table>
             
             <div style="margin-top: 20px;">
-                <a href="#" style="color: #dc2626; font-size: 13px; font-weight: 600; text-decoration: none;">Lihat semua aktivitas</a>
+                <a href="<?= base_url('admin/riwayat') ?>" style="color: #dc2626; font-size: 13px; font-weight: 600; text-decoration: none;">Lihat semua aktivitas</a>
             </div>
         </div>
 
