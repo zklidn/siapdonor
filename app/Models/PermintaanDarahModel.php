@@ -18,4 +18,5 @@ class PermintaanDarahModel extends Model
     protected $dateFormat = 'datetime';
     protected $createdField = 'created_at';
     protected $updatedfield = 'update_at';
+    protected $deleteField = 'deleted_at';
 }

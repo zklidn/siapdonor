@@ -19,4 +19,5 @@ class PasienModel extends Model
     protected $dateFormat = 'datetime';
     protected $createFields = 'create_at';
     protected $updateFields = 'update_at';
+    protected $deleteField = 'deleted_at';
 }
