@@ -17,6 +17,9 @@ $routes->post('/login/proses', 'Login::processLogin');
 $routes->get('/register', 'Register::index');
 $routes->post('/register/proses', 'Register::proses');
 
+
+
+$routes->get('/biodata', 'Biodata::index');
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
 
