@@ -17,7 +17,7 @@
     <a href="<?= base_url('pmi/riwayat_donor') ?>" class="menu-item">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Donor
     </a>
-    <a href="<?= base_url('pmi/laporan') ?>" class="menu-item">
+    <a href="<?= base_url('pmi/laporan') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-file-lines"></i> Laporan
     </a>
 </aside>

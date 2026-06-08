@@ -14,7 +14,7 @@
     <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item">
         <i class="fa-solid fa-file-invoice"></i> Permintaan Darah
     </a>
-    <a href="<?= base_url('pmi/riwayat_donor') ?>" class="menu-item">
+    <a href="<?= base_url('pmi/riwayat_donor') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Donor
     </a>
     <a href="<?= base_url('pmi/laporan') ?>" class="menu-item">
@@ -36,7 +36,7 @@
                 <span style="color: #9ca3af;">s/d</span>
                 <input type="date" style="padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; color: #6b7280; background: #f9fafb;">
                 
-                <select style="padding: 10px 15px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb;">
+                <select style="padding: 10px 15px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb; cursor: pointer;">
                     <option>Semua Golongan</option>
                     <option>A+</option>
                     <option>A-</option>
@@ -56,7 +56,7 @@
         </div>
 
         <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 800px;">
                 <thead>
                     <tr style="border-bottom: 2px solid #f3f4f6;">
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">No</th>
@@ -65,7 +65,6 @@
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Jumlah</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Tgl Selesai</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Status</th>
-                        <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,7 +77,6 @@
                         <td style="padding: 18px 10px;">
                             <span style="background: #dcfce7; color: #166534; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Selesai</span>
                         </td>
-                        <td style="padding: 18px 10px;"><i class="fa-solid fa-file-lines" style="color: #8b0000; cursor: pointer;" title="Lihat Bukti"></i></td>
                     </tr>
                     <tr style="border-bottom: 1px solid #f3f4f6;">
                         <td style="padding: 18px 10px; color: #4b5563;">2</td>
@@ -89,7 +87,6 @@
                         <td style="padding: 18px 10px;">
                             <span style="background: #dcfce7; color: #166534; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Selesai</span>
                         </td>
-                        <td style="padding: 18px 10px;"><i class="fa-solid fa-file-lines" style="color: #8b0000; cursor: pointer;" title="Lihat Bukti"></i></td>
                     </tr>
                 </tbody>
             </table>

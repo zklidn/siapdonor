@@ -2,7 +2,7 @@
 <?= $this->section('content') ?>
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('rs') ?>" class="menu-item">
+    <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-house"></i> Dashboard
     </a>
     <a href="<?= base_url('rs/cari_donor') ?>" class="menu-item">
@@ -10,9 +10,6 @@
     </a>
     <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
         <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan Darah
-    </a>
-    <a href="<?= base_url('rs/data_pasien') ?>" class="menu-item">
-        <i class="fa-solid fa-hospital-user"></i> Data Pasien / Kebutuhan
     </a>
     <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
@@ -48,52 +45,41 @@
     
     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 30px;">
         
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #fee2e2; color: #dc2626; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-file-contract"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Aktif</p>
-                    <h3 style="font-size: 22px; color: #111827;">12</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #fee2e2; color: #dc2626; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-file-contract"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Aktif</p>
+                <h3 style="font-size: 22px; color: #111827;">12</h3>
+            </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #dbeafe; color: #2563eb; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-user-check"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Donor Ditemukan</p>
-                    <h3 style="font-size: 22px; color: #111827;">36</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #dbeafe; color: #2563eb; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-user-check"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Donor Ditemukan</p>
+                <h3 style="font-size: 22px; color: #111827;">36</h3>
+            </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; flex-direction: column; justify-content: space-between;">
-            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
-                <div style="background: #ffedd5; color: #ea580c; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                    <i class="fa-solid fa-file-invoice-dollar"></i>
-                </div>
-                <div>
-                    <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Riwayat Permintaan</p>
-                    <h3 style="font-size: 22px; color: #111827;">78</h3>
-                </div>
+        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
+            <div style="background: #ffedd5; color: #ea580c; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
             </div>
-            <a href="#" style="color: #dc2626; font-size: 12px; font-weight: 600; text-decoration: none; text-align: right;">Lihat detail</a>
+            <div>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Riwayat Permintaan</p>
+                <h3 style="font-size: 22px; color: #111827;">78</h3>
+            </div>
         </div>
-
     </div>
 
-    <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 20px;">
+    <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
+        <h3 style="margin-bottom: 20px; font-size: 16px; color: #111827;">Permintaan Terbaru</h3>
         
-        <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <h3 style="margin-bottom: 20px; font-size: 16px; color: #111827;">Permintaan Terbaru</h3>
-            
+        <div style="overflow-x: auto;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
                 <thead>
                     <tr style="border-bottom: 1px solid #e5e7eb;">
@@ -160,27 +146,9 @@
             </table>
             
             <div style="margin-top: 20px;">
-                <a href="#" style="color: #dc2626; font-size: 13px; font-weight: 600; text-decoration: none;">Lihat semua permintaan</a>
+                <a href="<?= base_url('rs/permintaan_darah') ?>" style="color: #dc2626; font-size: 13px; font-weight: 600; text-decoration: none;">Lihat semua permintaan</a>
             </div>
         </div>
-
-        <div style="display: flex; flex-direction: column; gap: 20px; align-self: start;">
-            
-            <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
-                <h3 style="margin-bottom: 15px; font-size: 16px; color: #111827;">Aksi Cepat</h3>
-                <button style="background: #8b0000; color: white; width: 100%; padding: 10px; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; margin-bottom: 10px; transition: 0.2s;">Cari Donor</button>
-                <button style="background: white; color: #8b0000; width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #8b0000; cursor: pointer; font-weight: 600; transition: 0.2s;">Buat Permintaan</button>
-            </div>
-
-            <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
-                <h3 style="margin-bottom: 15px; font-size: 16px; color: #111827;">Informasi</h3>
-                <p style="color: #6b7280; font-size: 13px; line-height: 1.6;">
-                    Cari donor yang sesuai dengan kebutuhan pasien dengan cepat dan mudah.
-                </p>
-            </div>
-
-        </div>
-        
     </div>
 
     <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">

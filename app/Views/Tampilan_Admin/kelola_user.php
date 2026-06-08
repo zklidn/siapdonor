@@ -5,7 +5,7 @@
     <a href="<?= base_url('admin') ?>" class="menu-item">
         <i class="fa-solid fa-gauge"></i> Dashboard
     </a>
-    <a href="<?= base_url('admin/kelola_user') ?>" class="menu-item">
+    <a href="<?= base_url('admin/kelola_user') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-users-gear"></i> Kelola User
     </a>
     <a href="<?= base_url('admin/data_donor') ?>" class="menu-item">
