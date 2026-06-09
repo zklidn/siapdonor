@@ -35,6 +35,13 @@ class Register extends BaseController
             )
         ]);
 
+        $insertId = $model->getInsertID();
+
+        session()->set([
+            'user_id' => $insertId
+        ]);
+
+
         return redirect()->to('/biodata');
     }
 }

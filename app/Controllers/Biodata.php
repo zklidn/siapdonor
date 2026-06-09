@@ -27,7 +27,7 @@ class Biodata extends BaseController
         }
 
         $userModel->update($userId, [
-            'nama_instansi' => $this->request->getPost('nama_instansi'),
+            'nama' => $this->request->getPost('nama_instansi'),
             'nomor_telepon' => $this->request->getPost('no_telepon'),
             'alamat'        => $this->request->getPost('alamat'),
             'file_foto'     => $fotoBlob
