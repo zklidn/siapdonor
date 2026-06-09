@@ -49,7 +49,6 @@
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Nama</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Email</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Peran</th>
-                        <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Instansi</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Status</th>
                         <th style="padding: 15px 10px; color: #111827; font-weight: 700;">Aksi</th>
                     </tr>
@@ -71,7 +70,7 @@
                                 
                                <td style="padding: 18px 10px; color: #4b5563;"><?= esc($u['role'] ?? '-') ?></td>
                                 
-                                <td style="padding: 18px 10px; color: #4b5563;"><?= esc($u['nama_instansi'] ?? '-') ?></td>
+                                
                                 
                                 <td style="padding: 18px 10px;">
                                     <?php if (isset($u['status']) && $u['status'] == 'Aktif') : ?>
@@ -80,10 +79,18 @@
                                         <span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Nonaktif</span>
                                     <?php endif; ?>
                                 </td>
+                                
                                 <td style="padding: 18px 10px; display: flex; gap: 15px;">
-                                    <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;"></i>
-                                    <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;"></i>
+                                    
+                                    <a href="<?= base_url('admin/edit_user/' . $u['id']) ?>">
+                                        <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
+                                    </a>
+
+                                    <a href="<?= base_url('admin/hapus_user/' . $u['id']) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus user <?= esc($u['nama']) ?>?');">
+                                        <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
+                                    </a>
                                 </td>
+
                             </tr>
                         <?php endforeach; ?>
 

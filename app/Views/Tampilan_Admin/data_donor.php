@@ -73,7 +73,7 @@
                                     <?= esc($d['rhesus']) ?>
                                 </td>
                                 <td style="padding:18px 10px;">
-                                    <?php if ($d['status'] == 'Aktif') : ?>
+                                    <?php if (isset($d['status']) && $d['status'] == 'Aktif') : ?>
                                         <span style="background:#dcfce7;color:#166534;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
                                             Aktif
                                         </span>
@@ -86,10 +86,20 @@
                                 <td style="padding:18px 10px;">
                                     <?= esc($d['no_hp']) ?>
                                 </td>
+                                
                                 <td style="padding:18px 10px; display:flex; gap:12px;">
-                                    <i class="fa-solid fa-eye" style="color:#9ca3af; cursor:pointer;"></i>
-                                    <i class="fa-solid fa-pen-to-square" style="color:#9ca3af; cursor:pointer;"></i>
-                                    <i class="fa-solid fa-trash" style="color:#ef4444; cursor:pointer;"></i>
+                                    
+                                    <a href="<?= base_url('admin/detail_donor/' . ($d['id_donor'] ?? $d['id'])) ?>" title="Detail">
+                                        <i class="fa-solid fa-eye" style="color:#9ca3af; cursor:pointer;"></i>
+                                    </a>
+                                    
+                                    <a href="<?= base_url('admin/edit_donor/' . ($d['id_donor'] ?? $d['id'])) ?>" title="Edit">
+                                        <i class="fa-solid fa-pen-to-square" style="color:#9ca3af; cursor:pointer;"></i>
+                                    </a>
+
+                                    <a href="<?= base_url('admin/hapus_donor/' . ($d['id_donor'] ?? $d['id'])) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus donor <?= esc($d['nama']) ?>?');" title="Hapus">
+                                        <i class="fa-solid fa-trash" style="color:#ef4444; cursor:pointer;"></i>
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

@@ -2,73 +2,136 @@
 
 namespace App\Controllers;
 
-use App\Models\usermodels;
+use App\Models\Usermodels;
 use App\Models\DonorModel;
-use App\Models\PermintaanDarahModel;
-use App\Models\DetailPermintaanModel;
+use App\Models\PermintaanModel;
+use App\Models\LogAktivitasModel;
+// (Tambahkan model lain di sini jika ada, misalnya DetailPermintaanModel)
 
 class DashboardAdmin extends BaseController
 {
     protected $userModel;
     protected $donorModel;
     protected $permintaanModel;
-    protected $detailPermintaanModel;
+    protected $logModel;
 
     public function __construct()
     {
-        $this->userModel = new usermodels();
-        $this->donorModel = new DonorModel();
-        $this->permintaanModel = new PermintaanDarahModel();
-        $this->detailPermintaanModel = new DetailPermintaanModel();
+        // Inisialisasi Model agar bisa dipanggil di semua fungsi menggunakan $this->...
+        $this->userModel       = new Usermodels();
+        $this->donorModel      = new DonorModel();
+        $this->logModel        = new LogAktivitasModel();
+        
+        // Panggil model permintaan darah jika sudah dibuat
+        // $this->permintaanModel = new PermintaanModel(); 
     }
 
-
+    // =========================================================
+    // 1. HALAMAN DASHBOARD UTAMA
+    // =========================================================
     public function admin()
     {
-        $data['totalUser'] = $this->userModel->countAllResults();
+        $data['totalUser']       = $this->userModel->countAllResults();
+        $data['totalDonor']      = $this->donorModel->countAllResults();
+        
+        // Nonaktifkan sementara jika model Permintaan belum siap
+        // $data['totalPermintaan'] = $this->permintaanModel->countAllResults();
+        $data['totalPermintaan'] = 0; 
 
-        $data['totalDonor'] = $this->donorModel->countAllResults();
-
-        $data['totalPermintaan'] = $this->permintaanModel->countAllResults();
-
-        $data['totalAktivitas'] = $this->detailPermintaanModel->countAllResults();
-
-        $data['aktivitasTerbaru'] = $this->permintaanModel
-            ->select('permintaan_darah.*, users.nama')
-            ->join('users', 'users.id = permintaan_darah.id_user')
-            ->orderBy('permintaan_darah.created_at', 'DESC')
+        // Mengambil Total dan 5 Aktivitas Terbaru dari tabel log_aktivitas
+        $data['totalAktivitas']   = $this->logModel->countAllResults();
+        $data['aktivitasTerbaru'] = $this->logModel->select('log_aktivitas.*, users.nama as nama_pengguna')
+            ->join('users', 'users.id = log_aktivitas.id_user', 'left')
+            ->orderBy('log_aktivitas.created_at', 'DESC')
             ->findAll(5);
 
         return view('Tampilan_Admin/dashboard', $data);
     }
 
-    public function logout()
-    {
-        session()->destroy();
-        return redirect()->to('/login');
-    }
-
-
-    // Fungsi untuk halaman data donor
+    // =========================================================
+    // 2. HALAMAN DATA DONOR
+    // =========================================================
     public function data_donor()
-    {
-
+     {
         $donorModel = new DonorModel();
-
         $data['donor'] = $donorModel->findAll();
 
-        // Memanggil file: app/Views/Tampilan_Admin/data_donor.php
-        return view('Tampilan_Admin/data_donor', $data);
+         return view('Tampilan_Admin/data_donor', $data);
+    }
+
+    // --- AKSI HAPUS DONOR ---
+    public function hapus_donor($id)
+    {
+        $this->donorModel->delete($id);
+        return redirect()->to('/admin/data_donor');
+    }
+
+    // --- AKSI FORM EDIT DONOR ---
+    public function edit_donor($id)
+    {
+        $data['donor'] = $this->donorModel->find($id);
+
+        if (empty($data['donor'])) {
+            return redirect()->to('/admin/data_donor');
+        }
+
+        return view('Tampilan_Admin/edit_donor', $data);
+    }
+
+    // --- AKSI PROSES UPDATE DATA DONOR ---
+    public function update_donor($id)
+    {
+        $data_update = [
+            'nama'           => $this->request->getPost('nama'),
+            'golongan_darah' => $this->request->getPost('golongan_darah'),
+            'rhesus'         => $this->request->getPost('rhesus'),
+            'kota'           => $this->request->getPost('kecamatan'), // sesuaikan nama kolom kota/kecamatan Anda
+            'status'         => $this->request->getPost('status'),
+            'no_hp'          => $this->request->getPost('no_hp')
+        ];
+
+        $this->donorModel->update($id, $data_update);
+        return redirect()->to('/admin/data_donor');
     }
 
 
-   public function kelola_user()
+    // =========================================================
+    // 3. HALAMAN RIWAYAT AKTIVITAS
+    // =========================================================
+    public function riwayat()
     {
-        // 1. Menangkap input dari form
         $keyword = $this->request->getVar('keyword');
-        $role    = $this->request->getVar('role'); // Menangkap dari nama dropdown
+
+        $this->logModel->select('log_aktivitas.*, users.nama as nama_pengguna')
+                 ->join('users', 'users.id = log_aktivitas.id_user', 'left')
+                 ->orderBy('log_aktivitas.created_at', 'DESC');
+
+        if ($keyword) {
+            $this->logModel->groupStart()
+                     ->like('log_aktivitas.aktivitas', $keyword)
+                     ->orLike('users.nama', $keyword)
+                     ->groupEnd();
+        }
+
+        $data = [
+            'logs'      => $this->logModel->paginate(5, 'logs'),
+            'pager'     => $this->logModel->pager,
+            'totalData' => $this->logModel->pager->getTotal('logs')
+        ];
+
+        return view('Tampilan_Admin/riwayat_aktifitas', $data);
+    }
+
+    // =========================================================
+    // 4. KELOLA USER (TAMPIL, HAPUS, EDIT, UPDATE)
+    // =========================================================
+    
+    // --- Menampilkan Daftar User ---
+    public function kelola_user()
+    {
+        $keyword = $this->request->getVar('keyword');
+        $role    = $this->request->getVar('role'); 
         
-        // 2. Filter Pencarian Text (Nama atau Email)
         if ($keyword) {
             $this->userModel->groupStart()
                             ->like('nama', $keyword)
@@ -76,56 +139,56 @@ class DashboardAdmin extends BaseController
                             ->groupEnd();
         }
 
-        // 3. Filter berdasarkan Dropdown Role
         if ($role && $role !== '') {
-            // PENTING: Ganti kata 'role' di bawah dengan nama kolom yang benar di tabel database Anda
-            // (misalnya jika di database namanya 'peran', maka ubah menjadi 'peran')
             $this->userModel->where('role', $role); 
         }
 
-        // 4. Eksekusi query dengan paginasi
-        $users = $this->userModel->paginate(5, 'users');
-
-        // 5. Kirim data ke tampilan
         $data = [
-            'users'     => $users,
+            'users'     => $this->userModel->paginate(5, 'users'),
             'pager'     => $this->userModel->pager,
-            // Mengambil total perhitungan data setelah filter diterapkan
             'totalData' => $this->userModel->pager->getTotal('users') 
         ];
 
         return view('Tampilan_Admin/kelola_user', $data);
     }
-    
 
-   public function riwayat()
+    // --- Menghapus User ---
+    public function hapus_user($id)
     {
-        // Memanggil LogAktivitasModel
-        $logModel = model('App\Models\LogAktivitasModel');
+        $this->userModel->delete($id);
+        return redirect()->to('/admin/kelola_user');
+    }
 
-        // Menangkap input pencarian
-        $keyword = $this->request->getVar('keyword');
+    // --- Menampilkan Form Edit User ---
+    public function edit_user($id)
+    {
+        $data['user'] = $this->userModel->find($id);
 
-        // Query join dengan tabel users, dan urutkan berdasarkan created_at (waktu terbaru)
-        $logModel->select('log_aktivitas.*, users.nama as nama_pengguna')
-                 ->join('users', 'users.id = log_aktivitas.id_user', 'left')
-                 ->orderBy('log_aktivitas.created_at', 'DESC');
-
-        // Fitur pencarian
-        if ($keyword) {
-            $logModel->groupStart()
-                     ->like('log_aktivitas.aktivitas', $keyword)
-                     ->orLike('users.nama', $keyword)
-                     ->groupEnd();
+        if (empty($data['user'])) {
+            return redirect()->to('/admin/kelola_user');
         }
 
-        // Eksekusi data
-        $data = [
-            'logs'      => $logModel->paginate(5, 'logs'),
-            'pager'     => $logModel->pager,
-            'totalData' => $logModel->pager->getTotal('logs')
+        return view('Tampilan_Admin/edit_user', $data);
+    }
+
+    // --- Memproses Perubahan Data User ---
+    public function update_user($id)
+    {
+        // Mengambil data dari form edit_user.php
+        $data_update = [
+            'nama'          => $this->request->getPost('nama'),
+            'email'         => $this->request->getPost('email'),
+            'role'          => $this->request->getPost('role'),
+            // Sesuaikan nama instansi jika ada di database (opsional)
+            // 'nama_instansi' => $this->request->getPost('nama_instansi'),
+            'status'        => $this->request->getPost('status')
         ];
 
-        return view('Tampilan_Admin/riwayat_aktifitas', $data);
+        // Update ke database
+        $this->userModel->update($id, $data_update);
+        
+        // Kembali ke halaman kelola user
+        return redirect()->to('/admin/kelola_user');
     }
+
 }

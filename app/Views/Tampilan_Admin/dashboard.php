@@ -11,7 +11,7 @@
     <a href="<?= base_url('admin/data_donor') ?>" class="menu-item">
         <i class="fa-solid fa-droplet"></i> Data Donor
     </a>
-    <a href="<?= base_url('admin/riwayat') ?>"  class="menu-item">
+    <a href="<?= base_url('admin/riwayat') ?>" class="menu-item">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
     </a>
 </aside>
@@ -77,8 +77,8 @@
                 <i class="fa-solid fa-clock-rotate-left"></i>
             </div>
             <div>
-                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Aktivitas Permintaan</p>
-                <h3 style="font-size: 22px; color: #111827;">156</h3>
+                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Aktivitas Sistem</p>
+                <h3 style="font-size: 22px; color: #111827;"><?= $totalAktivitas ?? 0 ?></h3>
             </div>
         </div>
 
@@ -99,36 +99,31 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">1</td>
-                        <td style="padding: 15px 0; color: #111827;">User baru ditambahkan</td>
-                        <td style="padding: 15px 0; color: #4b5563;">20 Mei 2025 10:30</td>
-                        <td style="padding: 15px 0; color: #111827;">Admin</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">2</td>
-                        <td style="padding: 15px 0; color: #111827;">Donor baru ditambahkan</td>
-                        <td style="padding: 15px 0; color: #4b5563;">20 Mei 2025 09:15</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Makassar</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">3</td>
-                        <td style="padding: 15px 0; color: #111827;">Permintaan darah baru</td>
-                        <td style="padding: 15px 0; color: #4b5563;">19 Mei 2025 16:45</td>
-                        <td style="padding: 15px 0; color: #111827;">RS Wahidin</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">4</td>
-                        <td style="padding: 15px 0; color: #111827;">Data donor diperbarui</td>
-                        <td style="padding: 15px 0; color: #4b5563;">19 Mei 2025 11:20</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Makassar</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 15px 0; color: #4b5563;">5</td>
-                        <td style="padding: 15px 0; color: #111827;">Status permintaan diubah</td>
-                        <td style="padding: 15px 0; color: #4b5563;">18 Mei 2025 14:10</td>
-                        <td style="padding: 15px 0; color: #111827;">System</td>
-                    </tr>
+                    <?php if (!empty($aktivitasTerbaru)) : ?>
+                        <?php $no = 1; ?>
+                        <?php foreach ($aktivitasTerbaru as $log) : ?>
+                            <tr style="border-bottom: 1px solid #f9fafb;">
+                                <td style="padding: 15px 0; color: #4b5563;">
+                                    <?= $no++ ?>
+                                </td>
+                                <td style="padding: 15px 0; color: #111827;">
+                                    <?= esc($log['aktivitas']) ?>
+                                </td>
+                                <td style="padding: 15px 0; color: #4b5563;">
+                                    <?= date('d M Y H:i', strtotime($log['created_at'])) ?>
+                                </td>
+                                <td style="padding: 15px 0; color: #111827;">
+                                    <?= esc($log['nama_pengguna'] ?? 'Sistem') ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <tr>
+                            <td colspan="4" style="text-align: center; padding: 20px 0; color: #6b7280;">
+                                Belum ada aktivitas sistem yang tercatat.
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
             
@@ -147,7 +142,7 @@
     </div>
 
     <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
-        &copy; 2025 SiapDonor. All rights reserved.
+        &copy; 2026 SiapDonor. All rights reserved.
     </div>
 
 </main>
