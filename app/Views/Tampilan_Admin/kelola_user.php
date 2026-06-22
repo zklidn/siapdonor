@@ -86,9 +86,6 @@
                                         <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
                                     </a>
 
-                                    <a href="<?= base_url('admin/hapus_user/' . $u['id']) ?>" onclick="return confirm('Apakah Anda yakin ingin menghapus user <?= esc($u['nama']) ?>?');">
-                                        <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
-                                    </a>
                                 </td>
 
                             </tr>
