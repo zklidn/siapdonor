@@ -44,4 +44,9 @@ class Register extends BaseController
 
         return redirect()->to('/biodata');
     }
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/login');
+    }
 }

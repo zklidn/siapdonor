@@ -9,6 +9,7 @@ use CodeIgniter\Router\RouteCollection;
 /*------------------halaman awal----------------*/
 $routes->get('/', 'Awalan::index');
 
+
 /*------------------login----------------*/
 $routes->get('/login', 'Login::login');
 $routes->post('/login/proses', 'Login::processLogin');
@@ -27,7 +28,8 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 
 
 /*------------------dashboard admin---------------*/
-$routes->group('admin', static function ($routes) {
+
+$routes->group('admin', ['filter' => 'auth:admin'], static function ($routes) {
     $routes->get('/', 'DashboardAdmin::admin');
     $routes->get('data_donor', 'DashboardAdmin::data_donor');
     $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
@@ -38,8 +40,9 @@ $routes->group('admin', static function ($routes) {
 });
 
 
+
 /*------------------dashboard RS---------------*/
-$routes->group('rs', static function ($routes) {
+$routes->group('rs',['filter' => 'auth:rs'], static function ($routes) {
     $routes->get('/', 'DashboardRS::rs');
     $routes->get('cari_donor', 'DashboardRS::cari_donor');
     $routes->get('data_pasien', 'DashboardRS::data_pasien');
@@ -51,7 +54,7 @@ $routes->group('rs', static function ($routes) {
 
 
 /*------------------dashboard PMI---------------*/
-$routes->group('pmi', static function ($routes) {
+$routes->group('pmi',['filter' => 'auth:pmi'], static function ($routes) {
     $routes->get('/', 'DashboardPMI::pmi');
     $routes->get('data_pendonor', 'DashboardPMI::data_pendonor');
     $routes->get('laporan', 'DashboardPMI::laporan');
@@ -63,6 +66,7 @@ $routes->group('pmi', static function ($routes) {
     /*------------------post-----------------------------*/
 });
 
-
+$routes->get('/logout', 'Login::logout');
 #akun gw
 $routes->get('hash', 'Hash::index');
+
