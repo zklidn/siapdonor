@@ -24,6 +24,9 @@ $routes->get('/biodata', 'Biodata::index');
 /*------------------verifikasi---------------*/
 $routes->get('/verifikasi', 'Verifikasi::index');
 
+// Tambahkan di area rute publik kamu
+$routes->post('/profile/simpan_biodata', 'Biodata::simpan_biodata');
+
 // Blok $routes->group('dashboard', ...) DIHAPUS SAJA
 
 

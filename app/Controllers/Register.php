@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\usermodels;
+use App\Models\Usermodels; // Gunakan huruf kapital untuk standar penamaan Class
 
 class Register extends BaseController
 {
@@ -24,7 +24,7 @@ class Register extends BaseController
             );
         }
 
-        $model = new usermodels();
+        $model = new Usermodels();
 
         $model->insert([
             'email'    => $this->request->getPost('email_reg'),
@@ -37,13 +37,14 @@ class Register extends BaseController
 
         $insertId = $model->getInsertID();
 
+        // UBAH 'user_id' MENJADI 'id_user' AGAR SERAGAM DENGAN BIODATA & MODEL
         session()->set([
-            'user_id' => $insertId
+            'id_user' => $insertId
         ]);
-
 
         return redirect()->to('/biodata');
     }
+    
     public function logout()
     {
         session()->destroy();
