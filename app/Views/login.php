@@ -125,6 +125,13 @@
                 <p>Silakan masuk untuk melanjutkan</p>
             </div>
 
+            <!-- Tambahkan di sini -->
+            <?php if(session()->getFlashdata('error')) : ?>
+                <div style="background:#fee2e2;color:#b91c1c;padding:10px;border-radius:8px;margin-bottom:15px;">
+                    <?=session()->getFlashdata('error') ?>
+                </div>
+            <?php endif; ?>
+
             <form action="<?= base_url('login/proses') ?>" method="POST">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -139,16 +146,6 @@
                             <i class="fa-regular fa-eye-slash"></i>
                         </button>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="role">Login sebagai</label>
-                    <select id="role" name="role" class="form-control" required>
-                        <option value="" disabled selected hidden>Pilih peran</option>
-                        <option value="pmi">PMI</option>
-                        <option value="rumah_sakit">Rumah Sakit</option>
-                        <option value="admin">Admin</option>
-                    </select>
                 </div>
 
                 <button type="submit" class="btn-primary">Masuk</button>

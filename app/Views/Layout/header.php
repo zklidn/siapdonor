@@ -82,8 +82,8 @@
             <div class="notification"><i class="fa-solid fa-bell fa-lg"></i><span class="notif-badge">3</span></div>
             <div class="user-area" id="profileDropdownToggle">
                 <div class="user-text">
-                    <div class="name">Admin Utama</div>
-                    <div class="role">Admin Sistem</div>
+                    <div class="name"><?= session()->get('nama') ?></div> 
+                    <div class="role"><?= session()->get('role') ?></div> 
                 </div>
                 <i class="fa-solid fa-circle-user fa-2xl"></i>
                 <i class="fa-solid fa-chevron-down fa-xs" style="margin-left: 2px;"></i>

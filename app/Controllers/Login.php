@@ -1,11 +1,8 @@
 <?php
 
-
 namespace App\Controllers;
 
-
-use App\Models\UserModel;
-
+use App\Models\usermodels;
 
 class Login extends BaseController
 {
@@ -14,64 +11,57 @@ class Login extends BaseController
         return view('login');
     }
 
-
-    public function register()
-    {
-        return view('register');
-    }
-
-
     public function processLogin()
     {
-        $model = new UserModel();
+        $model = new usermodels();
 
-        $user = $model->where('email', $this->request->getPost('email'))->first();
+        $email    = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+        
+        // 1. Cari user berdasarkan email di database
+        $user = $model->where('email', $email)->first();
 
-        if ($user && password_verify($this->request->getPost('password'), $user['password'])) {
-
-            // Set session, pastikan ada kolom 'role' di tabel database-mu (isinya: admin, pmi, atau rs)
-            session()->set([
-                'user_id'    => $user['id'],
-                'nama'       => $user['nama'],
-                'role'       => $user['role'], 
-                'isLoggedIn' => true
-            ]);
-
-            // Arahkan ke rute URL berdasarkan role
-            switch ($user['role']) {
-                case 'admin':
-                    return redirect()->to('/admin'); // Diubah dari /dashboard/admin
-                case 'pmi':
-                    return redirect()->to('/pmi');   // Diubah dari /dashboard/pmi
-                case 'rs':
-                    return redirect()->to('/rs');    // Diubah dari /dashboard/rs
-                default:
-                    return redirect()->back()->with('error', 'Role tidak dikenali');
-            }
+        // 2. Jika email tidak ditemukan
+        if (!$user) {
+            return redirect()->back()
+                ->with('error', 'Email tidak terdaftar');
         }
 
-        return redirect()->back()->with('error', 'Email atau password salah');
-    }
-    public function processRegister()
-    {
-        $model = new UserModel();
+        // 3. Jika password salah
+        if (!password_verify($password, $user['password'])) {
+            return redirect()->back()
+                ->with('error', 'Password salah');
+        }
 
-        // Catatan: Jika saat register user bisa memilih role, 
-        // pastikan kamu menangkap input 'role' juga di sini.
-        // Jika tidak, set default role (misalnya 'rs' atau 'pmi').
-        
-        $model->insert([
-            'name'     => $this->request->getPost('name'),
-            'email'    => $this->request->getPost('email'),
-            'role'     => $this->request->getPost('role'), // Tambahan jika ada input role
-            'password' => password_hash(
-                $this->request->getPost('password'),
-                PASSWORD_DEFAULT
-            )
+        // KODE PENGECEKAN ROLE YANG ERROR SEBELUMNYA SUDAH DIHAPUS DI SINI
+
+        // 4. Simpan data user (termasuk role dari database) ke session
+        session()->set([
+            'user_id'    => $user['id'],
+            'nama'       => $user['nama'],
+            'email'      => $user['email'],
+            'role'       => $user['role'], // <--- Role diambil langsung dari database
+            'isLoggedIn' => true
         ]);
 
-        return redirect()->to('/login')->with('success', 'Register berhasil, silakan login');
+        // 5. Redirect otomatis sesuai role masing-masing
+        switch ($user['role']) {
+            case 'admin':
+                return redirect()->to('/admin');
+
+            case 'pmi':
+                return redirect()->to('/pmi');
+
+            case 'rumah_sakit':
+                return redirect()->to('/rs');
+
+            default:
+                // Jika role di database kosong atau salah ketik
+                return redirect()->back()
+                    ->with('error', 'Role akun Anda tidak dikenali sistem');
+        }
     }
+
     public function logout()
     {
         session()->destroy();

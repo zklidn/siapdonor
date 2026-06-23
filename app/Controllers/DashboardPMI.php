@@ -8,7 +8,7 @@ class DashboardPMI extends BaseController
     public function pmi()
     {
         // Memanggil file: app/Views/Tampilan_PMI/dashboard_PMI.php
-        return view('Tampilan_PMI/dashboard');
+        return view('Tampilan_PMI/dashboard_PMI');
     }
 
     // Halaman Data Pendonor

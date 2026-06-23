@@ -8,7 +8,7 @@ class DashboardRS extends BaseController
     public function rs()
     {
         // Memanggil file: app/Views/Tampilan_RS/dashboard_RS.php
-        return view('Tampilan_RS/dashboard');
+        return view('Tampilan_RS/dashboard_RS');
     }
 
     // Halaman Cari Donor
@@ -33,6 +33,12 @@ class DashboardRS extends BaseController
     public function riwayat_permintaan()
     {
         // Pastikan nama fail di bawah sama persis dengan yang ada dalam folder anda
-        return view('Tampilan_RS/riwayat_perminntaan'); 
+        return view('Tampilan_RS/riwayat_permintaan'); 
+    }
+
+     public function laporan_rs()
+    {
+        // Pastikan nama fail di bawah sama persis dengan yang ada dalam folder anda
+        return view('Tampilan_RS/laporan_RS'); 
     }
 }
