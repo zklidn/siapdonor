@@ -74,4 +74,9 @@ class DashboardPMI extends BaseController
         // Pastikan nama file di folder sudah diubah menjadi stok_darah.php
         return view('Tampilan_PMI/stok_darah');
     }
+
+    public function notifikasi_pmi()
+    {
+        return view('Tampilan_PMI/notifikasi');
+    }
 }

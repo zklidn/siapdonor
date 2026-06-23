@@ -47,6 +47,7 @@ $routes->group('rs', static function ($routes) {
     $routes->get('riwayat_permintaan', 'DashboardRS::riwayat_permintaan');
     $routes->get('laporan_rs', 'DashboardRS::laporan_rs');
     $routes->get('buat_permintaan', 'DashboardRS::buat_permintaan');
+    $routes->get('notifikasi', 'DashboardRS::notifikasi_rs');
 });
 
 
@@ -60,6 +61,7 @@ $routes->group('pmi', static function ($routes) {
     $routes->get('stok_darah', 'DashboardPMI::stok_darah');
     $routes->get('tambah_donor', 'DashboardPMI::tambah_donor');
     $routes->get('detail', 'DashboardPMI::detail');
+    $routes->get('notifikasi', 'DashboardPMI::notifikasi_pmi');
     /*------------------post-----------------------------*/
 });
 
