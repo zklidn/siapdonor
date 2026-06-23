@@ -54,7 +54,9 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total Donor</p>
-                <h3 style="font-size: 22px; color: #111827;">1.245</h3>
+                <h3 style="font-size: 22px; color: #111827;">
+                    <?= number_format($totalDonor,0,'','.') ?>
+                </h3>
             </div>
         </div>
 
@@ -64,7 +66,9 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Donor Aktif</p>
-                <h3 style="font-size: 22px; color: #111827;">892</h3>
+                <h3 style="font-size: 22px; color: #111827;">
+                    <?= $donorAktif ?>
+                </h3>
             </div>
         </div>
 
@@ -74,7 +78,9 @@
             </div>
             <div>
                 <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
-                <h3 style="font-size: 22px; color: #111827;">24</h3>
+                <h3 style="font-size: 22px; color: #111827;">
+                    <?=$permintaanMasuk ?>
+                </h3>
             </div>
         </div>
 
@@ -104,36 +110,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">1</td>
-                        <td style="padding: 15px 0; color: #111827;">Donor baru ditambahkan</td>
-                        <td style="padding: 15px 0; color: #4b5563;">08 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
+                    <?php $no = 1; ?>
+                    <?php foreach($aktivitas as $row): ?>
+                    <tr style="border-bottom:1px solid #f9fafb;">
+                        <td style="padding:15px 0;">
+                            <?= $no++ ?>
+                        </td>
+
+                        <td style="padding:15px 0;">
+                            <?= esc($row['aktivitas']) ?>
+                        </td>
+
+                        <td style="padding:15px 0;">
+                            <?= date('d M Y H:i', strtotime($row['created_at'])) ?>
+                        </td>
+
+                        <td style="padding:15px 0;">
+                            <?= $row['id_user'] ?? '-' ?>
+                        </td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">2</td>
-                        <td style="padding: 15px 0; color: #111827;">Permintaan darah baru</td>
-                        <td style="padding: 15px 0; color: #4b5563;">08 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">RS Undata</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">3</td>
-                        <td style="padding: 15px 0; color: #111827;">Donor diperbarui</td>
-                        <td style="padding: 15px 0; color: #4b5563;">07 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">4</td>
-                        <td style="padding: 15px 0; color: #111827;">Status permintaan diubah</td>
-                        <td style="padding: 15px 0; color: #4b5563;">07 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 15px 0; color: #4b5563;">5</td>
-                        <td style="padding: 15px 0; color: #111827;">Update stok darah manual</td>
-                        <td style="padding: 15px 0; color: #4b5563;">06 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
