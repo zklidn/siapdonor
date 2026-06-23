@@ -60,62 +60,54 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">1</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Andi Saputra</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Palu Barat</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">O</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span></td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-3456-7890</td>
-                        <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
+                    <?php $no = 1; ?>
+                    <?php foreach ($donor as $row): ?>
+
+                    <tr style="border-bottom: 1px solid #f3f4f6;">
+                        <td style="padding:18px 10px;">
+                            <?= $no++ ?>
+                        </td>
+
+                        <td style="padding:18px 10px; font-weight:600;">
+                            <?= esc($row['nama']) ?>
+                        </td>
+
+                        <td style="padding:18px 10px;">
+                            <?= esc($row['kota']) ?>
+                        </td>
+
+                        <td style="padding:18px 10px; text-align:center;">
+                            <?= esc($row['golongan_darah']) ?>
+                        </td>
+
+                        <td style="padding:18px 10px; text-align:center;">
+                            <?= esc($row['rhesus']) ?>
+                        </td>
+
+                        <td style="padding:18px 10px;">
+                        <?php if($row['status'] == 'Aktif'): ?>
+                            <span style="background:#dcfce7;color:#166534;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
+                                Aktif
+                            </span>
+                        <?php else: ?>
+                            <span style="background:#ffedd5;color:#c2410c;padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;">
+                                Nonaktif
+                            </span>
+                        <?php endif; ?>
+                        </td>
+
+                        <td style="padding:18px 10px;">
+                            <?= esc($row['no_hp']) ?>
+                        </td>
+
+                        <td style="padding:18px 10px;">
+                            <i class="fa-solid fa-eye" title="Detail"></i>
+                            <i class="fa-solid fa-pen-to-square" title="Edit"></i>
+                            <i class="fa-solid fa-trash" title="Hapus"></i>
                         </td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">2</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Siti Nurhaliza</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Palu Timur</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">A</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span></td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-2222-3333</td>
-                        <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
-                        </td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">3</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Muhammad Rizki</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Palu Selatan</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">B</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">-</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span></td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0813-4444-5555</td>
-                        <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
-                        </td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6; transition: 0.2s;">
-                        <td style="padding: 18px 10px; color: #4b5563;">4</td>
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Fadilah Aulia</td>
-                        <td style="padding: 18px 10px; color: #4b5563;">Mantikulore</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">AB</td>
-                        <td style="padding: 18px 10px; color: #111827; font-weight: 600; text-align: center;">+</td>
-                        <td style="padding: 18px 10px;"><span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Nonaktif</span></td>
-                        <td style="padding: 18px 10px; color: #4b5563;">0812-6666-7777</td>
-                        <td style="padding: 18px 10px; display: flex; gap: 12px;">
-                            <i class="fa-solid fa-eye" style="color: #9ca3af; cursor: pointer;" title="Detail"></i>
-                            <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer;" title="Edit"></i>
-                            <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer;" title="Hapus"></i>
-                        </td>
-                    </tr>
+
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

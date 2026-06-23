@@ -43,7 +43,8 @@ $routes->group('rs', static function ($routes) {
     $routes->get('data_pasien', 'DashboardRS::data_pasien');
     $routes->get('permintaan_darah', 'DashboardRS::permintaan_darah');
     $routes->get('riwayat_permintaan', 'DashboardRS::riwayat_permintaan');
-    $routes->get('laporan_RS', 'DashboardRS::laporan_rs');    
+    $routes->get('laporan_rs', 'DashboardRS::laporan_rs');
+    
 });
 
 
@@ -55,6 +56,9 @@ $routes->group('pmi', static function ($routes) {
     $routes->get('permintaan_darah', 'DashboardPMI::permintaan_darah');
     $routes->get('riwayat_donor', 'DashboardPMI::riwayat_donor');
     $routes->get('stok_darah', 'DashboardPMI::stok_darah');
+    $routes->get('tambah_donor', 'DashboardPMI::tambah_donor');
+    $routes->get('detail', 'DashboardPMI::detail');
+    /*------------------post-----------------------------*/
 });
 
 
