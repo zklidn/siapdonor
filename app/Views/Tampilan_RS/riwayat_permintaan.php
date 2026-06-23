@@ -25,9 +25,6 @@
         <p style="color: #6b7280; font-size: 14px;">Riwayat semua permintaan darah</p>
     </div>
 
-<<<<<<< HEAD
-<?= $this->include('layout/footer') ?>
-=======
     <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
         
         <div style="display: flex; gap: 20px; align-items: flex-end; margin-bottom: 30px; flex-wrap: wrap;">
@@ -96,4 +93,3 @@
 </main>
 
 <?= $this->endSection() ?>
->>>>>>> 9e38052ac64e126a033f0ee1c93746fa65681efa

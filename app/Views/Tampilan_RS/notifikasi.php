@@ -1,0 +1,105 @@
+<?= $this->extend('layout/template') ?>
+<?= $this->section('content') ?>
+
+<aside class="sidebar" id="sidebar">
+    <a href="<?= base_url('rs') ?>" class="menu-item">
+        <i class="fa-solid fa-house"></i> Dashboard
+    </a>
+    <a href="<?= base_url('rs/cari_donor') ?>" class="menu-item">
+        <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
+    </a>
+    <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+        <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan Darah
+    </a>
+    <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
+    </a>
+    <a href="<?= base_url('rs/laporan_rs') ?>" class="menu-item">
+        <i class="fa-solid fa-file-lines"></i> Laporan
+    </a>
+</aside>
+
+<main class="content-area">
+    
+    <div style="margin-bottom: 30px;">
+        <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Notifikasi</h1>
+    </div>
+
+    <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px;">
+            <div>
+                <select style="padding: 10px 15px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb; outline: none; cursor: pointer; font-size: 13px;">
+                    <option>Semua Notifikasi</option>
+                    <option>Belum Dibaca</option>
+                    <option>Dibaca</option>
+                </select>
+            </div>
+            
+            <div>
+                <button style="background: white; border: 1px solid #e5e7eb; color: #4b5563; padding: 10px 15px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s;">
+                    Tandai semua sebagai dibaca
+                </button>
+            </div>
+        </div>
+
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; min-width: 900px;">
+                <thead>
+                    <tr style="border-bottom: 1px solid #e5e7eb;">
+                        <th style="padding-bottom: 15px; padding-right: 15px; color:#6b7280; font-weight: 600; width: 5%;">No</th>
+                        <th style="padding-bottom: 15px; padding-right: 15px; color:#6b7280; font-weight: 600; width: 25%;">Judul</th>
+                        <th style="padding-bottom: 15px; padding-right: 15px; color:#6b7280; font-weight: 600; width: 40%;">Pesan</th>
+                        <th style="padding-bottom: 15px; padding-right: 15px; color:#6b7280; font-weight: 600; width: 15%;">Tanggal</th>
+                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600; width: 15%;">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 18px 0; color: #4b5563;">1</td>
+                        <td style="padding: 18px 0; color: #111827; font-weight: 500;">Pembaruan Status Permintaan</td>
+                        <td style="padding: 18px 0; color: #4b5563;">Permintaan darah untuk pasien Andi (O+) telah diproses oleh PMI.</td>
+                        <td style="padding: 18px 0; color: #4b5563;">20 Mei 2025, 09:15 WIB</td>
+                        <td style="padding: 18px 0;">
+                            <span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Belum Dibaca</span>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 18px 0; color: #4b5563;">2</td>
+                        <td style="padding: 18px 0; color: #111827; font-weight: 500;">Donor Darah Tersedia</td>
+                        <td style="padding: 18px 0; color: #4b5563;">Pendonor golongan darah A- telah ditemukan dan siap dihubungi.</td>
+                        <td style="padding: 18px 0; color: #4b5563;">18 Mei 2025, 14:30 WIB</td>
+                        <td style="padding: 18px 0;">
+                            <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Dibaca</span>
+                        </td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid #f9fafb;">
+                        <td style="padding: 18px 0; color: #4b5563;">3</td>
+                        <td style="padding: 18px 0; color: #111827; font-weight: 500;">Pengingat Laporan</td>
+                        <td style="padding: 18px 0; color: #4b5563;">Mohon segera lengkapi laporan penggunaan darah untuk bulan ini.</td>
+                        <td style="padding: 18px 0; color: #4b5563;">15 Mei 2025, 08:00 WIB</td>
+                        <td style="padding: 18px 0;">
+                            <span style="background: #ffedd5; color: #c2410c; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Belum Dibaca</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 25px; font-size: 13px; color: #6b7280; flex-wrap: wrap; gap: 15px;">
+            <div>Total Data: 3 Notifikasi</div>
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <span style="padding: 6px 10px; cursor: pointer; border: 1px solid #e5e7eb; border-radius: 6px; color: #9ca3af;"><i class="fa-solid fa-chevron-left"></i></span>
+                <span style="color: #2563eb; font-weight: 600; padding: 6px 12px;">1</span>
+                <span style="padding: 6px 10px; cursor: pointer; border: 1px solid #e5e7eb; border-radius: 6px; color: #9ca3af;"><i class="fa-solid fa-chevron-right"></i></span>
+            </div>
+        </div>
+
+    </div>
+
+    <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
+        &copy; 2026 SiapDonor. All rights reserved.
+    </div>
+
+</main>
+<?= $this->endSection() ?>

@@ -46,4 +46,9 @@ class DashboardRS extends BaseController
     {
         return view('Tampilan_RS/buat_permintaan');
     }
+
+    public function notifikasi_rs()
+    {
+        return view('Tampilan_RS/notifikasi');
+    }
 }

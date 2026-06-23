@@ -71,57 +71,6 @@
             </div>
         </div>
 
-<<<<<<< HEAD
-        <button type="submit" class="btn-generate">Generate</button>
-    </form>
-</div>
-
-<div class="summary-counters">
-    <div class="counter-box">
-        <div class="counter-label">Total Permintaan</div>
-        <div class="counter-value">23</div>
-    </div>
-    <div class="counter-box">
-        <div class="counter-label">Total Kantong</div>
-        <div class="counter-value">89</div>
-    </div>
-    <div class="counter-box">
-        <div class="counter-label">Tersalukan</div>
-        <div class="counter-value">76</div>
-    </div>
-    <div class="counter-box">
-        <div class="counter-label">Sisa / Belum</div>
-        <div class="counter-value">13</div>
-    </div>
-</div>
-
-<div class="main-report-grid">
-    
-    <div class="chart-card">
-        <div class="card-title">Grafik Kebutuhan Darah</div>
-        <div class="chart-placeholder">
-            <i class="fa-solid fa-chart-line fa-2xl" style="margin-right: 10px; color: #cbd5e1;"></i>
-            Grafik Kebutuhan Darah
-        </div>
-    </div>
-
-    <div class="blood-summary-card">
-        <div class="card-title">Ringkasan Kebutuhan Darah</div>
-        
-        <div class="blood-row"><span class="blood-name">A+</span><span class="blood-qty">24 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">A-</span><span class="blood-qty">12 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">B+</span><span class="blood-qty">18 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">B-</span><span class="blood-qty">9 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">O+</span><span class="blood-qty">28 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">O-</span><span class="blood-qty">11 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">AB+</span><span class="blood-qty">7 Kantong</span></div>
-        <div class="blood-row"><span class="blood-name">AB-</span><span class="blood-qty">4 Kantong</span></div>
-    </div>
-
-</div>
-
-<?= $this->include('layout/footer') ?>
-=======
         <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
             <h3 style="margin-bottom: 20px; font-size: 16px;">Ringkasan Kebutuhan</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
@@ -138,4 +87,3 @@
     </div>
 </main>
 <?= $this->endSection() ?>
->>>>>>> 9e38052ac64e126a033f0ee1c93746fa65681efa
