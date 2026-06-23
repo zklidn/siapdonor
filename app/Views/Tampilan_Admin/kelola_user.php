@@ -70,8 +70,6 @@
                                 
                                <td style="padding: 18px 10px; color: #4b5563;"><?= esc($u['role'] ?? '-') ?></td>
                                 
-                                
-                                
                                 <td style="padding: 18px 10px;">
                                     <?php if (isset($u['status']) && $u['status'] == 'Aktif') : ?>
                                         <span style="background: #dcfce7; color: #166534; padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;">Aktif</span>
@@ -81,11 +79,9 @@
                                 </td>
                                 
                                 <td style="padding: 18px 10px; display: flex; gap: 15px;">
-                                    
-                                    <a href="<?= base_url('admin/edit_user/$1' . $u['id']) ?>">
-                                        <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
+                                    <a href="javascript:void(0);" onclick="konfirmasiHapus('<?= base_url('admin/hapus_user/' . $u['id']) ?>', '<?= esc($u['nama']) ?>')">
+                                        <i class="fa-solid fa-trash" style="color: #ef4444; cursor: pointer; font-size: 16px;" title="Hapus"></i>
                                     </a>
-
                                 </td>
 
                             </tr>
@@ -112,5 +108,27 @@
         
     </div>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    function konfirmasiHapus(url, namaUser) {
+        Swal.fire({
+            title: 'Hapus Akun?',
+            text: "Apakah Anda yakin ingin menghapus akun " + namaUser + "? Tindakan ini tidak dapat dibatalkan!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#8b0000',
+            cancelButtonColor: '#6b7280',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Jika tombol 'Ya, Hapus!' diklik, arahkan ke URL penghapusan
+                window.location.href = url;
+            }
+        });
+    }
+</script>
 
 <?= $this->endSection() ?>

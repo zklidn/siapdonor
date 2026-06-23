@@ -59,7 +59,6 @@
                         <th style="padding: 15px 10px;">Kecamatan</th>
                         <th style="padding: 15px 10px;">No. Telepon</th>
                         <th style="padding: 15px 10px;">Status</th>
-                        <th style="padding: 15px 10px;">Aksi</th>
                     </tr>
                 </thead>
                 <tbody style="color: #4b5563;">
@@ -70,8 +69,6 @@
                         <td style="padding: 18px 10px;">0812-3456-7890</td>
                         <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Tersedia</span></td>
                         <td style="padding: 18px 10px; display: flex; gap: 10px;">
-                            <i class="fa-solid fa-phone" style="color: #8b0000; cursor: pointer;"></i>
-                            <i class="fa-brands fa-whatsapp" style="color: #16a34a; cursor: pointer;"></i>
                         </td>
                     </tr>
                     <tr style="border-bottom: 1px solid #f3f4f6;">
@@ -81,8 +78,6 @@
                         <td style="padding: 18px 10px;">0853-9876-5432</td>
                         <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Tersedia</span></td>
                         <td style="padding: 18px 10px; display: flex; gap: 10px;">
-                            <i class="fa-solid fa-phone" style="color: #8b0000; cursor: pointer;"></i>
-                            <i class="fa-brands fa-whatsapp" style="color: #16a34a; cursor: pointer;"></i>
                         </td>
                     </tr>
                 </tbody>

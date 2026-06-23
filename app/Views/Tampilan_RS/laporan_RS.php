@@ -32,9 +32,14 @@
                 <option>Laporan Kebutuhan Darah</option>
             </select>
         </div>
-        <div style="flex: 1; min-width: 200px;">
-            <label style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; display:block;">Periode</label>
-            <input type="text" value="01/05/2025 - 31/05/2025" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563;">
+        
+        <div style="flex: 1; min-width: 300px; max-width: 500px;">
+            <label style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; display:block;">Periode Laporan</label>
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <input type="date" name="tanggal_awal" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb; font-family: 'Inter', sans-serif;">
+                <span style="color: #9ca3af; font-weight: 500; font-size: 14px;">s/d</span>
+                <input type="date" name="tanggal_akhir" style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb; font-family: 'Inter', sans-serif;">
+            </div>
         </div>
         <button style="background: #8b0000; color: white; padding: 10px 30px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; height: 42px;">
             Generate

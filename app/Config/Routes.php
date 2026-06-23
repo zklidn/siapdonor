@@ -46,7 +46,7 @@ $routes->group('rs', static function ($routes) {
     $routes->get('permintaan_darah', 'DashboardRS::permintaan_darah');
     $routes->get('riwayat_permintaan', 'DashboardRS::riwayat_permintaan');
     $routes->get('laporan_rs', 'DashboardRS::laporan_rs');
-    
+    $routes->get('buat_permintaan', 'DashboardRS::buat_permintaan');
 });
 
 
