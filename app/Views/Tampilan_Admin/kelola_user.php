@@ -82,7 +82,7 @@
                                 
                                 <td style="padding: 18px 10px; display: flex; gap: 15px;">
                                     
-                                    <a href="<?= base_url('admin/edit_user/' . $u['id']) ?>">
+                                    <a href="<?= base_url('admin/edit_user/$1' . $u['id']) ?>">
                                         <i class="fa-solid fa-pen-to-square" style="color: #9ca3af; cursor: pointer; font-size: 16px;" title="Edit"></i>
                                     </a>
 

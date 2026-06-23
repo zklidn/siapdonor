@@ -33,6 +33,8 @@ $routes->group('admin', static function ($routes) {
     $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
     $routes->get('riwayat', 'DashboardAdmin::riwayat');
     $routes->post('donor', 'DashboardAdmin::donor');
+    $routes->get('profil', 'DashboardAdmin::profil_admin');
+    $routes->get('notifikasi', 'DashboardAdmin::notifikasi_admin');
 });
 
 
