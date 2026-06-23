@@ -46,10 +46,8 @@
         </div>
     </div>
     
-    <!-- ==================== UBAH COMPONENT ATAS: KOTAK INFORMASI BULAT PERSIS GAMBAR 1 ==================== -->
     <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
         
-        <!-- Card 1: Total Pendonor -->
         <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 20px;">
             <div style="width: 54px; height: 54px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
                 <i class="fa-solid fa-users"></i>
@@ -61,7 +59,6 @@
             </div>
         </div>
 
-        <!-- Card 2: Stok Darah Tersedia -->
         <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 20px;">
             <div style="width: 54px; height: 54px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
                 <i class="fa-solid fa-droplet"></i>
@@ -73,7 +70,6 @@
             </div>
         </div>
 
-        <!-- Card 3: Permintaan Darah Masuk -->
         <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 20px;">
             <div style="width: 54px; height: 54px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
                 <i class="fa-solid fa-calendar-check"></i>
@@ -85,7 +81,6 @@
             </div>
         </div>
 
-        <!-- Card 4: Donor Aktif -->
         <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 20px;">
             <div style="width: 54px; height: 54px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
                 <i class="fa-solid fa-user-shield"></i>
@@ -99,7 +94,6 @@
 
     </div>
 
-    <!-- TAMPILAN AKTIVITAS TERBARU BAWAAN TEMAN -->
     <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 25px;">
         <h3 style="margin-bottom: 20px; font-size: 16px; color: #111827;">Aktivitas Terbaru</h3>
         
@@ -133,30 +127,7 @@
                             <?= $row['id_user'] ?? '-' ?>
                         </td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">2</td>
-                        <td style="padding: 15px 0; color: #111827;">Permintaan darah baru</td>
-                        <td style="padding: 15px 0; color: #4b5563;">08 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">RS Undata</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">3</td>
-                        <td style="padding: 15px 0; color: #111827;">Donor diperbarui</td>
-                        <td style="padding: 15px 0; color: #4b5563;">07 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">4</td>
-                        <td style="padding: 15px 0; color: #111827;">Status permintaan diubah</td>
-                        <td style="padding: 15px 0; color: #4b5563;">07 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f9fafb;">
-                        <td style="padding: 15px 0; color: #4b5563;">5</td>
-                        <td style="padding: 15px 0; color: #111827;">Update stok darah manual</td>
-                        <td style="padding: 15px 0; color: #4b5563;">06 Juni 2026</td>
-                        <td style="padding: 15px 0; color: #111827;">PMI Kota Palu</td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
@@ -166,10 +137,8 @@
         </div>
     </div>
 
-    <!-- AREA PERBAIKAN 3 SECTOR BAWAH YANG SUDAH KITA SEMPURNAKAN SEBELUMNYA -->
     <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px;">
         
-        <!-- KIRI: DATA DONOR TERBARU -->
         <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
                 <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Data Donor Terbaru</h3>
@@ -220,7 +189,6 @@
 
         <div style="display: flex; flex-direction: column; gap: 20px;">
             
-            <!-- FITUR 2: DONOR BERDASARKAN LOKASI -->
             <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb; min-height: 210px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Donor Berdasarkan Lokasi</h3>
@@ -262,7 +230,6 @@
                 </div>
             </div>
 
-            <!-- FITUR 3: DONOR BERDASARKAN GOLONGAN DARAH -->
             <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
                     <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Donor Berdasarkan Golongan Darah</h3>
