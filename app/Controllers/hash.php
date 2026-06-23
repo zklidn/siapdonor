@@ -6,6 +6,6 @@ class Hash extends BaseController
 {
     public function index()
     {
-        echo password_hash("1234567", PASSWORD_DEFAULT);
+        echo password_hash("ukidamian", PASSWORD_DEFAULT);
     }
 }

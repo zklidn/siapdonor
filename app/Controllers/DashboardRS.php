@@ -41,4 +41,9 @@ class DashboardRS extends BaseController
         // Pastikan nama fail di bawah sama persis dengan yang ada dalam folder anda
         return view('Tampilan_RS/laporan_RS'); 
     }
+
+    public function buat_permintaan()
+    {
+        return view('Tampilan_RS/buat_permintaan');
+    }
 }

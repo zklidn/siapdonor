@@ -191,4 +191,14 @@ class DashboardAdmin extends BaseController
         return redirect()->to('/admin/kelola_user');
     }
 
+    public function profil_admin()
+    {
+        return view('Tampilan_Admin/settings');
+    }
+
+    public function notifikasi_admin()
+    {
+        return view('Tampilan_Admin/notifikasi');
+    }
+
 }
