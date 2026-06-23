@@ -17,8 +17,8 @@ class PasienModel extends Model
 
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
-    protected $createFields = 'create_at';
-    protected $updateFields = 'update_at';
+    protected $createFields = 'created_at';
+    protected $updateFields = 'updated_at';
     protected $deleteField = 'deleted_at';
 
     // 1. Mendaftarkan trigger otomatis (Callback)

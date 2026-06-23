@@ -56,3 +56,7 @@ $routes->group('pmi', static function ($routes) {
     $routes->get('riwayat_donor', 'DashboardPMI::riwayat_donor');
     $routes->get('stok_darah', 'DashboardPMI::stok_darah');
 });
+
+
+#akun gw
+$routes->get('hash', 'Hash::index');
