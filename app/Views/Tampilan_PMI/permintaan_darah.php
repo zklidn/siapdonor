@@ -84,7 +84,7 @@
                             <span style="background: #e0e7ff; color: #4338ca; padding: 5px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">Baru</span>
                         </td>
                         <td style="padding: 18px 10px;">
-                            <a href="<?= base_url('pmi/detail_permintaan/1') ?>" 
+                            <a href="<?= base_url('pmi/detail') ?>" 
                                style="background: #2563eb; 
                                       color: white; 
                                       padding: 8px 16px; 
