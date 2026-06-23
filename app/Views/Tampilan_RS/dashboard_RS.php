@@ -249,8 +249,4 @@
     </div>
 
 </main>
-<<<<<<< HEAD
 <?= $this->endSection() ?>
-=======
-<?= $this->endSection() ?>
->>>>>>> sunflower

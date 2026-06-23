@@ -23,15 +23,15 @@ class AuthFilter implements FilterInterface
 
             // Jika role user saat ini TIDAK ADA di dalam daftar yang diizinkan rute
             if (! in_array($userRole, $arguments)) {
-                
-                // Lempar mereka kembali ke dashboard masing-masing sesuai role-nya
+    
                 if ($userRole == 'admin') return redirect()->to('/admin');
                 if ($userRole == 'pmi') return redirect()->to('/pmi');
-                if ($userRole == 'rs') return redirect()->to('/rs');
-                
-                // Fallback jika role tidak dikenali
-                return redirect()->to('/login'); 
-            }
+    
+    // UBAH ATAU TAMBAHKAN BARIS INI:
+                if ($userRole == 'rumah_sakit' || $userRole == 'rs') return redirect()->to('/rs');
+    
+            return redirect()->to('/login'); 
+}
         }
     }
 

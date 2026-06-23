@@ -45,7 +45,9 @@ $routes->group('admin', ['filter' => 'auth:admin'], static function ($routes) {
 
 
 /*------------------dashboard RS---------------*/
-$routes->group('rs',['filter' => 'auth:rs'], static function ($routes) {
+/*------------------dashboard RS---------------*/
+// UBAH filternya menjadi auth:rumah_sakit
+$routes->group('rs',['filter' => 'auth:rumah_sakit'], static function ($routes) {
     $routes->get('/', 'DashboardRS::rs');
     $routes->get('cari_donor', 'DashboardRS::cari_donor');
     $routes->get('data_pasien', 'DashboardRS::data_pasien');
