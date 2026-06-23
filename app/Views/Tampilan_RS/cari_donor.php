@@ -1,323 +1,6 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
-<<<<<<< HEAD
-    .page-header { 
-        margin-bottom: 25px; 
-    }
-    .page-header h1 { 
-        font-size: 24px; 
-        font-weight: 700; 
-        color: #111827; 
-        margin-bottom: 4px; 
-    }
-    .page-header p { 
-        font-size: 14px; 
-        color: #6b7280; 
-    }
-
-    .filter-card {
-        background: #ffffff;
-        padding: 20px 24px;
-        border-radius: 14px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.01);
-        border: 1px solid #e5e7eb;
-        margin-bottom: 25px;
-    }
-    .filter-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr) auto;
-        gap: 16px;
-        align-items: flex-end;
-    }
-    .filter-group {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-    .filter-group label {
-        font-size: 13px;
-        font-weight: 600;
-        color: #4b5563;
-    }
-    .form-select, .form-input {
-        width: 100%;
-        padding: 11px 14px;
-        border: 1.5px solid #e5e7eb;
-        border-radius: 10px;
-        font-size: 14px;
-        color: #1f2937;
-        background-color: #fff;
-        outline: none;
-        transition: border-color 0.2s;
-    }
-    .form-select:focus, .form-input:focus {
-        border-color: #8b0000;
-    }
-
-    .btn-search {
-        background: #8b0000;
-        color: white;
-        padding: 11px 24px;
-        border: none;
-        border-radius: 10px;
-        font-size: 14px;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: 0.2s;
-        height: 44px;
-    }
-    .btn-search:hover {
-        background: #6b0000;
-    }
-
-    .results-card {
-        background: #ffffff;
-        padding: 24px;
-        border-radius: 14px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.01);
-        border: 1px solid #e5e7eb;
-    }
-    .results-title {
-        font-size: 15px;
-        font-weight: 700;
-        color: #111827;
-        margin-bottom: 20px;
-    }
-
-    .results-table {
-        width: 100%;
-        border-collapse: collapse;
-        text-align: left;
-    }
-    .results-table th {
-        font-size: 12px;
-        font-weight: 600;
-        color: #4b5563;
-        padding: 12px 16px;
-        background: #f9fafb;
-        border-bottom: 1px solid #e5e7eb;
-    }
-    .results-table td {
-        padding: 14px 16px;
-        font-size: 14px;
-        color: #374151;
-        border-bottom: 1px solid #f3f4f6;
-        vertical-align: middle;
-    }
-
-    .blood-badge {
-        background: #fee2e2;
-        color: #8b0000;
-        font-weight: 700;
-        padding: 3px 8px;
-        border-radius: 5px;
-        font-size: 12px;
-        border: 1px solid #fca5a5;
-    }
-
-    .status-pill {
-        padding: 4px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: 600;
-        background: #d1fae5;
-        color: #059669;
-        display: inline-block;
-    }
-
-    .action-buttons {
-        display: flex;
-        gap: 8px;
-    }
-    .btn-contact {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-decoration: none;
-        font-size: 13px;
-        transition: 0.2s;
-    }
-    .btn-phone { background: #fee2e2; color: #8b0000; }
-    .btn-phone:hover { background: #fca5a5; }
-    .btn-wa { background: #d1fae5; color: #059669; }
-    .btn-wa:hover { background: #a7f3d0; }
-
-    .pagination-container {
-        display: flex;
-        justify-content: flex-end;
-        margin-top: 20px;
-    }
-    .pagination {
-        display: flex;
-        gap: 5px;
-        list-style: none;
-    }
-    .page-link {
-        padding: 6px 12px;
-        border: 1px solid #e5e7eb;
-        border-radius: 6px;
-        color: #4b5563;
-        text-decoration: none;
-        font-size: 13px;
-        font-weight: 500;
-        background: white;
-    }
-    .page-link:hover, .page-item.active .page-link {
-        background: #8b0000;
-        color: white;
-        border-color: #8b0000;
-    }
-</style>
-
-<div class="page-header">
-    <h1>Cari Donor</h1>
-    <p>Temukan donor yang sesuai dengan kebutuhan Anda</p>
-</div>
-
-<div class="filter-card">
-    <form action="#" method="GET" class="filter-grid">
-        <div class="filter-group">
-            <label for="blood_type">Golongan Darah</label>
-            <select id="blood_type" name="blood_type" class="form-select">
-                <option value="">Pilih golongan darah</option>
-                <option value="A">A</option>
-                <option value="B">B</option>
-                <option value="AB">AB</option>
-                <option value="O">O</option>
-            </select>
-        </div>
-
-        <div class="filter-group">
-            <label for="location">Lokasi</label>
-            <input type="text" id="location" name="location" class="form-input" placeholder="Pilih lokasi">
-        </div>
-
-        <div class="filter-group">
-            <label for="radius">Radius</label>
-            <select id="radius" name="radius" class="form-select">
-                <option value="5">5 km</option>
-                <option value="10" selected>10 km</option>
-                <option value="25">25 km</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn-search">
-            <i class="fa-solid fa-plus"></i> Cari Donor
-        </button>
-    </form>
-</div>
-
-<div class="results-card">
-    <div class="results-title">Hasil Pencarian Donor</div>
-    
-    <table class="results-table">
-        <thead>
-            <tr>
-                <th>Nama</th>
-                <th>Gol. Darah</th>
-                <th>Lokasi Saat Ini</th>
-                <th>Jarak</th>
-                <th>No. Telepon</th>
-                <th>Status</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Andi Pratama</td>
-                <td><span class="blood-badge">O+</span></td>
-                <td>Kota Bandung</td>
-                <td>2.4 km</td>
-                <td>0812-3456-7890</td>
-                <td><span class="status-pill">Tersedia</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="tel:081234567890" class="btn-contact btn-phone"><i class="fa-solid fa-phone"></i></a>
-                        <a href="https://wa.me/6281234567890" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Siti Nurhaliza</td>
-                <td><span class="blood-badge">A-</span></td>
-                <td>Kota Bandung</td>
-                <td>3.1 km</td>
-                <td>0813-4567-8901</td>
-                <td><span class="status-pill">Tersedia</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="tel:081345678901" class="btn-contact btn-phone"><i class="fa-solid fa-phone"></i></a>
-                        <a href="https://wa.me/6281345678901" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Rizky Maulana</td>
-                <td><span class="blood-badge">B+</span></td>
-                <td>Kota Bandung</td>
-                <td>4.2 km</td>
-                <td>0814-5678-9012</td>
-                <td><span class="status-pill">Tersedia</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="tel:081456789012" class="btn-contact btn-phone"><i class="fa-solid fa-phone"></i></a>
-                        <a href="https://wa.me/6281456789012" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Dewi Lestari</td>
-                <td><span class="blood-badge">AB+</span></td>
-                <td>Kota Bandung</td>
-                <td>4.8 km</td>
-                <td>0815-6789-0123</td>
-                <td><span class="status-pill">Tersedia</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="tel:081567890123" class="btn-contact btn-phone"><i class="fa-solid fa-phone"></i></a>
-                        <a href="https://wa.me/6281567890123" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Fajar Nugroho</td>
-                <td><span class="blood-badge">O-</span></td>
-                <td>Kota Bandung</td>
-                <td>5.3 km</td>
-                <td>0816-7890-1234</td>
-                <td><span class="status-pill">Tersedia</span></td>
-                <td>
-                    <div class="action-buttons">
-                        <a href="tel:081678901234" class="btn-contact btn-phone"><i class="fa-solid fa-phone"></i></a>
-                        <a href="https://wa.me/6281678901234" target="_blank" class="btn-contact btn-wa"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="pagination-container">
-        <ul class="pagination">
-            <li class="page-item"><a href="#" class="page-link"><i class="fa-solid fa-chevron-left"></i></a></li>
-            <li class="page-item active"><a href="#" class="page-link">1</a></li>
-            <li class="page-item"><a href="#" class="page-link">2</a></li>
-            <li class="page-item"><a href="#" class="page-link">3</a></li>
-            <li class="page-item"><a href="#" class="page-link">...</a></li>
-            <li class="page-item"><a href="#" class="page-link">25</a></li>
-            <li class="page-item"><a href="#" class="page-link"><i class="fa-solid fa-chevron-right"></i></a></li>
-        </ul>
-    </div>
-</div>
-
-<?= $this->include('layout/footer') ?>
-=======
 <aside class="sidebar" id="sidebar">
     <a href="<?= base_url('rs') ?>" class="menu-item">
         <i class="fa-solid fa-house"></i> Dashboard
@@ -338,8 +21,8 @@
 
 <main class="content-area">
     <div style="margin-bottom: 30px;">
-        <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Cari Donor</h1>
-        <p style="color: #6b7280; font-size: 14px;">Temukan donor yang sesuai dengan kebutuhan Anda di Kota Palu</p>
+        <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px; font-weight: 700;">Cari Donor</h1>
+        <p style="color: #6b7280; font-size: 14px;">Temukan donor yang sesuai dengan kebutuhan Anda di Kota Palu dan Sekitarnya</p>
     </div>
 
     <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
@@ -347,65 +30,106 @@
         <div style="display: flex; gap: 20px; align-items: flex-end; margin-bottom: 30px; flex-wrap: wrap;">
             <div style="flex: 1; min-width: 250px;">
                 <label style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; display:block;">Golongan Darah</label>
-                <select style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb;">
-                    <option>Semua golongan darah</option>
+                <select style="width: 100%; padding: 11px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb; outline: none;">
+                    <option>Pilih golongan darah</option>
                     <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
                     <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
                 </select>
             </div>
             <div style="flex: 1; min-width: 250px;">
-                <label style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; display:block;">Kecamatan di Palu</label>
-                <select style="width: 100%; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb;">
-                    <option>Semua kecamatan</option>
-                    <option>Palu Barat</option><option>Palu Timur</option><option>Palu Selatan</option><option>Palu Utara</option>
+                <label style="font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; display:block;">Pilih Lokasi Kecamatan / Wilayah</label>
+                <select style="width: 100%; padding: 11px; border: 1px solid #e5e7eb; border-radius: 8px; color: #4b5563; background: #f9fafb; outline: none;">
+                    <option>Semua Lokasi</option>
+                    <option>Mantikulore (Palu)</option>
+                    <option>Palu Barat (Palu)</option>
+                    <option>Palu Selatan (Palu)</option>
+                    <option>Palu Timur (Palu)</option>
+                    <option>Palu Utara (Palu)</option>
+                    <option>Ulujadi (Palu)</option>
+                    <option>Biromaru (Sigi)</option>
+                    <option>Banawa (Donggala)</option>
                 </select>
             </div>
-            <button style="background: #8b0000; color: white; padding: 10px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; height: 42px;">
-                <i class="fa-solid fa-magnifying-glass" style="margin-right: 8px;"></i> Cari Donor
+            <button style="background: #8b0000; color: white; padding: 10px 25px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; height: 44px; display: flex; align-items: center; gap: 8px; font-size: 14px;">
+                <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
             </button>
         </div>
 
-        <h3 style="margin-bottom: 20px; font-size: 16px; color: #111827;">Hasil Pencarian</h3>
+        <h3 style="margin-bottom: 20px; font-size: 16px; font-weight: 700; color: #111827;">Hasil Pencarian Donor</h3>
         
-        <div style="overflow-x: auto;">
+        <div style="overflow-x: auto; margin-bottom: 25px;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
                 <thead>
-                    <tr style="border-bottom: 2px solid #f3f4f6; color: #6b7280;">
-                        <th style="padding: 15px 10px;">Nama Pendonor</th>
-                        <th style="padding: 15px 10px;">Gol. Darah</th>
-                        <th style="padding: 15px 10px;">Kecamatan</th>
-                        <th style="padding: 15px 10px;">No. Telepon</th>
-                        <th style="padding: 15px 10px;">Status</th>
-                        <th style="padding: 15px 10px;">Aksi</th>
+                    <tr style="border-bottom: 1px solid #e5e7eb; background: #f9fafb;">
+                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">Nama</th>
+                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600; text-align: center;">Gol. Darah</th>
+                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">Lokasi Saat Ini</th>
+                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">No. Telepon</th>
+                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">Status</th>
+                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600; text-align: center;">Aksi</th>
                     </tr>
                 </thead>
-                <tbody style="color: #4b5563;">
+                <tbody style="color: #374151;">
+                    <?php 
+                    $list_pencarian_donor = isset($hasil_pencarian) ? $hasil_pencarian : [
+                        ['nama' => 'Andi Pratama', 'gol' => 'O+', 'lokasi' => 'Mantikulore, Palu', 'telepon' => '0812-3456-7890', 'status' => 'Tersedia'],
+                        ['nama' => 'Siti Nurhaliza', 'gol' => 'A-', 'lokasi' => 'Palu Barat, Palu', 'telepon' => '0813-4567-8901', 'status' => 'Tersedia'],
+                        ['nama' => 'Rizky Maulana', 'gol' => 'B+', 'lokasi' => 'Biromaru, Sigi', 'telepon' => '0814-5678-9012', 'status' => 'Tersedia'],
+                        ['nama' => 'Dewi Lestari', 'gol' => 'AB+', 'lokasi' => 'Palu Selatan, Palu', 'telepon' => '0815-6789-0123', 'status' => 'Tersedia'],
+                        ['nama' => 'Fajar Nugroho', 'gol' => 'A-', 'lokasi' => 'Banawa, Donggala', 'telepon' => '0816-7890-1234', 'status' => 'Tersedia']
+                    ];
+                    
+                    foreach ($list_pencarian_donor as $row): ?>
                     <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Andi Pratama</td>
-                        <td style="padding: 18px 10px;">A+</td>
-                        <td style="padding: 18px 10px;">Palu Barat</td>
-                        <td style="padding: 18px 10px;">0812-3456-7890</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Tersedia</span></td>
-                        <td style="padding: 18px 10px; display: flex; gap: 10px;">
-                            <i class="fa-solid fa-phone" style="color: #8b0000; cursor: pointer;"></i>
-                            <i class="fa-brands fa-whatsapp" style="color: #16a34a; cursor: pointer;"></i>
+                        <td style="padding: 14px 15px; display: flex; align-items: center; gap: 12px; font-weight: 500; color: #111827;">
+                            <div style="width: 32px; height: 32px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 13px;">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <?= $row['nama'] ?>
+                        </td>
+                        <td style="padding: 14px 15px; text-align: center;">
+                            <span style="background: #fee2e2; color: #8b0000; font-weight: 700; padding: 4px 10px; border-radius: 6px; font-size: 12px; border: 1px solid #fca5a5; display: inline-block; min-width: 36px; text-align: center;">
+                                <?= $row['gol'] ?>
+                            </span>
+                        </td>
+                        <td style="padding: 14px 15px; color: #4b5563;"><?= $row['lokasi'] ?></td>
+                        <td style="padding: 14px 15px; color: #4b5563; font-weight: 500;"><?= $row['telepon'] ?></td>
+                        <td style="padding: 14px 15px;">
+                            <span style="background: #dcfce7; color: #166534; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 600;">
+                                <?= $row['status'] ?>
+                            </span>
+                        </td>
+                        <td style="padding: 14px 15px;">
+                            <div style="display: flex; gap: 18px; justify-content: center; align-items: center;">
+                                <a href="tel:<?= str_replace('-', '', $row['telepon']) ?>" style="color: #8b0000; font-size: 18px; text-decoration: none; transition: transform 0.2s; display: inline-block;" title="Telepon" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                    <i class="fa-solid fa-phone"></i>
+                                </a>
+                                <a href="https://wa.me/<?= str_replace('-', '', $row['telepon']) ?>" target="_blank" style="color: #25D366; font-size: 20px; text-decoration: none; transition: transform 0.2s; display: inline-block;" title="WhatsApp" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            </div>
                         </td>
                     </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Siti Nurhaliza</td>
-                        <td style="padding: 18px 10px;">O+</td>
-                        <td style="padding: 18px 10px;">Palu Selatan</td>
-                        <td style="padding: 18px 10px;">0853-9876-5432</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Tersedia</span></td>
-                        <td style="padding: 18px 10px; display: flex; gap: 10px;">
-                            <i class="fa-solid fa-phone" style="color: #8b0000; cursor: pointer;"></i>
-                            <i class="fa-brands fa-whatsapp" style="color: #16a34a; cursor: pointer;"></i>
-                        </td>
-                    </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 13px; color: #6b7280;">
+            <div>
+                Menampilkan 1 - 5 dari <strong style="color: #111827;">124</strong> data
+            </div>
+            <div style="display: flex; gap: 6px;">
+                <a href="#" style="padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 6px; color: #4b5563; text-decoration: none;"><i class="fa-solid fa-chevron-left" style="font-size: 11px;"></i></a>
+                <a href="#" style="padding: 6px 12px; border: 1px solid #8b0000; background: #8b0000; color: white; border-radius: 6px; font-weight: 600; text-decoration: none;">1</a>
+                <a href="#" style="padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 6px; color: #4b5563; text-decoration: none;">2</a>
+                <a href="#" style="padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 6px; color: #4b5563; text-decoration: none;">3</a>
+                <span style="padding: 6px 4px;">...</span>
+                <a href="#" style="padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 6px; color: #4b5563; text-decoration: none;">25</a>
+                <a href="#" style="padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 6px; color: #4b5563; text-decoration: none;"><i class="fa-solid fa-chevron-right" style="font-size: 11px;"></i></a>
+            </div>
+        </div>
+
     </div>
 </main>
 <?= $this->endSection() ?>
->>>>>>> 9e38052ac64e126a033f0ee1c93746fa65681efa
