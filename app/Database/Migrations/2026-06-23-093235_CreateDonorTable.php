@@ -18,9 +18,25 @@ class CreateDonorTable extends Migration
                 'type'     => 'INT',
                 'unsigned' => true,
             ],
+            'nik' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 16,
+                'unique'     => true, 
+            ],
             'nama' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
+            ],
+            'tempat_lahir' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'tanggal_lahir' => [
+                'type' => 'DATE',
+            ],
+            'jenis_kelamin' => [
+                'type'       => 'ENUM',
+                'constraint' => ['Laki-laki', 'Perempuan'],
             ],
             'golongan_darah' => [
                 'type'       => 'VARCHAR',
@@ -30,7 +46,7 @@ class CreateDonorTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => 5,
             ],
-            'kota' => [
+            'kecamatan' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
