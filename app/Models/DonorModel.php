@@ -12,13 +12,13 @@ class DonorModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'nama', 'golongan_darah', 'rhesus', 'kota', 'status', 'no_hp'];
+    protected $allowedFields    = ['id_user', 'nik', 'nama', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'golongan_darah', 'rhesus', 'kecamatan', 'status', 'no_hp'];
 
     protected $useTimestamps    = true;
     protected $dateFormat       = 'datetime';
     protected $createdField     = 'created_at';
     protected $updatedField     = 'updated_at';
-    protected $deleteField      = 'deleted_at';
+    protected $deletedField     = 'deleted_at'; // Diperbaiki dari $deleteField
 
     // =======================================================
     // TAMBAHAN FITUR LOG AKTIVITAS OTOMATIS (AUDIT TRAIL)
@@ -48,7 +48,6 @@ class DonorModel extends Model
         return $data;
     }
 
-    // 3. Eksekusi penyimpanan ke tabel log_aktivitas
     // 3. Eksekusi penyimpanan ke tabel log_aktivitas
     private function simpanLogOtomatis($aksi)
     {

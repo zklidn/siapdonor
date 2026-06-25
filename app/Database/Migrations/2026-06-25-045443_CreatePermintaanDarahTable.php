@@ -18,8 +18,16 @@ class CreatePermintaanDarahTable extends Migration
                 'type'     => 'INT',
                 'unsigned' => true,
             ],
+            'golongan_darah' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 5,
+            ],
             'tgl_permintaan' => [
                 'type' => 'DATE',
+            ],
+            'kebutuhan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
             ],
             'status' => [
                 'type'       => 'VARCHAR',

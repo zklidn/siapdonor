@@ -12,7 +12,7 @@ class PermintaanDarahModel extends Model
     protected $returnType = 'array';
     protected $useSoftFields = true;
     protected $proctectFields = true;
-    protected $allowedFields = ['tgl_permintaan', 'status', 'jumlah_kantong'];
+    protected $allowedFields = ['tgl_permintaan', 'status', 'jumlah_kantong', 'kebutuhan'. 'golongan_darah'];
 
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
