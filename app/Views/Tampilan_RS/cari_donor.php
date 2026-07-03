@@ -60,22 +60,12 @@
         <div style="overflow-x: auto; margin-bottom: 25px;">
             <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 900px;">
                 <thead>
-<<<<<<< HEAD
                     <tr style="border-bottom: 2px solid #f3f4f6; color: #6b7280;">
                         <th style="padding: 15px 10px;">Nama Pendonor</th>
                         <th style="padding: 15px 10px;">Gol. Darah</th>
                         <th style="padding: 15px 10px;">Kecamatan</th>
                         <th style="padding: 15px 10px;">No. Telepon</th>
                         <th style="padding: 15px 10px;">Status</th>
-=======
-                    <tr style="border-bottom: 1px solid #e5e7eb; background: #f9fafb;">
-                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">Nama</th>
-                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600; text-align: center;">Gol. Darah</th>
-                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">Lokasi Saat Ini</th>
-                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">No. Telepon</th>
-                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600;">Status</th>
-                        <th style="padding: 12px 15px; color: #4b5563; font-weight: 600; text-align: center;">Aksi</th>
->>>>>>> sunflower
                     </tr>
                 </thead>
                 <tbody style="color: #374151;">
@@ -90,23 +80,6 @@
                     
                     foreach ($list_pencarian_donor as $row): ?>
                     <tr style="border-bottom: 1px solid #f3f4f6;">
-<<<<<<< HEAD
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Andi Pratama</td>
-                        <td style="padding: 18px 10px;">A+</td>
-                        <td style="padding: 18px 10px;">Palu Barat</td>
-                        <td style="padding: 18px 10px;">0812-3456-7890</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Tersedia</span></td>
-                        <td style="padding: 18px 10px; display: flex; gap: 10px;">
-                        </td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 18px 10px; font-weight: 600; color: #111827;">Siti Nurhaliza</td>
-                        <td style="padding: 18px 10px;">O+</td>
-                        <td style="padding: 18px 10px;">Palu Selatan</td>
-                        <td style="padding: 18px 10px;">0853-9876-5432</td>
-                        <td style="padding: 18px 10px;"><span style="background: #dcfce7; color: #166534; padding: 4px 8px; border-radius: 6px; font-size: 11px;">Tersedia</span></td>
-                        <td style="padding: 18px 10px; display: flex; gap: 10px;">
-=======
                         <td style="padding: 14px 15px; display: flex; align-items: center; gap: 12px; font-weight: 500; color: #111827;">
                             <div style="width: 32px; height: 32px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 13px;">
                                 <i class="fa-solid fa-user"></i>
@@ -134,7 +107,6 @@
                                     <i class="fa-brands fa-whatsapp"></i>
                                 </a>
                             </div>
->>>>>>> sunflower
                         </td>
                     </tr>
                     <?php endforeach; ?>
@@ -159,8 +131,4 @@
 
     </div>
 </main>
-<<<<<<< HEAD
 <?= $this->endSection() ?>
-=======
-<?= $this->endSection() ?>
->>>>>>> sunflower

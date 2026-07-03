@@ -31,18 +31,16 @@ $routes->post('/profile/simpan_biodata', 'Biodata::simpan_biodata');
 
 
 /*------------------dashboard admin---------------*/
+$routes->group('admin', ['namespace' => 'App\Controllers\Admin','filter'    => 'auth:admin'
+], static function ($routes) {
 
-$routes->group('admin', ['filter' => 'auth:admin'], static function ($routes) {
     $routes->get('/', 'DashboardAdmin::admin');
-    $routes->get('data_donor', 'DashboardAdmin::data_donor');
-    $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
-    $routes->get('riwayat', 'DashboardAdmin::riwayat');
-    $routes->post('donor', 'DashboardAdmin::donor');
-    $routes->get('profil', 'DashboardAdmin::profil_admin');
-    $routes->get('notifikasi', 'DashboardAdmin::notifikasi_admin');
+    $routes->get('data_donor', 'DataDonorAdmin::data_donor');
+    $routes->get('kelola_user', 'KelolaAdmin::kelola_user');
+    $routes->get('riwayat', 'RiwayatAdmin::riwayat');
+    $routes->get('profil', 'ProfilAdmin::profil_admin');
+    $routes->get('notifikasi', 'NotifikasiAdmin::notifikasi_admin');
 });
-
-
 
 /*------------------dashboard RS---------------*/
 /*------------------dashboard RS---------------*/
