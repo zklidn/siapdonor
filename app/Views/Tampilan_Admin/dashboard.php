@@ -1,15 +1,14 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
+<link rel="stylesheet" href="<?= base_url('css_admin/style_dashboard_admin.css') ?>">
+
 <aside class="sidebar" id="sidebar">
     <a href="<?= base_url('admin') ?>" class="menu-item menu-active">
         <i class="fa-solid fa-gauge"></i> Dashboard
     </a>
     <a href="<?= base_url('admin/kelola_user') ?>" class="menu-item">
         <i class="fa-solid fa-users-gear"></i> Kelola User
-    </a>
-    <a href="<?= base_url('admin/data_donor') ?>" class="menu-item">
-        <i class="fa-solid fa-droplet"></i> Data Donor
     </a>
     <a href="<?= base_url('admin/riwayat') ?>" class="menu-item">
         <i class="fa-solid fa-clock-rotate-left"></i> Riwayat
@@ -30,96 +29,78 @@
         $tanggal_sekarang = $hari_ini . ", " . $tanggal_ini . " " . $bulan_ini . " " . $tahun_ini;
     ?>
 
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
+    <div class="dashboard-header">
         <div>
-            <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Dashboard</h1>
-            <p style="color: #6b7280; font-size: 14px;">Selamat datang, Admin!</p>
+            <h1 class="dashboard-title">Dashboard</h1>
+            <p class="dashboard-subtitle">Selamat datang, Admin!</p>
         </div>
-        <div style="color: #6b7280; font-size: 13px; display: flex; align-items: center; gap: 8px; background: white; padding: 8px 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
+        <div class="date-badge">
             <i class="fa-regular fa-calendar"></i> <?= $tanggal_sekarang ?>
         </div>
     </div>
     
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
+    <div class="stats-grid">
         
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
-            <div style="background: #fee2e2; color: #dc2626; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+        <div class="stat-card">
+            <div class="stat-icon-wrapper icon-red">
                 <i class="fa-solid fa-id-badge"></i>
             </div>
             <div>
-                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total User</p>
-                <h3 style="font-size: 22px; color: #111827;"><?= $totalUser ?></h3>
+                <p class="stat-label">Total User</p>
+                <h3 class="stat-value"><?= $totalUser ?></h3>
             </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
-            <div style="background: #dcfce7; color: #16a34a; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+        <div class="stat-card">
+            <div class="stat-icon-wrapper icon-green">
                 <i class="fa-solid fa-user-plus"></i>
             </div>
             <div>
-                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Total Donor</p>
-                <h3 style="font-size: 22px; color: #111827;"><?= number_format($totalDonor, 0, ',', '.') ?></h3>
+                <p class="stat-label">Total Donor</p>
+                <h3 class="stat-value"><?= number_format($totalDonor, 0, ',', '.') ?></h3>
             </div>
         </div>
 
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
-            <div style="background: #ffedd5; color: #ea580c; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
-                <i class="fa-solid fa-file-invoice"></i>
-            </div>
-            <div>
-                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Permintaan Masuk</p>
-                <h3 style="font-size: 22px; color: #111827;"><?= $totalPermintaan ?></h3>
-            </div>
-        </div>
-
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 15px;">
-            <div style="background: #f3e8ff; color: #9333ea; width: 45px; height: 45px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px;">
+        <div class="stat-card">
+            <div class="stat-icon-wrapper icon-purple">
                 <i class="fa-solid fa-clock-rotate-left"></i>
             </div>
             <div>
-                <p style="color: #6b7280; font-size: 12px; margin-bottom: 3px;">Aktivitas Sistem</p>
-                <h3 style="font-size: 22px; color: #111827;"><?= $totalAktivitas ?? 0 ?></h3>
+                <p class="stat-label">Aktivitas Sistem</p>
+                <h3 class="stat-value"><?= $totalAktivitas ?? 0 ?></h3>
             </div>
         </div>
 
     </div>
 
-    <div style="display: grid; grid-template-columns: 2.5fr 1fr; gap: 20px;">
+    <div class="content-grid">
         
-        <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <h3 style="margin-bottom: 20px; font-size: 16px; color: #111827;">Aktivitas Sistem Terbaru</h3>
+        <div class="card-panel">
+            <h3 class="panel-title">Aktivitas Sistem Terbaru</h3>
             
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
+            <table class="table-custom">
                 <thead>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">No</th>
-                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">Aktivitas</th>
-                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">Waktu</th>
-                        <th style="padding-bottom: 15px; color:#6b7280; font-weight: 600;">Oleh</th>
+                    <tr>
+                        <th>No</th>
+                        <th>Aktivitas</th>
+                        <th>Waktu</th>
+                        <th>Oleh</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (!empty($aktivitasTerbaru)) : ?>
                         <?php $no = 1; ?>
                         <?php foreach ($aktivitasTerbaru as $log) : ?>
-                            <tr style="border-bottom: 1px solid #f9fafb;">
-                                <td style="padding: 15px 0; color: #4b5563;">
-                                    <?= $no++ ?>
-                                </td>
-                                <td style="padding: 15px 0; color: #111827;">
-                                    <?= esc($log['aktivitas']) ?>
-                                </td>
-                                <td style="padding: 15px 0; color: #4b5563;">
-                                    <?= date('d M Y H:i', strtotime($log['created_at'])) ?>
-                                </td>
-                                <td style="padding: 15px 0; color: #111827;">
-                                    <?= esc($log['nama_pengguna'] ?? 'Sistem') ?>
-                                </td>
+                            <tr class="table-row">
+                                <td><?= $no++ ?></td>
+                                <td class="text-dark"><?= esc($log['aktivitas']) ?></td>
+                                <td><?= date('d M Y H:i', strtotime($log['created_at'])) ?></td>
+                                <td class="text-dark"><?= esc($log['nama_pengguna'] ?? 'Sistem') ?></td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else : ?>
                         <tr>
-                            <td colspan="4" style="text-align: center; padding: 20px 0; color: #6b7280;">
+                            <td colspan="4" style="text-align: center; color: #6b7280;">
                                 Belum ada aktivitas sistem yang tercatat.
                             </td>
                         </tr>
@@ -127,21 +108,19 @@
                 </tbody>
             </table>
             
-            <div style="margin-top: 20px;">
-                <a href="<?= base_url('admin/riwayat') ?>" style="color: #dc2626; font-size: 13px; font-weight: 600; text-decoration: none;">Lihat semua aktivitas</a>
-            </div>
+            <a href="<?= base_url('admin/riwayat') ?>" class="link-action">Lihat semua aktivitas</a>
         </div>
 
-        <div style="background: white; padding: 25px; border-radius: 12px; border: 1px solid #e5e7eb; align-self: start;">
-            <h3 style="margin-bottom: 15px; font-size: 16px; color: #111827;">Informasi</h3>
-            <p style="color: #6b7280; font-size: 13px; line-height: 1.6;">
+        <div class="card-panel" style="align-self: start;">
+            <h3 class="panel-title">Informasi</h3>
+            <p class="info-text">
                 Kelola sistem, user, dan pantau aktivitas seluruh pengguna di SiapDonor.
             </p>
         </div>
         
     </div>
 
-    <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
+    <div class="footer-text">
         &copy; 2026 SiapDonor. All rights reserved.
     </div>
 

@@ -100,7 +100,7 @@
                 <i class="fa-solid fa-chevron-down fa-xs" style="margin-left: 2px;"></i>
 
                 <div class="profile-dropdown" id="profileDropdown">
-                    <a href="<?= base_url($urlPrefix . '/profil') ?>" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Setting</a>
+                    <a href="<?= base_url($urlPrefix . '/profil') ?>" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Settings</a>
                     <a href="<?= base_url('logout') ?>" class="dropdown-item" style="border-top: 1px solid #f3f4f6; color: #dc2626;"><i class="fa-solid fa-right-from-bracket" style="color: #dc2626;"></i> Logout</a>
                 </div>
             </div>

@@ -89,17 +89,17 @@
                 
                 <div class="form-group">
                     <label for="nama_instansi">Nama Instansi</label>
-                    <input type="text" id="nama_instansi" name="nama_instansi" class="form-control" placeholder="Contoh: RS Wahidin Sudirohusodo" required>
+                    <input type="text" id="nama_instansi" name="nama_instansi" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="no_telepon">Nomor Telepon</label>
-                    <input type="tel" id="no_telepon" name="no_telepon" class="form-control" placeholder="Contoh: 0812xxxx" required>
+                    <input type="tel" id="no_telepon" name="no_telepon" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                     <label for="alamat">Alamat Lengkap</label>
-                    <textarea id="alamat" name="alamat" class="form-control" placeholder="Masukkan alamat instansi" required style="resize: none;"></textarea>
+                    <textarea id="alamat" name="alamat" class="form-control" required style="resize: none;"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -117,11 +117,22 @@
         <div>&copy; 2026 SiapDonor. All rights reserved.</div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script>
         const fileInput = document.getElementById('foto_profil');
         fileInput.addEventListener('change', function() {
+            // Mengecek apakah ukuran file lebih dari 2MB (2.000.000 bytes)
             if (this.files[0].size > 2000000) { 
-                alert("Ukuran file terlalu besar! Maksimal 2MB.");
+                // Menampilkan pop-up peringatan SweetAlert2
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Ukuran Terlalu Besar!',
+                    text: 'Maksimal ukuran file foto profil adalah 2MB.',
+                    confirmButtonColor: '#8b0000',
+                    confirmButtonText: 'Pilih Ulang'
+                });
+                // Mereset (mengosongkan) inputan file
                 this.value = "";
             }
         });

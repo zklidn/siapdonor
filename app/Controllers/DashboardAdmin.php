@@ -200,5 +200,4 @@ class DashboardAdmin extends BaseController
     {
         return view('Tampilan_Admin/notifikasi');
     }
-
 }
