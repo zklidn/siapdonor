@@ -1,0 +1,84 @@
+/* Judul Halaman */
+.page-title { 
+    margin-bottom: 25px; 
+    color: #111827; 
+    text-align: center; 
+}
+
+/* Kotak Form Utama */
+.form-card { 
+    background: white; 
+    border-radius: 12px; 
+    border: 1px solid #e5e7eb; 
+    padding: 30px; 
+    max-width: 600px; 
+    margin: 0 auto; /* Membuat kotak berada persis di tengah layar */
+}
+
+/* Jarak antar input */
+.form-group { 
+    margin-bottom: 15px; 
+}
+
+/* Baris khusus untuk input yang bersebelahan (Grid/Flex) */
+.form-row { 
+    margin-bottom: 15px; 
+    display: flex; 
+    gap: 15px; 
+}
+
+/* Kolom pembagi di dalam form-row */
+.form-col { 
+    flex: 1; 
+}
+
+/* Label teks di atas input */
+.form-label { 
+    display: block; 
+    font-size: 14px; 
+    font-weight: 600; 
+    color: #374151; 
+    margin-bottom: 8px; 
+}
+
+/* Kotak input teks dan dropdown */
+.form-control { 
+    width: 100%; 
+    padding: 12px 15px; 
+    border: 1px solid #d1d5db; 
+    border-radius: 8px; 
+    outline: none; 
+    font-size: 14px; 
+    background: white;
+}
+
+/* Area tombol di bagian bawah form */
+.form-actions { 
+    display: flex; 
+    gap: 10px; 
+    justify-content: flex-end; /* Mendorong tombol ke ujung kanan */
+    margin-top: 10px;
+}
+
+/* Tombol Batal */
+.btn-cancel { 
+    padding: 10px 20px; 
+    background: #f3f4f6; 
+    color: #4b5563; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: 600; 
+    font-size: 14px; 
+}
+
+/* Tombol Simpan */
+.btn-submit { 
+    padding: 10px 20px; 
+    background: #8b0000; 
+    color: white; 
+    border: none; 
+    border-radius: 8px; 
+    font-weight: 600; 
+    font-size: 14px; 
+    cursor: pointer; 
+}
