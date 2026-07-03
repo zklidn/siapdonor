@@ -35,6 +35,9 @@ $routes->post('/profile/simpan_biodata', 'Biodata::simpan_biodata');
 $routes->group('admin', ['filter' => 'auth:admin'], static function ($routes) {
     $routes->get('/', 'DashboardAdmin::admin');
     $routes->get('data_donor', 'DashboardAdmin::data_donor');
+    $routes->get('edit_donor/(:num)', 'DashboardAdmin::edit_donor/$1');
+    $routes->post('update_donor/(:num)', 'DashboardAdmin::update_donor/$1');
+    $routes->get('hapus_donor/(:num)', 'DashboardAdmin::hapus_donor/$1');
     $routes->get('kelola_user', 'DashboardAdmin::kelola_user');
     $routes->get('riwayat', 'DashboardAdmin::riwayat');
     $routes->post('donor', 'DashboardAdmin::donor');
@@ -60,18 +63,32 @@ $routes->group('rs',['filter' => 'auth:rumah_sakit'], static function ($routes) 
 
 
 /*------------------dashboard PMI---------------*/
-$routes->group('pmi',['filter' => 'auth:pmi'], static function ($routes) {
+// Tambahkan 'filter' => 'nama_filter_kamu' di dalam array
+$routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'auth:pmi'], static function ($routes) {
+
     $routes->get('/', 'DashboardPMI::pmi');
-    $routes->get('data_pendonor', 'DashboardPMI::data_pendonor');
-    $routes->get('laporan', 'DashboardPMI::laporan');
-    $routes->get('permintaan_darah', 'DashboardPMI::permintaan_darah');
-    $routes->get('riwayat_donor', 'DashboardPMI::riwayat_donor');
-    $routes->get('stok_darah', 'DashboardPMI::stok_darah');
-    $routes->get('tambah_donor', 'DashboardPMI::tambah_donor');
-    $routes->get('detail', 'DashboardPMI::detail');
-    $routes->get('notifikasi', 'DashboardPMI::notifikasi_pmi');
-    /*------------------post-----------------------------*/
+    
+    // Dashboard
+    $routes->get('dashboard', 'DashboardPMI::pmi');
+
+    // Pendonor
+    $routes->get('data_pendonor', 'Pendonor::pendonor');
+    $routes->get('tambah_donor', 'Pendonor::tambah');
+    $routes->get('riwayat_donor', 'Pendonor::riwayat');
+
+    // Permintaan Darah
+    $routes->get('permintaan_darah', 'Permintaandarah::permintaan');
+    $routes->get('detail_permintaan', 'Permintaandarah::detail');
+
+    // Stok Darah
+    $routes->get('stok_darah', 'Stockdarah::stock');
+
+    // Laporan & Notifikasi
+    $routes->get('laporan', 'Laporan::laporan');
+    $routes->get('notifikasi', 'Notifikasi::notifikasi');
 });
+    /*------------------post-----------------------------*/
+
 
 $routes->get('/logout', 'Login::logout');
 #akun gw
