@@ -23,15 +23,27 @@
 
     <div class="settings-card mb-30">
         <h3 class="card-title">Profil Pengguna</h3>
-        
+
         <form action="<?= base_url('admin/update_profil') ?>" method="POST" enctype="multipart/form-data">
             
             <div class="form-group">
                 <label class="form-label">Foto Profil</label>
                 <div class="foto-wrapper">
-                    <div class="foto-placeholder">
-                        <i class="fa-solid fa-user foto-icon"></i>
-                    </div>
+                <div class="foto-placeholder">
+
+                <?php if (!empty($user['file_foto'])): ?>
+
+                    <img
+                        src="data:image/jpeg;base64,<?= base64_encode($user['file_foto']); ?>"
+                        style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
+
+                <?php else: ?>
+
+                    <i class="fa-solid fa-user foto-icon"></i>
+
+                <?php endif; ?>
+
+                </div>
                     <div>
                         <input type="file" name="foto_profil" accept="image/*" class="foto-input">
                         <small class="foto-hint">Format: JPG, PNG (Maks 2MB)</small>
@@ -42,12 +54,12 @@
             <div class="grid-profil">
                 <div>
                     <label class="form-label">Nama Lengkap</label>
-                    <input type="text" name="nama" value="RS Bhakti Agung" class="form-control">
+                    <input type="text" name="nama" value="<?= esc($user['nama']) ?>" class="form-control">
                 </div>
 
                 <div>
                     <label class="form-label">Email</label>
-                    <input type="email" name="email" value="rsbhaktiagung@gmail.com" class="form-control">
+                    <input type="email" name="email" value="<?= esc($user['email']) ?>" class="form-control">
                 </div>
 
                 <div>
@@ -63,4 +75,32 @@
     </div>
 
 </main>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<?php if (session()->getFlashdata('success')) : ?>
+<script>
+Swal.fire({
+    toast: true,
+    position: 'top-end',
+    icon: 'success',
+    title: '<?= session()->getFlashdata('success') ?>',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true
+});
+</script>
+<?php endif; ?>
+
+<?php if (session()->getFlashdata('error')) : ?>
+<script>
+Swal.fire({
+    toast: true,
+    position: 'top-end',
+    icon: 'error',
+    title: '<?= session()->getFlashdata('error') ?>',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true
+});
+</script>
+<?php endif; ?>
 <?= $this->endSection() ?>

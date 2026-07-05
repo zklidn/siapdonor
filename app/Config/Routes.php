@@ -40,6 +40,7 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin','filter'    => '
     $routes->get('riwayat', 'RiwayatAdmin::riwayat');
     $routes->get('profil', 'ProfilAdmin::profil_admin');
     $routes->get('notifikasi', 'NotifikasiAdmin::notifikasi_admin');
+    $routes->post('update_profil', 'ProfilAdmin::update_profil');
 }); 
 
 /*------------------dashboard RS---------------*/
@@ -81,6 +82,7 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
     // Laporan & Notifikasi
     $routes->get('laporan', 'Laporan::laporan');
     $routes->get('notifikasi', 'Notifikasi::notifikasi');
+    $routes->get('profil', 'Profil::profil' );
 });
     /*------------------post-----------------------------*/
 
