@@ -1,19 +1,6 @@
-</div> <script>
-        document.getElementById('sidebarToggle').addEventListener('click', function() {
-            document.body.classList.toggle('ubah-tema');
-        });
+</div> <footer style="text-align: center; padding: 20px; background: #fff; color: #666; font-size: 14px; border-top: 1px solid #e5e7eb;">
+        &copy; 2026 SiapDonor. All rights reserved.
+    </footer>
 
-        document.getElementById('profileDropdownToggle').addEventListener('click', function(e) {
-            e.stopPropagation(); 
-            document.getElementById('profileDropdown').classList.toggle('show');
-        });
-
-        window.addEventListener('click', function() {
-            var dropdown = document.getElementById('profileDropdown');
-            if(dropdown && dropdown.classList.contains('show')) {
-                dropdown.classList.remove('show');
-            }
-        });
-    </script>
 </body>
 </html>
