@@ -1,0 +1,164 @@
+/* ================= GLOBAL RESET ELEMENT ================= */
+* { 
+    box-sizing: border-box;  /* Menghitung padding dan border ke dalam total lebar elemen */
+    margin: 0;               /* Menghapus margin bawaan browser */
+    padding: 0;              /* Menghapus padding bawaan browser */
+    font-family: 'Inter', sans-serif; /* Menerapkan font Inter ke seluruh halaman */
+}
+
+body { 
+    display: flex;           /* Mengaktifkan mode susunan flexbox */
+    flex-direction: column;  /* Menyusun konten utama mengalir vertikal ke bawah */
+    min-height: 100vh;       /* Tinggi minimal body setinggi layar monitor browser */
+    background-color: #fcfcfc; /* Mengatur warna dasar latar belakang putih bersih */
+}
+
+/* ================= COMPONENT NAVBAR UTAMA ================= */
+.navbar { 
+    display: flex;           /* Menyusun isi navigasi secara horizontal */
+    justify-content: space-between; /* Memisahkan logo di kiri dan menu tautan di ujung kanan */
+    align-items: center;     /* Membuat konten navigasi sejajar tegak di tengah */
+    padding: 15px 5%;        /* Jarak ruang atas-bawah dan kanan-kiri navigasi */
+    background: white;       /* Warna latar belakang navigasi putih solid */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Memberi bayangan tipis di bawah navbar */
+    position: sticky;        /* Memaku posisi navigasi agar tetap melayang di atas */
+    top: 0;                  /* Menempel di batas paling atas layar */
+    z-index: 100;            /* Mengamankan agar navbar berada di lapisan teratas */
+}
+
+.brand { 
+    display: flex;           /* Menyusun logo gambar dan teks berjejer ke samping */
+    align-items: center;     /* Menyelaraskan gambar dan teks secara horizontal */
+    gap: 12px;               /* Jarak celah antara gambar logo dan teks */
+    text-decoration: none;   /* Menghapus garis bawah tautan */
+}
+
+.logo-nav { 
+    height: 40px;            /* Mengunci tinggi logo agar presisi */
+    width: auto;             /* Lebar menyesuaikan proporsi tinggi gambar */
+    object-fit: contain;     /* Menjaga logo tidak gepeng atau terpotong */
+}
+
+.brand-text { 
+    display: flex; 
+    flex-direction: column;  /* Menyusun teks judul dan subjudul bertumpuk vertikal */
+    line-height: 1.2;        /* Mengatur kerapatan spasi baris teks */
+}
+
+.brand-text strong { 
+    font-size: 20px;         /* Ukuran font teks utama */
+    color: #333;             /* Warna teks abu-abu gelap */
+    font-weight: 700;        /* Menebalkan teks utama */
+}
+
+.brand-text span { 
+    font-size: 11px;         /* Ukuran teks subjudul */
+    color: #6b7280;          /* Warna teks abu-abu pudar */
+    font-weight: 400;        /* Ketebalan font standar */
+}
+
+.nav-links { 
+    display: flex;           /* Menyusun deretan link menu ke samping */
+    gap: 20px;               /* Jarak antar link menu */
+    align-items: center;     /* Menyelaraskan posisi link di tengah */
+}
+
+.nav-links a { 
+    text-decoration: none;   /* Menghapus garis bawah tautan menu */
+    color: #333;             /* Warna menu */
+    font-weight: 500;        /* Ketebalan font medium */
+    font-size: 14px;         /* Ukuran huruf link */
+}
+
+/* ================= TOMBOL UTAMA (BUTTONS) ================= */
+.btn-outline { 
+    border: 1px solid #8b0000; /* Garis tepi tipis marun */
+    color: #8b0000;          /* Warna teks marun */
+    padding: 8px 20px;       /* Jarak ruang dalam tombol */
+    border-radius: 6px;      /* Sudut lengkung tombol */
+    font-weight: 600;        /* Font tebal semi-bold */
+    text-decoration: none; 
+    transition: 0.2s;        /* Animasi halus saat disentuh mouse */
+}
+
+.btn-outline:hover { 
+    background: #fff0f0;     /* Efek warna memerah tipis saat di-hover */
+}
+
+.btn-solid { 
+    background: #8b0000;     /* Warna latar marun solid */
+    color: white !important; /* Memaksa warna teks menjadi putih */
+    padding: 8px 20px; 
+    border-radius: 6px; 
+    font-weight: 600; 
+    text-decoration: none; 
+    transition: 0.2s; 
+}
+
+.btn-solid:hover { 
+    background: #6b0000;     /* Merah marun menggelap saat di-hover mouse */
+}
+
+/* ================= WRAPPER STRUKTUR LOGIN ================= */
+.login-section {
+    flex: 1;                 /* Memaksa area login menghabiskan sisa tinggi layar */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; /* Memosisikan kotak login tepat di tengah-tengah halaman */
+    background-image: var(--bg-image); /* Memanggil gambar background dinamis dari file view */
+    background-size: cover;  /* Memaksa gambar menutupi seluruh background secara proporsional */
+    background-position: center; /* Memosisikan poros gambar tepat di tengah */
+    position: relative;      /* Sebagai jangkar posisi lapisan overlay di bawahnya */
+    padding: 40px 20px; 
+}
+
+.login-section::before {
+    content: "";             /* Membentuk elemen visual bayangan baru */
+    position: absolute;      /* Mengunci posisi agar menutup seluruh area section */
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.6); /* Lapisan putih transparan tingkat kepekatan 60% */
+    z-index: 1;              /* Berada di atas gambar background utama */
+}
+
+/* ================= AUTH KOTAK LOGIN CARD ================= */
+.auth-card { 
+    position: relative; 
+    z-index: 2;              /* Memaksa kotak login naik berada di atas lapisan transparan */
+    background-color: #ffffff; 
+    width: 100%; 
+    max-width: 420px;        /* Batas lebar maksimal kotak form login */
+    padding: 40px 35px;      /* Padding dalam ruangan form */
+    border-radius: 24px;     /* Kelengkungan sudut elemen kotak modern */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Efek bayangan halus */
+}
+
+.brand-header { text-align: center; margin-bottom: 30px; }
+.brand-logo-container { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 5px; }
+.brand-icon { height: 35px; width: auto; object-fit: contain; }
+.brand-name { font-size: 22px; font-weight: 700; color: #333; }
+.brand-subtitle { font-size: 11px; color: #6b7280; }
+
+.form-header { text-align: center; margin-bottom: 25px; }
+.form-header h2 { font-size: 22px; font-weight: 600; color: #111827; margin-bottom: 8px; }
+.form-header p { font-size: 14px; color: #4b5563; }
+
+/* ================= ELEMEN FORM DAN INPUTAN ================= */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; }
+.form-control { width: 100%; padding: 14px 16px; border: 1.5px solid #e5e7eb; border-radius: 10px; font-size: 14px; color: #1f2937; transition: all 0.2s; font-family: 'Inter', sans-serif; }
+.form-control:focus { outline: none; border-color: #8b0000; box-shadow: 0 0 0 3px rgba(139,0,0,0.1); } /* Efek pendaran marun saat diklik */
+
+.password-wrapper { position: relative; }
+.password-toggle { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #6b7280; cursor: pointer; border: none; background: none; font-size: 16px; }
+
+select.form-control { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; cursor: pointer; }
+
+.btn-primary { width: 100%; background-color: #8b0000; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.2s; font-family: 'Inter', sans-serif; }
+.btn-primary:hover { background-color: #6b0000; transform: translateY(-1px); } /* Efek sedikit terangkat saat disentuh mouse */
+
+.auth-footer { text-align: center; margin-top: 24px; font-size: 14px; color: #4b5563; }
+.auth-footer a { color: #8b0000; font-weight: 600; text-decoration: none; }
+.auth-footer a:hover { text-decoration: underline; }
+
+/* ================= FOOTER HALAMAN ================= */
+.footer { background: #8b0000; color: white; padding: 20px 5%; display: flex; justify-content: center; align-items: center; font-size: 13px; }

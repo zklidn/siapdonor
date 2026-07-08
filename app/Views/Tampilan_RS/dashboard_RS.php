@@ -1,252 +1,203 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
-<aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
-        <i class="fa-solid fa-house"></i> Dashboard
-    </a>
-    <a href="<?= base_url('rs/cari_donor') ?>" class="menu-item">
-        <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
-    </a>
-    <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
-        <i class="fa-solid fa-file-invoice"></i> Permintaan Darah
-    </a>
-    <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
-        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
-    </a>
-    <a href="<?= base_url('rs/laporan_rs') ?>" class="menu-item">
-        <i class="fa-solid fa-file-lines"></i> Laporan
-    </a>
-</aside>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/dashboard_rs.css') ?>">
 
-<main class="content-area">
-    
-    <?php
-        $nama_hari = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
-        $nama_bulan = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-        
-        $hari_ini = $nama_hari[date('w')];
-        $tanggal_ini = date('d');
-        $bulan_ini = $nama_bulan[date('n')];
-        $tahun_ini = date('Y');
-        
-        $tanggal_sekarang = $hari_ini . ", " . $tanggal_ini . " " . $bulan_ini . " " . $tahun_ini;
-    ?>
-
-    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px;">
-        <div>
-            <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px; font-weight: 700;">Dashboard</h1>
-            <p style="color: #6b7280; font-size: 14px;">Selamat datang, RS Wahidin!</p>
-        </div>
-        <div style="color: #6b7280; font-size: 13px; display: flex; align-items: center; gap: 8px; background: white; padding: 8px 15px; border-radius: 8px; border: 1px solid #e5e7eb;">
-            <i class="fa-regular fa-calendar"></i> <?= $tanggal_sekarang ?>
-        </div>
-    </div>
-    
-    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 30px;">
-        
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 16px;">
-            <div style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
-                <i class="fa-solid fa-calendar-day"></i>
-            </div>
-            <div>
-                <p style="color: #4b5563; font-size: 12px; font-weight: 600; margin: 0 0 2px 0;">Kebutuhan Darah Hari Ini</p>
-                <h3 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 2px 0; line-height: 1.2;"><?= isset($kebutuhan_hari_ini) ? $kebutuhan_hari_ini : '18' ?></h3>
-                <p style="color: #9ca3af; font-size: 11px; margin: 0;">Pasien membutuhkan</p>
-            </div>
-        </div>
-
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 16px;">
-            <div style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
-                <i class="fa-solid fa-spinner"></i>
-            </div>
-            <div>
-                <p style="color: #4b5563; font-size: 12px; font-weight: 600; margin: 0 0 2px 0;">Permintaan Aktif</p>
-                <h3 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 2px 0; line-height: 1.2;"><?= isset($permintaan_aktif) ? $permintaan_aktif : '7' ?></h3>
-                <p style="color: #9ca3af; font-size: 11px; margin: 0;">Permintaan sedang diprosses</p>
-            </div>
-        </div>
-
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 16px;">
-            <div style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
-                <i class="fa-solid fa-users"></i>
-            </div>
-            <div>
-                <p style="color: #4b5563; font-size: 12px; font-weight: 600; margin: 0 0 2px 0;">Donor Tersedia</p>
-                <h3 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 2px 0; line-height: 1.2;"><?= isset($donor_tersedia) ? $donor_tersedia : '124' ?></h3>
-                <p style="color: #9ca3af; font-size: 11px; margin: 0;">Donor siap dihubungi</p>
-            </div>
-        </div>
-
-        <div style="background: white; padding: 20px; border-radius: 12px; border: 1px solid #e5e7eb; display: flex; align-items: center; gap: 16px;">
-            <div style="width: 52px; height: 52px; border-radius: 50%; border: 1px solid #fca5a5; background: #fff5f5; color: #8b0000; display: flex; justify-content: center; align-items: center; font-size: 20px; flex-shrink: 0;">
-                <i class="fa-solid fa-circle-check"></i>
-            </div>
-            <div>
-                <p style="color: #4b5563; font-size: 12px; font-weight: 600; margin: 0 0 2px 0;">Permintaan Selesai</p>
-                <h3 style="font-size: 24px; font-weight: 700; color: #111827; margin: 0 0 2px 0; line-height: 1.2;"><?= isset($permintaan_selesai) ? $permintaan_selesai : '156' ?></h3>
-                <p style="color: #9ca3af; font-size: 11px; margin: 0;">Bulan ini</p>
-            </div>
-        </div>
-
+<div class="container-fluid py-2 bootstrap-wrapper">
+    <div class="header-group-clean">
+        <h1 class="page-title">Dashboard</h1>
+        <p class="text-muted small mb-0">Selamat datang, <?= session()->get('nama') ?? 'Rumah Sakit' ?>!</p>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; margin-bottom: 25px;">
-        
-        <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Kebutuhan Darah Mendesak</h3>
-                <a href="#" style="color: #8b0000; font-size: 12px; font-weight: 600; text-decoration: none;">Lihat Semua <i class="fa-solid fa-angle-down"></i></a>
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="card card-stat h-100">
+                <div class="card-body">
+                    <h6 class="text-muted fw-normal small mb-2">Total Permintaan</h6>
+                    <h2 class="display-6 fw-bold mb-1 text-dark"><?= $total_permintaan ?? 0 ?></h2>
+                    <small class="text-muted">Semua Waktu</small>
+                </div>
             </div>
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
-                <thead>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">Gol. Darah</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Jumlah Kantong</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">Pasien</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Prioritas</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 12px 0;"><span style="background: #fee2e2; color: #8b0000; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-size: 11px; border: 1px solid #fca5a5;">O+</span></td>
-                        <td style="padding: 12px 0; text-align: center; font-weight: 600;">3</td>
-                        <td style="padding: 12px 0; color: #374151;">Andi Saputra</td>
-                        <td style="padding: 12px 0; text-align: center;"><span style="background: #fee2e2; color: #dc2626; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;">Tinggi</span></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 12px 0;"><span style="background: #fee2e2; color: #8b0000; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-size: 11px; border: 1px solid #fca5a5;">A-</span></td>
-                        <td style="padding: 12px 0; text-align: center; font-weight: 600;">2</td>
-                        <td style="padding: 12px 0; color: #374151;">Siti Aisyah</td>
-                        <td style="padding: 12px 0; text-align: center;"><span style="background: #fee2e2; color: #dc2626; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;">Tinggi</span></td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 12px 0;"><span style="background: #fee2e2; color: #8b0000; font-weight: 700; padding: 3px 8px; border-radius: 5px; font-size: 11px; border: 1px solid #fca5a5;">B+</span></td>
-                        <td style="padding: 12px 0; text-align: center; font-weight: 600;">1</td>
-                        <td style="padding: 12px 0; color: #374151;">Dewi Lestari</td>
-                        <td style="padding: 12px 0; text-align: center;"><span style="background: #ffedd5; color: #ea580c; padding: 3px 10px; border-radius: 6px; font-size: 11px; font-weight: 700;">Sedang</span></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-
-        <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Permintaan Darah Terbaru</h3>
-                <a href="#" style="color: #8b0000; font-size: 12px; font-weight: 600; text-decoration: none;">Lihat Semua <i class="fa-solid fa-angle-down"></i></a>
+        <div class="col-md-3">
+            <div class="card card-stat h-100">
+                <div class="card-body">
+                    <h6 class="text-muted fw-normal small mb-2">Diproses PMI</h6>
+                    <h2 class="display-6 fw-bold mb-1 text-dark"><?= $total_proses ?? 0 ?></h2>
+                    <small class="text-muted">Sedang diproses</small>
+                </div>
             </div>
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
-                <thead>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">No</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">Tanggal</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Gol. Darah</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Jumlah</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 11px 0; color: #6b7280;">1</td>
-                        <td style="padding: 11px 0; color: #374151;">20 Mei 2026, 10:30</td>
-                        <td style="padding: 11px 0; text-align: center; font-weight: 700;">O+</td>
-                        <td style="padding: 11px 0; text-align: center; color: #4b5563;">3 Kantong</td>
-                        <td style="padding: 11px 0; text-align: center;"><span style="color: #ea580c; font-weight: 600;">Proses</span></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 11px 0; color: #6b7280;">2</td>
-                        <td style="padding: 11px 0; color: #374151;">20 Mei 2026, 09:15</td>
-                        <td style="padding: 11px 0; text-align: center; font-weight: 700;">A-</td>
-                        <td style="padding: 11px 0; text-align: center; color: #4b5563;">2 Kantong</td>
-                        <td style="padding: 11px 0; text-align: center;"><span style="color: #ea580c; font-weight: 600;">Proses</span></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 11px 0; color: #6b7280;">3</td>
-                        <td style="padding: 11px 0; color: #374151;">20 Mei 2026, 08:45</td>
-                        <td style="padding: 11px 0; text-align: center; font-weight: 700;">B+</td>
-                        <td style="padding: 11px 0; text-align: center; color: #4b5563;">4 Kantong</td>
-                        <td style="padding: 11px 0; text-align: center;"><span style="color: #0284c7; font-weight: 600;">Baru</span></td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 11px 0; color: #6b7280;">4</td>
-                        <td style="padding: 11px 0; color: #374151;">19 Mei 2026, 14:20</td>
-                        <td style="padding: 11px 0; text-align: center; font-weight: 700;">AB+</td>
-                        <td style="padding: 11px 0; text-align: center; color: #4b5563;">2 Kantong</td>
-                        <td style="padding: 11px 0; text-align: center;"><span style="color: #16a34a; font-weight: 600;">Selesai</span></td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
-
+        <div class="col-md-3">
+            <div class="card card-stat h-100">
+                <div class="card-body">
+                    <h6 class="text-muted fw-normal small mb-2">Donor Ditemukan</h6>
+                    <h2 class="display-6 fw-bold mb-1 text-dark"><?= $total_ditemukan ?? 0 ?></h2>
+                    <small class="text-muted">Oleh PMI</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card card-stat h-100">
+                <div class="card-body">
+                    <h6 class="text-muted fw-normal small mb-2">Selesai</h6>
+                    <h2 class="display-6 fw-bold mb-1 text-dark"><?= $total_selesai ?? 0 ?></h2>
+                    <small class="text-muted">Permintaan selesai</small>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 20px;">
-        
-        <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Donor Terdekat Tersedia</h3>
-                <a href="#" style="color: #8b0000; font-size: 12px; font-weight: 600; text-decoration: none;">Lihat Semua <i class="fa-solid fa-angle-down"></i></a>
+    <div class="row g-4">
+        <div class="col-lg-8 d-flex flex-column gap-4">
+            <div class="card card-content">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-3 text-dark fs-6">Permintaan Terbaru</h5>
+                    <div class="table-responsive">
+                        <table class="table align-middle custom-table mb-0">
+                            <thead>
+                                <tr>
+                                    <th>ID Permintaan</th>
+                                    <th>Tanggal</th>
+                                    <th>Pasien</th>
+                                    <th>Gol. Darah</th>
+                                    <th>Kantong</th>
+                                    <th>Status</th>
+                                    <th>Prioritas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (!empty($permintaan_terbaru) && is_array($permintaan_terbaru)): ?>
+                                    <?php foreach ($permintaan_terbaru as $row): ?>
+                                    <tr>
+                                        <td><?= $row['id_permintaan'] ?></td>
+                                        <td class="text-muted"><?= date('d M Y, H:i', strtotime($row['tanggal'])) ?></td>
+                                        <td class="fw-medium text-dark"><?= $row['pasien'] ?></td>
+                                        <td><span class="text-danger fw-bold"><?= $row['gol_darah'] . $row['rhesus'] ?></span></td>
+                                        <td><?= $row['jumlah'] ?></td>
+                                        <td>
+                                            <?php if ($row['status'] == 'Diproses'): ?>
+                                                <span class="badge badge-status bg-proses">Diproses</span>
+                                            <?php else: ?>
+                                                <span class="badge badge-status bg-selesai">Selesai</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($row['prioritas'] == 'Urgent'): ?>
+                                                <span class="badge badge-priority bg-prio-urgent">URGENT</span>
+                                            <?php elseif ($row['prioritas'] == 'Tinggi'): ?>
+                                                <span class="badge badge-priority bg-prio-tinggi">TINGGI</span>
+                                            <?php elseif ($row['prioritas'] == 'Normal'): ?>
+                                                <span class="badge badge-priority bg-prio-normal">NORMAL</span>
+                                            <?php else: ?>
+                                                <span class="badge badge-priority bg-prio-rendah">RENDAH</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <tr>
+                                        <td colspan="7" class="text-center text-muted py-3">Tidak ada permintaan terbaru.</td>
+                                    </tr>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 13px;">
-                <thead>
-                    <tr style="border-bottom: 1px solid #e5e7eb;">
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">Nama</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Gol. Darah</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">Lokasi</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500;">Jarak</th>
-                        <th style="padding-bottom: 10px; color: #6b7280; font-weight: 500; text-align: center;">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    // Backend passing data donor terdekat ter-filter berdasar kecamatan palu/sigi/donggala
-                    $donor_terdekat = isset($list_donor_terdekat) ? $list_donor_terdekat : [
-                        ['nama' => 'Andi Pratama', 'gol' => 'O+', 'lokasi' => 'Mantikulore, Palu', 'jarak' => '2.4 km'],
-                        ['nama' => 'Siti Nurhaliza', 'gol' => 'A-', 'lokasi' => 'Palu Barat, Palu', 'jarak' => '3.1 km'],
-                        ['nama' => 'Rizky Maulana', 'gol' => 'B+', 'lokasi' => 'Biromaru, Sigi', 'jarak' => '4.2 km'],
-                        ['nama' => 'Dewi Lestari', 'gol' => 'AB+', 'lokasi' => 'Palu Selatan, Palu', 'jarak' => '4.8 km'],
-                        ['nama' => 'Fajar Nugroho', 'gol' => 'A-', 'lokasi' => 'Banawa, Donggala', 'jarak' => '5.3 km']
-                    ];
-                    foreach ($donor_terdekat as $d): ?>
-                    <tr style="border-bottom: 1px solid #f3f4f6;">
-                        <td style="padding: 11px 0; display: flex; align-items: center; gap: 8px; font-weight: 500; color: #111827;">
-                            <div style="width: 24px; height: 24px; border-radius: 50%; background: #e5e7eb; display: flex; align-items: center; justify-content: center; color: #9ca3af; font-size: 11px;"><i class="fa-solid fa-user"></i></div>
-                            <?= $d['nama'] ?>
-                        </td>
-                        <td style="padding: 11px 0; text-align: center;"><span style="background: #fee2e2; color: #8b0000; font-weight: 700; padding: 2px 6px; border-radius: 5px; font-size: 11px; border: 1px solid #fca5a5;"><?= $d['gol'] ?></span></td>
-                        <td style="padding: 11px 0; color: #4b5563;"><?= $d['lokasi'] ?></td>
-                        <td style="padding: 11px 0; color: #4b5563;"><?= $d['jarak'] ?></td>
-                        <td style="padding: 11px 0; text-align: center;"><span style="background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600;">Tersedia</span></td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+
+            <div class="card card-content">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold text-dark fs-6 mb-0">Kebutuhan Darah Mendesak</h5>
+                        <a href="<?= base_url('rs/permintaan_darah') ?>" class="text-decoration-none text-danger fw-semibold small link-maroon">Lihat Semua</a>
+                    </div>
+                    <div class="row row-cols-5 g-3 text-center">
+                        <?php 
+                        // Data default penampung jika database kosong
+                        $mendesak = $kebutuhan_mendesak ?? ['O+' => 0, 'A-' => 0, 'B+' => 0, 'AB-' => 0, 'O-' => 0];
+                        foreach ($mendesak as $gol => $kantong): 
+                        ?>
+                        <div class="col">
+                            <div class="p-3 rounded bg-light border-0 item-mendesak position-relative">
+                                <i class="fa-solid fa-droplet text-danger fs-3 d-block mb-2"></i>
+                                <span class="blood-text"><?= $gol ?></span>
+                                <p class="small fw-medium mb-0 mt-2 text-dark"><?= $kantong ?> Kantong</p>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div style="background: white; padding: 24px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h3 style="font-size: 16px; font-weight: 700; color: #111827; margin: 0;">Kebutuhan Darah Berdasarkan Golongan</h3>
-                <a href="#" style="color: #6b7280; font-size: 12px; text-decoration: none;">Lihat Semua <i class="fa-solid fa-angle-down"></i></a>
+        <div class="col-lg-4 d-flex flex-column gap-4">
+            <div class="card card-content">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-4 text-dark fs-6">Ringkasan Status</h5>
+                    <div class="position-relative chart-wrapper mx-auto mb-4" style="width: 140px; height: 140px;">
+                        <svg viewBox="0 0 42 42" class="w-100 h-100 transform-rotate">
+                            <circle cx="21" cy="21" r="15.915" fill="#fff"></circle>
+                            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#f0f2f5" stroke-width="4.5"></circle>
+                            
+                            <?php
+                            // Perhitungan persentase Donut Chart secara otomatis & aman dari error pembagian nol
+                            $total = $total_permintaan ?? 0;
+                            $p_proses = $total > 0 ? round(($total_proses / $total) * 100) : 0;
+                            $p_ditemukan = $total > 0 ? round(($total_ditemukan / $total) * 100) : 0;
+                            $p_selesai = $total > 0 ? round(($total_selesai / $total) * 100) : 0;
+                            
+                            $offset_proses = 100;
+                            $offset_ditemukan = 100 - $p_proses;
+                            $offset_selesai = $offset_ditemukan - $p_ditemukan;
+                            ?>
+                            
+                            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#2196F3" stroke-width="4.5" stroke-dasharray="<?= $p_proses ?> <?= 100 - $p_proses ?>" stroke-dashoffset="<?= $offset_proses ?>"></circle>
+                            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#4CAF50" stroke-width="4.5" stroke-dasharray="<?= $p_ditemukan ?> <?= 100 - $p_ditemukan ?>" stroke-dashoffset="<?= $offset_ditemukan ?>"></circle>
+                            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#00875A" stroke-width="4.5" stroke-dasharray="<?= $p_selesai ?> <?= 100 - $p_selesai ?>" stroke-dashoffset="<?= $offset_selesai ?>"></circle>
+                        </svg>
+                        <div class="position-absolute top-50 start-50 translate-middle text-center">
+                            <span class="d-block fw-bold fs-4 lh-sm text-dark"><?= $total ?></span>
+                            <span class="text-muted extra-small">Total</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column gap-2">
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="dot-indicator bg-primary"></span>
+                                <span class="text-muted">Diproses</span>
+                            </div>
+                            <span class="fw-medium text-dark"><?= $total_proses ?? 0 ?> (<?= $p_proses ?>%)</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="dot-indicator bg-success"></span>
+                                <span class="text-muted">Donor Ditemukan</span>
+                            </div>
+                            <span class="fw-medium text-dark"><?= $total_ditemukan ?? 0 ?> (<?= $p_ditemukan ?>%)</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center small">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="dot-indicator bg-emerald"></span>
+                                <span class="text-muted">Selesai</span>
+                            </div>
+                            <span class="fw-medium text-dark"><?= $total_selesai ?? 0 ?> (<?= $p_selesai ?>%)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; text-align: center;">
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">A+</div><span style="font-size: 11px; color: #6b7280;">24 Ktg</span></div>
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">A-</div><span style="font-size: 11px; color: #6b7280;">12 Ktg</span></div>
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">B+</div><span style="font-size: 11px; color: #6b7280;">18 Ktg</span></div>
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">B-</div><span style="font-size: 11px; color: #6b7280;">9 Ktg</span></div>
-                
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">O+</div><span style="font-size: 11px; color: #6b7280;">28 Ktg</span></div>
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">O-</div><span style="font-size: 11px; color: #6b7280;">11 Ktg</span></div>
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">AB+</div><span style="font-size: 11px; color: #6b7280;">7 Ktg</span></div>
-                <div><i class="fa-solid fa-droplet" style="color: #8b0000; font-size: 16px; margin-bottom: 4px;"></i> <div style="font-size: 12px; font-weight: 700; color: #111827;">AB-</div><span style="font-size: 11px; color: #6b7280;">4 Ktg</span></div>
+
+            <div class="card card-content bg-white">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-2 text-dark fs-6">Informasi</h5>
+                    <p class="text-muted small mb-0 lh-base">Permintaan darah yang dikirim akan langsung diterima oleh PMI untuk diproses.</p>
+                </div>
             </div>
         </div>
-
     </div>
-
-    <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
-        &copy; 2026 SiapDonor. All rights reserved.
-    </div>
+</div>
 
 </main>
 <?= $this->endSection() ?>
