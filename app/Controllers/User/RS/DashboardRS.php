@@ -9,14 +9,13 @@ class DashboardRS extends BaseController
     // Halaman utama Dashboard RS
     public function rs()
     {
-        // Memanggil file: app/Views/Tampilan_RS/dashboard_RS.php
         return view('Tampilan_RS/dashboard_RS');
     }
 
     // Halaman Cari Donor
     public function cari_donor()
     {
-        return view('Tampilan_RS/cari_donor');
+        return view('Tampilan_RS/permintaan_darah');
     }
 
     // Halaman Data Pasien
@@ -25,53 +24,60 @@ class DashboardRS extends BaseController
         return view('Tampilan_RS/data_pasien');
     }
 
-    // Halaman Permintaan Darah
-    public function permintaan_darah()
+    // Halaman Kelola Permintaan Darah RS
+    public function kelola_permintaan()
     {
         $status = $this->request->getGet('status') ?? 'aktif';
-    
-        // 1. Inisialisasi Model yang sudah di-import di atas
         $model = new PermintaanDarahModel();
         
-        // 2. Kondisikan query menggunakan Model berdasarkan tab yang diklik
         if ($status == 'aktif') {
-            // Menampilkan yang statusnya 'Baru' atau 'Proses'
             $model->whereIn('status', ['Baru', 'Proses']);
         } elseif ($status == 'selesai') {
-            // Menampilkan yang statusnya 'Selesai'
             $model->where('status', 'Selesai');
         } elseif ($status == 'draft') {
-            // Menampilkan yang statusnya 'Draft'
             $model->where('status', 'Draft');
         }
-        // Jika status 'semua', tidak di-filter (menampilkan semua data)
     
-        // 3. Ambil data hasil filter dari database
         $data['permintaan_darah_all'] = $model->findAll();
-    
         return view('Tampilan_RS/permintaan_darah', $data);
     }
 
     // Halaman Riwayat Permintaan
     public function riwayat_permintaan()
     {
-        // Pastikan nama fail di bawah sama persis dengan yang ada dalam folder anda
         return view('Tampilan_RS/riwayat_permintaan'); 
     }
 
-     public function laporan_rs()
+    // Halaman Laporan RS
+    public function laporan_rs()
     {
-        // Pastikan nama fail di bawah sama persis dengan yang ada dalam folder anda
         return view('Tampilan_RS/laporan_RS'); 
     }
 
+    // Halaman Buat Permintaan Baru
     public function buat_permintaan()
     {
         return view('Tampilan_RS/buat_permintaan');
     }
 
+    // Halaman Notifikasi
     public function notifikasi_rs()
     {
         return view('Tampilan_RS/notifikasi');
+    }
+
+    // Halaman Settings
+    public function settings_rs()
+    {
+        return view('Tampilan_RS/settings');
+    }
+
+    // FUNGSI BARU: Memanggil file views detail_permintaan.php
+    public function detail_permintaan($id)
+    {
+        // Parameter $id dikirim agar nanti tim backend bisa mengambil data spesifik berdasarkan ID
+        $data['id_permintaan'] = $id;
+        
+        return view('Tampilan_RS/detail_permintaan', $data);
     }
 }

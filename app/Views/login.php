@@ -1,112 +1,27 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masuk - SiapDonor</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Masuk - SiapDonor</title> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <link rel="stylesheet" href="<?= base_url('login.css') ?>">
+
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { display: flex; flex-direction: column; min-height: 100vh; background-color: #fcfcfc; }
-
-        /* ================= NAVBAR (Sama persis dengan awalan) ================= */
-        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .logo-nav { height: 40px; width: auto; object-fit: contain; }
-        .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
-        .brand-text strong { font-size: 20px; color: #333; font-weight: 700; }
-        .brand-text span { font-size: 11px; color: #6b7280; font-weight: 400; }
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: #333; font-weight: 500; font-size: 14px; }
-        .btn-outline { border: 1px solid #8b0000; color: #8b0000; padding: 8px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.2s; }
-        .btn-outline:hover { background: #fff0f0; }
-        .btn-solid { background: #8b0000; color: white !important; padding: 8px 20px; border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.2s; }
-        .btn-solid:hover { background: #6b0000; }
-
-        /* ================= AREA BACKGROUND LOGIN ================= */
         .login-section {
-            flex: 1; /* Mengisi sisa ruang di bawah navbar */
-            display: flex;
-            align-items: center;
-            justify-content: center; /* Membuat form tepat di tengah */
-            background-image: url('<?= base_url("awalan.png") ?>');
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            padding: 40px 20px;
+            --bg-image: url('<?= base_url("awalan.png") ?>');
         }
-        
-        /* Lapisan putih transparan agar kotak login mudah dibaca di atas foto */
-        .login-section::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(255, 255, 255, 0.6); 
-            z-index: 1;
-        }
-
-        /* ================= KOTAK FORM LOGIN ================= */
-        .auth-card { 
-            position: relative;
-            z-index: 2; /* Berada di atas background transparan */
-            background-color: #ffffff; 
-            width: 100%; 
-            max-width: 420px; 
-            padding: 40px 35px; 
-            border-radius: 24px; /* Sudut melengkung elegan (tidak tajam) */
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Bayangan halus */
-        }
-        
-        /* Header dalam form dengan logo barumu */
-        .brand-header { text-align: center; margin-bottom: 30px; }
-        .brand-logo-container { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 5px; }
-        .brand-icon { height: 35px; width: auto; object-fit: contain; } /* Ikon love */
-        .brand-name { font-size: 22px; font-weight: 700; color: #333; }
-        .brand-subtitle { font-size: 11px; color: #6b7280; }
-        
-        .form-header { text-align: center; margin-bottom: 25px; }
-        .form-header h2 { font-size: 22px; font-weight: 600; color: #111827; margin-bottom: 8px; }
-        .form-header p { font-size: 14px; color: #4b5563; }
-        
-        /* Input form konsisten dengan font Inter */
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px; }
-        .form-control { width: 100%; padding: 14px 16px; border: 1.5px solid #e5e7eb; border-radius: 10px; font-size: 14px; color: #1f2937; transition: all 0.2s; font-family: 'Inter', sans-serif; }
-        .form-control:focus { outline: none; border-color: #8b0000; box-shadow: 0 0 0 3px rgba(139,0,0,0.1); }
-        
-        .password-wrapper { position: relative; }
-        .password-toggle { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: #6b7280; cursor: pointer; border: none; background: none; font-size: 16px; }
-        
-        select.form-control { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 14px center; background-size: 16px; cursor: pointer; }
-        
-        .btn-primary { width: 100%; background-color: #8b0000; color: white; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: 0.2s; font-family: 'Inter', sans-serif; }
-        .btn-primary:hover { background-color: #6b0000; transform: translateY(-1px); }
-        
-        .auth-footer { text-align: center; margin-top: 24px; font-size: 14px; color: #4b5563; }
-        .auth-footer a { color: #8b0000; font-weight: 600; text-decoration: none; }
-        .auth-footer a:hover { text-decoration: underline; }
-
-        /* Footer */
-        .footer { background: #8b0000; color: white; padding: 20px 5%; display: flex; justify-content: center; align-items: center; font-size: 13px; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <a href="/" class="brand">
-            <img src="<?= base_url('logo.jpg') ?>" alt="Logo SiapDonor" class="logo-nav">
-            <div class="brand-text">
-                <strong>SiapDonor</strong>
-                <span>Sistem Informasi Donor Darah</span>
-            </div>
+            <img src="<?= base_url('logo.jpg') ?>" alt="Logo SiapDonor" class="logo-nav"> <div class="brand-text">
+                <strong>SiapDonor</strong> <span>Sistem Informasi Donor Darah</span> </div>
         </a>
         <div class="nav-links">
-            <a href="#">Tentang Kami</a>
-            <a href="/login" class="btn-solid">Masuk</a>
-            <a href="/register" class="btn-outline">Daftar Akun</a>
-        </div>
+            <a href="#">Tentang Kami</a> <a href="/login" class="btn-solid">Masuk</a> <a href="/register" class="btn-outline">Daftar Akun</a> </div>
     </nav>
 
     <section class="login-section">
@@ -114,8 +29,7 @@
             
             <div class="brand-header">
                 <div class="brand-logo-container">
-                    <img src="<?= base_url('logo.jpg') ?>" alt="Ikon SiapDonor" class="brand-icon">
-                    <span class="brand-name">SiapDonor</span>
+                    <img src="<?= base_url('logo.jpg') ?>" alt="Ikon SiapDonor" class="brand-icon"> <span class="brand-name">SiapDonor</span>
                 </div>
                 <div class="brand-subtitle">Sistem Informasi Donor Darah</div>
             </div>
@@ -125,26 +39,21 @@
                 <p>Silakan masuk untuk melanjutkan</p>
             </div>
 
-            <!-- Tambahkan di sini -->
             <?php if(session()->getFlashdata('error')) : ?>
-                <div style="background:#fee2e2;color:#b91c1c;padding:10px;border-radius:8px;margin-bottom:15px;">
-                    <?=session()->getFlashdata('error') ?>
-                </div>
+                <div style="background:#fee2e2; color:#b91c1c; padding:10px; border-radius:8px; margin-bottom:15px; font-size:13px; font-weight:500;">
+                    <?= session()->getFlashdata('error') ?> </div>
             <?php endif; ?>
 
             <form action="<?= base_url('login/proses') ?>" method="POST">
+                
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email" required>
-                </div>
+                    <label for="email">Email</label> <input type="email" id="email" name="email" class="form-control" placeholder="Masukkan email" required> </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="password-wrapper">
-                        <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required>
-                        <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
-                            <i class="fa-regular fa-eye-slash"></i>
-                        </button>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Masukkan password" required> <button type="button" class="password-toggle" onclick="togglePassword('password', this)">
+                            <i class="fa-regular fa-eye-slash"></i> </button>
                     </div>
                 </div>
 
@@ -158,21 +67,23 @@
     </section>
 
     <footer class="footer">
-        <div>&copy; 2026 SiapDonor. All rights reserved.</div>
-    </footer>
+        <div>&copy; 2026 SiapDonor. All rights reserved.</div> </footer>
 
     <script>
         function togglePassword(inputId, button) {
-            const input = document.getElementById(inputId);
-            const icon = button.querySelector('i');
+            const input = document.getElementById(inputId); // Menangkap elemen input password berdasarkan ID-nya
+            const icon = button.querySelector('i'); // Menangkap elemen tag icon <i> di dalam tombol
+            
+            // Jika tipenya saat ini adalah password (tersembunyi bintang-bintang)
             if (input.type === 'password') {
-                input.type = 'text';
-                icon.classList.remove('fa-eye-slash');
-                icon.classList.add('fa-eye');
+                input.type = 'text'; // Ubah tipenya jadi teks biasa agar karakternya kelihatan
+                icon.classList.remove('fa-eye-slash'); // Hapus icon mata dicoret
+                icon.classList.add('fa-eye'); // Ganti jadi icon mata terbuka
             } else {
-                input.type = 'password';
-                icon.classList.remove('fa-eye');
-                icon.classList.add('fa-eye-slash');
+                // Jika tipenya sudah teks terbuka, kembalikan menjadi tersembunyi
+                input.type = 'password'; 
+                icon.classList.remove('fa-eye'); // Hapus icon mata terbuka
+                icon.classList.add('fa-eye-slash'); // Ganti jadi icon mata dicoret kembali
             }
         }
     </script>
