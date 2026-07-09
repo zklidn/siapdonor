@@ -16,7 +16,6 @@
             </ol>
         </nav>
     </div>
-
     <div class="row g-3 mb-4">
         <div class="col-md-5">
             <div class="input-group search-box">
@@ -42,7 +41,6 @@
             </select>
         </div>
     </div>
-
     <div class="card card-table border-0 shadow-sm mb-4">
         <div class="card-body p-4">
             <div class="table-responsive">
@@ -109,7 +107,6 @@
                     </tbody>
                 </table>
             </div>
-
             <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
                 <div>Menampilkan 1 - 6 dari <span class="fw-bold text-dark">24</span> data</div>
                 <nav aria-label="Page navigation">

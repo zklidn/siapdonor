@@ -15,7 +15,6 @@
             </ol>
         </nav>
     </div>
-
     <form action="<?= base_url('rs/simpan_permintaan') ?>" method="POST">
         
         <div class="card card-form mb-4 border-0 shadow-sm">
@@ -46,7 +45,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card card-form mb-4 border-0 shadow-sm">
             <div class="card-body p-4">
                 <h5 class="fw-bold mb-4 text-dark fs-6">Kebutuhan Darah</h5>
@@ -74,7 +72,6 @@
                         <input type="number" name="jumlah_kantong" class="form-control custom-input" placeholder="Masukkan jumlah kantong" min="1" required>
                     </div>
                 </div>
-
                 <div class="mb-4">
                     <label class="form-label small fw-semibold text-secondary mb-2">Prioritas / Urgensi <span class="text-danger">*</span></label>
                     <div class="row g-2">
@@ -108,14 +105,12 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-2">
                     <label class="form-label small fw-semibold text-secondary">Catatan (opsional)</label>
                     <textarea name="catatan" class="form-control custom-textarea" rows="3" placeholder="Masukkan catatan tambahan"></textarea>
                 </div>
             </div>
         </div>
-
         <div class="d-flex justify-content-end gap-3 pt-2 mb-5">
             <a href="<?= base_url('rs/permintaan_darah') ?>" class="btn btn-batal px-5 py-2 fw-semibold">Batal</a>
             <button type="submit" class="btn btn-kirim px-5 py-2 fw-semibold">Kirim Permintaan</button>

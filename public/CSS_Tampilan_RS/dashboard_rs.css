@@ -1,6 +1,4 @@
-/* --- FONTS & KONSISTENSI UTALITAS (SAMA DENGAN HALAMAN LAIN) --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 .bootstrap-wrapper {
     font-family: 'Inter', sans-serif;
     background-color: #f8f9fa;
@@ -34,6 +32,7 @@
     border-bottom: 1px solid #f1f5f9 !important;
     font-weight: 600;
 }
+
 .custom-table td {
     padding: 14px 8px !important;
     border-bottom: 1px solid #f8fafc !important;
@@ -47,15 +46,16 @@
     padding: 5px 10px;
     border-radius: 6px;
 }
+
 .bg-proses { background-color: #FFF3E0 !important; color: #EF6C00 !important; }
 .bg-selesai { background-color: #E8F5E9 !important; color: #2E7D32 !important; }
-
 .badge-priority {
     font-weight: 700;
     font-size: 10px;
     padding: 4px 8px;
     border-radius: 4px;
 }
+
 .bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; }
 .bg-prio-tinggi { background-color: #FFF3E0 !important; color: #EF6C00 !important; }
 .bg-prio-normal { background-color: #E3F2FD !important; color: #1565C0 !important; }
@@ -66,6 +66,7 @@
     background-color: #fafafa !important;
     border: 1px solid #f1f5f9 !important;
 }
+
 .blood-text {
     position: absolute;
     top: 30px;
@@ -75,6 +76,7 @@
     font-size: 9px;
     font-weight: 700;
 }
+
 .link-maroon {
     color: #8B0000 !important;
 }
@@ -83,15 +85,18 @@
 .transform-rotate {
     transform: rotate(-90deg);
 }
+
 .extra-small {
     font-size: 10px;
 }
+
 .dot-indicator {
     width: 10px;
     height: 10px;
     border-radius: 50%;
     display: inline-block;
 }
+
 .bg-emerald {
     background-color: #00875A !important;
 }
