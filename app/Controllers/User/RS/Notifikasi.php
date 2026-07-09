@@ -4,10 +4,10 @@ namespace App\Controllers\User\RS;
 
 use App\Controllers\BaseController;
 
-class Settings extends BaseController
+class Notifikasi extends BaseController
 {
     public function index()
     {
-        return view('Tampilan_RS/settings');
+        return view('Tampilan_RS/notifikasi');
     }
 }

@@ -41,23 +41,24 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin','filter'    => '
 }); 
 
 /*------------------dashboard RS---------------*/
-/*------------------dashboard RS---------------*/
-// UBAH filternya menjadi auth:rumah_sakit
-$routes->group('rs',['filter' => 'auth:rumah_sakit'], static function ($routes) {
-    $routes->get('/', 'DashboardRS::rs');
-    $routes->get('cari_donor', 'DashboardRS::cari_donor'); 
-    $routes->get('data_pasien', 'DashboardRS::data_pasien');
-    $routes->get('permintaan_darah', 'DashboardRS::kelola_permintaan'); 
-    $routes->get('riwayat_permintaan', 'DashboardRS::riwayat_permintaan');
-    $routes->get('laporan_rs', 'DashboardRS::laporan_rs');
-    $routes->get('buat_permintaan', 'DashboardRS::buat_permintaan');
-    $routes->get('notifikasi', 'DashboardRS::notifikasi_rs');
-    $routes->get('settings', 'DashboardRS::settings_rs'); 
+$routes->group('rs', ['namespace' => 'App\Controllers\User\RS', 'filter' => 'auth:rumah_sakit'], static function ($routes) {
     
-    // RUTE BARU: Untuk halaman detail membawa ID Permintaan secara dinamis (:any)
-    $routes->get('detail_permintaan/(:any)', 'DashboardRS::detail_permintaan/$1');
+    $routes->get('/', 'DashboardRS::index');
+    
+    $routes->get('cari_donor', 'CariDonor::index');
+    $routes->get('data_pasien', 'DataPasien::index');
+    
+    // --- Modul Permintaan Darah yang sudah dipisah ---
+    $routes->get('permintaan_darah', 'PermintaanDarah::index');
+    $routes->get('detail_permintaan/(:segment)', 'DetailPermintaan::index/$1');
+    $routes->get('riwayat_permintaan', 'RiwayatPermintaan::index');
+    $routes->get('buat_permintaan', 'BuatPermintaan::index');
+    // -------------------------------------------------
+    
+    $routes->get('laporan_rs', 'Laporan::index');
+    $routes->get('notifikasi', 'Notifikasi::index');
+    $routes->get('settings', 'Settings::index');
 });
-
 
 /*------------------dashboard PMI---------------*/
 // Tambahkan 'filter' => 'nama_filter_kamu' di dalam array
