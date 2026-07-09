@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.bootstrap-wrapper,
+.bootstrap-wrapper input,
+.bootstrap-wrapper select,
+.bootstrap-wrapper textarea,
+.bootstrap-wrapper label,
+.bootstrap-wrapper button {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- HEADER AREA PRESISI DASHBOARD --- */
+.header-group {
+    margin-bottom: 25px !important;
+}
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 0 2px 0 !important; /* Jarak super rapat ke bawah */
+}
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.breadcrumb-nav a {
+    text-decoration: none;
+    color: #6b7280 !important;
+    font-size: 14px;
+}
+.breadcrumb-nav-separator {
+    color: #9ca3af;
+    font-size: 13px;
+}
+.breadcrumb-nav-item.active {
+    color: #111827 !important;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* --- CARD FORM --- */
+.card-form {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+}
+
+/* --- INPUT FIELD --- */
+.custom-input, .custom-textarea {
+    border: 1px solid #d1d5db !important;
+    border-radius: 8px !important;
+    padding: 10px 14px;
+    font-size: 14px !important;
+    color: #1f2937;
+    background-color: #ffffff;
+}
+.custom-input:focus, .custom-textarea:focus {
+    border-color: #8B0000 !important;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1) !important;
+}
+
+/* --- RADIO BUTTON PRIORITAS --- */
+.btn-outline-prio {
+    background: #ffffff;
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease;
+}
+.btn-prio-urgent { border-color: #fca5a5 !important; color: #dc2626 !important; }
+.btn-check:checked + .btn-prio-urgent {
+    background-color: #fef2f2 !important; border-color: #dc2626 !important; box-shadow: 0 0 0 1px #dc2626 !important;
+}
+.btn-prio-tinggi { border-color: #fed7aa !important; color: #ea580c !important; }
+.btn-check:checked + .btn-prio-tinggi {
+    background-color: #fff7ed !important; border-color: #ea580c !important; box-shadow: 0 0 0 1px #ea580c !important;
+}
+.btn-prio-normal { border-color: #bfdbfe !important; color: #2563eb !important; }
+.btn-check:checked + .btn-prio-normal {
+    background-color: #eff6ff !important; border-color: #2563eb !important; box-shadow: 0 0 0 1px #2563eb !important;
+}
+.btn-prio-rendah { border-color: #bbf7d0 !important; color: #16a34a !important; }
+.btn-check:checked + .btn-prio-rendah {
+    background-color: #f0fdf4 !important; border-color: #16a34a !important; box-shadow: 0 0 0 1px #16a34a !important;
+}
+
+/* --- BUTTONS --- */
+.btn-batal {
+    border: 1px solid #dc2626 !important; color: #dc2626 !important; background: #ffffff; border-radius: 8px; font-size: 14px !important;
+}
+.btn-batal:hover { background: #fef2f2; }
+.btn-kirim {
+    background-color: #8B0000 !important; color: #ffffff !important; border: 1px solid #8B0000 !important; border-radius: 8px; font-size: 14px !important;
+}
+.btn-kirim:hover { background-color: #660000 !important; }

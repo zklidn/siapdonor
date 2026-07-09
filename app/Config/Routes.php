@@ -27,8 +27,6 @@ $routes->get('/verifikasi', 'Verifikasi::index');
 // Tambahkan di area rute publik kamu
 $routes->post('/profile/simpan_biodata', 'Biodata::simpan_biodata');
 
-// Blok $routes->group('dashboard', ...) DIHAPUS SAJA
-
 
 /*------------------dashboard admin---------------*/
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin','filter'    => 'auth:admin'
@@ -47,13 +45,17 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin','filter'    => '
 // UBAH filternya menjadi auth:rumah_sakit
 $routes->group('rs',['filter' => 'auth:rumah_sakit'], static function ($routes) {
     $routes->get('/', 'DashboardRS::rs');
-    $routes->get('cari_donor', 'DashboardRS::cari_donor');
+    $routes->get('cari_donor', 'DashboardRS::cari_donor'); 
     $routes->get('data_pasien', 'DashboardRS::data_pasien');
-    $routes->get('permintaan_darah', 'DashboardRS::permintaan_darah');
+    $routes->get('permintaan_darah', 'DashboardRS::kelola_permintaan'); 
     $routes->get('riwayat_permintaan', 'DashboardRS::riwayat_permintaan');
     $routes->get('laporan_rs', 'DashboardRS::laporan_rs');
     $routes->get('buat_permintaan', 'DashboardRS::buat_permintaan');
     $routes->get('notifikasi', 'DashboardRS::notifikasi_rs');
+    $routes->get('settings', 'DashboardRS::settings_rs'); 
+    
+    // RUTE BARU: Untuk halaman detail membawa ID Permintaan secara dinamis (:any)
+    $routes->get('detail_permintaan/(:any)', 'DashboardRS::detail_permintaan/$1');
 });
 
 

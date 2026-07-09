@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>SiapDonor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="<?= base_url('style_header.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('Layout/header.css') ?>">
 </head>
 <body>
 
@@ -22,7 +21,7 @@
         } elseif ($userRole == 'pmi') {
             $urlPrefix = 'pmi';
         } elseif ($userRole == 'rumah_sakit' || $userRole == 'rumah sakit') {
-            $urlPrefix = 'rs'; // atau 'rumah_sakit', sesuaikan dengan kodingan routes.php kamu
+            $urlPrefix = 'rs'; // Menghubungkan ke routes group 'rs'
         }
     ?>
 
@@ -54,7 +53,7 @@
                 <i class="fa-solid fa-chevron-down fa-xs" style="margin-left: 2px;"></i>
 
                 <div class="profile-dropdown" id="profileDropdown">
-                    <a href="<?= base_url($urlPrefix . '/profil') ?>" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Settings</a>
+                    <a href="<?= base_url($urlPrefix == 'rs' ? 'rs/settings' : $urlPrefix . '/profil') ?>" class="dropdown-item"><i class="fa-solid fa-user-gear"></i> Setting</a>
                     <a href="<?= base_url('logout') ?>" class="dropdown-item" style="border-top: 1px solid #f3f4f6; color: #dc2626;"><i class="fa-solid fa-right-from-bracket" style="color: #dc2626;"></i> Logout</a>
                 </div>
             </div>
@@ -85,3 +84,29 @@
     </script>
     
     <div class="main-wrapper">
+        <div class="sidebar">
+            <div class="sidebar-menu">
+                <a href="<?= base_url($urlPrefix == 'rs' ? 'rs' : $urlPrefix . '/dashboard') ?>" class="menu-item menu-active">
+                    <i class="fa-solid fa-house"></i> Dashboard
+                </a>
+
+                <a href="<?= base_url($urlPrefix == 'rs' ? 'rs/permintaan_darah' : $urlPrefix . '/permintaan') ?>" class="menu-item">
+                    <i class="fa-solid fa-hand-holding-drop"></i> Permintaan Darah
+                </a>
+
+                <a href="<?= base_url($urlPrefix == 'rs' ? 'rs/riwayat_permintaan' : $urlPrefix . '/riwayat') ?>" class="menu-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
+                </a>
+            </div>
+            
+            <a href="<?= base_url('logout') ?>" class="menu-item">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
+        </div>
+
+        <div class="content-area">
+            </div>
+    </div>
+
+</body>
+</html>
