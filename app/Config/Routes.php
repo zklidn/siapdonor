@@ -92,4 +92,4 @@ $routes->get('/logout', 'Login::logout');
 #akun gw
 $routes->get('hash', 'Hash::index');
 
-$routes->get('coba', 'uji::index');
+$routes->get('coba', 'uji::ulang');
