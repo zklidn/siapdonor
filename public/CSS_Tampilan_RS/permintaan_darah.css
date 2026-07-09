@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 .bootstrap-wrapper,
 .bootstrap-wrapper input,
 .bootstrap-wrapper select,
@@ -8,7 +7,6 @@
 .bootstrap-wrapper button {
     font-family: 'Inter', sans-serif !important;
 }
-
 /* --- HEADER AREA PRESISI DASHBOARD --- */
 .header-group {
     margin-bottom: 25px !important;
@@ -41,7 +39,6 @@
     font-size: 14px;
     font-weight: 400;
 }
-
 /* --- CARD FORM --- */
 .card-form {
     border: 1px solid #eef2f5 !important;
@@ -49,7 +46,6 @@
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
 }
-
 /* --- INPUT FIELD --- */
 .custom-input, .custom-textarea {
     border: 1px solid #d1d5db !important;
@@ -63,7 +59,6 @@
     border-color: #8B0000 !important;
     box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1) !important;
 }
-
 /* --- RADIO BUTTON PRIORITAS --- */
 .btn-outline-prio {
     background: #ffffff;
@@ -87,7 +82,6 @@
 .btn-check:checked + .btn-prio-rendah {
     background-color: #f0fdf4 !important; border-color: #16a34a !important; box-shadow: 0 0 0 1px #16a34a !important;
 }
-
 /* --- BUTTONS --- */
 .btn-batal {
     border: 1px solid #dc2626 !important; color: #dc2626 !important; background: #ffffff; border-radius: 8px; font-size: 14px !important;

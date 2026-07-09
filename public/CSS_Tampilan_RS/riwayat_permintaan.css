@@ -1,6 +1,5 @@
 /* --- FONTS & KONSISTENSI UTALITAS DASHBOARD --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 .bootstrap-wrapper,
 .bootstrap-wrapper table,
 .bootstrap-wrapper card,
@@ -8,7 +7,6 @@
 .bootstrap-wrapper a {
     font-family: 'Inter', sans-serif !important;
 }
-
 /* --- HEADER AREA PRESISI DASHBOARD --- */
 .header-group {
     margin-bottom: 25px !important;
@@ -40,7 +38,6 @@
     color: #111827 !important;
     font-size: 14px;
 }
-
 /* --- CARD CARDS CONTAINER --- */
 .card-detail {
     border: 1px solid #eef2f5 !important;
@@ -53,7 +50,6 @@
     font-weight: 600 !important;
     color: #111827;
 }
-
 /* --- ROW LIST TEXT ALIGNMENT --- */
 .info-list .row {
     align-items: flex-start;
@@ -61,11 +57,9 @@
 .info-list span {
     font-size: 13.5px;
 }
-
 /* --- BADGES STYLING --- */
 .bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 11px; padding: 4px 8px; }
 .bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; }
-
 /* --- TIMELINE COMPONENT --- */
 .timeline-wrapper {
     position: relative;
@@ -98,12 +92,10 @@
 .timeline-content {
     font-size: 13.5px;
 }
-
 .bg-success-light { background-color: #E8F5E9 !important; }
 .bg-primary-light { background-color: #E3F2FD !important; }
 .bg-secondary-light { background-color: #F3F4F6 !important; }
 .fa-spin-slow { animation: spin 4s linear infinite; }
-
 /* --- BUTTONS SYSTEM --- */
 .btn-outline-print {
     border: 1px solid #8B0000 !important;
@@ -127,14 +119,12 @@
     background-color: #f9fafb;
     border-color: #c4c4c4 !important;
 }
-
 /* --- KUNCI PENGATURAN CETAK PDF (MENGHILANGKAN HEADER BROWSER) --- */
 @media print {
     /* Perintah utama menyembunyikan teks tanggal & nama url bawaan browser di pojok kertas */
     @page {
         margin: 15mm 15mm 15mm 15mm; /* Mengatur margin kertas bersih */
     }
-
     /* Tampilkan kop surat RS kustom kita */
     .print-header-letter {
         display: flex !important;
@@ -169,7 +159,6 @@
         font-size: 12px;
         color: #4b5563;
     }
-
     /* Sembunyikan elemen bawaan sistem web */
     .topbar, 
     .sidebar, 
@@ -178,7 +167,6 @@
     .breadcrumb-nav {
         display: none !important;
     }
-
     .main-wrapper, 
     .content-area, 
     .bootstrap-wrapper {
@@ -187,7 +175,6 @@
         width: 100% !important;
         background-color: #ffffff !important;
     }
-
     .card-detail {
         border: 1px solid #e5e7eb !important;
         box-shadow: none !important;

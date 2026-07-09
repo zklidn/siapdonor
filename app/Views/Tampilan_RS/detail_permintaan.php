@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/detail_permintaan.css') ?>">
 
 <div class="container-fluid py-2 bootstrap-wrapper">
-
     <div class="print-header-letter d-none">
         <div class="print-header-left">
             <img src="<?= base_url('logo.png') ?>" alt="Logo RS" class="print-logo-rs">
@@ -19,7 +18,6 @@
             <span class="print-date-access">Tanggal Cetak: <?= date('d M Y, H:i') ?> WITA</span>
         </div>
     </div>
-
     <div class="d-flex justify-content-between align-items-start header-group">
         <div>
             <h1 class="page-title">Detail Permintaan</h1>
@@ -37,7 +35,6 @@
             <i class="fa-solid fa-file-pdf me-2"></i> Cetak / PDF
         </button>
     </div>
-
     <div class="row g-3 mb-4">
         <div class="col-md-4">
             <div class="card card-detail h-100 border-0 shadow-sm">
@@ -54,7 +51,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="card card-detail h-100 border-0 shadow-sm">
                 <div class="card-body p-4">
@@ -68,7 +64,6 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
             <div class="card card-detail h-100 border-0 shadow-sm">
                 <div class="card-body p-4">
@@ -82,7 +77,6 @@
             </div>
         </div>
     </div>
-
     <div class="card card-detail border-0 shadow-sm mb-4">
         <div class="card-body p-4">
             <h5 class="section-card-title mb-4">Riwayat Status</h5>
@@ -111,7 +105,6 @@
             </div>
         </div>
     </div>
-
     <div class="pt-2 mb-5">
         <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="btn btn-back px-4 py-2 fw-semibold">
             <i class="fa-solid fa-arrow-left me-2"></i> Kembali ke Riwayat
