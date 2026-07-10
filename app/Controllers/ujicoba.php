@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 class uji extends BaseController
 {
-    public function index() {
-        echo view('tentang_kami');
+    public function ulang() {
+        echo view('Tampilan_RS/dashboard_RS');
     }
     
 }
