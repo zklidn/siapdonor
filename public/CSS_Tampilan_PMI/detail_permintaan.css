@@ -14,7 +14,7 @@
     font-family: 'Inter', sans-serif !important;
 }
 
-/* --- HEADER GROUP CLEAN --- */
+/* --- HEADER AREA --- */
 .header-group-clean {
     margin-bottom: 25px !important;
 }
@@ -28,7 +28,22 @@
     color: #6b7280 !important;
 }
 
-/* --- CARD RE-STYLE --- */
+/* Tombol Kembali Atas Sesuai Gambar Goals */
+.btn-top-back {
+    border: 1px solid #8B0000 !important;
+    color: #8B0000 !important;
+    background-color: #ffffff;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-top-back:hover {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+}
+
+/* --- RE-STYLE CARD PANEL --- */
 .card-detail {
     border: 1px solid #eef2f5 !important;
     border-radius: 12px !important;
@@ -41,7 +56,7 @@
     color: #111827;
 }
 
-/* --- ROW LIST DATA PASIEN --- */
+/* --- DATA ROWS LIST TEXT --- */
 .info-list .row {
     align-items: flex-start;
 }
@@ -49,9 +64,12 @@
     font-size: 13.5px;
 }
 
-/* --- BADGES VARIANT STYLING --- */
+/* --- BADGES VARIANT SYSTEM --- */
 .bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
 .bg-status-baru { background-color: #F3F4F6 !important; color: #4B5563 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-ditemukan { background-color: #E8F5E9 !important; color: #2E7D32 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-selesai { background-color: #E8F5E9 !important; color: #00875A !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
 
 /* --- TIMELINE TRACK COMPONENT --- */
 .timeline-wrapper {
@@ -85,12 +103,13 @@
 .timeline-badge i { font-size: 8px !important; }
 .timeline-content { font-size: 13.5px; }
 
-/* --- TAMPILAN SISTEM TOMBOL AKSI KANAN --- */
+/* --- SYSTEM TOMBOL AKSI KANAN --- */
 .btn-action-maroon {
     background-color: #8B0000 !important;
     border: none !important;
     border-radius: 6px;
     font-size: 14px;
+    text-decoration: none;
     transition: background 0.2s ease;
 }
 .btn-action-maroon:hover { background-color: #660000 !important; }
@@ -101,21 +120,12 @@
     background-color: transparent;
     border-radius: 6px;
     font-size: 14px;
+    text-decoration: none;
     transition: all 0.2s ease;
 }
 .btn-action-outline-maroon:hover { background-color: #FFEBEE !important; }
 
-.btn-action-outline-danger {
-    border: 1px solid #d32f2f !important;
-    color: #d32f2f !important;
-    background-color: transparent;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: all 0.2s ease;
-}
-.btn-action-outline-danger:hover { background-color: #FFEBEE !important; }
-
-/* --- TOMBOL KEMBALI BAWAH --- */
+/* --- TOMBOL KEMBALI UTAMA BAWAH --- */
 .btn-back {
     border: 1px solid #d1d5db !important;
     color: #4b5563 !important;
