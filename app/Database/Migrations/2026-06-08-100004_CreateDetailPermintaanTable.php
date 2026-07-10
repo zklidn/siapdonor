@@ -10,22 +10,46 @@ class CreateDetailPermintaanTable extends Migration
     {
         $this->forge->addField([
             'id_detail' => [
-                'type' => 'INT',
-                'unsigned' => true,
+                'type'           => 'INT',
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'id_permintaan' => [
-                'type' => 'INT',
+                'type'     => 'INT',
                 'unsigned' => true,
             ],
-            'jenis_darah' => [
-                'type' => 'VARCHAR',
-                'constraint'=> 50,
+            'tanggal' => [
+                'type' => 'DATETIME',
+                'null' => true,
             ],
-            'jumlah' => [
+            'nama_pasien' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+                'null'       => true,
+            ],
+            'golongan_darah' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 5,
+                'null'       => true,
+            ],
+            'jenis_darah' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
+            ],
+            'jumlah_kantong' => [
                 'type' => 'INT',
             ],
-            'created_at'=> [
+            'prioritas' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
+                'null'       => true,
+            ],
+            'status' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
+                'null'       => true,
+            ],
+            'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
@@ -38,6 +62,7 @@ class CreateDetailPermintaanTable extends Migration
                 'null' => true,
             ],
         ]);
+        
         $this->forge->addKey('id_detail', true);
         $this->forge->addForeignKey('id_permintaan', 'permintaan_darah', 'id_permintaan', 'CASCADE', 'CASCADE');
         $this->forge->createTable('detail_permintaan'); 

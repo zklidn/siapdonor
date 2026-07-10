@@ -11,14 +11,14 @@ class PasienModel extends Model
     protected $primaryKey = 'id_pasien';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';
-    protected $useSoftDeteles = true;
+    protected $useSoftDeletes = true;
     protected $protectFields = true;
-    protected $allowedFields = ['nama', 'umur', 'diagnosa', 'golongan_darah'];
+    protected $allowedFields = ['id_permintaan','nama', 'no_rm','ruangan', 'diagnosis', 'golongan_darah'];
 
     protected $useTimestamps = true;
     protected $dateFormat = 'datetime';
-    protected $createFields = 'created_at';
-    protected $updateFields = 'updated_at';
+    protected $createField = 'created_at';
+    protected $updateField = 'updated_at';
     protected $deleteField = 'deleted_at';
 
     // 1. Mendaftarkan trigger otomatis (Callback)

@@ -10,31 +10,35 @@ class CreatePasienTable extends Migration
     {
         $this->forge->addField([
             'id_pasien' => [
-                'type'  => 'INT',
-                'unsigned' => true,
+                'type'           => 'INT',
+                'unsigned'       => true,
                 'auto_increment' => true,
             ],
             'id_permintaan' => [
-                'type' => 'INT',
+                'type'     => 'INT',
                 'unsigned' => true,
             ],
             'nama' => [
-                'type'=> 'VARCHAR',
-                'constraint'=> 100,
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
             ],
-            'umur'=> [
-                'type' => 'VARCHAR',
-                'constraint' => 10,
+            'no_rm' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
             ],
-            'diagnosa' => [
-                'type' => 'VARCHAR',
-                'constraint'=> 255,
+            'ruangan' => [
+                'type'       => 'ENUM',
+                'constraint' => ['UGD', 'ICU', 'Rawat Inap'],
+            ],
+            'diagnosis' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 255,
             ],
             'golongan_darah' => [
-                'type' => 'VARCHAR',
+                'type'       => 'VARCHAR',
                 'constraint' => 5,
             ],
-            'created_at'=> [
+            'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,
             ],
