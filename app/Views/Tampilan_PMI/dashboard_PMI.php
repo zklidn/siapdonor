@@ -5,6 +5,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/dashboard_pmi.css') ?>">
 
+<aside class="sidebar sidebar-open" id="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('pmi') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item">
+            <i class="fa-solid fa-inbox"></i> Permintaan Masuk
+        </a>
+        <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item">
+            <i class="fa-solid fa-user-gear"></i> Cari Donor
+        </a>
+        <a href="<?= base_url('pmi/update_status_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-pen"></i> Update Status Permintaan 
+        </a>
+    </div>
+</aside>
+
 <div class="container-fluid py-2 bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Dashboard</h1>
@@ -68,7 +85,7 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                // Penampung Data Dummy jika database backend belum dilempar
+                                // Menghubungkan array data dinamis yang dikirimkan oleh Controller PMI
                                 $list_terbaru = isset($permintaan_terbaru) ? $permintaan_terbaru : [
                                     ['id' => 'REQ-20250520-001', 'rs' => 'RSUD Undata Palu', 'gol' => 'O+', 'prio' => 'URGENT', 'status' => 'Baru'],
                                     ['id' => 'REQ-20250520-002', 'rs' => 'RS Madani Palu', 'gol' => 'A+', 'prio' => 'TINGGI', 'status' => 'Diproses'],
@@ -79,17 +96,18 @@
                                 
                                 foreach ($list_terbaru as $row): ?>
                                 <tr>
-                                    <td class="text-muted fw-medium"><?= $row['id'] ?></td>
-                                    <td class="fw-semibold text-dark"><?= $row['rs'] ?></td>
-                                    <td class="fw-bold text-secondary"><?= $row['gol'] ?></td>
+                                    <td class="text-muted fw-medium"><?= isset($row['id_permintaan']) ? $row['id_permintaan'] : $row['id'] ?></td>
+                                    <td class="fw-semibold text-dark"><?= isset($row['nama_rs']) ? $row['nama_rs'] : $row['rs'] ?></td>
+                                    <td class="fw-bold text-secondary"><?= isset($row['gol_darah']) ? $row['gol_darah'].$row['rhesus'] : $row['gol'] ?></td>
                                     <td>
-                                        <span class="badge badge-priority bg-prio-<?= strtolower($row['prio']) ?>">
-                                            <?= $row['prio'] ?>
+                                        <span class="badge badge-priority bg-prio-<?= strtolower(isset($row['prioritas']) ? $row['prioritas'] : $row['prio']) ?>">
+                                            <?= isset($row['prioritas']) ? $row['prioritas'] : $row['prio'] ?>
                                         </span>
                                     </td>
                                     <td>
-                                        <span class="badge badge-status bg-status-<?= ($row['status'] == 'Baru') ? 'baru' : (($row['status'] == 'Diproses') ? 'proses' : (($row['status'] == 'Selesai') ? 'selesai' : 'ditemukan')) ?>">
-                                            <?= $row['status'] ?>
+                                        <?php $stt_check = isset($row['status']) ? $row['status'] : 'Baru'; ?>
+                                        <span class="badge badge-status bg-status-<?= ($stt_check == 'Baru') ? 'baru' : (($stt_check == 'Diproses') ? 'proses' : (($stt_check == 'Selesai') ? 'selesai' : 'ditemukan')) ?>">
+                                            <?= $stt_check ?>
                                         </span>
                                     </td>
                                 </tr>
@@ -98,7 +116,7 @@
                         </table>
                     </div>
                     <div class="mt-4">
-                        <a href="<?= base_url('pmi/permintaan_darah') ?>" class="text-decoration-none text-danger fw-bold small link-maroon">Lihat semua permintaan</a>
+                        <a href="<?= base_url('pmi/permintaan_masuk') ?>" class="text-decoration-none text-danger fw-bold small link-maroon">Lihat semua permintaan</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +128,6 @@
                     <h5 class="fw-bold mb-4 text-dark fs-6">Statistik Bulanan</h5>
                     
                     <?php
-                    // Mencegah pembagian nol jika data masih kosong
                     $total_pmi = $total_permintaan ?? 52;
                     $v_selesai = $selesai ?? 28;
                     $v_proses = $diproses ?? 7;
@@ -167,5 +184,18 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
+    const sidebar = document.getElementById('sidebar');
+    if(toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            sidebar.classList.toggle('sidebar-open');
+        });
+    }
+});
+</script>
 
 <?= $this->endSection() ?>

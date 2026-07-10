@@ -71,16 +71,19 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
     $routes->get('dashboard', 'DashboardPMI::pmi');
 
     // Pendonor
-    $routes->get('data_pendonor', 'Pendonor::pendonor');
-    $routes->get('tambah_donor', 'Pendonor::tambah');
-    $routes->get('riwayat_donor', 'Pendonor::riwayat');
+    $routes->get('data_pendonor', 'CariDonor::pendonor');
+    $routes->get('tambah_donor', 'CariDonor::tambah');
+    $routes->get('riwayat_donor', 'CariDonor::riwayat');
 
     // Permintaan Darah
-    $routes->get('permintaan_darah', 'Permintaandarah::permintaan');
-    $routes->get('detail_permintaan', 'Permintaandarah::detail');
+    $routes->get('permintaan_darah', 'PermintaanMasuk::permintaan');
+    $routes->get('detail_permintaan', 'PermintaanMasuk::detail');
 
     // Stok Darah
     $routes->get('stok_darah', 'Stockdarah::stock');
+
+    // update satatus
+    $routes->get('update_status_permintaan', 'UpdateStatusPermintaan::update');
 
     // Laporan & Notifikasi
     $routes->get('laporan', 'Laporan::laporan');

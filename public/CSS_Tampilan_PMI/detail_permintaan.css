@@ -1,0 +1,126 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.bootstrap-wrapper {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #f8f9fa;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bootstrap-wrapper card,
+.bootstrap-wrapper h1,
+.bootstrap-wrapper button,
+.bootstrap-wrapper a {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- HEADER GROUP CLEAN --- */
+.header-group-clean {
+    margin-bottom: 25px !important;
+}
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 0 2px 0 !important;
+}
+.breadcrumb-nav a {
+    color: #6b7280 !important;
+}
+
+/* --- CARD RE-STYLE --- */
+.card-detail {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+}
+.section-card-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #111827;
+}
+
+/* --- ROW LIST DATA PASIEN --- */
+.info-list .row {
+    align-items: flex-start;
+}
+.info-list span {
+    font-size: 13.5px;
+}
+
+/* --- BADGES VARIANT STYLING --- */
+.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+.bg-status-baru { background-color: #F3F4F6 !important; color: #4B5563 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+
+/* --- TIMELINE TRACK COMPONENT --- */
+.timeline-wrapper {
+    position: relative;
+    padding-left: 10px;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 35px;
+    padding-bottom: 25px;
+    border-left: 2px dashed #d1d5db;
+}
+.timeline-item.content-last {
+    border-left: 2px dashed transparent !important;
+    padding-bottom: 0px;
+}
+.timeline-badge {
+    position: absolute;
+    left: -11px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid currentColor;
+    z-index: 2;
+}
+.timeline-badge i { font-size: 8px !important; }
+.timeline-content { font-size: 13.5px; }
+
+/* --- TAMPILAN SISTEM TOMBOL AKSI KANAN --- */
+.btn-action-maroon {
+    background-color: #8B0000 !important;
+    border: none !important;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+.btn-action-maroon:hover { background-color: #660000 !important; }
+
+.btn-action-outline-maroon {
+    border: 1px solid #8B0000 !important;
+    color: #8B0000 !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.btn-action-outline-maroon:hover { background-color: #FFEBEE !important; }
+
+.btn-action-outline-danger {
+    border: 1px solid #d32f2f !important;
+    color: #d32f2f !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.btn-action-outline-danger:hover { background-color: #FFEBEE !important; }
+
+/* --- TOMBOL KEMBALI BAWAH --- */
+.btn-back {
+    border: 1px solid #d1d5db !important;
+    color: #4b5563 !important;
+    background-color: #ffffff;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.btn-back:hover { background-color: #f9fafb; }

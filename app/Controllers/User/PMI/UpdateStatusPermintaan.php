@@ -6,10 +6,10 @@ use App\Controllers\BaseController;
 
 // PERHATIKAN: Nama class WAJIB persis dengan nama file (Stockdarah.php)
 // S besar, c, k, d kecil
-class Stockdarah extends BaseController 
+class UpdateStatusPermintaan extends BaseController 
 {
-    public function stock()
+    public function Update()
     {
-        return view('Tampilan_PMI/stok_darah');
+        return view('Tampilan_PMI/update_status_permintaan');
     }
 }

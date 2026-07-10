@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.bootstrap-wrapper {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #f8f9fa;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bootstrap-wrapper card,
+.bootstrap-wrapper h1,
+.bootstrap-wrapper button,
+.bootstrap-wrapper a {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- HEADER GROUP AREA --- */
+.header-group-clean {
+    margin-bottom: 25px !important;
+}
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 0 2px 0 !important;
+}
+.breadcrumb-nav a {
+    color: #6b7280 !important;
+}
+
+/* Tombol Kembali Atas Outline Marun Cantik */
+.btn-top-back {
+    border: 1px solid #8B0000 !important;
+    color: #8B0000 !important;
+    background-color: #ffffff;
+    border-radius: 6px;
+    font-size: 13px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-top-back:hover {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+}
+
+/* --- RE-STYLE CARD DETAIL --- */
+.card-detail {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+}
+.section-card-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #111827;
+}
+
+/* --- LIST IDENTITAS TEXT LAYOUT --- */
+.info-list .row {
+    align-items: flex-start;
+}
+.info-list span {
+    font-size: 13.5px;
+}
+
+/* --- STATUS & VARIANT BADGES --- */
+.bg-status-layak { 
+    background-color: #E8F5E9 !important; 
+    color: #2E7D32 !important; 
+    font-size: 11px; 
+    border-radius: 4px; 
+}
+
+/* --- BLOK TOMBOL AKSI HUBUNGI KANAN --- */
+.btn-action-maroon {
+    background-color: #8B0000 !important;
+    border: none !important;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+.btn-action-maroon:hover { background-color: #660000 !important; }
+
+.btn-action-outline-whatsapp {
+    border: 1px solid #25D366 !important;
+    color: #25D366 !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-action-outline-whatsapp:hover { 
+    background-color: #E8F5E9 !important; 
+}
+
+.btn-action-outline-back {
+    border: 1px solid #d1d5db !important;
+    color: #4b5563 !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+.btn-action-outline-back:hover { 
+    background-color: #f9fafb; 
+    border-color: #8B0000 !important; 
+    color: #8B0000 !important; 
+}
