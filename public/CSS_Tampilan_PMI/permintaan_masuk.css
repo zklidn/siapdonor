@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.bootstrap-wrapper {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #f8f9fa;
+    /* TAMBAHAN SINKRONISASI: Agar boks putih mengikut alur buka-tutup sidebar */
+    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-left: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+}
+
+/* TAMBAHAN KUNCI ELESTIS: Memotong lebar boks konten saat sidebar terbuka */
+.sidebar.sidebar-open ~ .bootstrap-wrapper {
+    margin-left: 240px !important;
+    width: calc(100% - 240px) !important;
+}
+
+.bootstrap-wrapper table,
+.bootstrap-wrapper card,
+.bootstrap-wrapper h1 {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- TAMBAHAN ELEMEN SIDEBAR PMI (UNTUK MEMFUNGSIKAN BUG GERAK) --- */
+.sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: fixed !important;
+    top: 70px !important;
+    left: -240px !important;
+    width: 240px !important;
+    height: calc(100vh - 70px) !important;
+    background-color: #8B0000 !important;
+    z-index: 1000 !important;
+    padding-bottom: 25px !important;
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.sidebar.sidebar-open {
+    left: 0 !important;
+}
+
+/* --- HEADER GROUP CLEAN --- */
+.header-group-clean {
+    margin-bottom: 25px !important;
+    padding-top: 15px !important;
+}
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 0 2px 0 !important;
+}
+
+/* --- TAMBAHAN FILTER BAR ATAS (UNTUK COMPONENT HALAMAN INI) --- */
+.custom-filter-input {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #4b5563;
+}
+.search-box .input-group-text {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px 0 0 8px !important;
+    color: #9ca3af;
+}
+
+/* --- CARD RE-STYLE --- */
+.card-stat, .card-content {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+    background: #fff;
+}
+
+/* --- CUSTOM TABLES --- */
+.custom-table th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    border-bottom: 1px solid #f1f5f9 !important;
+    font-weight: 600;
+    padding: 12px 8px !important;
+}
+.custom-table td {
+    padding: 15px 8px !important;
+    border-bottom: 1px solid #f8fafc !important;
+    font-size: 13.5px;
+}
+
+/* --- TAMBAHAN TOMBOL DETAIL OUTLINE MARUN (SESUAI GOAL FOTO) --- */
+.btn-outline-detail {
+    border: 1px solid #8B0000 !important;
+    color: #8B0000 !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-outline-detail:hover {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+}
+.pagination .page-link { padding: 6px 12px; font-size: 13px; font-weight: 500; color: #4b5563; }
+.pagination .page-item.active .page-link { background-color: #8B0000 !important; border-color: #8B0000 !important; color: #ffffff !important; }
+.extra-small-arrow { font-size: 10px; }
+
+/* --- PRIORITAS VARIANT BADGES --- */
+.badge-priority { font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; }
+.bg-prio-tinggi { background-color: #FFF3E0 !important; color: #EF6C00 !important; }
+.bg-prio-normal { background-color: #E3F2FD !important; color: #1565C0 !important; }
+.bg-prio-rendah { background-color: #ECEFF1 !important; color: #37474F !important; }
+
+/* --- STATUS VARIANT BADGES --- */
+.badge-status { font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-baru { background-color: #F3F4F6 !important; color: #4B5563 !important; }
+.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; }
+.bg-status-ditemukan { background-color: #E8F5E9 !important; color: #2E7D32 !important; }
+.bg-status-selesai { background-color: #E8F5E9 !important; color: #00875A !important; }
+
+.link-maroon { color: #8B0000 !important; font-size: 13.5px; }
+
+/* --- SVG DONUT CHART SYSTEM --- */
+.transform-rotate { transform: rotate(-90deg); }
+.extra-small { font-size: 9px; line-height: 1.2; display: block; }
+.dot-indicator { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
