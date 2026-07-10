@@ -24,7 +24,7 @@
                 </ol>
             </nav>
         </div>
-        <a href="<?= base_url('pmi/cari_donor') ?>" class="btn btn-top-back px-3 py-1.5 fw-semibold small">
+        <a href="<?= base_url('pmi/data_pendonor') ?>" class="btn btn-top-back px-3 py-1.5 fw-semibold small">
             <i class="fa-solid fa-chevron-left me-1" style="font-size: 11px;"></i> Kembali
         </a>
     </div>

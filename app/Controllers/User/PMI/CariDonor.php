@@ -16,6 +16,11 @@ class CariDonor extends BaseController
         return view('Tampilan_PMI/cari_donor');
     }
 
+    public function detail()
+    {
+        return view('Tampilan_PMI/detail_donor');
+    }
+
     public function tambah()
     {
         return view('Tampilan_PMI/detail_donor');

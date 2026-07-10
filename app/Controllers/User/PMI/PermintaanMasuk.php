@@ -13,6 +13,8 @@ class PermintaanMasuk extends BaseController
 
     public function detail()
     {
+          // sementara kirim id ke view
+        // $data['id_permintaan'] = $id_permintaan;
         return view('Tampilan_PMI/detail_permintaan');
     }
 }

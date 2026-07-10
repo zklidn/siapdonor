@@ -10,7 +10,7 @@
         <a href="<?= base_url('pmi') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
         </a>
-        <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item">
+        <a href="<?= base_url('pmi/permintaan_masuk') ?>" class="menu-item">
             <i class="fa-solid fa-inbox"></i> Permintaan Masuk
         </a>
         <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item">
