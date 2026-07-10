@@ -3,10 +3,9 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/dashboard_rs.css') ?>">
 
-<aside class="sidebar sidebar-open" id="sidebar">
+<aside class="sidebar" id="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -20,8 +19,8 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
-    <div class="header-group-clean">
+<main class="content-area bootstrap-wrapper">
+    <div class="header-group-clean mb-4">
         <h1 class="page-title">Dashboard</h1>
         <p class="text-muted small mb-0">Selamat datang, <?= session()->get('nama') ?? 'Rumah Sakit' ?>!</p>
     </div>
@@ -216,20 +215,5 @@
             </div>
         </div>
     </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
-    }
-});
-</script>
-
+</main>
 <?= $this->endSection() ?>

@@ -55,7 +55,7 @@
 
                 <div class="profile-dropdown" id="profileDropdown">
                     <a href="<?= base_url($urlPrefix . '/profil') ?>" class="menu-profil-item"><i class="fa-solid fa-user-gear"></i> Settings</a>
-                    <a href="<?= base_url('logout') ?>" class="menu-profil-item" style="border-top: 1px solid #f3f4f6; color: #dc2626;"><i class="fa-solid fa-right-from-bracket" style="color: #dc2626;"></i> Logout</a>
+                    <a href="<?= base_url('/') ?>" class="menu-profil-item" style="border-top: 1px solid #f3f4f6; color: #dc2626;"><i class="fa-solid fa-right-from-bracket" style="color: #dc2626;"></i> Logout</a>
                 </div>
             </div>
         </div>

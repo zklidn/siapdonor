@@ -1,15 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .bootstrap-wrapper {
     font-family: 'Inter', sans-serif;
-    background-color: #f8f9fa;
-}
-
-.sidebar {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    height: 100vh !important;
-    padding-bottom: 20px !important;
+    /* Dibiarkan transparan agar mewarisi warna background global dari content-area */
 }
 
 /* --- HEADER GROUP (PRESISI & COCOK DENGAN BREADCRUMB LAIN) --- */
@@ -20,7 +13,7 @@
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #111827 !important;
-    margin: 0 0 2px 0 !important; /* Jarak super rapat ke deskripsi */
+    margin: 0 0 2px 0 !important;
 }
 
 /* --- CARD RE-STYLE --- */

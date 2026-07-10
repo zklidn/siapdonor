@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/riwayat_permintaan.css') ?>">
 
-<aside class="sidebar sidebar-open" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('rs') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -19,7 +19,7 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Riwayat Permintaan</h1>
         <nav aria-label="breadcrumb">
@@ -154,23 +154,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Cari elemen tombol garis tiga di bagian topbar atas Anda
-    // Catatan: Ganti '.navbar-toggler' atau 'i.fa-bars' sesuai dengan class/id tombol garis tiga asli di topbar Anda
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            // Otomatis pasang/lepas class 'sidebar-open' setiap kali tombol diklik
-            sidebar.classList.toggle('sidebar-open');
-        });
-    }
-});
-</script>
+</main>
 
 <?= $this->endSection() ?>
