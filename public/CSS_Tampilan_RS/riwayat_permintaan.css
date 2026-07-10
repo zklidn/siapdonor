@@ -1,5 +1,6 @@
 /* --- FONTS & KONSISTENSI UTALITAS DASHBOARD --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 .bootstrap-wrapper,
 .bootstrap-wrapper table,
 .bootstrap-wrapper card,
@@ -7,6 +8,7 @@
 .bootstrap-wrapper a {
     font-family: 'Inter', sans-serif !important;
 }
+
 /* --- HEADER AREA PRESISI DASHBOARD --- */
 .header-group {
     margin-bottom: 25px !important;
@@ -38,6 +40,7 @@
     color: #111827 !important;
     font-size: 14px;
 }
+
 /* --- CARD CARDS CONTAINER --- */
 .card-detail {
     border: 1px solid #eef2f5 !important;
@@ -50,6 +53,7 @@
     font-weight: 600 !important;
     color: #111827;
 }
+
 /* --- ROW LIST TEXT ALIGNMENT --- */
 .info-list .row {
     align-items: flex-start;
@@ -57,9 +61,17 @@
 .info-list span {
     font-size: 13.5px;
 }
+
 /* --- BADGES STYLING --- */
-.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 11px; padding: 4px 8px; }
-.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; }
+.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+.bg-prio-tinggi { background-color: #FFF3E0 !important; color: #EF6C00 !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+.bg-prio-normal { background-color: #E3F2FD !important; color: #1565C0 !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+.bg-prio-rendah { background-color: #ECEFF1 !important; color: #37474F !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+
+.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-ditemukan { background-color: #E8F5E9 !important; color: #2E7D32 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-selesai { background-color: #E8F5E9 !important; color: #00875A !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+
 /* --- TIMELINE COMPONENT --- */
 .timeline-wrapper {
     position: relative;
@@ -92,10 +104,12 @@
 .timeline-content {
     font-size: 13.5px;
 }
+
 .bg-success-light { background-color: #E8F5E9 !important; }
 .bg-primary-light { background-color: #E3F2FD !important; }
 .bg-secondary-light { background-color: #F3F4F6 !important; }
 .fa-spin-slow { animation: spin 4s linear infinite; }
+
 /* --- BUTTONS SYSTEM --- */
 .btn-outline-print {
     border: 1px solid #8B0000 !important;
@@ -119,13 +133,72 @@
     background-color: #f9fafb;
     border-color: #c4c4c4 !important;
 }
+
+/* === BERIKUT ADALAH TAMBAHAN KHUSUS UNTUK KOMPONEN TABEL RIWAYAT === */
+.custom-filter-input {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #4b5563;
+}
+.search-box .input-group-text {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px 0 0 8px !important;
+    color: #9ca3af;
+}
+.card-table {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    background-color: #ffffff;
+}
+.custom-table th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    border-bottom: 1px solid #f1f5f9 !important;
+    font-weight: 600;
+    padding: 12px 10px !important;
+}
+.custom-table td {
+    padding: 16px 10px !important;
+    border-bottom: 1px solid #f8fafc !important;
+    font-size: 13.5px;
+}
+.btn-outline-detail {
+    border: 1px solid #8B0000 !important;
+    color: #8B0000 !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-outline-detail:hover {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+}
+.pagination .page-link { 
+    padding: 6px 12px; 
+    font-size: 13px; 
+    font-weight: 500; 
+    color: #4b5563; 
+}
+.pagination .page-item.active .page-link { 
+    background-color: #8B0000 !important; 
+    border-color: #8B0000 !important; 
+    color: #ffffff !important; 
+}
+.extra-small-arrow { 
+    font-size: 10px; 
+}
+
 /* --- KUNCI PENGATURAN CETAK PDF (MENGHILANGKAN HEADER BROWSER) --- */
 @media print {
-    /* Perintah utama menyembunyikan teks tanggal & nama url bawaan browser di pojok kertas */
     @page {
-        margin: 15mm 15mm 15mm 15mm; /* Mengatur margin kertas bersih */
+        margin: 15mm 15mm 15mm 15mm;
     }
-    /* Tampilkan kop surat RS kustom kita */
     .print-header-letter {
         display: flex !important;
         justify-content: space-between;
@@ -159,7 +232,6 @@
         font-size: 12px;
         color: #4b5563;
     }
-    /* Sembunyikan elemen bawaan sistem web */
     .topbar, 
     .sidebar, 
     .btn, 

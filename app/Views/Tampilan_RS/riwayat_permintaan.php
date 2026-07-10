@@ -5,6 +5,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/riwayat_permintaan.css') ?>">
 
+<aside class="sidebar sidebar-open" id="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+            <i class="fa-solid fa-droplet"></i> Permintaan Darah
+        </a>
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-invoice"></i> Riwayat Permintaan
+        </a>
+    </div>
+</aside>
+
 <div class="container-fluid py-2 bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Riwayat Permintaan</h1>
@@ -16,6 +30,7 @@
             </ol>
         </nav>
     </div>
+
     <div class="row g-3 mb-4">
         <div class="col-md-5">
             <div class="input-group search-box">
@@ -41,6 +56,7 @@
             </select>
         </div>
     </div>
+
     <div class="card card-table border-0 shadow-sm mb-4">
         <div class="card-body p-4">
             <div class="table-responsive">
@@ -58,55 +74,70 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
-                        // Jika data dari backend belum siap, sistem otomatis menampilkan data dummy biar view tidak error saat kamu kerjakan
-                        $list_riwayat = isset($riwayat_darah_all) ? $riwayat_darah_all : [
-                            ['id' => 'REQ-20250520-001', 'tanggal' => '20 Mei 2025', 'pasien' => 'Andi Saputra', 'gol' => 'O+', 'kantong' => 3, 'prio' => 'URGENT', 'status' => 'Diproses'],
-                            ['id' => 'REQ-20250519-002', 'tanggal' => '19 Mei 2025', 'pasien' => 'Siti Nurhaliza', 'gol' => 'A+', 'kantong' => 2, 'prio' => 'TINGGI', 'status' => 'Diproses'],
-                            ['id' => 'REQ-20250518-003', 'tanggal' => '18 Mei 2025', 'pasien' => 'Muh. Rizki', 'gol' => 'B+', 'kantong' => 4, 'prio' => 'NORMAL', 'status' => 'Donor Ditemukan'],
-                            ['id' => 'REQ-20250517-004', 'tanggal' => '17 Mei 2025', 'pasien' => 'Fadilah Aulia', 'gol' => 'AB+', 'kantong' => 2, 'prio' => 'NORMAL', 'status' => 'Donor Ditemukan'],
-                            ['id' => 'REQ-20250516-005', 'tanggal' => '16 Mei 2025', 'pasien' => 'Rudi Hartono', 'gol' => 'O-', 'kantong' => 1, 'prio' => 'RENDAH', 'status' => 'Selesai'],
-                            ['id' => 'REQ-20250515-006', 'tanggal' => '15 Mei 2025', 'pasien' => 'Dewi Lestari', 'gol' => 'A-', 'kantong' => 2, 'prio' => 'TINGGI', 'status' => 'Selesai']
-                        ];
-                        
-                        foreach ($list_riwayat as $row): ?>
-                        <tr>
-                            <td class="fw-medium text-dark"><?= $row['id'] ?></td>
-                            <td class="text-muted"><?= $row['tanggal'] ?></td>
-                            <td class="text-secondary fw-medium"><?= $row['pasien'] ?></td>
-                            <td class="fw-bold text-dark"><?= $row['gol'] ?></td>
-                            <td class="text-center"><?= $row['kantong'] ?></td>
-                            
-                            <td>
-                                <?php if ($row['prio'] == 'URGENT'): ?>
-                                    <span class="badge badge-priority bg-prio-urgent">URGENT</span>
-                                <?php elseif ($row['prio'] == 'TINGGI'): ?>
-                                    <span class="badge badge-priority bg-prio-tinggi">TINGGI</span>
-                                <?php elseif ($row['prio'] == 'NORMAL'): ?>
-                                    <span class="badge badge-priority bg-prio-normal">NORMAL</span>
-                                <?php else: ?>
-                                    <span class="badge badge-priority bg-prio-rendah">RENDAH</span>
-                                <?php endif; ?>
-                            </td>
-                            
-                            <td>
-                                <?php if ($row['status'] == 'Diproses'): ?>
-                                    <span class="badge badge-status bg-status-proses">Diproses</span>
-                                <?php elseif ($row['status'] == 'Donor Ditemukan'): ?>
-                                    <span class="badge badge-status bg-status-ditemukan">Donor Ditemukan</span>
-                                <?php else: ?>
-                                    <span class="badge badge-status bg-status-selesai">Selesai</span>
-                                <?php endif; ?>
-                            </td>
-                            
-                            <td class="text-center">
-                                <a href="<?= base_url('rs/detail_permintaan/' . $row['id']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
+                        <?php if (!empty($riwayat_permintaan) && is_array($riwayat_permintaan)): ?>
+                            <?php foreach ($riwayat_permintaan as $row): ?>
+                            <tr>
+                                <td class="fw-medium text-dark"><?= $row['id_permintaan'] ?></td>
+                                <td class="text-muted"><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
+                                <td class="text-secondary fw-medium"><?= $row['nama_pasien'] ?></td>
+                                <td class="fw-bold text-dark"><?= $row['gol_darah'] . $row['rhesus'] ?></td>
+                                <td class="text-center"><?= $row['jumlah_kantong'] ?></td>
+                                <td>
+                                    <?php 
+                                    $prio = strtolower($row['prioritas'] ?? '');
+                                    if ($prio == 'urgent'): ?>
+                                        <span class="badge badge-priority bg-prio-urgent">URGENT</span>
+                                    <?php elseif ($prio == 'tinggi'): ?>
+                                        <span class="badge badge-priority bg-prio-tinggi">TINGGI</span>
+                                    <?php elseif ($prio == 'normal'): ?>
+                                        <span class="badge badge-priority bg-prio-normal">NORMAL</span>
+                                    <?php else: ?>
+                                        <span class="badge badge-priority bg-prio-rendah">RENDAH</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                    $stt = $row['status'] ?? '';
+                                    if ($stt == 'Diproses'): ?>
+                                        <span class="badge badge-status bg-status-proses">Diproses</span>
+                                    <?php elseif ($stt == 'Donor Ditemukan'): ?>
+                                        <span class="badge badge-status bg-status-ditemukan">Donor Ditemukan</span>
+                                    <?php else: ?>
+                                        <span class="badge badge-status bg-status-selesai">Selesai</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="text-center">
+                                    <a href="<?= base_url('rs/detail_permintaan/' . $row['id_permintaan']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <?php 
+                            $dummy = [
+                                ['id' => 'REQ-20250520-001', 'tgl' => '20 Mei 2025', 'psn' => 'Andi Saputra', 'gol' => 'O+', 'ktg' => 3, 'prio' => 'urgent', 'stt' => 'Diproses'],
+                                ['id' => 'REQ-20250519-002', 'tgl' => '19 Mei 2025', 'psn' => 'Siti Nurhaliza', 'gol' => 'A+', 'ktg' => 2, 'prio' => 'tinggi', 'stt' => 'Diproses'],
+                                ['id' => 'REQ-20250518-003', 'tgl' => '18 Mei 2025', 'psn' => 'Muh. Rizki', 'gol' => 'B+', 'ktg' => 4, 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
+                                ['id' => 'REQ-20250517-004', 'tgl' => '17 Mei 2025', 'psn' => 'Fadilah Aulia', 'gol' => 'AB+', 'ktg' => 2, 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
+                                ['id' => 'REQ-20250516-005', 'tgl' => '16 Mei 2025', 'psn' => 'Rudi Hartono', 'gol' => 'O-', 'ktg' => 1, 'prio' => 'rendah', 'stt' => 'Selesai'],
+                                ['id' => 'REQ-20250515-006', 'tgl' => '15 Mei 2025', 'psn' => 'Dewi Lestari', 'gol' => 'A-', 'ktg' => 2, 'prio' => 'tinggi', 'stt' => 'Selesai']
+                            ];
+                            foreach ($dummy as $d): ?>
+                            <tr>
+                                <td class="fw-medium text-dark"><?= $d['id'] ?></td>
+                                <td class="text-muted"><?= $d['tgl'] ?></td>
+                                <td class="text-secondary fw-medium"><?= $d['psn'] ?></td>
+                                <td class="fw-bold text-dark"><?= $d['gol'] ?></td>
+                                <td class="text-center"><?= $d['ktg'] ?></td>
+                                <td><span class="badge badge-priority bg-prio-<?= $d['prio'] ?>"><?= strtoupper($d['prio']) ?></span></td>
+                                <td><span class="badge badge-status bg-status-<?= ($d['stt'] == 'Diproses') ? 'proses' : (($d['stt'] == 'Selesai') ? 'selesai' : 'ditemukan') ?>"><?= $d['stt'] ?></span></td>
+                                <td class="text-center"><a href="<?= base_url('rs/detail_permintaan/' . $d['id']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
+
             <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
                 <div>Menampilkan 1 - 6 dari <span class="fw-bold text-dark">24</span> data</div>
                 <nav aria-label="Page navigation">
@@ -114,7 +145,9 @@
                         <li class="page-item"><a class="page-link border rounded text-secondary" href="#"><i class="fa-solid fa-chevron-left extra-small-arrow"></i></a></li>
                         <li class="page-item active"><a class="page-link border rounded" href="#">1</a></li>
                         <li class="page-item"><a class="page-link border rounded text-secondary" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">3</a></li>
                         <li class="page-item disabled"><span class="page-link border-0 text-muted">...</span></li>
+                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">5</a></li>
                         <li class="page-item"><a class="page-link border rounded text-secondary" href="#"><i class="fa-solid fa-chevron-right extra-small-arrow"></i></a></li>
                     </ul>
                 </nav>
@@ -123,5 +156,21 @@
     </div>
 </div>
 
-</main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Cari elemen tombol garis tiga di bagian topbar atas Anda
+    // Catatan: Ganti '.navbar-toggler' atau 'i.fa-bars' sesuai dengan class/id tombol garis tiga asli di topbar Anda
+    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
+    const sidebar = document.getElementById('sidebar');
+
+    if(toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Otomatis pasang/lepas class 'sidebar-open' setiap kali tombol diklik
+            sidebar.classList.toggle('sidebar-open');
+        });
+    }
+});
+</script>
+
 <?= $this->endSection() ?>
