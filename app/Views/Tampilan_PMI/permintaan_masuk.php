@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/permintaan_masuk.css') ?>">
 
-<aside class="sidebar sidebar-open" id="sidebar">
+<aside class="sidebar" id="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -13,8 +13,11 @@
         <a href="<?= base_url('pmi/permintaan_masuk') ?>" class="menu-item menu-active">
             <i class="fa-solid fa-inbox"></i> Permintaan Masuk
         </a>
-        <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item">
+        <a href="<?= base_url('pmi/cari_donor') ?>" class="menu-item">
             <i class="fa-solid fa-user-gear"></i> Cari Donor
+        </a>
+        <a href="<?= base_url('pmi/tambah_pendonor') ?>" class="menu-item">
+            <i class="fa-solid fa-user-plus"></i> Tambah Pendonor 
         </a>
         <a href="<?= base_url('pmi/update_status_permintaan') ?>" class="menu-item">
             <i class="fa-solid fa-file-pen"></i> Update Status Permintaan 
@@ -139,8 +142,10 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    // Memastikan pemicu mendeteksi ikon hamburger menu di topbar layout utama Anda
     const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
     const sidebar = document.getElementById('sidebar');
+    
     if(toggleBtn && sidebar) {
         toggleBtn.addEventListener('click', function(e) {
             e.preventDefault();

@@ -16,13 +16,13 @@ body.sidebar-open .bootstrap-wrapper,
     width: calc(100% - 240px) !important;
 }
 
-.bootstrap-wrapper table,
 .bootstrap-wrapper card,
-.bootstrap-wrapper h1 {
+.bootstrap-wrapper h1,
+.bootstrap-wrapper label {
     font-family: 'Inter', sans-serif !important;
 }
 
-/* --- CORE FIXED SIDEBAR SYSTEM --- */
+/* --- SYSTEM SIDEBAR PMI --- */
 .sidebar {
     display: flex !important;
     flex-direction: column !important;
@@ -41,7 +41,7 @@ body.sidebar-open .bootstrap-wrapper,
     left: 0 !important;
 }
 
-/* --- HEADER GROUP CLEAN --- */
+/* --- HEADER AREA --- */
 .header-group-clean {
     margin-bottom: 25px !important;
     padding-top: 15px !important;
@@ -52,8 +52,12 @@ body.sidebar-open .bootstrap-wrapper,
     color: #111827 !important;
     margin: 0 0 2px 0 !important;
 }
+.breadcrumb-nav a {
+    color: #6b7280 !important;
+    font-size: 14px;
+}
 
-/* --- TAMPILAN ELEMEN FORM INPUT FILTER --- */
+/* --- INPUT SELECTION BOX STYLE --- */
 .custom-filter-input {
     border: 1px solid #e5e7eb !important;
     border-radius: 8px !important;
@@ -62,8 +66,24 @@ body.sidebar-open .bootstrap-wrapper,
     color: #4b5563;
     background-color: #ffffff;
 }
+.custom-filter-input:focus {
+    border-color: #8B0000 !important;
+    box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1) !important;
+}
+.input-group-text {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px 0 0 8px !important;
+}
 
-/* --- TOMBOL AKSI PENCARIAN (MAROON & RESET OUTLINE) --- */
+/* --- CARD PANEL CONTENT --- */
+.card-content {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+    background: #fff;
+}
+
+/* --- TOMBOL AKSI UTAMA --- */
 .btn-search-maroon {
     background-color: #8B0000 !important;
     color: #ffffff !important;
@@ -72,9 +92,8 @@ body.sidebar-open .bootstrap-wrapper,
     font-size: 14px;
     transition: background 0.2s ease;
 }
-.btn-search-maroon:hover {
-    background-color: #660000 !important;
-}
+.btn-search-maroon:hover { background-color: #660000 !important; }
+
 .btn-reset-outline {
     border: 1px solid #d1d5db !important;
     color: #4b5563 !important;
@@ -83,61 +102,23 @@ body.sidebar-open .bootstrap-wrapper,
     font-size: 14px;
     transition: all 0.2s ease;
 }
-.btn-reset-outline:hover {
-    background-color: #f9fafb;
-    border-color: #8B0000 !important;
-    color: #8B0000 !important;
-}
+.btn-reset-outline:hover { background-color: #f9fafb; color: #8B0000 !important; border-color: #8B0000 !important; }
 
-/* --- CARD CONTAINER --- */
-.card-stat, .card-content {
-    border: 1px solid #eef2f5 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
-    background: #fff;
+/* --- SEKTOR LINGKARAN UNGGAH FOTO AVATAR --- */
+.upload-preview-circle {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #f1f5f9;
+    background-color: #f8fafc;
 }
-
-/* --- CUSTOM TABLES --- */
-.custom-table th {
+.upload-preview-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.extra-small {
     font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
     color: #94a3b8;
-    border-bottom: 1px solid #f1f5f9 !important;
-    font-weight: 600;
-    padding: 12px 8px !important;
 }
-.custom-table td {
-    padding: 15px 8px !important;
-    border-bottom: 1px solid #f8fafc !important;
-    font-size: 13.5px;
-}
-
-/* --- TOMBOL DETAIL OUTLINE KOTAK MARUN --- */
-.btn-outline-detail {
-    border: 1px solid #8B0000 !important;
-    color: #8B0000 !important;
-    background-color: transparent;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-.btn-outline-detail:hover {
-    background-color: #8B0000 !important;
-    color: #ffffff !important;
-}
-
-/* --- BORDER DASHED BOX ALERT EMPTY --- */
-.border-dashed {
-    border-style: dashed !important;
-    background-color: #fafbfc !important;
-}
-
-/* --- STATUS VARIANT BADGES --- */
-.badge-status { font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
-.bg-status-selesai { background-color: #E8F5E9 !important; color: #00875A !important; }
-
-/* --- PAGINATION LINK --- */
-.pagination .page-link { padding: 6px 12px; font-size: 13px; font-weight: 500; color: #4b5563; }
-.pagination .page-item.active .page-link { background-color: #8B0000 !important; border-color: #8B0000 !important; color: #ffffff !important; }

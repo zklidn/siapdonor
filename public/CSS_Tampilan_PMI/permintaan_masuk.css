@@ -3,14 +3,14 @@
 .bootstrap-wrapper {
     font-family: 'Inter', sans-serif !important;
     background-color: #f8f9fa;
-    /* TAMBAHAN SINKRONISASI: Agar boks putih mengikut alur buka-tutup sidebar */
-    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    /* KOREKSI KONSISTENSI RS: Menggunakan transisi linier biasa agar sinkron penuh */
+    transition: margin-left 0.25s ease, width 0.25s ease !important;
     margin-left: 0 !important;
     padding: 20px !important;
-    width: 100% !important;
+    width: 100% !important; /* Default full halaman */
 }
 
-/* TAMBAHAN KUNCI ELESTIS: Memotong lebar boks konten saat sidebar terbuka */
+/* Hanya dorong ke kanan dan potong lebar jika class pemicu '.sidebar-open' aktif */
 .sidebar.sidebar-open ~ .bootstrap-wrapper {
     margin-left: 240px !important;
     width: calc(100% - 240px) !important;
@@ -22,23 +22,24 @@
     font-family: 'Inter', sans-serif !important;
 }
 
-/* --- TAMBAHAN ELEMEN SIDEBAR PMI (UNTUK MEMFUNGSIKAN BUG GERAK) --- */
+/* --- CORE FIXED SIDEBAR SYSTEM --- */
 .sidebar {
     display: flex !important;
     flex-direction: column !important;
     justify-content: space-between !important;
     position: fixed !important;
     top: 70px !important;
-    left: -240px !important;
+    left: -240px !important; /* Default bersembunyi di luar monitor kiri */
     width: 240px !important;
     height: calc(100vh - 70px) !important;
     background-color: #8B0000 !important;
     z-index: 1000 !important;
     padding-bottom: 25px !important;
-    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: left 0.25s ease !important;
 }
+
 .sidebar.sidebar-open {
-    left: 0 !important;
+    left: 0 !important; /* Muncul pas rata kiri monitor saat tombol ditekan */
 }
 
 /* --- HEADER GROUP CLEAN --- */
@@ -53,7 +54,7 @@
     margin: 0 0 2px 0 !important;
 }
 
-/* --- TAMBAHAN FILTER BAR ATAS (UNTUK COMPONENT HALAMAN INI) --- */
+/* --- FILTER BAR ATAS --- */
 .custom-filter-input {
     border: 1px solid #e5e7eb !important;
     border-radius: 8px !important;
@@ -91,7 +92,7 @@
     font-size: 13.5px;
 }
 
-/* --- TAMBAHAN TOMBOL DETAIL OUTLINE MARUN (SESUAI GOAL FOTO) --- */
+/* --- TOMBOL DETAIL OUTLINE MARUN --- */
 .btn-outline-detail {
     border: 1px solid #8B0000 !important;
     color: #8B0000 !important;
