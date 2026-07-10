@@ -16,7 +16,7 @@
         <a href="<?= base_url('pmi/cari_donor') ?>" class="menu-item">
             <i class="fa-solid fa-user-gear"></i> Cari Donor
         </a>
-        <a href="<?= base_url('pmi/tambah_pendonor') ?>" class="menu-item">
+        <a href="<?= base_url('pmi/tambah_donor') ?>" class="menu-item">
             <i class="fa-solid fa-user-plus"></i> Tambah Pendonor 
         </a>
         <a href="<?= base_url('pmi/update_status_permintaan') ?>" class="menu-item">
