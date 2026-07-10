@@ -3,7 +3,22 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/dashboard_rs.css') ?>">
+
+<aside class="sidebar sidebar-open" id="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+            <i class="fa-solid fa-droplet"></i> Permintaan Darah
+        </a>
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-invoice"></i> Riwayat Permintaan
+        </a>
+    </div>
+</aside>
 
 <div class="container-fluid py-2 bootstrap-wrapper">
     <div class="header-group-clean">
@@ -119,7 +134,6 @@
                     </div>
                     <div class="row row-cols-5 g-3 text-center">
                         <?php 
-                        // Data default penampung jika database kosong
                         $mendesak = $kebutuhan_mendesak ?? ['O+' => 0, 'A-' => 0, 'B+' => 0, 'AB-' => 0, 'O-' => 0];
                         foreach ($mendesak as $gol => $kantong): 
                         ?>
@@ -146,7 +160,6 @@
                             <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#f0f2f5" stroke-width="4.5"></circle>
                             
                             <?php
-                            // Perhitungan persentase Donut Chart secara otomatis & aman dari error pembagian nol
                             $total = $total_permintaan ?? 0;
                             $p_proses = $total > 0 ? round(($total_proses / $total) * 100) : 0;
                             $p_ditemukan = $total > 0 ? round(($total_ditemukan / $total) * 100) : 0;
@@ -205,5 +218,18 @@
     </div>
 </div>
 
-</main>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
+    const sidebar = document.getElementById('sidebar');
+
+    if(toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            sidebar.classList.toggle('sidebar-open');
+        });
+    }
+});
+</script>
+
 <?= $this->endSection() ?>

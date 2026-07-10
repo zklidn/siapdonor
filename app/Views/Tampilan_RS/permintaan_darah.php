@@ -4,6 +4,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/permintaan_darah.css') ?>">
 
+<aside class="sidebar sidebar-open" id="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+            <i class="fa-solid fa-droplet"></i> Permintaan Darah
+        </a>
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-invoice"></i> Riwayat Permintaan
+        </a>
+    </div>
+</aside>
+
 <div class="container-fluid py-2 bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Permintaan Darah</h1>
@@ -117,6 +131,23 @@
         </div>
     </form>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Cari elemen tombol garis tiga di bagian topbar atas Anda
+    // Catatan: Ganti '.navbar-toggler' atau 'i.fa-bars' sesuai dengan class/id tombol garis tiga asli di topbar Anda
+    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
+    const sidebar = document.getElementById('sidebar');
+
+    if(toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Otomatis pasang/lepas class 'sidebar-open' setiap kali tombol diklik
+            sidebar.classList.toggle('sidebar-open');
+        });
+    }
+});
+</script>
 
 </main>
 <?= $this->endSection() ?>
