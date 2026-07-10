@@ -1,6 +1,4 @@
-/* --- FONTS & KONSISTENSI UTALITAS DASHBOARD --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 .bootstrap-wrapper,
 .bootstrap-wrapper table,
 .bootstrap-wrapper card,
@@ -13,12 +11,14 @@
 .header-group {
     margin-bottom: 25px !important;
 }
+
 .page-title {
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #111827 !important;
     margin: 0 0 2px 0 !important;
 }
+
 .breadcrumb-nav {
     display: flex;
     align-items: center;
@@ -27,15 +27,18 @@
     padding: 0;
     margin: 0;
 }
+
 .breadcrumb-nav a {
     text-decoration: none;
     color: #6b7280 !important;
     font-size: 14px;
 }
+
 .breadcrumb-nav-separator {
     color: #9ca3af;
     font-size: 13px;
 }
+
 .breadcrumb-nav-item.active {
     color: #111827 !important;
     font-size: 14px;
@@ -48,6 +51,7 @@
     background-color: #ffffff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
 }
+
 .section-card-title {
     font-size: 15px !important;
     font-weight: 600 !important;
@@ -58,6 +62,7 @@
 .info-list .row {
     align-items: flex-start;
 }
+
 .info-list span {
     font-size: 13.5px;
 }
@@ -77,10 +82,12 @@
     padding-bottom: 25px;
     border-left: 2px solid #e5e7eb;
 }
+
 .timeline-item.content-last {
     border-left: 2px solid transparent !important;
     padding-bottom: 0px;
 }
+
 .timeline-badge {
     position: absolute;
     left: -16px;
@@ -95,6 +102,7 @@
     border: 2px solid #ffffff;
     box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
+
 .timeline-content {
     font-size: 13.5px;
 }
@@ -112,10 +120,12 @@
     border-radius: 8px;
     font-size: 14px;
 }
+
 .btn-outline-print:hover {
     background-color: #8B0000 !important;
     color: #ffffff !important;
 }
+
 .btn-back {
     border: 1px solid #d1d5db !important;
     color: #4b5563 !important;
@@ -123,6 +133,7 @@
     border-radius: 8px;
     font-size: 14px;
 }
+
 .btn-back:hover {
     background-color: #f9fafb;
     border-color: #c4c4c4 !important;
@@ -134,7 +145,6 @@
     @page {
         margin: 15mm 15mm 15mm 15mm; /* Mengatur margin kertas bersih */
     }
-
     /* Tampilkan kop surat RS kustom kita */
     .print-header-letter {
         display: flex !important;
@@ -169,7 +179,6 @@
         font-size: 12px;
         color: #4b5563;
     }
-
     /* Sembunyikan elemen bawaan sistem web */
     .topbar, 
     .sidebar, 
@@ -178,7 +187,6 @@
     .breadcrumb-nav {
         display: none !important;
     }
-
     .main-wrapper, 
     .content-area, 
     .bootstrap-wrapper {
@@ -187,7 +195,6 @@
         width: 100% !important;
         background-color: #ffffff !important;
     }
-
     .card-detail {
         border: 1px solid #e5e7eb !important;
         box-shadow: none !important;

@@ -4,6 +4,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/permintaan_darah.css') ?>">
 
+<aside class="sidebar sidebar-open" id="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('rs') ?>" class="menu-item">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-droplet"></i> Permintaan Darah
+        </a>
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-invoice"></i> Riwayat Permintaan
+        </a>
+    </div>
+</aside>
+
 <div class="container-fluid py-2 bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Permintaan Darah</h1>
@@ -15,7 +29,6 @@
             </ol>
         </nav>
     </div>
-
     <form action="<?= base_url('rs/simpan_permintaan') ?>" method="POST">
         
         <div class="card card-form mb-4 border-0 shadow-sm">
@@ -46,7 +59,6 @@
                 </div>
             </div>
         </div>
-
         <div class="card card-form mb-4 border-0 shadow-sm">
             <div class="card-body p-4">
                 <h5 class="fw-bold mb-4 text-dark fs-6">Kebutuhan Darah</h5>
@@ -74,7 +86,6 @@
                         <input type="number" name="jumlah_kantong" class="form-control custom-input" placeholder="Masukkan jumlah kantong" min="1" required>
                     </div>
                 </div>
-
                 <div class="mb-4">
                     <label class="form-label small fw-semibold text-secondary mb-2">Prioritas / Urgensi <span class="text-danger">*</span></label>
                     <div class="row g-2">
@@ -108,20 +119,35 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="mb-2">
                     <label class="form-label small fw-semibold text-secondary">Catatan (opsional)</label>
                     <textarea name="catatan" class="form-control custom-textarea" rows="3" placeholder="Masukkan catatan tambahan"></textarea>
                 </div>
             </div>
         </div>
-
         <div class="d-flex justify-content-end gap-3 pt-2 mb-5">
             <a href="<?= base_url('rs/permintaan_darah') ?>" class="btn btn-batal px-5 py-2 fw-semibold">Batal</a>
             <button type="submit" class="btn btn-kirim px-5 py-2 fw-semibold">Kirim Permintaan</button>
         </div>
     </form>
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Cari elemen tombol garis tiga di bagian topbar atas Anda
+    // Catatan: Ganti '.navbar-toggler' atau 'i.fa-bars' sesuai dengan class/id tombol garis tiga asli di topbar Anda
+    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
+    const sidebar = document.getElementById('sidebar');
+
+    if(toggleBtn && sidebar) {
+        toggleBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            // Otomatis pasang/lepas class 'sidebar-open' setiap kali tombol diklik
+            sidebar.classList.toggle('sidebar-open');
+        });
+    }
+});
+</script>
 
 </main>
 <?= $this->endSection() ?>

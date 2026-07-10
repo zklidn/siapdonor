@@ -1,4 +1,18 @@
-vendor
+/vendor
 .env
+
+# Logs
 writable/logs/*
 !writable/logs/index.html
+
+# Debugbar
+writable/debugbar/*
+!writable/debugbar/index.html
+
+# Session
+writable/session/*
+!writable/session/index.html
+
+# Cache (opsional, disarankan)
+writable/cache/*
+!writable/cache/index.html

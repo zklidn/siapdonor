@@ -8,13 +8,17 @@ class DatabaseSeeder extends Seeder
 {
     public function run()
     {
-        // Urutan HARUS sesuai urutan migration karena ada foreign key
-        $this->call('UserSeeder');             
-        $this->call('PermintaanDarahSeeder');   
-        $this->call('PasienSeeder');           
-        $this->call('DetailPermintaanSeeder');  
-        $this->call('DonorSeeder');             
-        $this->call('LogAktivitasSeeder');     
-        $this->call('NotifikasiSeeder');        
+        // 1. Panggil tabel-tabel Master yang tidak bergantung pada tabel lain
+        $this->call('UserSeeder');
+        $this->call('DonorSeeder');
+        $this->call('PermintaanDarahSeeder'); // Dipindah ke atas agar ID-nya dibuat lebih dulu
+
+        // 2. Panggil tabel yang menggunakan ID dari tabel di atas
+        $this->call('PasienSeeder');          // Bergantung pada PermintaanDarah
+        $this->call('DetailPermintaanSeeder'); // Bergantung pada PermintaanDarah / Donor
+
+        // 3. Panggil tabel pelengkap
+        $this->call('LogAktivitasSeeder');
+        $this->call('NotifikasiSeeder');
     }
 }
