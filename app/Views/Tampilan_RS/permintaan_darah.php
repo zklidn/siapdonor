@@ -6,10 +6,10 @@
 
 <aside class="sidebar sidebar-open" id="sidebar">
     <div class="menu-top">
-        <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
+        <a href="<?= base_url('rs') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
         </a>
-        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item menu-active">
             <i class="fa-solid fa-droplet"></i> Permintaan Darah
         </a>
         <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
