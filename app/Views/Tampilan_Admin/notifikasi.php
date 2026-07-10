@@ -77,9 +77,5 @@
 
     </div>
 
-    <div class="footer-text">
-        &copy; 2026 SiapDonor. All rights reserved.
-    </div>
-
 </main>
 <?= $this->endSection() ?>

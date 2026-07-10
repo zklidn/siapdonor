@@ -1,6 +1,8 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
+<link rel="stylesheet" href="<?= base_url('css_pmi/style_settings_pmi.css') ?>">
+
 <aside class="sidebar" id="sidebar">
     <a href="<?= base_url('pmi') ?>" class="menu-item">
         <i class="fa-solid fa-house"></i> Dashboard
@@ -24,84 +26,106 @@
 
 <main class="content-area">
     
-    <div style="margin-bottom: 30px;">
-        <h1 style="color: #111827; font-size: 24px; margin-bottom: 5px;">Settings</h1>
+    <div class="page-header">
+        <h1 class="page-title">Settings</h1>
     </div>
 
-    <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
-        <h3 style="margin-bottom: 25px; font-size: 16px; color: #111827;">Profil Pengguna</h3>
+    <div class="settings-card">
+        <h3 class="card-title">Profil Pengguna</h3>
         
         <form action="<?= base_url('pmi/update_profil') ?>" method="POST" enctype="multipart/form-data">
             
-            <div style="margin-bottom: 25px;">
-                <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 10px;">Foto Profil</label>
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 60px; height: 60px; border-radius: 50%; background: #f3f4f6; border: 1px solid #e5e7eb; display: flex; justify-content: center; align-items: center; overflow: hidden; flex-shrink: 0;">
-                        <i class="fa-solid fa-user" style="font-size: 24px; color: #9ca3af;"></i>
+            <div class="form-group foto-group">
+                <label class="form-label">Foto Profil</label>
+                <div class="foto-wrapper">
+                    <div class="foto-placeholder">
+                        <i class="fa-solid fa-user foto-icon"></i>
                     </div>
                     <div>
-                        <input type="file" name="foto_profil" accept="image/*" style="padding: 6px 10px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 13px; outline: none; background: #f9fafb; display: block; width: 100%; max-width: 250px;">
-                        <small style="display: block; font-size: 11px; color: #6b7280; margin-top: 6px;">Format: JPG, PNG (Maks 2MB)</small>
+                        <input type="file" name="foto_profil" accept="image/*" class="foto-input">
+                        <small class="foto-hint">Format: JPG, PNG (Maks 2MB)</small>
                     </div>
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 20px; align-items: end;">
-                
+            <div class="grid-profil-pmi">
                 <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px;">Nama Lengkap</label>
-                    <input type="text" name="nama" value="PMI Kota Palu" style="width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 13px; outline: none; color: #1f2937;">
+                    <label class="form-label">Nama Lengkap</label>
+                    <input type="text" name="nama" value="PMI Kota Palu" class="form-control">
                 </div>
-
                 <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px;">Email</label>
-                    <input type="email" name="email" value="pmipalu@gmail.com" style="width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 13px; outline: none; color: #1f2937;">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="email" value="pmipalu@gmail.com" class="form-control">
                 </div>
-
                 <div>
-                    <button type="submit" style="background: #8b0000; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; height: 43px;">
-                        Simpan Perubahan
-                    </button>
+                    <button type="submit" class="btn-solid">Simpan Perubahan</button>
                 </div>
-
             </div>
+            
         </form>
     </div>
 
-    <div style="background: white; padding: 30px; border-radius: 12px; border: 1px solid #e5e7eb;">
-        <h3 style="margin-bottom: 25px; font-size: 16px; color: #111827;">Ubah Password</h3>
+    <div class="settings-card">
+        <h3 class="card-title">Keamanan Akun</h3>
+        <p class="card-subtitle">Pastikan akun PMI Anda menggunakan kata sandi yang kuat agar data pendonor tetap aman.</p>
         
-        <form action="<?= base_url('pmi/update_password') ?>" method="POST">
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 20px; align-items: end;">
+        <button type="button" id="btnTampilPassword" class="btn-outline mt-15">
+            <i class="fa-solid fa-lock"></i> Ubah Password
+        </button>
+
+        <div id="kotakFormPassword" class="password-box" style="display: none;">
+            <form action="<?= base_url('pmi/update_password') ?>" method="POST">
                 
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px;">Password Saat Ini</label>
-                    <input type="password" name="old_password" placeholder="Masukkan password saat ini" style="width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 13px; outline: none; color: #1f2937;">
+                <div class="form-group">
+                    <label class="form-label">Password Saat Ini</label>
+                    <input type="password" name="old_password" class="form-control" placeholder="Masukkan password saat ini" required>
                 </div>
 
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px;">Password Baru</label>
-                    <input type="password" name="new_password" placeholder="Masukkan password baru" style="width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 13px; outline: none; color: #1f2937;">
+                <div class="grid-password">
+                    <div class="form-group">
+                        <label class="form-label">Password Baru</label>
+                        <input type="password" name="new_password" class="form-control" placeholder="Masukkan password baru" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Konfirmasi Password Baru</label>
+                        <input type="password" name="confirm_password" class="form-control" placeholder="Konfirmasi password baru" required>
+                    </div>
                 </div>
 
-                <div>
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 8px;">Konfirmasi Password Baru</label>
-                    <input type="password" name="confirm_password" placeholder="Konfirmasi password baru" style="width: 100%; padding: 12px 15px; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 13px; outline: none; color: #1f2937;">
+                <div class="form-action flex-action">
+                    <button type="button" id="btnBatalPassword" class="btn-outline text-gray border-gray">Batal</button>
+                    <button type="submit" class="btn-solid">Ubah Password</button>
                 </div>
-
-                <div>
-                    <button type="submit" style="background: #8b0000; color: white; padding: 12px 25px; border: none; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; height: 43px;">
-                        Ubah Password
-                    </button>
-                </div>
-
-            </div>
-        </form>
-    </div>
-
-    <div style="margin-top: 40px; color: #9ca3af; font-size: 12px;">
-        &copy; 2026 SiapDonor. All rights reserved.
+                
+            </form>
+        </div>
     </div>
 
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var btnTampil = document.getElementById('btnTampilPassword');
+        var btnBatal = document.getElementById('btnBatalPassword');
+        var kotakForm = document.getElementById('kotakFormPassword');
+
+        if(btnTampil && btnBatal && kotakForm) {
+            btnTampil.addEventListener('click', function() {
+                btnTampil.style.display = 'none';
+                kotakForm.style.display = 'block';
+            });
+
+            btnBatal.addEventListener('click', function() {
+                kotakForm.style.display = 'none';
+                btnTampil.style.display = 'inline-flex';
+                
+                // Mengosongkan form saat dibatalkan
+                var inputs = kotakForm.querySelectorAll('input[type="password"]');
+                inputs.forEach(input => input.value = '');
+            });
+        }
+    });
+</script>
+
 <?= $this->endSection() ?>

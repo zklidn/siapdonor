@@ -76,8 +76,11 @@
             <div>Total Data: <b><?= esc($totalData) ?></b> aktivitas</div>
             
             <div class="pagination-links">
-                <?= $pager->links('logs', 'default_full') ?>
-            </div>
+                <span class="page-nav"><i class="fa-solid fa-chevron-left"></i></span>
+                <span class="page-active">1</span>
+                <span class="page-nav"><i class="fa-solid fa-chevron-right"></i></span>
+                
+                </div>
         </div>
         
     </div>
