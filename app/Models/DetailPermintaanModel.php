@@ -6,23 +6,26 @@ use CodeIgniter\Model;
 
 class DetailPermintaanModel extends Model
 {
-    protected $table      = 'detail_permintaan';
-    protected $primaryKey = 'id_detail';
+    protected $table            = 'detail_permintaan';
+    protected $primaryKey       = 'id_detail';
     protected $useAutoIncrement = true;
-    protected $returnType ='array';
-    protected $useSoftDeletes =true;
-    protected $protectFields = true;
-    protected $allowedFields = ['id_permintaan', 'jenis_darah','jumlah'];
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = true;
+    protected $protectFields    = true;
 
-    protected $useTimestamps =true;
-    protected $dateFormat ='datetime';
-    protected $createdField ='created_at';
-    protected $updatedField ='updated_at';
-    protected $deleteField ='deleted_at';
+    // Field lengkap disamakan dengan kodingan Migration sebelumnya
+    protected $allowedFields    = ['id_permintaan', 'tanggal','nama_pasien','golongan_darah','jenis_darah', 'jumlah_kantong', 'prioritas', 'status'];
+
+    protected $useTimestamps = true;
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
+    
+    // Perbaikan typo (sebelumnya $deleteField)
+    protected $deletedField  = 'deleted_at';
 
 
-
-// 1. Mendaftarkan trigger otomatis (Callback)
+    // 1. Mendaftarkan trigger otomatis (Callback)
     protected $afterInsert = ['rekamInsert'];
     protected $afterUpdate = ['rekamUpdate'];
     protected $afterDelete = ['rekamDelete'];

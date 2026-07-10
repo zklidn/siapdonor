@@ -16,7 +16,7 @@ class PermintaanDarahModel extends Model
     protected $protectFields    = true; // Sebelumnya: $proctectFields
     
     // DISESUAIKAN DENGAN MIGRATION TERBARU:
-    protected $allowedFields    = ['id_user', 'nama_pasien', 'no_rm', 'ruangan', 'diagnosis', 'golongan_darah', 'rhesus', 'jumlah_kantong', 'prioritas', 'status'];
+    protected $allowedFields    = ['id_user', 'nama_pasien', 'no_rm', 'ruangan', 'diagnosis', 'golongan_darah', 'rhesus', 'jumlah_kantong', 'prioritas','catatan','status'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
