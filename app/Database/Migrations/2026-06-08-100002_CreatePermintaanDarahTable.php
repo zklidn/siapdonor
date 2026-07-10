@@ -18,23 +18,41 @@ class CreatePermintaanDarahTable extends Migration
                 'type'     => 'INT',
                 'unsigned' => true,
             ],
+            'nama_pasien' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'no_rm' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
+            ],
+            'ruangan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'diagnosis' => [
+                'type' => 'TEXT',
+                'null' => true,
+            ],
             'golongan_darah' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 5,
             ],
-            'tgl_permintaan' => [
-                'type' => 'DATE',
-            ],
-            'kebutuhan' => [
+            'rhesus' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 255,
+                'constraint' => 5,
+            ],
+            'jumlah_kantong' => [
+                'type' => 'INT',
+            ],
+            'prioritas' => [
+                'type'       => 'VARCHAR',
+                'constraint' => 50,
             ],
             'status' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 50,
-            ],
-            'jumlah_kantong' => [
-                'type' => 'INT',
+                'default'    => 'Baru',
             ],
             'created_at' => [
                 'type' => 'DATETIME',

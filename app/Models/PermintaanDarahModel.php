@@ -6,20 +6,25 @@ use CodeIgniter\Model;
 
 class PermintaanDarahModel extends Model
 {
-    protected $table      = 'permintaan_darah';
-    protected $primaryKey = 'id_permintaan';
+    protected $table            = 'permintaan_darah';
+    protected $primaryKey       = 'id_permintaan';
     protected $useAutoIncrement = true;
-    protected $returnType = 'array';
-    protected $useSoftFields = true;
-    protected $proctectFields = true;
-    protected $allowedFields = ['tgl_permintaan', 'status', 'jumlah_kantong', 'kebutuhan'. 'golongan_darah'];
+    protected $returnType       = 'array';
+    
+    // PERBAIKAN TYPO PROPERTI BAWAAN CI4:
+    protected $useSoftDeletes   = true; // Sebelumnya: $useSoftFields
+    protected $protectFields    = true; // Sebelumnya: $proctectFields
+    
+    // DISESUAIKAN DENGAN MIGRATION TERBARU:
+    protected $allowedFields    = ['id_user', 'nama_pasien', 'no_rm', 'ruangan', 'diagnosis', 'golongan_darah', 'rhesus', 'jumlah_kantong', 'prioritas', 'status'];
 
     protected $useTimestamps = true;
-    protected $dateFormat = 'datetime';
-    protected $createdField = 'created_at';
-    protected $updatedfield = 'updated_at';
-    protected $deleteField = 'deleted_at';
-
+    protected $dateFormat    = 'datetime';
+    protected $createdField  = 'created_at';
+    
+    // PERBAIKAN TYPO PROPERTI BAWAAN CI4:
+    protected $updatedField  = 'updated_at'; // Sebelumnya: $updatedfield (F harus kapital)
+    protected $deletedField  = 'deleted_at'; // Sebelumnya: $deleteField (kurang huruf 'd')
 
     // 1. Mendaftarkan trigger otomatis (Callback)
     protected $afterInsert = ['rekamInsert'];
