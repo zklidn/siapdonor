@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/dashboard_pmi.css') ?>">
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item menu-active">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -25,7 +25,7 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Dashboard</h1>
         <p class="text-muted small mb-0">Selamat datang, Petugas PMI Kota Palu!</p>
@@ -88,7 +88,6 @@
                             </thead>
                             <tbody>
                                 <?php 
-                                // Menghubungkan array data dinamis yang dikirimkan oleh Controller PMI
                                 $list_terbaru = isset($permintaan_terbaru) ? $permintaan_terbaru : [
                                     ['id' => 'REQ-20250520-001', 'rs' => 'RSUD Undata Palu', 'gol' => 'O+', 'prio' => 'URGENT', 'status' => 'Baru'],
                                     ['id' => 'REQ-20250520-002', 'rs' => 'RS Madani Palu', 'gol' => 'A+', 'prio' => 'TINGGI', 'status' => 'Diproses'],
@@ -186,19 +185,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
-    }
-});
-</script>
+</main>
 
 <?= $this->endSection() ?>

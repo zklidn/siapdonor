@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/permintaan_masuk.css') ?>">
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -25,7 +25,7 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Permintaan Masuk</h1>
         <p class="text-muted small mb-0">Dashboard / Permintaan Masuk</p>
@@ -123,36 +123,8 @@
                     </tbody>
                 </table>
             </div>
-
-            <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
-                <div>Menampilkan 1 - 5 dari <span class="fw-bold text-dark">12</span> data</div>
-                <nav aria-label="Page navigation">
-                    <ul class="pagination pagination-sm mb-0 gap-1">
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#"><i class="fa-solid fa-chevron-left extra-small-arrow"></i></a></li>
-                        <li class="page-item active"><a class="page-link border rounded" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#"><i class="fa-solid fa-chevron-right extra-small-arrow"></i></a></li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    // Memastikan pemicu mendeteksi ikon hamburger menu di topbar layout utama Anda
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-    
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
-    }
-});
-</script>
+</main>
 
 <?= $this->endSection() ?>
