@@ -73,7 +73,7 @@
 
     </div>
 
-    <div class="content-grid">
+    <div style="display: flex; flex-direction: column; gap: 24px;">
         
         <div class="card-panel">
             <h3 class="panel-title">Aktivitas Sistem Terbaru</h3>
@@ -111,17 +111,14 @@
             <a href="<?= base_url('admin/riwayat') ?>" class="link-action">Lihat semua aktivitas</a>
         </div>
 
-        <div class="card-panel" style="align-self: start;">
+        <!-- Tambahan style="text-align: center;" ada di baris bawah ini -->
+        <div class="card-panel" style="text-align: center;">
             <h3 class="panel-title">Informasi</h3>
             <p class="info-text">
                 Kelola sistem, user, dan pantau aktivitas seluruh pengguna di SiapDonor.
             </p>
         </div>
         
-    </div>
-
-    <div class="footer-text">
-        &copy; 2026 SiapDonor. All rights reserved.
     </div>
 
 </main>
