@@ -4,21 +4,17 @@
 <link rel="stylesheet" href="<?= base_url('css_rs/style_settings_rs.css') ?>">
 
 <aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('rs') ?>" class="menu-item">
-        <i class="fa-solid fa-house"></i> Dashboard
-    </a>
-    <a href="<?= base_url('rs/cari_donor') ?>" class="menu-item">
-        <i class="fa-solid fa-magnifying-glass"></i> Cari Donor
-    </a>
-    <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
-        <i class="fa-solid fa-file-invoice-dollar"></i> Permintaan Darah
-    </a>
-    <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
-        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Permintaan
-    </a>
-    <a href="<?= base_url('rs/laporan_rs') ?>" class="menu-item">
-        <i class="fa-solid fa-file-lines"></i> Laporan
-    </a>
+    <div class="menu-top">
+        <a href="<?= base_url('rs') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+            <i class="fa-solid fa-droplet"></i> Permintaan Darah
+        </a>
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-invoice"></i> Riwayat Permintaan
+        </a>
+    </div>
 </aside>
 
 <main class="content-area">

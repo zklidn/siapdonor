@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/cari_donor.css') ?>">
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -25,10 +25,9 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Cari Donor</h1>
-        <p class="text-muted small mb-0">Dashboard / Cari Donor</p>
     </div>
 
     <form action="<?= base_url('pmi/cari_donor') ?>" method="get" class="mb-4">
@@ -148,19 +147,6 @@
             <?php endif; ?>
         </div>
     </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
-    }
-});
-</script>
+</main>
 
 <?= $this->endSection() ?>

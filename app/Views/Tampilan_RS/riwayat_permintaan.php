@@ -22,13 +22,6 @@
 <main class="content-area bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Riwayat Permintaan</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb-nav">
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('rs') ?>">Dashboard</a></li>
-                <li class="breadcrumb-nav-separator">/</li>
-                <li class="breadcrumb-nav-item active">Riwayat Permintaan</li>
-            </ol>
-        </nav>
     </div>
 
     <div class="row g-3 mb-4">

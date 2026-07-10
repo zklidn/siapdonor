@@ -3,41 +3,12 @@
 .bootstrap-wrapper {
     font-family: 'Inter', sans-serif !important;
     background-color: #f8f9fa;
-    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-    margin-left: 0 !important;
-    padding: 20px !important;
-    width: 100% !important;
-}
-
-/* Proteksi layout agar sisa area putih melonggar elastis saat boks merah sidebar dibuka */
-.sidebar.sidebar-open ~ .bootstrap-wrapper {
-    margin-left: 240px !important;
-    width: calc(100% - 240px) !important;
 }
 
 .bootstrap-wrapper table,
 .bootstrap-wrapper card,
 .bootstrap-wrapper h1 {
     font-family: 'Inter', sans-serif !important;
-}
-
-/* --- ELEMEN UTAMA DOCK SIDEBAR KIRI --- */
-.sidebar {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    position: fixed !important;
-    top: 70px !important;
-    left: -240px !important;
-    width: 240px !important;
-    height: calc(100vh - 70px) !important;
-    background-color: #8B0000 !important;
-    z-index: 1000 !important;
-    padding-bottom: 25px !important;
-    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-.sidebar.sidebar-open {
-    left: 0 !important;
 }
 
 /* --- HEADER GROUP CLEAN --- */

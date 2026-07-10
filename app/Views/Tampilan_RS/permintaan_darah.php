@@ -23,13 +23,6 @@
 <main class="content-area bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Permintaan Darah</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb-nav">
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('rs') ?>">Dashboard</a></li>
-                <li class="breadcrumb-nav-separator">/</li>
-                <li class="breadcrumb-nav-item active">Permintaan Darah</li>
-            </ol>
-        </nav>
     </div>
     
     <form action="<?= base_url('rs/simpan_permintaan') ?>" method="POST">

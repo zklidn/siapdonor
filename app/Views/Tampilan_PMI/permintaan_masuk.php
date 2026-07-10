@@ -28,7 +28,6 @@
 <main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Permintaan Masuk</h1>
-        <p class="text-muted small mb-0">Dashboard / Permintaan Masuk</p>
     </div>
 
     <div class="row g-3 mb-4">

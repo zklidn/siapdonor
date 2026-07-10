@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/tambah_pendonor.css') ?>">
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -25,18 +25,9 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Tambah Pendonor Baru</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb-nav d-flex gap-2 list-unstyled mb-0">
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi') ?>" class="text-secondary text-decoration-none">Dashboard</a></li>
-                <li class="breadcrumb-nav-separator text-muted">/</li>
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi/cari_donor') ?>" class="text-secondary text-decoration-none">Cari Donor</a></li>
-                <li class="breadcrumb-nav-separator text-muted">/</li>
-                <li class="breadcrumb-nav-item active text-dark fw-medium">Tambah Pendonor</li>
-            </ol>
-        </nav>
     </div>
 
     <div class="card card-content border-0 shadow-sm mb-4">
@@ -61,7 +52,7 @@
                         <p class="text-muted extra-small lh-base">Gunakan format JPG, JPEG, atau PNG. Maksimal ukuran file 2MB.</p>
                     </div>
 
-                    <div class="col-md-8ps-md-4">
+                    <div class="col-md-8 ps-md-4">
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <label class="form-label text-muted small fw-medium mb-1">Nama Lengkap Pendonor</label>
@@ -136,9 +127,10 @@
 
         </div>
     </div>
-</div>
+</main>
 
 <script>
+// Script ini hanya untuk mengubah gambar pratinjau profil
 document.getElementById('file-input').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -147,17 +139,6 @@ document.getElementById('file-input').addEventListener('change', function(e) {
             document.getElementById('avatar-preview').setAttribute('src', event.target.result);
         }
         reader.readAsDataURL(file);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
     }
 });
 </script>

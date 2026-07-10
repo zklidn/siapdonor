@@ -3,42 +3,12 @@
 .bootstrap-wrapper {
     font-family: 'Inter', sans-serif !important;
     background-color: #f8f9fa;
-    transition: margin-left 0.25s ease, width 0.25s ease !important;
-    margin-left: 0 !important;
-    padding: 20px !important;
-    width: 100% !important;
-    position: relative;
-}
-
-body.sidebar-open .bootstrap-wrapper,
-.sidebar.sidebar-open ~ .bootstrap-wrapper {
-    margin-left: 240px !important;
-    width: calc(100% - 240px) !important;
 }
 
 .bootstrap-wrapper card,
 .bootstrap-wrapper h1,
 .bootstrap-wrapper label {
     font-family: 'Inter', sans-serif !important;
-}
-
-/* --- SYSTEM SIDEBAR PMI --- */
-.sidebar {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    position: fixed !important;
-    top: 70px !important;
-    left: -240px !important;
-    width: 240px !important;
-    height: calc(100vh - 70px) !important;
-    background-color: #8B0000 !important;
-    z-index: 1000 !important;
-    padding-bottom: 25px !important;
-    transition: left 0.25s ease !important;
-}
-.sidebar.sidebar-open {
-    left: 0 !important;
 }
 
 /* --- HEADER AREA --- */

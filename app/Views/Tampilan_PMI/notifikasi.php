@@ -1,25 +1,24 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
-<aside class="sidebar" id="sidebar">
-    <a href="<?= base_url('pmi') ?>" class="menu-item">
-        <i class="fa-solid fa-house"></i> Dashboard
-    </a>
-    <a href="<?= base_url('pmi/data_pendonor') ?>" class="menu-item">
-        <i class="fa-solid fa-users"></i> Data Pendonor
-    </a>
-    <a href="<?= base_url('pmi/stok_darah') ?>" class="menu-item">
-        <i class="fa-solid fa-droplet"></i> Stok Darah
-    </a>
-    <a href="<?= base_url('pmi/permintaan_darah') ?>" class="menu-item">
-        <i class="fa-solid fa-file-invoice"></i> Permintaan Darah
-    </a>
-    <a href="<?= base_url('pmi/riwayat_donor') ?>" class="menu-item">
-        <i class="fa-solid fa-clock-rotate-left"></i> Riwayat Donor
-    </a>
-    <a href="<?= base_url('pmi/laporan') ?>" class="menu-item">
-        <i class="fa-solid fa-file-lines"></i> Laporan
-    </a>
+<aside class="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('pmi') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('pmi/permintaan_masuk') ?>" class="menu-item">
+            <i class="fa-solid fa-inbox"></i> Permintaan Masuk
+        </a>
+        <a href="<?= base_url('pmi/cari_donor') ?>" class="menu-item">
+            <i class="fa-solid fa-user-gear"></i> Cari Donor
+        </a>
+        <a href="<?= base_url('pmi/tambah_donor') ?>" class="menu-item">
+            <i class="fa-solid fa-user-plus"></i> Tambah Pendonor 
+        </a>
+        <a href="<?= base_url('pmi/update_status_permintaan') ?>" class="menu-item">
+            <i class="fa-solid fa-file-pen"></i> Update Status Permintaan 
+        </a>
+    </div>
 </aside>
 
 <main class="content-area">

@@ -14,15 +14,6 @@
     <div class="d-flex justify-content-between align-items-start header-group-clean mb-4">
         <div>
             <h1 class="page-title">Detail Permintaan</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb-nav d-flex gap-2 list-unstyled mb-0">
-                    <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi') ?>" class="text-secondary text-decoration-none">Dashboard</a></li>
-                    <li class="breadcrumb-nav-separator text-muted">/</li>
-                    <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi/permintaan_masuk') ?>" class="text-secondary text-decoration-none">Permintaan Masuk</a></li>
-                    <li class="breadcrumb-nav-separator text-muted">/</li>
-                    <li class="breadcrumb-nav-item active text-dark fw-medium">Detail Permintaan</li>
-                </ol>
-            </nav>
         </div>
         <a href="<?= base_url('pmi/permintaan_masuk') ?>" class="btn btn-top-back px-3 py-1.5 fw-semibold small">
             <i class="fa-solid fa-chevron-left me-1" style="font-size: 11px;"></i> Kembali
