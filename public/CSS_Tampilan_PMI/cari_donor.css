@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.bootstrap-wrapper {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #f8f9fa;
+    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-left: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+}
+
+/* Penjagaan box sizing konten dari jebol samping monitor */
+.sidebar.sidebar-open ~ .bootstrap-wrapper {
+    margin-left: 240px !important;
+    width: calc(100% - 240px) !important;
+}
+
+.bootstrap-wrapper table,
+.bootstrap-wrapper card,
+.bootstrap-wrapper h1 {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- ELEMEN UTAMA TIANG SIDEBAR PMI KOTA PALU --- */
+.sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: fixed !important;
+    top: 70px !important;
+    left: -240px !important;
+    width: 240px !important;
+    height: calc(100vh - 70px) !important;
+    background-color: #8B0000 !important;
+    z-index: 1000 !important;
+    padding-bottom: 25px !important;
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.sidebar.sidebar-open {
+    left: 0 !important;
+}
+
+/* --- HEADER GROUP CLEAN --- */
+.header-group-clean {
+    margin-bottom: 25px !important;
+    padding-top: 15px !important;
+}
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 0 2px 0 !important;
+}
+
+/* --- TAMPILAN ELEMEN FORM INPUT FILTER --- */
+.custom-filter-input {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #4b5563;
+    background-color: #ffffff;
+}
+
+/* --- TOMBOL AKSI PENCARIAN (MAROON & RESET OUTLINE) --- */
+.btn-search-maroon {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+.btn-search-maroon:hover {
+    background-color: #660000 !important;
+}
+.btn-reset-outline {
+    border: 1px solid #d1d5db !important;
+    color: #4b5563 !important;
+    background-color: #ffffff;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.btn-reset-outline:hover {
+    background-color: #f9fafb;
+    border-color: #8B0000 !important;
+    color: #8B0000 !important;
+}
+
+/* --- CARD RE-STYLE --- */
+.card-stat, .card-content {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+    background: #fff;
+}
+
+/* --- CUSTOM TABLES --- */
+.custom-table th {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #94a3b8;
+    border-bottom: 1px solid #f1f5f9 !important;
+    font-weight: 600;
+    padding: 12px 8px !important;
+}
+.custom-table td {
+    padding: 15px 8px !important;
+    border-bottom: 1px solid #f8fafc !important;
+    font-size: 13.5px;
+}
+
+/* --- TOMBOL DETAIL OUTLINE KOTAK MARUN --- */
+.btn-outline-detail {
+    border: 1px solid #8B0000 !important;
+    color: #8B0000 !important;
+    background-color: transparent;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.btn-outline-detail:hover {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+}
+
+/* --- STATUS VARIANT BADGES --- */
+.badge-status { font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+.bg-status-selesai { background-color: #E8F5E9 !important; color: #00875A !important; }
+
+/* --- PAGINATION --- */
+.pagination .page-link { padding: 6px 12px; font-size: 13px; font-weight: 500; color: #4b5563; }
+.pagination .page-item.active .page-link { background-color: #8B0000 !important; border-color: #8B0000 !important; color: #ffffff !important; }
+.extra-small-arrow { font-size: 10px; }
+
+.link-maroon { color: #8B0000 !important; font-size: 13.5px; }
+.transform-rotate { transform: rotate(-90deg); }
+.extra-small { font-size: 9px; line-height: 1.2; display: block; }
+.dot-indicator { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }

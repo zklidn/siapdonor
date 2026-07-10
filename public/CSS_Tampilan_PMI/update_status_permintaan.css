@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.bootstrap-wrapper {
+    font-family: 'Inter', sans-serif !important;
+    background-color: #f8f9fa;
+    transition: margin-left 0.25s cubic-bezier(0.4, 0, 0.2, 1), width 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    margin-left: 0 !important;
+    padding: 20px !important;
+    width: 100% !important;
+}
+
+/* Proteksi layout agar sisa area putih melonggar elastis saat boks merah sidebar dibuka */
+.sidebar.sidebar-open ~ .bootstrap-wrapper {
+    margin-left: 240px !important;
+    width: calc(100% - 240px) !important;
+}
+
+.bootstrap-wrapper table,
+.bootstrap-wrapper card,
+.bootstrap-wrapper h1 {
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* --- ELEMEN UTAMA DOCK SIDEBAR KIRI --- */
+.sidebar {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: fixed !important;
+    top: 70px !important;
+    left: -240px !important;
+    width: 240px !important;
+    height: calc(100vh - 70px) !important;
+    background-color: #8B0000 !important;
+    z-index: 1000 !important;
+    padding-bottom: 25px !important;
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+.sidebar.sidebar-open {
+    left: 0 !important;
+}
+
+/* --- HEADER GROUP CLEAN --- */
+.header-group-clean {
+    margin-bottom: 25px !important;
+    padding-top: 15px !important;
+}
+.page-title {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
+    margin: 0 0 2px 0 !important;
+}
+
+/* --- PANEL BADGE DETAIL & FORM FIELD STYLING --- */
+.card-detail {
+    border: 1px solid #eef2f5 !important;
+    border-radius: 12px !important;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+}
+.section-card-title {
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #111827;
+}
+.info-list .row {
+    align-items: flex-start;
+}
+.info-list span {
+    font-size: 13.5px;
+}
+.custom-filter-input {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 8px !important;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #4b5563;
+    background-color: #ffffff;
+}
+.search-box .input-group-text {
+    border: 1px solid #e5e7eb !important;
+    border-radius: 0 8px 8px 0 !important;
+    color: #9ca3af;
+}
+
+/* --- TOMBOL SIMPAN (MAROON) & BATAL --- */
+.btn-search-maroon {
+    background-color: #8B0000 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background 0.2s ease;
+}
+.btn-search-maroon:hover { background-color: #660000 !important; }
+.btn-reset-outline {
+    border: 1px solid #d1d5db !important;
+    color: #4b5563 !important;
+    background-color: #ffffff;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+.btn-reset-outline:hover { background-color: #f9fafb; color: #8B0000 !important; }
+
+/* --- BADGES VARIANT PRESISI --- */
+.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 10px; padding: 4px 8px; border-radius: 4px; }
+.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; border-radius: 6px; }
+
+/* --- TRACK TIMELINE COMPONENT BERSILANGAN --- */
+.timeline-wrapper {
+    position: relative;
+    padding-left: 10px;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 35px;
+    padding-bottom: 30px;
+    border-left: 2px dashed #d1d5db;
+}
+.timeline-item.content-last {
+    border-left: 2px dashed transparent !important;
+    padding-bottom: 0px;
+}
+.timeline-badge {
+    position: absolute;
+    left: -11px;
+    top: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid currentColor;
+    z-index: 2;
+}
+.timeline-badge i {
+    font-size: 8px !important;
+}
+.timeline-content {
+    font-size: 13.5px;
+}
