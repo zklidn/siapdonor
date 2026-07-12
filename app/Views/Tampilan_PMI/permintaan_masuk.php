@@ -30,32 +30,86 @@
         <h1 class="page-title">Permintaan Masuk</h1>
     </div>
 
+    <form method="get" action="<?= base_url('pmi/permintaan_masuk') ?>">
     <div class="row g-3 mb-4">
+
         <div class="col-md-5">
             <div class="input-group search-box">
-                <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control border-start-0 ps-0 custom-filter-input" placeholder="Cari ID permintaan, nama pasien, atau RS...">
+                <button type="submit"
+                    class="input-group-text bg-white border-end-0 text-muted">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input
+                    type="text"
+                    name="keyword"
+                    class="form-control border-start-0 ps-0 custom-filter-input"
+                    placeholder="Cari ID permintaan, nama pasien, atau RS..."
+                    value="<?= esc($keyword ?? '') ?>">
             </div>
         </div>
+
         <div class="col-md-3">
-            <select class="form-select custom-filter-input">
-                <option selected>Semua Status</option>
-                <option value="Baru">Baru</option>
-                <option value="Diproses">Diproses</option>
-                <option value="Donor Ditemukan">Donor Ditemukan</option>
-                <option value="Selesai">Selesai</option>
+            <select name="status" class="form-select custom-filter-input">
+                <option value="">Semua Status</option>
+
+                <option value="Baru"
+                    <?= (($status ?? '') == 'Baru') ? 'selected' : '' ?>>
+                    Baru
+                </option>
+
+                <option value="Diproses"
+                    <?= (($status ?? '') == 'Diproses') ? 'selected' : '' ?>>
+                    Diproses
+                </option>
+
+                <option value="Donor Ditemukan"
+                    <?= (($status ?? '') == 'Donor Ditemukan') ? 'selected' : '' ?>>
+                    Donor Ditemukan
+                </option>
+
+                <option value="Selesai"
+                    <?= (($status ?? '') == 'Selesai') ? 'selected' : '' ?>>
+                    Selesai
+                </option>
             </select>
         </div>
-        <div class="col-md-4">
-            <select class="form-select custom-filter-input">
-                <option selected>Semua Prioritas</option>
-                <option value="Urgent">Urgent</option>
-                <option value="Tinggi">Tinggi</option>
-                <option value="Normal">Normal</option>
-                <option value="Rendah">Rendah</option>
+
+        <div class="col-md-2">
+            <select name="prioritas" class="form-select custom-filter-input">
+                <option value="">Semua Prioritas</option>
+
+                <option value="Urgent"
+                    <?= (($prioritas ?? '') == 'Urgent') ? 'selected' : '' ?>>
+                    Urgent
+                </option>
+
+                <option value="Tinggi"
+                    <?= (($prioritas ?? '') == 'Tinggi') ? 'selected' : '' ?>>
+                    Tinggi
+                </option>
+
+                <option value="Normal"
+                    <?= (($prioritas ?? '') == 'Normal') ? 'selected' : '' ?>>
+                    Normal
+                </option>
+
+                <option value="Rendah"
+                    <?= (($prioritas ?? '') == 'Rendah') ? 'selected' : '' ?>>
+                    Rendah
+                </option>
             </select>
         </div>
+
+        <div class="col-md-2 d-grid">
+            <a href="<?= base_url('pmi/permintaan_masuk') ?>"
+                class="btn btn-secondary">
+                Reset
+            </a>
+
+        </div>
+
     </div>
+</form>
 
     <div class="card card-content border-0 shadow-sm mb-4">
         <div class="card-body p-4">
