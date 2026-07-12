@@ -24,11 +24,47 @@ class DashboardPMI extends BaseController
             ->where('status', 'aktif')
             ->countAllResults();
 
-        $data['permintaanMasuk'] = $permintaanModel->countAllResults();
+        //total permintaan
+        $data['total_permintaan'] = $permintaanModel->countAllResults();
 
+        //permintaan baru 
+        $data['permintaan_masuk'] = $permintaanModel
+            ->where('status', 'Baru')
+            ->countAllResults();
+
+        //diproses
+        $data['diproses'] = $permintaanModel
+            ->where('status', 'Diproses')
+            ->countAllResults();
+        
+        //Donor Ditemukan
+        $data['donor_ditemukan'] = $permintaanModel
+            ->where('status', 'Donor Ditemukan')
+            ->countAllResults();
+
+        //$selsai
+        $data['selesai'] = $permintaanModel
+            ->where('status', 'Selesai')
+            ->countAllResults();
+        
+        //ditolak
+        $data['ditolak'] = $permintaanModel
+            ->where('status', 'Ditolak')
+            ->countAllResults();
+
+        //Permintaan Terbaru
+        $data['permintaan_terbaru'] = $permintaanModel
+            ->select('permintaan_darah.*, users.nama AS nama_rs')
+            ->join('users', 'users.id = permintaan_darah.id_user')
+            ->where('users.role', 'rumah_sakit')
+            ->orderBy('permintaan_darah.created_at', 'DESC')
+            ->findAll(5);
+        
         $data['aktivitas'] = $logModel
             ->orderBy('id', 'DESC')
             ->findAll(5);
+
+        //
 
         return view('Tampilan_PMI/dashboard_PMI', $data);
     }

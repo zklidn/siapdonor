@@ -73,10 +73,12 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
     // Pendonor
     $routes->get('cari_donor', 'CariDonor::pendonor');
     $routes->get('riwayat_donor', 'CariDonor::riwayat');
-    $routes->get('detail_donor/(:segment)', 'CariDonor::detail');
+    $routes->get('detail_donor/(:num)', 'CariDonor::detail/$1');
 
     // tambah donor
-     $routes->get('tambah_donor', 'TambahDonor::tambah');
+    $routes->get('tambah_donor', 'TambahDonor::tambah');
+    $routes->post('simpan_pendonor', 'TambahDonor::simpan');
+
 
     // Permintaan Darah
     $routes->get('permintaan_masuk', 'PermintaanMasuk::permintaan');

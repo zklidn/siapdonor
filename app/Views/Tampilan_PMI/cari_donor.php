@@ -46,18 +46,18 @@
                 <label class="form-label text-muted small fw-medium mb-1">Rhesus</label>
                 <select name="rhesus" class="form-select custom-filter-input">
                     <option value="">-- Pilih Rhesus --</option>
-                    <option value="Positif" <?= (request()->getGet('rhesus') == 'Positif') ? 'selected' : '' ?>>Positif (+)</option>
-                    <option value="Negatif" <?= (request()->getGet('rhesus') == 'Negatif') ? 'selected' : '' ?>>Negatif (-)</option>
+                    <option value="+" <?= (request()->getGet('rhesus') == 'Positif') ? 'selected' : '' ?>>Positif (+)</option>
+                    <option value="-" <?= (request()->getGet('rhesus') == 'Negatif') ? 'selected' : '' ?>>Negatif (-)</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <label class="form-label text-muted small fw-medium mb-1">Wilayah</label>
-                <select name="wilayah" class="form-select custom-filter-input">
+                <select name="kecamatan" class="form-select custom-filter-input">
                     <option value="">-- Pilih Wilayah --</option>
                     <?php if(!empty($wilayah_list) && is_array($wilayah_list)): ?>
                     <?php foreach($wilayah_list as $w): ?>
-                    <option value="<?= esc($w['wilayah']) ?>" <?= (request()->getGet('wilayah') == $w['wilayah']) ? 'selected' : '' ?>>
-                    <?= esc($w['wilayah']) ?>
+                    <option value="<?= esc($w['kecamatan']) ?>" <?= (request()->getGet('kecamatan') == $w['kecamatan']) ? 'selected' : '' ?>>
+                    <?= esc($w['kecamatan']) ?>
                     </option>
                     <?php endforeach; ?>
                 <?php endif; ?>
@@ -94,7 +94,7 @@
             <h5 class="fw-bold mb-4 text-dark fs-6">Hasil Pencarian Donor</h5>
             
             <?php 
-            $is_searching = request()->getGet('gol_darah') !== null || request()->getGet('wilayah') !== null;
+            $is_searching = !empty($hasil_pencarian);
             
             if ($is_searching && !empty($hasil_pencarian) && is_array($hasil_pencarian)): ?>
                 <div class="table-responsive">
@@ -117,11 +117,11 @@
                             foreach ($hasil_pencarian as $row): ?>
                             <tr>
                                 <td><?= $no++ ?></td>
-                                <td class="fw-semibold text-dark"><?= esc($row['nama_donor']) ?></td>
-                                <td class="fw-bold text-dark"><?= esc($row['gol_darah']) ?></td>
-                                <td class="text-center fw-medium"><?= $row['rhesus'] == 'Positif' ? '+' : '-' ?></td>
-                                <td class="text-secondary"><?= esc($row['wilayah']) ?></td>
-                                <td class="text-muted"><?= date('d Mei Y', strtotime($row['terakhir_donor'])) ?></td>
+                                <td class="fw-semibold text-dark"><?= esc($row['nama']) ?></td>
+                                <td class="fw-bold text-dark"><?= esc($row['golongan_darah']) ?></td>
+                                <td class="text-center fw-medium"><?= esc($row['rhesus']) ?></td>
+                                <td class="text-secondary"><?= esc($row['kecamatan']) ?></td>
+                                <td class="text-muted"><?= date('d Mei Y', strtotime($row['created_at'])) ?></td>
                                 <td><span class="badge badge-status bg-status-selesai"><?= esc($row['status'] ?? 'Tersedia') ?></span></td>
                                 <td class="text-center">
                                     <a href="<?= base_url('pmi/detail_donor/' . $row['id_donor']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a>
@@ -135,7 +135,7 @@
                 <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
                     <div>Menampilkan data hasil filter pencarian</div>
                     <nav aria-label="Page navigation">
-                        <?= $pager->links('default', 'bootstrap_pagination') ?>
+                        <?= $pager->links('default', 'default_full') ?>
                     </nav>
                 </div>
 
