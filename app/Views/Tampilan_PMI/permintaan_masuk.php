@@ -30,32 +30,86 @@
         <h1 class="page-title">Permintaan Masuk</h1>
     </div>
 
+    <form method="get" action="<?= base_url('pmi/permintaan_masuk') ?>">
     <div class="row g-3 mb-4">
+
         <div class="col-md-5">
             <div class="input-group search-box">
-                <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control border-start-0 ps-0 custom-filter-input" placeholder="Cari ID permintaan, nama pasien, atau RS...">
+                <button type="submit"
+                    class="input-group-text bg-white border-end-0 text-muted">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <input
+                    type="text"
+                    name="keyword"
+                    class="form-control border-start-0 ps-0 custom-filter-input"
+                    placeholder="Cari ID permintaan, nama pasien, atau RS..."
+                    value="<?= esc($keyword ?? '') ?>">
             </div>
         </div>
+
         <div class="col-md-3">
-            <select class="form-select custom-filter-input">
-                <option selected>Semua Status</option>
-                <option value="Baru">Baru</option>
-                <option value="Diproses">Diproses</option>
-                <option value="Donor Ditemukan">Donor Ditemukan</option>
-                <option value="Selesai">Selesai</option>
+            <select name="status" class="form-select custom-filter-input">
+                <option value="">Semua Status</option>
+
+                <option value="Baru"
+                    <?= (($status ?? '') == 'Baru') ? 'selected' : '' ?>>
+                    Baru
+                </option>
+
+                <option value="Diproses"
+                    <?= (($status ?? '') == 'Diproses') ? 'selected' : '' ?>>
+                    Diproses
+                </option>
+
+                <option value="Donor Ditemukan"
+                    <?= (($status ?? '') == 'Donor Ditemukan') ? 'selected' : '' ?>>
+                    Donor Ditemukan
+                </option>
+
+                <option value="Selesai"
+                    <?= (($status ?? '') == 'Selesai') ? 'selected' : '' ?>>
+                    Selesai
+                </option>
             </select>
         </div>
-        <div class="col-md-4">
-            <select class="form-select custom-filter-input">
-                <option selected>Semua Prioritas</option>
-                <option value="Urgent">Urgent</option>
-                <option value="Tinggi">Tinggi</option>
-                <option value="Normal">Normal</option>
-                <option value="Rendah">Rendah</option>
+
+        <div class="col-md-2">
+            <select name="prioritas" class="form-select custom-filter-input">
+                <option value="">Semua Prioritas</option>
+
+                <option value="Urgent"
+                    <?= (($prioritas ?? '') == 'Urgent') ? 'selected' : '' ?>>
+                    Urgent
+                </option>
+
+                <option value="Tinggi"
+                    <?= (($prioritas ?? '') == 'Tinggi') ? 'selected' : '' ?>>
+                    Tinggi
+                </option>
+
+                <option value="Normal"
+                    <?= (($prioritas ?? '') == 'Normal') ? 'selected' : '' ?>>
+                    Normal
+                </option>
+
+                <option value="Rendah"
+                    <?= (($prioritas ?? '') == 'Rendah') ? 'selected' : '' ?>>
+                    Rendah
+                </option>
             </select>
         </div>
+
+        <div class="col-md-2 d-grid">
+            <a href="<?= base_url('pmi/permintaan_masuk') ?>"
+                class="btn btn-secondary">
+                Reset
+            </a>
+
+        </div>
+
     </div>
+</form>
 
     <div class="card card-content border-0 shadow-sm mb-4">
         <div class="card-body p-4">
@@ -78,10 +132,10 @@
                             <?php foreach ($permintaan_masuk_db as $row): ?>
                             <tr>
                                 <td class="text-muted fw-medium"><?= $row['id_permintaan'] ?></td>
-                                <td class="text-muted"><?= date('d Mei Y', strtotime($row['tanggal'])) ?></td>
+                                <td class="text-muted"><?= date('d M Y', strtotime($row['created_at'])) ?></td>
                                 <td class="fw-semibold text-dark"><?= $row['nama_rs'] ?></td>
                                 <td class="text-secondary fw-medium"><?= $row['nama_pasien'] ?></td>
-                                <td class="fw-bold text-dark"><?= $row['gol_darah'] . $row['rhesus'] ?></td>
+                                <td class="fw-bold text-dark"><?= $row['golongan_darah'] . $row['rhesus'] ?></td>
                                 <td>
                                     <span class="badge badge-priority bg-prio-<?= strtolower($row['prioritas']) ?>">
                                         <?= strtoupper($row['prioritas']) ?>
@@ -97,28 +151,13 @@
                                 </td>
                             </tr>
                             <?php endforeach; ?>
-                        <?php else: ?>
-                            <?php 
-                            $dummy_pmi = [
-                                ['id' => 'REQ-20250520-001', 'tgl' => '20 Mei 2025', 'rs' => 'RSUD Undata Palu', 'psn' => 'Andi Saputra', 'gol' => 'O+', 'prio' => 'urgent', 'stt' => 'Baru'],
-                                ['id' => 'REQ-20250520-002', 'tgl' => '19 Mei 2025', 'rs' => 'RS Madani Palu', 'psn' => 'Siti Nurhaliza', 'gol' => 'A-', 'prio' => 'tinggi', 'stt' => 'Diproses'],
-                                ['id' => 'REQ-20250519-003', 'tgl' => '18 Mei 2025', 'rs' => 'RS Bhayangkara Palu', 'psn' => 'Muh. Rizki', 'gol' => 'B+', 'prio' => 'normal', 'stt' => 'Diproses'],
-                                ['id' => 'REQ-20250519-004', 'tgl' => '17 Mei 2025', 'rs' => 'RS Anutapura Palu', 'psn' => 'Fadilah Aulia', 'gol' => 'AB+', 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
-                                ['id' => 'REQ-20250519-005', 'tgl' => '16 Mei 2025', 'rs' => 'RS Wirabuana Palu', 'psn' => 'Rudi Hartono', 'gol' => 'O-', 'prio' => 'rendah', 'stt' => 'Selesai']
-                            ];
-                            foreach ($dummy_pmi as $d): ?>
+                            <?php else: ?>
                             <tr>
-                                <td class="text-muted fw-medium"><?= $d['id'] ?></td>
-                                <td class="text-muted"><?= $d['tgl'] ?></td>
-                                <td class="fw-semibold text-dark"><?= $d['rs'] ?></td>
-                                <td class="text-secondary fw-medium"><?= $d['psn'] ?></td>
-                                <td class="fw-bold text-dark"><?= $d['gol'] ?></td>
-                                <td><span class="badge badge-priority bg-prio-<?= $d['prio'] ?>"><?= strtoupper($d['prio']) ?></span></td>
-                                <td><span class="badge badge-status bg-status-<?= ($d['stt'] == 'Baru') ? 'baru' : (($d['stt'] == 'Diproses') ? 'proses' : (($d['stt'] == 'Selesai') ? 'selesai' : 'ditemukan')) ?>"><?= $d['stt'] ?></span></td>
-                                <td class="text-center"><a href="<?= base_url('pmi/detail_permintaan/' . $d['id']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a></td>
+                                <td colspan="8" class="text-center text-muted">
+                                    Belum ada data permintaan.
+                                </td>
                             </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                            <?php endif; ?>
                     </tbody>
                 </table>
             </div>

@@ -3,31 +3,58 @@
 namespace App\Controllers\User\PMI;
 
 use App\Controllers\BaseController;
-use App\Models\DonorModel; // 👈 WAJIB DITAMBAHKAN AGAR MODEL TERBACA
+use App\Models\DonorModel;
 
 class CariDonor extends BaseController
 {
-    // 👈 UBAH NAMA FUNGSINYA JADI index
-    public function pendonor() 
+    public function pendonor()
     {
         $donorModel = new DonorModel();
-        $data['donor'] = $donorModel->findAll();
 
-        return view('Tampilan_PMI/cari_donor');
+        // mengambil data kecamatan untuk combobox
+        $data['wilayah_list'] = $donorModel
+            ->select('kecamatan')
+            ->groupBy('kecamatan')
+            ->findAll();
+
+        $builder = $donorModel;
+
+        // Filter Golongan Darah
+        if ($this->request->getGet('gol_darah')) {
+            $builder->where('golongan_darah', $this->request->getGet('gol_darah'));
+        }
+
+        // // Filter Rhesus
+        // if ($this->request->getGet('rhesus')) {
+        //     $builder->where('rhesus', $this->request->getGet('rhesus'));
+        // }
+
+        // Filter Wilayah
+        if ($this->request->getGet('kecamatan')) {
+            $builder->where('kecamatan', $this->request->getGet('kecamatan'));
+        }
+
+        // hanya donor aktif
+        $builder->where('status', 'Aktif');
+        
+
+        $data['hasil_pencarian'] = $builder->paginate(10);
+        $data['pager'] = $builder->pager;
+
+
+        return view('Tampilan_PMI/cari_donor', $data);
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('Tampilan_PMI/detail_donor');
-    }
+        $donorModel = new DonorModel();
 
-    public function tambah()
-    {
-        return view('Tampilan_PMI/detail_donor');
-    }
+        $data['donor'] = $donorModel->find($id);
 
-    public function riwayat()
-    {
-        return view('Tampilan_PMI/riwayat_donor');
+        if (!$data['donor']) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound('Data donor tidak ditemukan');
+        }
+
+        return view('Tampilan_PMI/detail_donor', $data);
     }
 }

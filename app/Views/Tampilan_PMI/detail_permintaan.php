@@ -32,7 +32,7 @@
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Tanggal Permintaan</span>
-                            <span class="col-7 text-secondary"><?= date('d Mei Y, H:i', strtotime($permintaan['tanggal'])) ?></span>
+                            <span class="col-7 text-secondary"><?= date('d Mei Y, H:i', strtotime($permintaan['created_at'])) ?></span>
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Rumah Sakit</span>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Golongan Darah</span>
-                            <span class="col-7 fw-bold text-danger fs-5 lh-sm"><?= esc($permintaan['gol_darah']) ?></span>
+                            <span class="col-7 fw-bold text-danger fs-5 lh-sm"><?= esc($permintaan['golongan_darah']) ?></span>
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Rhesus</span>
@@ -112,7 +112,7 @@
                             <div class="timeline-item">
                                 <div class="timeline-badge border-danger text-danger"><i class="fa-solid fa-circle-dot fs-6"></i></div>
                                 <div class="timeline-content">
-                                    <div class="small text-muted fw-medium"><?= date('d Mei Y, H:i', strtotime($permintaan['tanggal'])) ?></div>
+                                    <div class="small text-muted fw-medium"><?= date('d Mei Y, H:i', strtotime($permintaan['created_at'])) ?></div>
                                     <div class="text-dark fw-medium mt-0.5">Permintaan baru dibuat oleh RS</div>
                                 </div>
                             </div>
