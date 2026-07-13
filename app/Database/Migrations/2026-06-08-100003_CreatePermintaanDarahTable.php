@@ -14,45 +14,27 @@ class CreatePermintaanDarahTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_user' => [
+            'id_user' => [ // Relasi ke tabel users (Rumah Sakit)
                 'type'     => 'INT',
                 'unsigned' => true,
             ],
-            'nama_pasien' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-            ],
-            'no_rm' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
+            'id_pasien' => [ // Relasi ke tabel pasien
+                'type'     => 'INT',
+                'unsigned' => true,
             ],
             'ruangan' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
             ],
             'diagnosis' => [
-                'type' => 'TEXT',
-                'null' => true,
-            ],
-            'golongan_darah' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 5,
-            ],
-            'rhesus' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 5,
-            ],
-            'jumlah_kantong' => [
-                'type' => 'INT',
-            ],
-            'prioritas' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
+                'constraint' => 255,
+                'null'       => true,
             ],
             'status' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 50,
-                'default'    => 'Baru',
+                'type'       => 'ENUM',
+                'constraint' => ['Diproses', 'Donor Ditemukan', 'Selesai', 'Dibatalkan'],
+                'default'    => 'Diproses',
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -69,7 +51,11 @@ class CreatePermintaanDarahTable extends Migration
         ]);
 
         $this->forge->addKey('id_permintaan', true);
+        
+        // Relasi Foreign Key
         $this->forge->addForeignKey('id_user', 'users', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('id_pasien', 'pasien', 'id_pasien', 'CASCADE', 'CASCADE');
+        
         $this->forge->createTable('permintaan_darah');
     }
 

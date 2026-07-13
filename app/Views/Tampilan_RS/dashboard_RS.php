@@ -22,7 +22,7 @@
 <main class="content-area bootstrap-wrapper">
     <div class="header-group-clean mb-4">
         <h1 class="page-title">Dashboard</h1>
-        <p class="text-muted small mb-0">Selamat datang, <?= session()->get('nama') ?? 'Rumah Sakit' ?>!</p>
+        <p class="text-muted small mb-0">Selamat datang, <?= session()->get('nama') ?? 'RSUD Anutapura Palu' ?>!</p>
     </div>
 
     <div class="row g-3 mb-4">
@@ -90,23 +90,27 @@
                                     <?php foreach ($permintaan_terbaru as $row): ?>
                                     <tr>
                                         <td><?= $row['id_permintaan'] ?></td>
-                                        <td class="text-muted"><?= date('d M Y, H:i', strtotime($row['tanggal'])) ?></td>
-                                        <td class="fw-medium text-dark"><?= $row['pasien'] ?></td>
-                                        <td><span class="text-danger fw-bold"><?= $row['gol_darah'] . $row['rhesus'] ?></span></td>
-                                        <td><?= $row['jumlah'] ?></td>
+                                        <td class="text-muted"><?= date('d M Y, H:i', strtotime($row['created_at'])) ?></td>
+                                        <td class="fw-medium text-dark"><?= $row['nama_pasien'] ?></td>
+                                        <td><span class="text-danger fw-bold"><?= $row['golongan_darah'] . $row['rhesus'] ?></span></td>
+                                        <td><?= $row['jumlah_kantong'] ?></td>
                                         <td>
                                             <?php if ($row['status'] == 'Diproses'): ?>
                                                 <span class="badge badge-status bg-proses">Diproses</span>
+                                            <?php elseif ($row['status'] == 'Donor Ditemukan'): ?>
+                                                <span class="badge badge-status bg-ditemukan">Donor Ditemukan</span>
                                             <?php else: ?>
                                                 <span class="badge badge-status bg-selesai">Selesai</span>
                                             <?php endif; ?>
                                         </td>
                                         <td>
-                                            <?php if ($row['prioritas'] == 'Urgent'): ?>
+                                            <?php 
+                                            $prio = strtolower($row['prioritas'] ?? '');
+                                            if ($prio == 'urgent'): ?>
                                                 <span class="badge badge-priority bg-prio-urgent">URGENT</span>
-                                            <?php elseif ($row['prioritas'] == 'Tinggi'): ?>
+                                            <?php elseif ($prio == 'tinggi'): ?>
                                                 <span class="badge badge-priority bg-prio-tinggi">TINGGI</span>
-                                            <?php elseif ($row['prioritas'] == 'Normal'): ?>
+                                            <?php elseif ($prio == 'normal'): ?>
                                                 <span class="badge badge-priority bg-prio-normal">NORMAL</span>
                                             <?php else: ?>
                                                 <span class="badge badge-priority bg-prio-rendah">RENDAH</span>
@@ -133,7 +137,7 @@
                     </div>
                     <div class="row row-cols-5 g-3 text-center">
                         <?php 
-                        $mendesak = $kebutuhan_mendesak ?? ['O+' => 0, 'A-' => 0, 'B+' => 0, 'AB-' => 0, 'O-' => 0];
+                        $mendesak = $kebutuhan_mendesak ?? ['O+' => 0, 'A+' => 0, 'B+' => 0, 'AB+' => 0, 'O-' => 0];
                         foreach ($mendesak as $gol => $kantong): 
                         ?>
                         <div class="col">
@@ -173,6 +177,8 @@
                             <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#4CAF50" stroke-width="4.5" stroke-dasharray="<?= $p_ditemukan ?> <?= 100 - $p_ditemukan ?>" stroke-dashoffset="<?= $offset_ditemukan ?>"></circle>
                             <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#00875A" stroke-width="4.5" stroke-dasharray="<?= $p_selesai ?> <?= 100 - $p_selesai ?>" stroke-dashoffset="<?= $offset_selesai ?>"></circle>
                         </svg>
+                        
+                        <!-- Ini bagian yang rusak tadi, sekarang sudah normal -->
                         <div class="position-absolute top-50 start-50 translate-middle text-center">
                             <span class="d-block fw-bold fs-4 lh-sm text-dark"><?= $total ?></span>
                             <span class="text-muted extra-small">Total</span>

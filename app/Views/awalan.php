@@ -20,7 +20,7 @@
             </div>
         </a>
         <div class="nav-links">
-            <a href="<?= base_url('tentang_kami') ?>">Tentang Kami</a>
+            <a href="<?= base_url('tentang') ?>">Tentang Kami</a>
             <a href="<?= base_url('login') ?>" class="btn-outline">Masuk</a>
             <a href="<?= base_url('register') ?>" class="btn-solid">Daftar Akun</a>
         </div>

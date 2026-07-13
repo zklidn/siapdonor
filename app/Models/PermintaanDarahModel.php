@@ -10,28 +10,22 @@ class PermintaanDarahModel extends Model
     protected $primaryKey       = 'id_permintaan';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
+    protected $useSoftDeletes   = true;
+    protected $protectFields    = true;
     
-    // PERBAIKAN TYPO PROPERTI BAWAAN CI4:
-    protected $useSoftDeletes   = true; // Sebelumnya: $useSoftFields
-    protected $protectFields    = true; // Sebelumnya: $proctectFields
-    
-    // DISESUAIKAN DENGAN MIGRATION TERBARU:
-    protected $allowedFields    = ['id_user', 'nama_pasien', 'no_rm', 'ruangan', 'diagnosis', 'golongan_darah', 'rhesus', 'jumlah_kantong', 'prioritas','catatan','status'];
+    // Sesuaikan dengan migration terbaru (Transaksi Utama)
+    protected $allowedFields    = ['id_user', 'id_pasien', 'ruangan', 'diagnosis', 'status'];
 
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
-    protected $createdField  = 'created_at';
-    
-    // PERBAIKAN TYPO PROPERTI BAWAAN CI4:
-    protected $updatedField  = 'updated_at'; // Sebelumnya: $updatedfield (F harus kapital)
-    protected $deletedField  = 'deleted_at'; // Sebelumnya: $deleteField (kurang huruf 'd')
+    protected $createField   = 'created_at';
+    protected $updateField   = 'updated_at';
+    protected $deleteField   = 'deleted_at';
 
-    // 1. Mendaftarkan trigger otomatis (Callback)
     protected $afterInsert = ['rekamInsert'];
     protected $afterUpdate = ['rekamUpdate'];
     protected $afterDelete = ['rekamDelete'];
 
-    // 2. Fungsi yang dijalankan SETELAH proses Insert/Update/Delete
     protected function rekamInsert(array $data)
     {
         $this->simpanLogOtomatis('Menambah data baru di tabel ' . $this->table);
@@ -50,17 +44,13 @@ class PermintaanDarahModel extends Model
         return $data;
     }
 
-    // 3. Eksekusi penyimpanan ke tabel log_aktivitas
     private function simpanLogOtomatis($aksi)
     {
-        // Memanggil LogAktivitasModel
         $logModel = new \App\Models\LogAktivitasModel();
         
         $logModel->insert([
-            // Ambil id_user dari session login. Jika session tidak terbaca, gunakan 0 (sistem)
             'id_user'    => session()->get('id_user') ?? 0, 
             'aktivitas'  => $aksi,
-            // Mengambil IP Address perangkat yang mengakses
             'keterangan' => \Config\Services::request()->getIPAddress() 
         ]);
     }

@@ -24,31 +24,38 @@
         <h1 class="page-title">Riwayat Permintaan</h1>
     </div>
 
-    <div class="row g-3 mb-4">
-        <div class="col-md-5">
-            <div class="input-group search-box">
-                <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
-                <input type="text" class="form-control border-start-0 ps-0 custom-filter-input" placeholder="Cari ID permintaan, nama pasien...">
+    <!-- Bungkus filter dengan tag FORM -->
+    <form method="GET" action="<?= base_url('rs/riwayat_permintaan') ?>">
+        <div class="row g-3 mb-4">
+            <div class="col-md-5">
+                <div class="input-group search-box">
+                    <span class="input-group-text bg-white border-end-0 text-muted"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <!-- Tambahkan name="keyword" dan event onkeydown agar bisa Enter -->
+                    <input type="text" name="keyword" value="<?= esc($keyword ?? '') ?>" class="form-control border-start-0 ps-0 custom-filter-input" placeholder="Cari ID permintaan, nama pasien..." onkeydown="if(event.key === 'Enter'){ this.form.submit(); }">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!-- Tambahkan name="status" dan event onchange agar otomatis submit -->
+                <select name="status" class="form-select custom-filter-input" onchange="this.form.submit()">
+                    <option value="Semua Status" <?= ($stt_aktif ?? '') == 'Semua Status' ? 'selected' : '' ?>>Semua Status</option>
+                    <option value="Diproses" <?= ($stt_aktif ?? '') == 'Diproses' ? 'selected' : '' ?>>Diproses</option>
+                    <option value="Donor Ditemukan" <?= ($stt_aktif ?? '') == 'Donor Ditemukan' ? 'selected' : '' ?>>Donor Ditemukan</option>
+                    <option value="Selesai" <?= ($stt_aktif ?? '') == 'Selesai' ? 'selected' : '' ?>>Selesai</option>
+                    <option value="Dibatalkan" <?= ($stt_aktif ?? '') == 'Dibatalkan' ? 'selected' : '' ?>>Dibatalkan</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <!-- Tambahkan name="prioritas" dan event onchange -->
+                <select name="prioritas" class="form-select custom-filter-input" onchange="this.form.submit()">
+                    <option value="Semua Prioritas" <?= ($prio_aktif ?? '') == 'Semua Prioritas' ? 'selected' : '' ?>>Semua Prioritas</option>
+                    <option value="Urgent" <?= ($prio_aktif ?? '') == 'Urgent' ? 'selected' : '' ?>>Urgent</option>
+                    <option value="Tinggi" <?= ($prio_aktif ?? '') == 'Tinggi' ? 'selected' : '' ?>>Tinggi</option>
+                    <option value="Normal" <?= ($prio_aktif ?? '') == 'Normal' ? 'selected' : '' ?>>Normal</option>
+                    <option value="Rendah" <?= ($prio_aktif ?? '') == 'Rendah' ? 'selected' : '' ?>>Rendah</option>
+                </select>
             </div>
         </div>
-        <div class="col-md-3">
-            <select class="form-select custom-filter-input">
-                <option selected>Semua Status</option>
-                <option value="Diproses">Diproses</option>
-                <option value="Donor Ditemukan">Donor Ditemukan</option>
-                <option value="Selesai">Selesai</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <select class="form-select custom-filter-input">
-                <option selected>Semua Prioritas</option>
-                <option value="Urgent">Urgent</option>
-                <option value="Tinggi">Tinggi</option>
-                <option value="Normal">Normal</option>
-                <option value="Rendah">Rendah</option>
-            </select>
-        </div>
-    </div>
+    </form>
 
     <div class="card card-table border-0 shadow-sm mb-4">
         <div class="card-body p-4">
@@ -70,10 +77,10 @@
                         <?php if (!empty($riwayat_permintaan) && is_array($riwayat_permintaan)): ?>
                             <?php foreach ($riwayat_permintaan as $row): ?>
                             <tr>
-                                <td class="fw-medium text-dark"><?= $row['id_permintaan'] ?></td>
-                                <td class="text-muted"><?= date('d M Y', strtotime($row['tanggal'])) ?></td>
+                                <td class="fw-medium text-dark">REQ-<?= str_pad($row['id_permintaan'], 3, '0', STR_PAD_LEFT) ?></td>
+                                <td class="text-muted"><?= date('d M Y', strtotime($row['created_at'])) ?></td>
                                 <td class="text-secondary fw-medium"><?= $row['nama_pasien'] ?></td>
-                                <td class="fw-bold text-dark"><?= $row['gol_darah'] . $row['rhesus'] ?></td>
+                                <td class="fw-bold text-dark"><?= $row['golongan_darah'] . $row['rhesus'] ?></td>
                                 <td class="text-center"><?= $row['jumlah_kantong'] ?></td>
                                 <td>
                                     <?php 
@@ -95,6 +102,8 @@
                                         <span class="badge badge-status bg-status-proses">Diproses</span>
                                     <?php elseif ($stt == 'Donor Ditemukan'): ?>
                                         <span class="badge badge-status bg-status-ditemukan">Donor Ditemukan</span>
+                                    <?php elseif ($stt == 'Dibatalkan'): ?>
+                                        <span class="badge badge-status bg-danger">Dibatalkan</span>
                                     <?php else: ?>
                                         <span class="badge badge-status bg-status-selesai">Selesai</span>
                                     <?php endif; ?>
@@ -107,12 +116,12 @@
                         <?php else: ?>
                             <?php 
                             $dummy = [
-                                ['id' => 'REQ-20250520-001', 'tgl' => '20 Mei 2025', 'psn' => 'Andi Saputra', 'gol' => 'O+', 'ktg' => 3, 'prio' => 'urgent', 'stt' => 'Diproses'],
-                                ['id' => 'REQ-20250519-002', 'tgl' => '19 Mei 2025', 'psn' => 'Siti Nurhaliza', 'gol' => 'A+', 'ktg' => 2, 'prio' => 'tinggi', 'stt' => 'Diproses'],
-                                ['id' => 'REQ-20250518-003', 'tgl' => '18 Mei 2025', 'psn' => 'Muh. Rizki', 'gol' => 'B+', 'ktg' => 4, 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
-                                ['id' => 'REQ-20250517-004', 'tgl' => '17 Mei 2025', 'psn' => 'Fadilah Aulia', 'gol' => 'AB+', 'ktg' => 2, 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
-                                ['id' => 'REQ-20250516-005', 'tgl' => '16 Mei 2025', 'psn' => 'Rudi Hartono', 'gol' => 'O-', 'ktg' => 1, 'prio' => 'rendah', 'stt' => 'Selesai'],
-                                ['id' => 'REQ-20250515-006', 'tgl' => '15 Mei 2025', 'psn' => 'Dewi Lestari', 'gol' => 'A-', 'ktg' => 2, 'prio' => 'tinggi', 'stt' => 'Selesai']
+                                ['id' => 'REQ-001', 'tgl' => '20 Mei 2025', 'psn' => 'Andi Saputra', 'gol' => 'O+', 'ktg' => 3, 'prio' => 'urgent', 'stt' => 'Diproses'],
+                                ['id' => 'REQ-002', 'tgl' => '19 Mei 2025', 'psn' => 'Siti Nurhaliza', 'gol' => 'A+', 'ktg' => 2, 'prio' => 'tinggi', 'stt' => 'Diproses'],
+                                ['id' => 'REQ-003', 'tgl' => '18 Mei 2025', 'psn' => 'Muh. Rizki', 'gol' => 'B+', 'ktg' => 4, 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
+                                ['id' => 'REQ-004', 'tgl' => '17 Mei 2025', 'psn' => 'Fadilah Aulia', 'gol' => 'AB+', 'ktg' => 2, 'prio' => 'normal', 'stt' => 'Donor Ditemukan'],
+                                ['id' => 'REQ-005', 'tgl' => '16 Mei 2025', 'psn' => 'Rudi Hartono', 'gol' => 'O-', 'ktg' => 1, 'prio' => 'rendah', 'stt' => 'Selesai'],
+                                ['id' => 'REQ-006', 'tgl' => '15 Mei 2025', 'psn' => 'Dewi Lestari', 'gol' => 'A-', 'ktg' => 2, 'prio' => 'tinggi', 'stt' => 'Selesai']
                             ];
                             foreach ($dummy as $d): ?>
                             <tr>
@@ -123,7 +132,7 @@
                                 <td class="text-center"><?= $d['ktg'] ?></td>
                                 <td><span class="badge badge-priority bg-prio-<?= $d['prio'] ?>"><?= strtoupper($d['prio']) ?></span></td>
                                 <td><span class="badge badge-status bg-status-<?= ($d['stt'] == 'Diproses') ? 'proses' : (($d['stt'] == 'Selesai') ? 'selesai' : 'ditemukan') ?>"><?= $d['stt'] ?></span></td>
-                                <td class="text-center"><a href="<?= base_url('rs/detail_permintaan/' . $d['id']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a></td>
+                                <td class="text-center"><a href="<?= base_url('rs/detail_permintaan/0') ?>" class="btn btn-outline-detail px-3 py-1">Detail</a></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endif; ?>
@@ -132,21 +141,43 @@
             </div>
 
             <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
-                <div>Menampilkan 1 - 6 dari <span class="fw-bold text-dark">24</span> data</div>
+                <div>
+                    Menampilkan Halaman terbaru
+                </div>
+                
                 <nav aria-label="Page navigation">
                     <ul class="pagination pagination-sm mb-0 gap-1">
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#"><i class="fa-solid fa-chevron-left extra-small-arrow"></i></a></li>
-                        <li class="page-item active"><a class="page-link border rounded" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">3</a></li>
-                        <li class="page-item disabled"><span class="page-link border-0 text-muted">...</span></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link border rounded text-secondary" href="#"><i class="fa-solid fa-chevron-right extra-small-arrow"></i></a></li>
+                        
+                        <!-- Tombol Previous (Mundur) -->
+                        <?php if ($pager->getCurrentPage('riwayat') > 1) : ?>
+                            <li class="page-item">
+                                <a class="page-link border rounded text-secondary" href="<?= $pager->getPreviousPageURI('riwayat') ?>">
+                                    <i class="fa-solid fa-chevron-left extra-small-arrow"></i>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+
+                        <!-- Angka Halaman (1, 2, 3, dst) -->
+                        <?php for ($i = 1; $i <= $pager->getPageCount('riwayat'); $i++) : ?>
+                            <li class="page-item <?= ($i == $pager->getCurrentPage('riwayat')) ? 'active' : '' ?>">
+                                <a class="page-link border rounded <?= ($i == $pager->getCurrentPage('riwayat')) ? '' : 'text-secondary' ?>" href="<?= $pager->getPageURI($i, 'riwayat') ?>">
+                                    <?= $i ?>
+                                </a>
+                            </li>
+                        <?php endfor; ?>
+
+                        <!-- Tombol Next (Maju) -->
+                        <?php if ($pager->getCurrentPage('riwayat') < $pager->getPageCount('riwayat')) : ?>
+                            <li class="page-item">
+                                <a class="page-link border rounded text-secondary" href="<?= $pager->getNextPageURI('riwayat') ?>">
+                                    <i class="fa-solid fa-chevron-right extra-small-arrow"></i>
+                                </a>
+                            </li>
+                        <?php endif; ?>
+                        
                     </ul>
                 </nav>
             </div>
-        </div>
-    </div>
 </main>
 
 <?= $this->endSection() ?>

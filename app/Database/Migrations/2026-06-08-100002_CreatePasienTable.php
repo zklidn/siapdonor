@@ -14,29 +14,21 @@ class CreatePasienTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'id_permintaan' => [
-                'type'     => 'INT',
-                'unsigned' => true,
-            ],
-            'nama' => [
-                'type'       => 'VARCHAR',
-                'constraint' => 100,
-            ],
             'no_rm' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 50,
             ],
-            'ruangan' => [
-                'type'       => 'ENUM',
-                'constraint' => ['UGD', 'ICU', 'Rawat Inap'],
-            ],
-            'diagnosis' => [
+            'nama_pasien' => [
                 'type'       => 'VARCHAR',
-                'constraint' => 255,
+                'constraint' => 100,
             ],
             'golongan_darah' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 5,
+            ],
+            'rhesus' => [
+                'type'       => 'ENUM',
+                'constraint' => ['+', '-'],
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -53,7 +45,6 @@ class CreatePasienTable extends Migration
         ]);
 
         $this->forge->addKey('id_pasien', true);
-        $this->forge->addForeignKey('id_permintaan', 'permintaan_darah', 'id_permintaan', 'CASCADE', 'CASCADE');
         $this->forge->createTable('pasien');
     }
 
