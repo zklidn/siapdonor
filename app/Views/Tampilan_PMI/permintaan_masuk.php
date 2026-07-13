@@ -19,9 +19,7 @@
         <a href="<?= base_url('pmi/tambah_donor') ?>" class="menu-item">
             <i class="fa-solid fa-user-plus"></i> Tambah Pendonor 
         </a>
-        <a href="<?= base_url('pmi/update_status_permintaan') ?>" class="menu-item">
-            <i class="fa-solid fa-file-pen"></i> Update Status Permintaan 
-        </a>
+       
     </div>
 </aside>
 
@@ -123,8 +121,56 @@
                             </tr>
                             <?php endif; ?>
                     </tbody>
-                </table>
+               </table>
             </div>
+
+            <!-- ====== TAMBAHKAN KODE PAGINATION DI SINI ====== -->
+            <?php if (isset($pager)): ?>
+            <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
+                <div></div>
+                <nav aria-label="Page navigation" class="custom-pagination">
+                    <style>
+                        /* CSS untuk mengubah pagination bawaan CI4 menjadi kotak rapi warna Maroon */
+                        .custom-pagination .pagination {
+                            display: flex;
+                            padding-left: 0;
+                            list-style: none;
+                            margin: 0;
+                            gap: 4px;
+                        }
+                        .custom-pagination .pagination li a {
+                            position: relative;
+                            display: block;
+                            padding: 0.4rem 0.75rem;
+                            font-size: 0.875rem;
+                            color: #800000;
+                            text-decoration: none;
+                            background-color: #fff;
+                            border: 1px solid #dee2e6;
+                            border-radius: 6px;
+                            font-weight: 500;
+                            transition: all 0.2s ease-in-out;
+                        }
+                        .custom-pagination .pagination li a:hover {
+                            color: #fff;
+                            background-color: #a00000;
+                            border-color: #a00000;
+                        }
+                        .custom-pagination .pagination li.active a {
+                            z-index: 3;
+                            color: #fff;
+                            background-color: #800000;
+                            border-color: #800000;
+                        }
+                    </style>
+                    
+                    <!-- Memanggil link pagination dari Controller -->
+                    <?= $pager->links('default', 'default_full') ?>
+                </nav>
+            </div>
+            <?php endif; ?>
+            <!-- ================================================= -->
+
         </div>
     </div>
 </main>

@@ -9,9 +9,6 @@ use CodeIgniter\Router\RouteCollection;
 /*------------------halaman awal----------------*/
 $routes->get('/', 'Awalan::index');
 
-// Tambahkan baris ini di bagian definisi rute
-$routes->get('tentang', 'Awalan::tentang');
-
 
 $routes->get('/tentangkami', 'TentangKami::tentang');
 /*------------------login----------------*/
@@ -39,10 +36,11 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin','filter'    => '
     $routes->get('/', 'DashboardAdmin::admin');
     $routes->get('data_donor', 'DataDonorAdmin::data_donor');
     $routes->get('kelola_user', 'KelolaAdmin::kelola_user');
+    $routes->get('hapus_user/(:num)', 'KelolaAdmin::hapus_user/$1');
     $routes->get('riwayat', 'RiwayatAdmin::riwayat');
-    $routes->get('profil', 'ProfilAdmin::profil_admin');
-    $routes->get('notifikasi', 'NotifikasiAdmin::notifikasi_admin');
+    $routes->get('settings', 'ProfilAdmin::profil_admin'); 
     $routes->post('update_profil', 'ProfilAdmin::update_profil');
+    $routes->get('notifikasi', 'NotifikasiAdmin::notifikasi_admin');
 }); 
 
 /*------------------dashboard RS---------------*/
@@ -61,9 +59,10 @@ $routes->group('rs', ['namespace' => 'App\Controllers\User\RS', 'filter' => 'aut
     // -------------------------------------------------
     
     $routes->get('laporan_rs', 'Laporan::index');
-    $routes->get('notifikasi', 'Notifikasi::index');
+    $routes->get('notifikasi', 'Notifikasi::notifikasi');
     $routes->post('notifikasi/tandai_semua', 'Notifikasi::tandaiSemuaDibaca');
-    $routes->get('settings', 'Settings::index');
+    $routes->get('settings', 'ProfilRS::profil_RS'); 
+    $routes->post('update_profil', 'ProfilRS::update_profil');
 });
 
 /*------------------dashboard PMI---------------*/
@@ -80,8 +79,11 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
     $routes->get('riwayat_donor', 'CariDonor::riwayat');
     $routes->get('detail_donor/(:num)', 'CariDonor::detail/$1');
 
-    // tambah donor
+    
+  // Rute untuk menampilkan halaman form tambah donor
     $routes->get('tambah_donor', 'TambahDonor::tambah');
+
+    // Rute untuk menangani aksi form submit (POST)
     $routes->post('simpan_pendonor', 'TambahDonor::simpan');
 
 
@@ -101,7 +103,10 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
     // Laporan & Notifikasi
     $routes->get('laporan', 'Laporan::laporan');
     $routes->get('notifikasi', 'Notifikasi::notifikasi');
-    $routes->get('settings', 'User\RS\Settings::index');
+    $routes->get('settings', 'ProfilPMI::profil_PMI'); 
+
+    // 2. Rute untuk menyimpan perubahan profil (karena di controller-mu ada fungsi update_profil)
+    $routes->post('update_profil', 'ProfilPMI::update_profil');
 });
     /*------------------post-----------------------------*/
 

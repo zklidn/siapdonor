@@ -47,7 +47,13 @@ class PermintaanMasuk extends BaseController
 
         $data['permintaan_masuk_db'] = $builder
             ->orderBy('permintaan_darah.created_at', 'DESC')
-            ->findAll();
+            ->paginate(5); // <-- Ubah findAll() menjadi paginate(5)
+
+        // Tambahkan baris ini agar tombol pagination-nya bisa muncul di View
+        $data['pager'] = $permintaan->pager;
+
+        // Kirim nilai filter ke view
+        $data['keyword']   = $keyword;
 
         // Kirim nilai filter ke view
         $data['keyword']   = $keyword;
