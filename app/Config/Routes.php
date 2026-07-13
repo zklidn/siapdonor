@@ -9,6 +9,9 @@ use CodeIgniter\Router\RouteCollection;
 /*------------------halaman awal----------------*/
 $routes->get('/', 'Awalan::index');
 
+// Tambahkan baris ini di bagian definisi rute
+$routes->get('tentang', 'Awalan::tentang');
+
 
 $routes->get('/tentangkami', 'TentangKami::tentang');
 /*------------------login----------------*/
