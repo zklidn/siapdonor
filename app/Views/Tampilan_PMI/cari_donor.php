@@ -31,39 +31,35 @@
     </div>
 
     <form action="<?= base_url('pmi/cari_donor') ?>" method="get" class="mb-4">
+        
+        <!-- SIMPAN ID PERMINTAAN AGAR TIDAK HILANG SAAT TOMBOL CARI DITEKAN -->
+        <?php if(request()->getGet('id_permintaan')): ?>
+            <input type="hidden" name="id_permintaan" value="<?= esc(request()->getGet('id_permintaan')) ?>">
+        <?php endif; ?>
+
         <div class="row g-3 mb-3">
             <div class="col-md-4">
                 <label class="form-label text-muted small fw-medium mb-1">Golongan Darah</label>
                 <select name="gol_darah" class="form-select custom-filter-input">
                     <option value="">-- Pilih Golongan Darah --</option>
-                    <option value="O" <?= (request()->getGet('gol_darah') == 'O') ? 'selected' : '' ?>>O</option>
-                    <option value="A" <?= (request()->getGet('gol_darah') == 'A') ? 'selected' : '' ?>>A</option>
-                    <option value="B" <?= (request()->getGet('gol_darah') == 'B') ? 'selected' : '' ?>>B</option>
-                    <option value="AB" <?= (request()->getGet('gol_darah') == 'AB') ? 'selected' : '' ?>>AB</option>
+                    <!-- Menggunakan $sel_gol_darah dari Controller -->
+                    <option value="O" <?= (($sel_gol_darah ?? '') == 'O') ? 'selected' : '' ?>>O</option>
+                    <option value="A" <?= (($sel_gol_darah ?? '') == 'A') ? 'selected' : '' ?>>A</option>
+                    <option value="B" <?= (($sel_gol_darah ?? '') == 'B') ? 'selected' : '' ?>>B</option>
+                    <option value="AB" <?= (($sel_gol_darah ?? '') == 'AB') ? 'selected' : '' ?>>AB</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <label class="form-label text-muted small fw-medium mb-1">Rhesus</label>
                 <select name="rhesus" class="form-select custom-filter-input">
                     <option value="">-- Pilih Rhesus --</option>
-                    <option value="+" <?= (request()->getGet('rhesus') == 'Positif') ? 'selected' : '' ?>>Positif (+)</option>
-                    <option value="-" <?= (request()->getGet('rhesus') == 'Negatif') ? 'selected' : '' ?>>Negatif (-)</option>
+                    <!-- Menggunakan $sel_rhesus dari Controller -->
+                    <option value="+" <?= (($sel_rhesus ?? '') == '+') ? 'selected' : '' ?>>Positif (+)</option>
+                    <option value="-" <?= (($sel_rhesus ?? '') == '-') ? 'selected' : '' ?>>Negatif (-)</option>
                 </select>
             </div>
-            <div class="col-md-4">
-                <label class="form-label text-muted small fw-medium mb-1">Wilayah</label>
-                <select name="kecamatan" class="form-select custom-filter-input">
-                    <option value="">-- Pilih Wilayah --</option>
-                    <?php if(!empty($wilayah_list) && is_array($wilayah_list)): ?>
-                    <?php foreach($wilayah_list as $w): ?>
-                    <option value="<?= esc($w['kecamatan']) ?>" <?= (request()->getGet('kecamatan') == $w['kecamatan']) ? 'selected' : '' ?>>
-                    <?= esc($w['kecamatan']) ?>
-                    </option>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </select>
-            </div>
-        </div>
+            
+            <!-- (Bagian select Wilayah dan tombol lainnya biarkan sama seperti kodemu sebelumnya) -->
 
         <div class="row g-3 align-items-end">
             <div class="col-md-4">
@@ -121,10 +117,10 @@
                                 <td class="fw-bold text-dark"><?= esc($row['golongan_darah']) ?></td>
                                 <td class="text-center fw-medium"><?= esc($row['rhesus']) ?></td>
                                 <td class="text-secondary"><?= esc($row['kecamatan']) ?></td>
-                                <td class="text-muted"><?= date('d Mei Y', strtotime($row['created_at'])) ?></td>
+                                <td class="text-muted"><?= date('d M Y', strtotime($row['created_at'])) ?></td>
                                 <td><span class="badge badge-status bg-status-selesai"><?= esc($row['status'] ?? 'Tersedia') ?></span></td>
                                 <td class="text-center">
-                                    <a href="<?= base_url('pmi/detail_donor/' . $row['id_donor']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a>
+                                  <a href="<?= base_url('pmi/detail_donor/' . $row['id_donor']) ?>" class="btn btn-outline-detail px-3 py-1">Detail</a>
                                 </td>
                             </tr>
                             <?php endforeach; ?>

@@ -124,19 +124,24 @@
                 </div>
             </div>
 
-            <div class="card card-detail border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h5 class="section-card-title mb-3 fw-bold text-dark fs-6">Aksi</h5>
-                    <div class="d-flex flex-column gap-2.5">
-                        <a href="<?= base_url('pmi/cari_donor') ?>" class="btn btn-action-maroon w-100 py-2.5 fw-semibold text-white">
-                            <i class="fa-solid fa-phone me-2"></i> Cari Donor
-                        </a>
-                        <a href="<?= base_url('pmi/update_status_permintaan/' . $permintaan['id_permintaan']) ?>" class="btn btn-action-outline-maroon w-100 py-2.5 fw-semibold">
-                            <i class="fa-solid fa-arrows-rotate me-2"></i> Ubah Status
-                        </a>
-                    </div>
-                </div>
+        <div class="card card-detail border-0 shadow-sm">
+        <div class="card-body p-4">
+            <h5 class="section-card-title mb-3 fw-bold text-dark fs-6">Aksi</h5>
+            <div class="d-flex flex-column gap-2.5">
+                
+                <!-- Tambahkan ?id_permintaan agar halaman Cari Donor tahu ini untuk pasien mana -->
+                <a href="<?= base_url('pmi/cari_donor?id_permintaan=' . $permintaan['id_permintaan']) ?>" class="btn btn-action-maroon w-100 py-2.5 fw-semibold text-white">
+                    <i class="fa-solid fa-phone me-2"></i> Cari Donor
+                </a>
+                
+                <!-- Ubah /ID menjadi ?id_permintaan=ID agar tidak error 404 -->
+                <a href="<?= base_url('pmi/update_status_permintaan?id_permintaan=' . $permintaan['id_permintaan']) ?>" class="btn btn-action-outline-maroon w-100 py-2.5 fw-semibold">
+                    <i class="fa-solid fa-arrows-rotate me-2"></i> Ubah Status
+                </a>
+                
             </div>
+        </div>
+</div>
         </div>
     </div>
 

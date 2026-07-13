@@ -28,7 +28,7 @@
                         <th>Aktivitas</th>
                         <th>Pengguna</th>
                         <th>Waktu</th>
-                        <th>IP Address</th>
+                        <th>Keterangan</th>
                     </tr>
                 </thead>
                 

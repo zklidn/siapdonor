@@ -91,6 +91,9 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
 
     // update satatus
     $routes->get('update_status_permintaan', 'UpdateStatusPermintaan::update');
+    
+    // TAMBAHKAN BARIS INI UNTUK MENYIMPAN FORM:
+    $routes->post('simpan_status', 'UpdateStatusPermintaan::simpanStatus');
 
     // Laporan & Notifikasi
     $routes->get('laporan', 'Laporan::laporan');

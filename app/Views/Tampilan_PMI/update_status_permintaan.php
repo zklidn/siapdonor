@@ -31,9 +31,10 @@
     </div>
 
     <form action="<?= base_url('pmi/simpan_status') ?>" method="post">
-        <input type="hidden" name="id_permintaan" value="<?= $permintaan['id_permintaan'] ?? 'REQ-20250520-001' ?>">
+        <input type="hidden" name="id_permintaan" value="<?= esc($permintaan['id_permintaan']) ?>">
         
         <div class="row g-3 mb-4">
+            
             <div class="col-md-5">
                 <div class="card card-detail h-100 border-0 shadow-sm">
                     <div class="card-body p-4">
@@ -41,31 +42,39 @@
                         <div class="d-flex flex-column gap-3 info-list">
                             <div class="row">
                                 <span class="col-5 text-muted small">ID Permintaan</span>
-                                <span class="col-7 fw-semibold text-dark"><?= $permintaan['id_permintaan'] ?? 'REQ-20250520-001' ?></span>
+                                <span class="col-7 fw-semibold text-dark"><?= esc($permintaan['id_permintaan']) ?></span>
                             </div>
                             <div class="row">
                                 <span class="col-5 text-muted small">Rumah Sakit</span>
-                                <span class="col-7 text-secondary fw-medium"><?= $permintaan['nama_rs'] ?? 'RSUD Undata Palu' ?></span>
+                                <span class="col-7 text-secondary fw-medium"><?= esc($permintaan['nama_rs']) ?></span>
                             </div>
                             <div class="row">
                                 <span class="col-5 text-muted small">Pasien</span>
-                                <span class="col-7 text-secondary fw-medium"><?= $permintaan['nama_pasien'] ?? 'Andi Saputra' ?></span>
+                                <span class="col-7 text-secondary fw-medium"><?= esc($permintaan['nama_pasien']) ?></span>
                             </div>
                             <div class="row">
                                 <span class="col-5 text-muted small">Golongan Darah</span>
-                                <span class="col-7 fw-bold text-dark"><?= $permintaan['gol_darah'] ?? 'O+' ?></span>
+                                <span class="col-7 fw-bold text-dark"><?= esc($permintaan['golongan_darah'] . $permintaan['rhesus']) ?></span>
                             </div>
                             <div class="row">
                                 <span class="col-5 text-muted small">Jumlah Kantong</span>
-                                <span class="col-7 text-secondary"><?= $permintaan['jumlah_kantong'] ?? '3 Kantong' ?></span>
+                                <span class="col-7 text-secondary"><?= esc($permintaan['jumlah_kantong']) ?> Kantong</span>
                             </div>
                             <div class="row">
                                 <span class="col-5 text-muted small">Prioritas</span>
-                                <span class="col-7"><span class="badge bg-prio-urgent">URGENT (&lt; 2 jam)</span></span>
+                                <span class="col-7">
+                                    <span class="badge bg-prio-<?= strtolower($permintaan['prioritas']) ?>">
+                                        <?= strtoupper(esc($permintaan['prioritas'])) ?>
+                                    </span>
+                                </span>
                             </div>
                             <div class="row">
                                 <span class="col-5 text-muted small">Status Saat Ini</span>
-                                <span class="col-7"><span class="badge bg-status-proses">Diproses</span></span>
+                                <span class="col-7">
+                                    <span class="badge bg-status-<?= ($permintaan['status'] == 'Baru') ? 'baru' : (($permintaan['status'] == 'Diproses') ? 'proses' : (($permintaan['status'] == 'Selesai') ? 'selesai' : 'ditemukan')) ?>">
+                                        <?= esc($permintaan['status']) ?>
+                                    </span>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -80,16 +89,17 @@
                         <div class="mb-3">
                             <label class="form-label text-muted small fw-medium mb-1">Pilih Status Baru</label>
                             <select name="status" class="form-select custom-filter-input">
-                                <option value="Diproses">Diproses</option>
-                                <option value="Donor Ditemukan" selected>Donor Ditemukan</option>
-                                <option value="Selesai">Selesai</option>
-                                <option value="Ditolak">Ditolak</option>
+                                <option value="Diproses" <?= ($permintaan['status'] == 'Diproses') ? 'selected' : '' ?>>Diproses</option>
+                                <option value="Donor Ditemukan" <?= ($permintaan['status'] == 'Donor Ditemukan') ? 'selected' : '' ?>>Donor Ditemukan</option>
+                                <option value="Selesai" <?= ($permintaan['status'] == 'Selesai') ? 'selected' : '' ?>>Selesai</option>
+                                <!-- Bagian ini yang diubah dari Ditolak menjadi Dibatalkan -->
+                                <option value="Dibatalkan" <?= ($permintaan['status'] == 'Dibatalkan') ? 'selected' : '' ?>>Dibatalkan</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted small fw-medium mb-1">Catatan</label>
-                            <textarea name="catatan" class="form-control custom-filter-input" rows="4" placeholder="Masukkan catatan update status di sini..."><?= $permintaan['catatan_pmi'] ?? 'Donor (Andi Saputra) telah bersedia donor darah. Jadwal pengambilan 21 Mei 2025, 08:00 di PMI Kota Palu.' ?></textarea>
+                            <textarea name="catatan" class="form-control custom-filter-input" rows="4" placeholder="Masukkan catatan update status di sini..."><?= esc($permintaan['catatan_pmi'] ?? '') ?></textarea>
                         </div>
 
                         <div class="mb-4">
@@ -107,6 +117,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </form>
 
@@ -121,7 +132,7 @@
                             <i class="fa-solid <?= ($status['status'] == 'Baru') ? 'fa-circle-dot' : 'fa-circle' ?> fs-6"></i>
                         </div>
                         <div class="timeline-content">
-                            <div class="small text-muted fw-medium"><?= date('d Mei Y, H:i', strtotime($status['created_at'])) ?></div>
+                            <div class="small text-muted fw-medium"><?= date('d M Y, H:i', strtotime($status['created_at'])) ?></div>
                             <div class="text-dark fw-medium mt-0.5"><?= esc($status['keterangan']) ?></div>
                         </div>
                     </div>

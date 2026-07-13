@@ -48,65 +48,29 @@
             </div>
         </div>
 
-        <div class="col-md-3">
-            <select name="status" class="form-select custom-filter-input">
-                <option value="">Semua Status</option>
-
-                <option value="Baru"
-                    <?= (($status ?? '') == 'Baru') ? 'selected' : '' ?>>
-                    Baru
-                </option>
-
-                <option value="Diproses"
-                    <?= (($status ?? '') == 'Diproses') ? 'selected' : '' ?>>
-                    Diproses
-                </option>
-
-                <option value="Donor Ditemukan"
-                    <?= (($status ?? '') == 'Donor Ditemukan') ? 'selected' : '' ?>>
-                    Donor Ditemukan
-                </option>
-
-                <option value="Selesai"
-                    <?= (($status ?? '') == 'Selesai') ? 'selected' : '' ?>>
-                    Selesai
-                </option>
-            </select>
-        </div>
+            <div class="col-md-3">
+                <!-- Tambahkan onchange di sini -->
+                <select name="status" class="form-select custom-filter-input" onchange="this.form.submit()">
+                    <option value="">Semua Status</option>
+                    <option value="Baru" <?= (($status ?? '') == 'Baru') ? 'selected' : '' ?>>Baru</option>
+                    <option value="Diproses" <?= (($status ?? '') == 'Diproses') ? 'selected' : '' ?>>Diproses</option>
+                    <option value="Donor Ditemukan" <?= (($status ?? '') == 'Donor Ditemukan') ? 'selected' : '' ?>>Donor Ditemukan</option>
+                    <option value="Selesai" <?= (($status ?? '') == 'Selesai') ? 'selected' : '' ?>>Selesai</option>
+                </select>
+            </div>
 
         <div class="col-md-2">
-            <select name="prioritas" class="form-select custom-filter-input">
+            <!-- Tambahkan onchange di sini -->
+            <select name="prioritas" class="form-select custom-filter-input" onchange="this.form.submit()">
                 <option value="">Semua Prioritas</option>
-
-                <option value="Urgent"
-                    <?= (($prioritas ?? '') == 'Urgent') ? 'selected' : '' ?>>
-                    Urgent
-                </option>
-
-                <option value="Tinggi"
-                    <?= (($prioritas ?? '') == 'Tinggi') ? 'selected' : '' ?>>
-                    Tinggi
-                </option>
-
-                <option value="Normal"
-                    <?= (($prioritas ?? '') == 'Normal') ? 'selected' : '' ?>>
-                    Normal
-                </option>
-
-                <option value="Rendah"
-                    <?= (($prioritas ?? '') == 'Rendah') ? 'selected' : '' ?>>
-                    Rendah
-                </option>
+                <option value="Urgent" <?= (($prioritas ?? '') == 'Urgent') ? 'selected' : '' ?>>Urgent</option>
+                <option value="Tinggi" <?= (($prioritas ?? '') == 'Tinggi') ? 'selected' : '' ?>>Tinggi</option>
+                <option value="Normal" <?= (($prioritas ?? '') == 'Normal') ? 'selected' : '' ?>>Normal</option>
+                <option value="Rendah" <?= (($prioritas ?? '') == 'Rendah') ? 'selected' : '' ?>>Rendah</option>
             </select>
         </div>
 
-        <div class="col-md-2 d-grid">
-            <a href="<?= base_url('pmi/permintaan_masuk') ?>"
-                class="btn btn-secondary">
-                Reset
-            </a>
-
-        </div>
+        
 
     </div>
 </form>
