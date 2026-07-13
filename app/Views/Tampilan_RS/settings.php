@@ -1,7 +1,7 @@
 <?= $this->extend('layout/template') ?>
 <?= $this->section('content') ?>
 
-<link rel="stylesheet" href="<?= base_url('css_rs/style_settings_rs.css') ?>">
+<link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/style_settings_rs.css') ?>">
 
 <aside class="sidebar" id="sidebar">
     <div class="menu-top">
