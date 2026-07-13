@@ -65,7 +65,7 @@
 }
 
 /* --- GRID SYSTEM --- */
-.grid-profil-pmi {
+.grid-profil-rs {
     display: grid;
     grid-template-columns: 1fr 1fr auto;
     gap: 20px;

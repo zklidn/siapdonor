@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/dashboard_pmi.css') ?>">
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item menu-active">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -25,7 +25,7 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Dashboard</h1>
         <p class="text-muted small mb-0">Selamat datang, Petugas PMI Kota Palu!</p>
@@ -45,7 +45,7 @@
             <div class="card card-stat h-100">
                 <div class="card-body">
                     <h6 class="text-muted fw-normal small mb-2">Diproses</h6>
-                    <h2 class="display-6 fw-bold mb-1 text-warning"><?= $diproses ?? 7 ?></h2>
+                    <h2 class="display-6 fw-bold mb-1 text-warning"><?= $diproses ?? 0 ?></h2>
                     <small class="text-muted">Sedang ditangani</small>
                 </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="card card-stat h-100">
                 <div class="card-body">
                     <h6 class="text-muted fw-normal small mb-2">Donor Ditemukan</h6>
-                    <h2 class="display-6 fw-bold mb-1 text-primary"><?= $donor_ditemukan ?? 5 ?></h2>
+                    <h2 class="display-6 fw-bold mb-1 text-primary"><?= $donor_ditemukan ?? 0 ?></h2>
                     <small class="text-muted">Menunggu pengambilan</small>
                 </div>
             </div>
@@ -63,7 +63,7 @@
             <div class="card card-stat h-100">
                 <div class="card-body">
                     <h6 class="text-muted fw-normal small mb-2">Selesai</h6>
-                    <h2 class="display-6 fw-bold mb-1 text-success"><?= $selesai ?? 28 ?></h2>
+                    <h2 class="display-6 fw-bold mb-1 text-success"><?= $selesai ?? 0 ?></h2>
                     <small class="text-muted">Bulan ini</small>
                 </div>
             </div>
@@ -87,35 +87,44 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php 
-                                // Menghubungkan array data dinamis yang dikirimkan oleh Controller PMI
-                                $list_terbaru = isset($permintaan_terbaru) ? $permintaan_terbaru : [
-                                    ['id' => 'REQ-20250520-001', 'rs' => 'RSUD Undata Palu', 'gol' => 'O+', 'prio' => 'URGENT', 'status' => 'Baru'],
-                                    ['id' => 'REQ-20250520-002', 'rs' => 'RS Madani Palu', 'gol' => 'A+', 'prio' => 'TINGGI', 'status' => 'Diproses'],
-                                    ['id' => 'REQ-20250519-003', 'rs' => 'RS Bhayangkara Palu', 'gol' => 'B+', 'prio' => 'NORMAL', 'status' => 'Diproses'],
-                                    ['id' => 'REQ-20250519-004', 'rs' => 'RS Anutapura Palu', 'gol' => 'AB+', 'prio' => 'NORMAL', 'status' => 'Donor Ditemukan'],
-                                    ['id' => 'REQ-20250519-005', 'rs' => 'RS Wirabuana Palu', 'gol' => 'O-', 'prio' => 'RENDAH', 'status' => 'Selesai']
-                                ];
-                                
-                                foreach ($list_terbaru as $row): ?>
-                                <tr>
-                                    <td class="text-muted fw-medium"><?= isset($row['id_permintaan']) ? $row['id_permintaan'] : $row['id'] ?></td>
-                                    <td class="fw-semibold text-dark"><?= isset($row['nama_rs']) ? $row['nama_rs'] : $row['rs'] ?></td>
-                                    <td class="fw-bold text-secondary"><?= isset($row['gol_darah']) ? $row['gol_darah'].$row['rhesus'] : $row['gol'] ?></td>
-                                    <td>
-                                        <span class="badge badge-priority bg-prio-<?= strtolower(isset($row['prioritas']) ? $row['prioritas'] : $row['prio']) ?>">
-                                            <?= isset($row['prioritas']) ? $row['prioritas'] : $row['prio'] ?>
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <?php $stt_check = isset($row['status']) ? $row['status'] : 'Baru'; ?>
-                                        <span class="badge badge-status bg-status-<?= ($stt_check == 'Baru') ? 'baru' : (($stt_check == 'Diproses') ? 'proses' : (($stt_check == 'Selesai') ? 'selesai' : 'ditemukan')) ?>">
-                                            <?= $stt_check ?>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <?php endforeach; ?>
-                            </tbody>
+                            <?php if (!empty($permintaan_terbaru)) : ?>
+                                <?php foreach ($permintaan_terbaru as $row) : ?>
+                                    <tr>
+                                        <td class="text-muted fw-medium"><?= $row['id_permintaan']; ?></td>
+
+                                        <td class="fw-semibold text-dark"><?= $row['nama_rs']; ?></td>
+
+                                        <td class="fw-bold text-secondary">
+                                            <?= $row['golongan_darah'] . $row['rhesus']; ?>
+                                        </td>
+
+                                        <td>
+                                            <span class="badge badge-priority bg-prio-<?= strtolower($row['prioritas']); ?>">
+                                                <?= $row['prioritas']; ?>
+                                            </span>
+                                        </td>
+
+                                        <td>
+                                            <?php $stt = $row['status']; ?>
+
+                                            <span class="badge badge-status bg-status-<?=
+                                                ($stt == 'Baru') ? 'baru' :
+                                                (($stt == 'Diproses') ? 'proses' :
+                                                (($stt == 'Selesai') ? 'selesai' : 'ditemukan'))
+                                            ?>">
+                                                <?= $stt; ?>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <?php endforeach; ?>
+                                <?php else : ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted">
+                                            Belum ada data permintaan.
+                                        </td>
+                                    </tr>
+                                <?php endif; ?>
+                                </tbody>
                         </table>
                     </div>
                     <div class="mt-4">
@@ -186,19 +195,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
-    }
-});
-</script>
+</main>
 
 <?= $this->endSection() ?>

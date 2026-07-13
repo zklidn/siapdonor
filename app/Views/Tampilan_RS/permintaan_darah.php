@@ -23,13 +23,6 @@
 <main class="content-area bootstrap-wrapper">
     <div class="header-group">
         <h1 class="page-title">Permintaan Darah</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb-nav">
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('rs') ?>">Dashboard</a></li>
-                <li class="breadcrumb-nav-separator">/</li>
-                <li class="breadcrumb-nav-item active">Permintaan Darah</li>
-            </ol>
-        </nav>
     </div>
     
     <form action="<?= base_url('rs/simpan_permintaan') ?>" method="POST">
@@ -137,4 +130,33 @@
     </form>
 
 </main>
+
+<!-- SCRIPT SWEETALERT DIMASUKKAN DI SINI (TEPAT SEBELUM END SECTION) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        
+        <?php if (session()->getFlashdata('success')) : ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Tersimpan!',
+                text: '<?= session()->getFlashdata('success') ?>',
+                confirmButtonColor: '#28a745',
+                confirmButtonText: 'Oke'
+            });
+        <?php endif; ?>
+
+        <?php if (session()->getFlashdata('error')) : ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?= session()->getFlashdata('error') ?>',
+                confirmButtonColor: '#dc3545',
+                confirmButtonText: 'Tutup'
+            });
+        <?php endif; ?>
+        
+    });
+</script>
+
 <?= $this->endSection() ?>

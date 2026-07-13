@@ -10,50 +10,50 @@ class PermintaanDarahSeeder extends Seeder
     {
         $data = [
             [
-                // id_permintaan = 1 (otomatis)
-                'id_user'        => 8, // RSUD Undata Palu
-                'nama_pasien'    => 'Budi Santoso',
-                'no_rm'          => 'RM-100200',
-                'ruangan'        => 'UGD',
-                'diagnosis'      => 'Operasi caesar darurat',
-                'golongan_darah' => 'O',
-                'rhesus'         => '+',
-                'jumlah_kantong' => 2,
-                'prioritas'      => 'Urgent',
-                'status'         => 'Diproses',
-                'created_at'     => date('Y-m-d H:i:s'),
-                'updated_at'     => date('Y-m-d H:i:s'),
+                'id_user'    => 1, // Asumsi ID Rumah Sakit adalah 1
+                'id_pasien'  => 1, // Mengambil data Andi Saputra
+                'ruangan'    => 'ICU',
+                'diagnosis'  => 'Demam Berdarah Dengue (DBD)',
+                'status'     => 'Selesai',
+                'created_at' => date('Y-m-d H:i:s', strtotime('-5 days')),
+                'updated_at' => date('Y-m-d H:i:s', strtotime('-4 days')),
             ],
             [
-                // id_permintaan = 2 (otomatis)
-                'id_user'        => 8, // RSUD Undata Palu
-                'nama_pasien'    => 'Siti Aminah',
-                'no_rm'          => 'RM-100201',
-                'ruangan'        => 'Ruang Anak',
-                'diagnosis'      => 'Transfusi pasien thalasemia',
-                'golongan_darah' => 'AB',
-                'rhesus'         => '+',
-                'jumlah_kantong' => 3,
-                'prioritas'      => 'Normal',
-                'status'         => 'Selesai',
-                'created_at'     => date('Y-m-d H:i:s', strtotime('-2 days')),
-                'updated_at'     => date('Y-m-d H:i:s', strtotime('-2 days')),
+                'id_user'    => 1,
+                'id_pasien'  => 2, // Siti Nurhaliza
+                'ruangan'    => 'IGD',
+                'diagnosis'  => 'Pendarahan Pasca Trauma',
+                'status'     => 'Donor Ditemukan',
+                'created_at' => date('Y-m-d H:i:s', strtotime('-2 days')),
+                'updated_at' => date('Y-m-d H:i:s', strtotime('-2 days')),
             ],
             [
-                // id_permintaan = 3 (otomatis)
-                'id_user'        => 9, // RSUD Anutapura Palu
-                'nama_pasien'    => 'Andi Wijaya',
-                'no_rm'          => 'RM-200300',
-                'ruangan'        => 'ICU',
-                'diagnosis'      => 'Persiapan operasi jantung',
-                'golongan_darah' => 'A',
-                'rhesus'         => '+',
-                'jumlah_kantong' => 4,
-                'prioritas'      => 'Tinggi',
-                'status'         => 'Diproses',
-                'created_at'     => date('Y-m-d H:i:s', strtotime('-1 day')),
-                'updated_at'     => date('Y-m-d H:i:s', strtotime('-1 day')),
+                'id_user'    => 1,
+                'id_pasien'  => 3, // Muh. Rizki
+                'ruangan'    => 'Rawat Inap',
+                'diagnosis'  => 'Anemia Kronis',
+                'status'     => 'Diproses',
+                'created_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
+                'updated_at' => date('Y-m-d H:i:s', strtotime('-1 days')),
             ],
+            [
+                'id_user'    => 1,
+                'id_pasien'  => 4, // Rina Melati
+                'ruangan'    => 'IGD',
+                'diagnosis'  => 'Kecelakaan Lalu Lintas',
+                'status'     => 'Diproses',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'id_user'    => 1,
+                'id_pasien'  => 5, // Budi Santoso
+                'ruangan'    => 'ICU',
+                'diagnosis'  => 'Operasi Mayor',
+                'status'     => 'Dibatalkan',
+                'created_at' => date('Y-m-d H:i:s', strtotime('-10 days')),
+                'updated_at' => date('Y-m-d H:i:s', strtotime('-10 days')),
+            ]
         ];
 
         $this->db->table('permintaan_darah')->insertBatch($data);

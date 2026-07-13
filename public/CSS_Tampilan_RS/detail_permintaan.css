@@ -1,203 +1,187 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-.bootstrap-wrapper,
-.bootstrap-wrapper table,
-.bootstrap-wrapper card,
-.bootstrap-wrapper button,
-.bootstrap-wrapper a {
+
+.bootstrap-wrapper {
     font-family: 'Inter', sans-serif !important;
+    background-color: #f8f9fa;
+    padding: 20px !important;
 }
 
-/* --- HEADER AREA PRESISI DASHBOARD --- */
-.header-group {
-    margin-bottom: 25px !important;
-}
+/* --- COLORS & UTILITIES --- */
+.text-maroon { color: #8B0000 !important; }
+.bg-maroon { background-color: #8B0000 !important; }
+.bg-maroon-light { background-color: #fff5f5 !important; border: 1px solid #fce8e8 !important; }
 
 .page-title {
     font-size: 24px !important;
     font-weight: 700 !important;
     color: #111827 !important;
-    margin: 0 0 2px 0 !important;
 }
 
-.breadcrumb-nav {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.breadcrumb-nav a {
-    text-decoration: none;
-    color: #6b7280 !important;
-    font-size: 14px;
-}
-
-.breadcrumb-nav-separator {
-    color: #9ca3af;
-    font-size: 13px;
-}
-
-.breadcrumb-nav-item.active {
-    color: #111827 !important;
-    font-size: 14px;
-}
-
-/* --- CARD CARDS CONTAINER --- */
-.card-detail {
+/* --- CARD CUSTOM STYLING --- */
+.card-custom {
     border: 1px solid #eef2f5 !important;
     border-radius: 12px !important;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02) !important;
+    background: #fff;
+    overflow: hidden;
 }
 
-.section-card-title {
-    font-size: 15px !important;
-    font-weight: 600 !important;
-    color: #111827;
+/* --- INFO LIST LAYOUT --- */
+.info-list {
+    margin: 0;
+    padding: 0;
 }
-
-/* --- ROW LIST TEXT ALIGNMENT --- */
-.info-list .row {
-    align-items: flex-start;
-}
-
-.info-list span {
-    font-size: 13.5px;
-}
-
-/* --- BADGES STYLING --- */
-.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 11px; padding: 4px 8px; }
-.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 500; font-size: 11px; padding: 4px 10px; }
-
-/* --- TIMELINE COMPONENT --- */
-.timeline-wrapper {
-    position: relative;
-    padding-left: 20px;
-}
-.timeline-item {
-    position: relative;
-    padding-left: 30px;
-    padding-bottom: 25px;
-    border-left: 2px solid #e5e7eb;
-}
-
-.timeline-item.content-last {
-    border-left: 2px solid transparent !important;
-    padding-bottom: 0px;
-}
-
-.timeline-badge {
-    position: absolute;
-    left: -16px;
-    top: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: #fff;
+.info-list li {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed #f1f5f9;
+}
+.info-list li:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+.info-label {
+    font-size: 11px;
+    color: #94a3b8;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+.info-value {
+    font-size: 14px;
+    color: #334155;
+}
+
+/* --- BLOOD TYPE HIGHLIGHT --- */
+.icon-circle-maroon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(139, 0, 0, 0.1);
+    color: #8B0000;
+    border-radius: 50%;
+    display: flex;
     justify-content: center;
-    border: 2px solid #ffffff;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    align-items: center;
+    font-size: 28px;
 }
 
-.timeline-content {
-    font-size: 13.5px;
-}
-
-.bg-success-light { background-color: #E8F5E9 !important; }
-.bg-primary-light { background-color: #E3F2FD !important; }
-.bg-secondary-light { background-color: #F3F4F6 !important; }
-.fa-spin-slow { animation: spin 4s linear infinite; }
-
-/* --- BUTTONS SYSTEM --- */
-.btn-outline-print {
+/* --- BUTTONS --- */
+.btn-outline-maroon {
     border: 1px solid #8B0000 !important;
     color: #8B0000 !important;
     background-color: #ffffff;
     border-radius: 8px;
-    font-size: 14px;
+    transition: all 0.2s ease;
 }
-
-.btn-outline-print:hover {
+.btn-outline-maroon:hover {
     background-color: #8B0000 !important;
     color: #ffffff !important;
 }
 
-.btn-back {
-    border: 1px solid #d1d5db !important;
-    color: #4b5563 !important;
-    background-color: #ffffff;
-    border-radius: 8px;
-    font-size: 14px;
+/* --- BADGES --- */
+.bg-prio-urgent { background-color: #FFEBEE !important; color: #C62828 !important; font-weight: 700; font-size: 11px; padding: 4px 8px; border-radius: 4px; }
+.bg-status-proses { background-color: #E3F2FD !important; color: #1E88E5 !important; font-weight: 600; font-size: 11px; padding: 4px 8px; border-radius: 4px; }
+
+/* --- TIMELINE MODERN BERSILANGAN --- */
+.timeline-clean {
+    position: relative;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+.timeline-clean::before {
+    content: '';
+    position: absolute;
+    left: 27px;
+    top: 5px;
+    bottom: 0;
+    width: 2px;
+    background-color: #e2e8f0;
+}
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 30px;
+}
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+/* Menghapus garis ke bawah untuk item terakhir */
+.timeline-item:last-child::before {
+    content: '';
+    position: absolute;
+    left: -13px;
+    top: 20px;
+    bottom: -30px;
+    width: 4px;
+    background-color: #fff;
+    z-index: 0;
 }
 
-.btn-back:hover {
-    background-color: #f9fafb;
-    border-color: #c4c4c4 !important;
+.timeline-marker {
+    position: absolute;
+    left: -1px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+.timeline-marker i {
+    font-size: 9px;
+    color: transparent;
 }
 
-/* --- KUNCI PENGATURAN CETAK PDF (MENGHILANGKAN HEADER BROWSER) --- */
+/* Style Jika Status Selesai/Lewat */
+.timeline-item.completed .timeline-marker {
+    border-color: #10b981;
+    background-color: #10b981;
+}
+.timeline-item.completed .timeline-marker i {
+    color: #fff;
+}
+
+/* Style Jika Status Sedang Aktif (Maroon) */
+.timeline-item.active .timeline-marker {
+    border-color: #8B0000;
+    background-color: #8B0000;
+    box-shadow: 0 0 0 4px rgba(139, 0, 0, 0.15);
+}
+.timeline-item.active .timeline-marker i {
+    color: #fff;
+}
+
+
+/* --- SETTING CETAK PDF (HILANGKAN UI SAAT PRINT) --- */
 @media print {
-    /* Perintah utama menyembunyikan teks tanggal & nama url bawaan browser di pojok kertas */
-    @page {
-        margin: 15mm 15mm 15mm 15mm; /* Mengatur margin kertas bersih */
+    @page { margin: 15mm; }
+    body { background-color: #fff !important; }
+    .print-header-letter { 
+        display: flex !important; 
+        justify-content: space-between; 
+        align-items: center; 
+        border-bottom: 2px solid #111827; 
+        padding-bottom: 15px; 
+        margin-bottom: 30px; 
     }
-    /* Tampilkan kop surat RS kustom kita */
-    .print-header-letter {
-        display: flex !important;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid #111827;
-        padding-bottom: 15px;
-        margin-bottom: 30px;
-    }
-    .print-header-left {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-    .print-logo-rs {
-        width: 50px;
-        height: 50px;
-        object-fit: contain;
-    }
-    .print-rs-name {
-        font-size: 20px;
-        font-weight: 700;
-        margin: 0;
-        color: #111827;
-    }
-    .print-app-name {
-        font-size: 12px;
-        color: #4b5563;
-        margin: 2px 0 0 0;
-    }
-    .print-date-access {
-        font-size: 12px;
-        color: #4b5563;
-    }
-    /* Sembunyikan elemen bawaan sistem web */
-    .topbar, 
-    .sidebar, 
-    .btn, 
-    .header-group,
-    .breadcrumb-nav {
-        display: none !important;
-    }
-    .main-wrapper, 
-    .content-area, 
-    .bootstrap-wrapper {
-        padding: 0 !important;
-        margin: 0 !important;
-        width: 100% !important;
-        background-color: #ffffff !important;
-    }
-    .card-detail {
-        border: 1px solid #e5e7eb !important;
-        box-shadow: none !important;
-        page-break-inside: avoid;
-    }
+    .print-header-left { display: flex; align-items: center; gap: 15px; }
+    .print-logo-rs { width: 50px; height: 50px; object-fit: contain; }
+    .print-rs-name { font-size: 20px; font-weight: 700; margin: 0; color: #111827; }
+    .print-app-name { font-size: 12px; color: #4b5563; margin: 2px 0 0 0; }
+    .print-date-access { font-size: 12px; color: #4b5563; }
+    
+    /* Sembunyikan elemen yang tidak perlu dicetak */
+    .btn, .sidebar, .topbar, .border-bottom { display: none !important; }
+    
+    .bootstrap-wrapper { padding: 0 !important; margin: 0 !important; width: 100% !important; }
+    .card-custom { border: 1px solid #d1d5db !important; box-shadow: none !important; break-inside: avoid; }
+    .bg-maroon-light { background-color: #fff !important; border: 1px solid #d1d5db !important; }
 }

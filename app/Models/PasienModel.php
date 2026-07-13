@@ -6,20 +6,21 @@ use CodeIgniter\Model;
 
 class PasienModel extends Model
 {
-
-    protected $table      = 'pasien';
-    protected $primaryKey = 'id_pasien';
+    protected $table            = 'pasien';
+    protected $primaryKey       = 'id_pasien';
     protected $useAutoIncrement = true;
-    protected $returnType = 'array';
-    protected $useSoftDeletes = true;
-    protected $protectFields = true;
-    protected $allowedFields = ['id_permintaan','nama', 'no_rm','ruangan', 'diagnosis', 'golongan_darah'];
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = true;
+    protected $protectFields    = true;
+    
+    // Sesuaikan dengan migration terbaru
+    protected $allowedFields    = ['no_rm', 'nama_pasien', 'golongan_darah', 'rhesus'];
 
     protected $useTimestamps = true;
-    protected $dateFormat = 'datetime';
-    protected $createField = 'created_at';
-    protected $updateField = 'updated_at';
-    protected $deleteField = 'deleted_at';
+    protected $dateFormat    = 'datetime';
+    protected $createField   = 'created_at';
+    protected $updateField   = 'updated_at';
+    protected $deleteField   = 'deleted_at';
 
     // 1. Mendaftarkan trigger otomatis (Callback)
     protected $afterInsert = ['rekamInsert'];
@@ -48,14 +49,11 @@ class PasienModel extends Model
     // 3. Eksekusi penyimpanan ke tabel log_aktivitas
     private function simpanLogOtomatis($aksi)
     {
-        // Memanggil LogAktivitasModel
         $logModel = new \App\Models\LogAktivitasModel();
         
         $logModel->insert([
-            // Ambil id_user dari session login. Jika session tidak terbaca, gunakan 0 (sistem)
             'id_user'    => session()->get('id_user') ?? 0, 
             'aktivitas'  => $aksi,
-            // Mengambil IP Address perangkat yang mengakses
             'keterangan' => \Config\Services::request()->getIPAddress() 
         ]);
     }

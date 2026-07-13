@@ -10,35 +10,45 @@ class PasienSeeder extends Seeder
     {
         $data = [
             [
-                'id_permintaan'  => 1, // permintaan RSUD Undata Palu
-                'nama'           => 'Siti Aminah',
-                'no_rm'          => 'RM-100293', // Kolom baru pengganti umur
-                'ruangan'        => 'IGD',       // Kolom baru sesuai ENUM
-                'diagnosis'      => 'Pendarahan pasca operasi caesar',
+                'no_rm'          => 'RM-0001',
+                'nama_pasien'    => 'Andi Saputra',
                 'golongan_darah' => 'O',
+                'rhesus'         => '+',
                 'created_at'     => date('Y-m-d H:i:s'),
                 'updated_at'     => date('Y-m-d H:i:s'),
             ],
             [
-                'id_permintaan'  => 2, // permintaan RSUD Undata Palu
-                'nama'           => 'Ahmad Fauzi',
-                'no_rm'          => 'RM-100294',
-                'ruangan'        => 'ICU',
-                'diagnosis'      => 'Thalasemia mayor',
-                'golongan_darah' => 'AB',
-                'created_at'     => date('Y-m-d H:i:s', strtotime('-2 days')),
-                'updated_at'     => date('Y-m-d H:i:s', strtotime('-2 days')),
+                'no_rm'          => 'RM-0002',
+                'nama_pasien'    => 'Siti Nurhaliza',
+                'golongan_darah' => 'A',
+                'rhesus'         => '+',
+                'created_at'     => date('Y-m-d H:i:s'),
+                'updated_at'     => date('Y-m-d H:i:s'),
             ],
             [
-                'id_permintaan'  => 3, // permintaan RSUD Anutapura Palu
-                'nama'           => 'Dedi Kurniawan',
-                'no_rm'          => 'RM-100295',
-                'ruangan'        => 'Rawat Inap',
-                'diagnosis'      => 'Persiapan operasi bypass jantung',
-                'golongan_darah' => 'A',
-                'created_at'     => date('Y-m-d H:i:s', strtotime('-1 day')),
-                'updated_at'     => date('Y-m-d H:i:s', strtotime('-1 day')),
+                'no_rm'          => 'RM-0003',
+                'nama_pasien'    => 'Muh. Rizki',
+                'golongan_darah' => 'B',
+                'rhesus'         => '+',
+                'created_at'     => date('Y-m-d H:i:s'),
+                'updated_at'     => date('Y-m-d H:i:s'),
             ],
+            [
+                'no_rm'          => 'RM-0004',
+                'nama_pasien'    => 'Rina Melati',
+                'golongan_darah' => 'AB',
+                'rhesus'         => '-',
+                'created_at'     => date('Y-m-d H:i:s'),
+                'updated_at'     => date('Y-m-d H:i:s'),
+            ],
+            [
+                'no_rm'          => 'RM-0005',
+                'nama_pasien'    => 'Budi Santoso',
+                'golongan_darah' => 'O',
+                'rhesus'         => '-',
+                'created_at'     => date('Y-m-d H:i:s'),
+                'updated_at'     => date('Y-m-d H:i:s'),
+            ]
         ];
 
         $this->db->table('pasien')->insertBatch($data);

@@ -1,21 +1,33 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Permintaan Darah</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/detail_permintaan.css') ?>">
-</head>
-<body class="bg-light">
+<?= $this->extend('layout/template') ?>
+<?= $this->section('content') ?>
 
-<div class="container-fluid py-4 bootstrap-wrapper">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="<?= base_url('CSS_Tampilan_RS/detail_permintaan.css') ?>">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <div class="menu-top">
+        <a href="<?= base_url('rs') ?>" class="menu-item">
+            <i class="fa-solid fa-house"></i> Dashboard
+        </a>
+        <a href="<?= base_url('rs/permintaan_darah') ?>" class="menu-item">
+            <i class="fa-solid fa-droplet"></i> Permintaan Darah
+        </a>
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="menu-item menu-active">
+            <i class="fa-solid fa-file-invoice"></i> Riwayat Permintaan
+        </a>
+    </div>
+</aside>
+
+<main class="content-area bootstrap-wrapper pt-4">
+    
+    <!-- HEADER UNTUK CETAK PDF (Disembunyikan di layar, muncul saat diprint) -->
     <div class="print-header-letter d-none">
         <div class="print-header-left">
             <img src="<?= base_url('logo.png') ?>" alt="Logo RS" class="print-logo-rs">
             <div class="print-rs-info">
-                <h2 class="print-rs-name"><?= session()->get('nama') ?? 'RSUD Sejahtera' ?></h2>
+                <h2 class="print-rs-name"><?= session()->get('nama') ?? 'RSUD Undata Palu' ?></h2>
                 <p class="print-app-name">Sistem Informasi Donor Darah - SiapDonor</p>
             </div>
         </div>
@@ -24,105 +36,156 @@
         </div>
     </div>
 
-    <div class="d-flex justify-content-between align-items-start header-group mb-4">
-        <div>
-            <h1 class="page-title" style="font-size: 24px; font-weight: 700; color: #111827; margin-bottom: 4px;">Detail Permintaan</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb-nav d-flex gap-2 list-unstyled mb-0" style="font-size: 14px;">
-                    <li class="breadcrumb-nav-item"><a href="<?= base_url('rs') ?>" class="text-secondary text-decoration-none">Dashboard</a></li>
-                    <li class="breadcrumb-nav-separator text-muted">/</li>
-                    <li class="breadcrumb-nav-item"><a href="<?= base_url('rs/riwayat_permintaan') ?>" class="text-secondary text-decoration-none">Riwayat Permintaan</a></li>
-                    <li class="breadcrumb-nav-separator text-muted">/</li>
-                    <li class="breadcrumb-nav-item active text-dark fw-medium">Detail Permintaan</li>
-                </ol>
-            </nav>
-        </div>
-        <button type="button" class="btn btn-outline-print px-4 py-2 fw-semibold" onclick="window.print()" style="border: 1px solid #8B0000; color: #8B0000; background: transparent; border-radius: 6px;">
-            <i class="fa-solid fa-file-pdf me-2"></i> Cetak / PDF
+    <!-- HEADER HALAMAN -->
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+        <h1 class="page-title mb-0 fs-4 fw-bold text-dark">Detail Permintaan</h1>
+        <button type="button" class="btn btn-outline-maroon px-4 py-2 fw-semibold" onclick="window.print()">
+            <i class="fa-solid fa-print me-2"></i> Cetak Dokumen
         </button>
     </div>
 
-    <div class="row g-3 mb-4">
+    <div class="row g-4 mb-4">
+        <!-- KARTU INFORMASI PERMINTAAN -->
         <div class="col-md-4">
-            <div class="card card-detail h-100 border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h5 class="section-card-title mb-4 fw-bold text-dark fs-6">Informasi Permintaan</h5>
-                    <div class="d-flex flex-column gap-3 info-list">
-                        <div class="row"><span class="col-5 text-muted small">ID Permintaan</span><span class="col-7 fw-semibold text-dark">REQ-20250520-001</span></div>
-                        <div class="row"><span class="col-5 text-muted small">Tanggal</span><span class="col-7 text-secondary">20 Mei 2025, 10:30</span></div>
-                        <div class="row"><span class="col-5 text-muted small">Prioritas</span><span class="col-7"><span class="badge bg-danger-subtle text-danger fw-bold" style="font-size: 11px; padding: 4px 8px;">URGENT (< 2 jam)</span></span></div>
-                        <div class="row"><span class="col-5 text-muted small">Status</span><span class="col-7"><span class="badge bg-primary-subtle text-primary" style="font-size: 11px; padding: 4px 8px;">Diproses</span></span></div>
-                        <div class="row"><span class="col-5 text-muted small">Dibuat oleh</span><span class="col-7 text-secondary"><?= session()->get('nama') ?? 'RSUD Sejahtera' ?></span></div>
-                        <div class="row"><span class="col-5 text-muted small">Catatan RS</span><span class="col-7 text-secondary lh-base small">Pasien dalam kondisi kritis, mohon segera diproses.</span></div>
-                    </div>
+            <div class="card card-custom h-100 shadow-sm border-0">
+                <div class="card-header bg-white border-0 pt-4 pb-0">
+                    <h5 class="card-title fw-bold text-dark fs-6 d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-file-lines text-maroon"></i> Informasi Permintaan
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled info-list">
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">ID Permintaan</span>
+                            <span class="info-value text-dark fw-bold fs-6">REQ-<?= str_pad($detail['id_permintaan'], 3, '0', STR_PAD_LEFT) ?></span>
+                        </li>
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">Tanggal Masuk</span>
+                            <span class="info-value fw-medium text-dark"><?= date('d M Y, H:i', strtotime($detail['created_at'])) ?></span>
+                        </li>
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">Prioritas</span>
+                            <?php 
+                            $prio = strtolower($detail['prioritas'] ?? '');
+                            $prioClass = 'bg-secondary';
+                            if($prio == 'urgent') $prioClass = 'bg-danger';
+                            if($prio == 'tinggi') $prioClass = 'bg-warning text-dark';
+                            if($prio == 'normal') $prioClass = 'bg-primary';
+                            if($prio == 'rendah') $prioClass = 'bg-success';
+                            ?>
+                            <span class="info-value"><span class="badge <?= $prioClass ?> px-3 py-1"><?= strtoupper($prio) ?></span></span>
+                        </li>
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">Dibuat oleh</span>
+                            <span class="info-value fw-medium text-dark"><?= session()->get('nama') ?? 'RSUD Undata Palu' ?></span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
         
+        <!-- KARTU INFORMASI PASIEN -->
         <div class="col-md-4">
-            <div class="card card-detail h-100 border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h5 class="section-card-title mb-4 fw-bold text-dark fs-6">Informasi Pasien</h5>
-                    <div class="d-flex flex-column gap-3 info-list">
-                        <div class="row"><span class="col-5 text-muted small">Nama Pasien</span><span class="col-7 fw-semibold text-dark">Andi Saputra</span></div>
-                        <div class="row"><span class="col-5 text-muted small">No. Rekam Medis</span><span class="col-7 text-secondary">RM-202505-001</span></div>
-                        <div class="row"><span class="col-5 text-muted small">Ruangan / Unit</span><span class="col-7 text-secondary">ICU</span></div>
-                        <div class="row"><span class="col-5 text-muted small">Diagnosis</span><span class="col-7 text-secondary lh-base">Demam Berdarah Dengue</span></div>
-                    </div>
+            <div class="card card-custom h-100 shadow-sm border-0">
+                <div class="card-header bg-white border-0 pt-4 pb-0">
+                    <h5 class="card-title fw-bold text-dark fs-6 d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-user-injured text-maroon"></i> Informasi Pasien
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled info-list">
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">Nama Lengkap Pasien</span>
+                            <span class="info-value fw-bold text-dark fs-6"><?= $detail['nama_pasien'] ?></span>
+                        </li>
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">No. Rekam Medis</span>
+                            <span class="info-value fw-medium text-dark"><?= $detail['no_rm'] ?></span>
+                        </li>
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">Ruangan / Unit Rawat</span>
+                            <span class="info-value fw-medium text-dark"><?= $detail['ruangan'] ?></span>
+                        </li>
+                        <li class="mb-3">
+                            <span class="info-label d-block text-muted small mb-1">Diagnosis Medis</span>
+                            <span class="info-value fw-medium text-dark"><?= !empty($detail['diagnosis']) ? $detail['diagnosis'] : '-' ?></span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
 
+        <!-- HIGHLIGHT KEBUTUHAN DARAH -->
         <div class="col-md-4">
-            <div class="card card-detail h-100 border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h5 class="section-card-title mb-4 fw-bold text-dark fs-6">Kebutuhan Darah</h5>
-                    <div class="d-flex flex-column gap-3 info-list">
-                        <div class="row"><span class="col-5 text-muted small">Golongan Darah</span><span class="col-7 fw-bold text-danger fs-5 lh-sm">O+</span></div>
-                        <div class="row"><span class="col-5 text-muted small">Rhesus</span><span class="col-7 text-secondary">Positif</span></div>
-                        <div class="row"><span class="col-5 text-muted small">Jumlah Kantong</span><span class="col-7 fw-semibold text-dark">3 Kantong</span></div>
+            <div class="card card-custom bg-maroon-light h-100 border-0 shadow-sm" style="background-color: #fff0f0;">
+                <div class="card-body text-center d-flex flex-column justify-content-center align-items-center p-4">
+                    <div class="icon-circle-maroon mb-3" style="font-size: 2rem; color: #800000;">
+                        <i class="fa-solid fa-droplet"></i>
                     </div>
+                    <h6 class="text-maroon fw-semibold mb-1" style="color: #800000;">Kebutuhan Darah</h6>
+                    <h2 class="display-3 fw-bold text-maroon mb-0 lh-1" style="color: #800000;"><?= $detail['golongan_darah'] ?><?= $detail['rhesus'] ?></h2>
+                    <span class="badge mt-3 mb-3 px-4 py-2 fs-6 rounded-pill" style="background-color: #800000; color: white;"><?= $detail['jumlah_kantong'] ?> Kantong</span>
+                    <p class="text-maroon opacity-75 small mb-0 fw-medium" style="color: #800000;">Rhesus <?= $detail['rhesus'] == '+' ? 'Positif (+)' : 'Negatif (-)' ?></p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="card card-detail border-0 shadow-sm mb-4">
+    <!-- TIMELINE RIWAYAT STATUS -->
+    <div class="card card-custom mb-5 shadow-sm border-0">
+        <div class="card-header bg-white border-0 pt-4 pb-0">
+            <h5 class="card-title fw-bold text-dark fs-6 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-clock-rotate-left text-maroon"></i> Lacak Riwayat Status
+            </h5>
+        </div>
         <div class="card-body p-4">
-            <h5 class="section-card-title mb-4 fw-bold text-dark fs-6">Riwayat Status</h5>
-            <div class="timeline-wrapper">
-                <div class="timeline-item mb-3 d-flex gap-3">
-                    <div class="timeline-badge bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fa-solid fa-check fs-6"></i></div>
+            <div class="timeline-clean">
+                
+                <!-- Step 1: Dibuat -->
+                <div class="timeline-item completed d-flex gap-3 mb-4">
+                    <div class="timeline-marker text-success fs-4"><i class="fa-solid fa-circle-check"></i></div>
                     <div class="timeline-content">
-                        <div class="small text-muted fw-medium">20 Mei 2025, 10:30</div>
-                        <div class="text-dark fw-medium mt-0.5">Permintaan baru dibuat oleh RS</div>
+                        <h6 class="mb-1 fw-bold text-dark">Permintaan Dibuat</h6>
+                        <p class="text-muted small mb-0"><?= date('d M Y, H:i', strtotime($detail['created_at'])) ?> &bull; Permintaan berhasil dikirimkan ke sistem oleh RS.</p>
                     </div>
                 </div>
-                <div class="timeline-item mb-3 d-flex gap-3">
-                    <div class="timeline-badge bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fa-solid fa-spinner fs-6"></i></div>
+
+                <!-- Step Terakhir: Dinamis mengikuti database -->
+                <div class="timeline-item active d-flex gap-3">
+                    <div class="timeline-marker fs-4" style="color: #800000;">
+                        <?php if(in_array($detail['status'], ['Selesai', 'Donor Ditemukan'])): ?>
+                            <i class="fa-solid fa-circle-check text-success"></i>
+                        <?php elseif($detail['status'] == 'Dibatalkan'): ?>
+                            <i class="fa-solid fa-circle-xmark text-danger"></i>
+                        <?php else: ?>
+                            <i class="fa-solid fa-spinner fa-spin"></i>
+                        <?php endif; ?>
+                    </div>
                     <div class="timeline-content">
-                        <div class="small text-muted fw-medium">20 Mei 2025, 10:35</div>
-                        <div class="text-dark fw-medium mt-0.5">Permintaan diterima oleh PMI</div>
+                        <h6 class="mb-1 fw-bold" style="color: #800000;"><?= $detail['status'] ?></h6>
+                        <p class="small mb-0 fw-medium" style="color: #800000;"><?= date('d M Y, H:i', strtotime($detail['updated_at'])) ?> &bull; Update status terakhir dari sistem PMI.</p>
+                        
+                        <?php if($detail['status'] == 'Dibatalkan'): ?>
+                            <span class="badge bg-danger mt-2">Dibatalkan</span>
+                        <?php elseif($detail['status'] == 'Selesai'): ?>
+                            <span class="badge bg-success mt-2">Telah Selesai</span>
+                        <?php else: ?>
+                            <span class="badge mt-2" style="background-color: #800000;">Status Saat Ini</span>
+                        <?php endif; ?>
                     </div>
                 </div>
-                <div class="timeline-item content-last d-flex gap-3">
-                    <div class="timeline-badge bg-secondary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 28px; height: 28px;"><i class="fa-solid fa-circle-dot fs-6"></i></div>
-                    <div class="timeline-content">
-                        <div class="small text-muted fw-medium">20 Mei 2025, 11:20</div>
-                        <div class="text-dark fw-medium mt-0.5">Sedang mencari donor yang sesuai</div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
 
-    <div class="pt-2 mb-5">
-        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="btn btn-back px-4 py-2 fw-semibold text-white" style="background-color: #ffffff; border-radius: 6px; text-decoration: none;">
+    <!-- TOMBOL KEMBALI -->
+    <div class="pb-4">
+        <a href="<?= base_url('rs/riwayat_permintaan') ?>" class="btn btn-outline-secondary px-4 py-2 fw-semibold rounded-3">
             <i class="fa-solid fa-arrow-left me-2"></i> Kembali ke Riwayat
         </a>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+</main>
+
+<?= $this->endSection() ?>

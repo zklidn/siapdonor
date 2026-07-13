@@ -14,15 +14,6 @@
     <div class="d-flex justify-content-between align-items-start header-group-clean mb-4">
         <div>
             <h1 class="page-title">Detail Permintaan</h1>
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb-nav d-flex gap-2 list-unstyled mb-0">
-                    <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi') ?>" class="text-secondary text-decoration-none">Dashboard</a></li>
-                    <li class="breadcrumb-nav-separator text-muted">/</li>
-                    <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi/permintaan_masuk') ?>" class="text-secondary text-decoration-none">Permintaan Masuk</a></li>
-                    <li class="breadcrumb-nav-separator text-muted">/</li>
-                    <li class="breadcrumb-nav-item active text-dark fw-medium">Detail Permintaan</li>
-                </ol>
-            </nav>
         </div>
         <a href="<?= base_url('pmi/permintaan_masuk') ?>" class="btn btn-top-back px-3 py-1.5 fw-semibold small">
             <i class="fa-solid fa-chevron-left me-1" style="font-size: 11px;"></i> Kembali
@@ -41,7 +32,7 @@
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Tanggal Permintaan</span>
-                            <span class="col-7 text-secondary"><?= date('d Mei Y, H:i', strtotime($permintaan['tanggal'])) ?></span>
+                            <span class="col-7 text-secondary"><?= date('d Mei Y, H:i', strtotime($permintaan['created_at'])) ?></span>
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Rumah Sakit</span>
@@ -65,7 +56,7 @@
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Golongan Darah</span>
-                            <span class="col-7 fw-bold text-danger fs-5 lh-sm"><?= esc($permintaan['gol_darah']) ?></span>
+                            <span class="col-7 fw-bold text-danger fs-5 lh-sm"><?= esc($permintaan['golongan_darah']) ?></span>
                         </div>
                         <div class="row">
                             <span class="col-5 text-muted small">Rhesus</span>
@@ -121,7 +112,7 @@
                             <div class="timeline-item">
                                 <div class="timeline-badge border-danger text-danger"><i class="fa-solid fa-circle-dot fs-6"></i></div>
                                 <div class="timeline-content">
-                                    <div class="small text-muted fw-medium"><?= date('d Mei Y, H:i', strtotime($permintaan['tanggal'])) ?></div>
+                                    <div class="small text-muted fw-medium"><?= date('d Mei Y, H:i', strtotime($permintaan['created_at'])) ?></div>
                                     <div class="text-dark fw-medium mt-0.5">Permintaan baru dibuat oleh RS</div>
                                 </div>
                             </div>
@@ -133,19 +124,24 @@
                 </div>
             </div>
 
-            <div class="card card-detail border-0 shadow-sm">
-                <div class="card-body p-4">
-                    <h5 class="section-card-title mb-3 fw-bold text-dark fs-6">Aksi</h5>
-                    <div class="d-flex flex-column gap-2.5">
-                        <a href="<?= base_url('pmi/cari_donor') ?>" class="btn btn-action-maroon w-100 py-2.5 fw-semibold text-white">
-                            <i class="fa-solid fa-phone me-2"></i> Cari Donor
-                        </a>
-                        <a href="<?= base_url('pmi/update_status_permintaan/' . $permintaan['id_permintaan']) ?>" class="btn btn-action-outline-maroon w-100 py-2.5 fw-semibold">
-                            <i class="fa-solid fa-arrows-rotate me-2"></i> Ubah Status
-                        </a>
-                    </div>
-                </div>
+        <div class="card card-detail border-0 shadow-sm">
+        <div class="card-body p-4">
+            <h5 class="section-card-title mb-3 fw-bold text-dark fs-6">Aksi</h5>
+            <div class="d-flex flex-column gap-2.5">
+                
+                <!-- Tambahkan ?id_permintaan agar halaman Cari Donor tahu ini untuk pasien mana -->
+                <a href="<?= base_url('pmi/cari_donor?id_permintaan=' . $permintaan['id_permintaan']) ?>" class="btn btn-action-maroon w-100 py-2.5 fw-semibold text-white">
+                    <i class="fa-solid fa-phone me-2"></i> Cari Donor
+                </a>
+                
+                <!-- Ubah /ID menjadi ?id_permintaan=ID agar tidak error 404 -->
+                <a href="<?= base_url('pmi/update_status_permintaan?id_permintaan=' . $permintaan['id_permintaan']) ?>" class="btn btn-action-outline-maroon w-100 py-2.5 fw-semibold">
+                    <i class="fa-solid fa-arrows-rotate me-2"></i> Ubah Status
+                </a>
+                
             </div>
+        </div>
+</div>
         </div>
     </div>
 

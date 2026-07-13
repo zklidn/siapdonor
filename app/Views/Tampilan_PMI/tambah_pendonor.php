@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="<?= base_url('CSS_Tampilan_PMI/tambah_pendonor.css') ?>">
 
-<aside class="sidebar" id="sidebar">
+<aside class="sidebar">
     <div class="menu-top">
         <a href="<?= base_url('pmi') ?>" class="menu-item">
             <i class="fa-solid fa-house"></i> Dashboard
@@ -25,26 +25,26 @@
     </div>
 </aside>
 
-<div class="container-fluid py-2 bootstrap-wrapper">
+<main class="content-area bootstrap-wrapper">
     <div class="header-group-clean">
         <h1 class="page-title">Tambah Pendonor Baru</h1>
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb-nav d-flex gap-2 list-unstyled mb-0">
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi') ?>" class="text-secondary text-decoration-none">Dashboard</a></li>
-                <li class="breadcrumb-nav-separator text-muted">/</li>
-                <li class="breadcrumb-nav-item"><a href="<?= base_url('pmi/cari_donor') ?>" class="text-secondary text-decoration-none">Cari Donor</a></li>
-                <li class="breadcrumb-nav-separator text-muted">/</li>
-                <li class="breadcrumb-nav-item active text-dark fw-medium">Tambah Pendonor</li>
-            </ol>
-        </nav>
     </div>
 
     <div class="card card-content border-0 shadow-sm mb-4">
         <div class="card-body p-4">
             <h5 class="fw-bold mb-4 text-dark fs-6">Formulir Data Diri Pendonor</h5>
 
+            <?php if(session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <i class="fa-solid fa-circle-exclamation me-2"></i>
+                    <?= session()->getFlashdata('error') ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            <?php endif; ?>
+
             <form action="<?= base_url('pmi/simpan_pendonor') ?>" method="post" enctype="multipart/form-data">
                 <?= csrf_field(); ?>
+                <input type="hidden" name="status" value="Aktif">
 
                 <div class="row g-4">
                     <div class="col-md-4 text-center border-end border-light pe-md-4">
@@ -61,16 +61,27 @@
                         <p class="text-muted extra-small lh-base">Gunakan format JPG, JPEG, atau PNG. Maksimal ukuran file 2MB.</p>
                     </div>
 
-                    <div class="col-md-8ps-md-4">
+                    <div class="col-md-8 ps-md-4">
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <label class="form-label text-muted small fw-medium mb-1">Nama Lengkap Pendonor</label>
-                                <input type="text" name="nama_donor" class="form-control custom-filter-input" placeholder="Masukkan nama sesuai KTP" required>
+                                <input type="text" name="nama" class="form-control custom-filter-input" placeholder="Masukkan nama sesuai KTP" required>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label text-muted small fw-medium mb-1">No. Identitas (NIK/KTP)</label>
-                                <input type="text" name="no_identitas" class="form-control custom-filter-input" placeholder="Masukkan 16 digit NIK" required>
+                                <input type="text" name="nik" class="form-control custom-filter-input" placeholder="Masukkan 16 digit NIK" required>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small fw-medium mb-1">
+                                    Tempat Lahir
+                                </label>
+                                <input type="text"
+                                    name="tempat_lahir"
+                                    class="form-control custom-filter-input"
+                                    placeholder="Contoh: Palu"
+                                    required>
                             </div>
 
                             <div class="col-md-6">
@@ -89,7 +100,7 @@
 
                             <div class="col-md-3">
                                 <label class="form-label text-muted small fw-medium mb-1">Golongan Darah</label>
-                                <select name="gol_darah" class="form-select custom-filter-input" required>
+                                <select name="golongan_darah" class="form-select custom-filter-input" required>
                                     <option value="">-- Pilih --</option>
                                     <option value="O">O</option>
                                     <option value="A">A</option>
@@ -102,8 +113,8 @@
                                 <label class="form-label text-muted small fw-medium mb-1">Rhesus</label>
                                 <select name="rhesus" class="form-select custom-filter-input" required>
                                     <option value="">-- Pilih --</option>
-                                    <option value="Positif">Positif (+)</option>
-                                    <option value="Negatif">Negatif (-)</option>
+                                    <option value="+">Positif (+)</option>
+                                    <option value="-">Negatif (-)</option>
                                 </select>
                             </div>
 
@@ -111,13 +122,13 @@
                                 <label class="form-label text-muted small fw-medium mb-1">No. WhatsApp / Telepon</label>
                                 <div class="input-group">
                                     <span class="input-group-text bg-white border-end-0 text-muted small">+62</span>
-                                    <input type="text" name="telepon" class="form-control border-start-0 ps-1 custom-filter-input" placeholder="81234567xxx" required>
+                                    <input type="text" name="no_hp" class="form-control border-start-0 ps-1 custom-filter-input" placeholder="81234567xxx" required>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <label class="form-label text-muted small fw-medium mb-1">Wilayah / Kecamatan</label>
-                                <input type="text" name="wilayah" class="form-control custom-filter-input" placeholder="Misal: Palu Barat, Sigi Biromaru" required>
+                                <input type="text" name="kecamatan" class="form-control custom-filter-input" placeholder="Misal: Palu Barat, Sigi Biromaru" required>
                             </div>
 
                             <div class="col-md-12">
@@ -136,9 +147,10 @@
 
         </div>
     </div>
-</div>
+</main>
 
 <script>
+// Script ini hanya untuk mengubah gambar pratinjau profil
 document.getElementById('file-input').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -147,17 +159,6 @@ document.getElementById('file-input').addEventListener('change', function(e) {
             document.getElementById('avatar-preview').setAttribute('src', event.target.result);
         }
         reader.readAsDataURL(file);
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-    const toggleBtn = document.querySelector('.fa-bars') || document.querySelector('.navbar-toggler');
-    const sidebar = document.getElementById('sidebar');
-    if(toggleBtn && sidebar) {
-        toggleBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            sidebar.classList.toggle('sidebar-open');
-        });
     }
 });
 </script>
