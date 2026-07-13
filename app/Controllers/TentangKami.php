@@ -2,9 +2,9 @@
 
 namespace App\Controllers;
 
-class Tantangkami extends BaseController
+class tantangkami extends BaseController
 {
-    public function Tentang() {
+    public function tentang() {
         echo view('tentang_kami');
     }
     
