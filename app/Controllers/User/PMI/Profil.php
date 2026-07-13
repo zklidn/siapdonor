@@ -1,15 +1,20 @@
 <?php
 
-namespace App\Controllers\User\PMI;
+namespace App\Controllers\User\RS;
 
 use App\Controllers\BaseController;
 
-use App\Models\UserModels;
-
-class Profil extends BaseController
+class Settings extends BaseController
 {
-    public function profil()
+    public function index()
     {
-        return view('Tampilan_PMI/settings');
+        // Mengambil data dari session untuk ditampilkan di form settings jika diperlukan
+        $data = [
+            'nama_rs' => session()->get('nama') ?? 'RSUD Anutapura Palu',
+            'role'    => session()->get('role') ?? 'Rumah_sakit'
+        ];
+
+        // Memanggil tampilan settings.php
+        return view('Tampilan_RS/settings', $data);
     }
 }

@@ -98,7 +98,7 @@ $routes->group('pmi', ['namespace' => 'App\Controllers\User\PMI', 'filter' => 'a
     // Laporan & Notifikasi
     $routes->get('laporan', 'Laporan::laporan');
     $routes->get('notifikasi', 'Notifikasi::notifikasi');
-    $routes->get('profil', 'Profil::profil' );
+    $routes->get('settings', 'User\RS\Settings::index');
 });
     /*------------------post-----------------------------*/
 
