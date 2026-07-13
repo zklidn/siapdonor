@@ -135,15 +135,28 @@
                         <h5 class="fw-bold text-dark fs-6 mb-0">Kebutuhan Darah Mendesak</h5>
                         <a href="<?= base_url('rs/permintaan_darah') ?>" class="text-decoration-none text-danger fw-semibold small link-maroon">Lihat Semua</a>
                     </div>
-                    <div class="row row-cols-5 g-3 text-center">
+                    <div class="row row-cols-2 row-cols-md-4 g-3 text-center">
                         <?php 
-                        $mendesak = $kebutuhan_mendesak ?? ['O+' => 0, 'A+' => 0, 'B+' => 0, 'AB+' => 0, 'O-' => 0];
+                        // Menyusun 8 format default golongan darah
+                        $default_mendesak = [
+                            'A+' => 0, 'A-' => 0, 
+                            'B+' => 0, 'B-' => 0, 
+                            'AB+' => 0, 'AB-' => 0, 
+                            'O+' => 0, 'O-' => 0
+                        ];
+                        
+                        // Merge dengan data Controller ($kebutuhan_mendesak). 
+                        // Jika ada data masuk, akan menimpa angka 0. Jika tidak, tetap 0.
+                        $mendesak = array_merge($default_mendesak, $kebutuhan_mendesak ?? []);
+                        
                         foreach ($mendesak as $gol => $kantong): 
                         ?>
                         <div class="col">
                             <div class="p-3 rounded bg-light border-0 item-mendesak position-relative">
-                                <i class="fa-solid fa-droplet text-danger fs-3 d-block mb-2"></i>
-                                <span class="blood-text"><?= $gol ?></span>
+                                <div class="position-relative d-inline-block mb-1">
+                                    <i class="fa-solid fa-droplet text-danger" style="font-size: 3.5rem;"></i>
+                                    <span class="position-absolute top-50 start-50 translate-middle text-white fw-bold" style="font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: -0.5px;"><?= $gol ?></span>
+                                </div>
                                 <p class="small fw-medium mb-0 mt-2 text-dark"><?= $kantong ?> Kantong</p>
                             </div>
                         </div>
@@ -178,7 +191,6 @@
                             <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="#00875A" stroke-width="4.5" stroke-dasharray="<?= $p_selesai ?> <?= 100 - $p_selesai ?>" stroke-dashoffset="<?= $offset_selesai ?>"></circle>
                         </svg>
                         
-                        <!-- Ini bagian yang rusak tadi, sekarang sudah normal -->
                         <div class="position-absolute top-50 start-50 translate-middle text-center">
                             <span class="d-block fw-bold fs-4 lh-sm text-dark"><?= $total ?></span>
                             <span class="text-muted extra-small">Total</span>
