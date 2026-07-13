@@ -29,7 +29,7 @@
     <section class="hero-tentang" style="background-image: url('<?= base_url("awalan.png") ?>');">
         <div class="hero-tentang-content">
             <h1>Tentang Kami</h1>
-            <p>SiapDonor adalah sistem informasi yang menghubungkan PMI, Rumah Sakit, dan<br>Donor untuk kebutuhan darah yang lebih cepat dan tepat.</p>
+            <p>SiapDonor adalah sistem informasi yang menghubungkan PMI, Rumah Sakit, dan Donor untuk kebutuhan darah yang lebih cepat dan tepat.</p>
         </div>
     </section>
 
