@@ -12,7 +12,13 @@ class DonorModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = true;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id_user', 'nik', 'nama', 'tempat_lahir', 'tanggal_lahir', 'jenis_kelamin', 'golongan_darah', 'rhesus', 'kecamatan', 'status', 'no_hp'];
+    
+    // UBAH DI SINI: Menambahkan 'alamat' dan 'foto' ke dalam allowedFields
+    protected $allowedFields    = [
+        'id_user', 'nik', 'nama', 'tempat_lahir', 'tanggal_lahir', 
+        'jenis_kelamin', 'golongan_darah', 'rhesus', 'kecamatan', 
+        'alamat', 'status', 'no_hp', 'foto'
+    ];
 
     protected $useTimestamps    = true;
     protected $dateFormat       = 'datetime';
