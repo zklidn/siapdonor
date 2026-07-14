@@ -41,7 +41,7 @@
                     <option value="Diproses" <?= ($stt_aktif ?? '') == 'Diproses' ? 'selected' : '' ?>>Diproses</option>
                     <option value="Donor Ditemukan" <?= ($stt_aktif ?? '') == 'Donor Ditemukan' ? 'selected' : '' ?>>Donor Ditemukan</option>
                     <option value="Selesai" <?= ($stt_aktif ?? '') == 'Selesai' ? 'selected' : '' ?>>Selesai</option>
-                    <option value="Dibatalkan" <?= ($stt_aktif ?? '') == 'Dibatalkan' ? 'selected' : '' ?>>Dibatalkan</option>
+                    
                 </select>
             </div>
             <div class="col-md-4">
@@ -102,8 +102,6 @@
                                         <span class="badge badge-status bg-status-proses">Diproses</span>
                                     <?php elseif ($stt == 'Donor Ditemukan'): ?>
                                         <span class="badge badge-status bg-status-ditemukan">Donor Ditemukan</span>
-                                    <?php elseif ($stt == 'Dibatalkan'): ?>
-                                        <span class="badge badge-status bg-danger">Dibatalkan</span>
                                     <?php else: ?>
                                         <span class="badge badge-status bg-status-selesai">Selesai</span>
                                     <?php endif; ?>

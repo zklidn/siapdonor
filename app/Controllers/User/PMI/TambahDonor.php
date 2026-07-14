@@ -48,7 +48,9 @@ class TambahDonor extends BaseController
         // Cek apakah ada file yang diunggah dan valid
         if ($fileFoto && $fileFoto->isValid() && !$fileFoto->hasMoved()) {
             $namaFoto = $fileFoto->getRandomName(); // Generate nama unik (misal: 168234.jpg)
-            $fileFoto->move('uploads/avatar_donor', $namaFoto);
+            
+            $targetPath = FCPATH . 'uploads/avatar_donor';
+            $fileFoto->move($targetPath, $namaFoto);
         }
 
         // 4. Simpan ke Database

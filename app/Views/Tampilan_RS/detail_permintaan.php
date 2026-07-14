@@ -155,7 +155,6 @@
                     <div class="timeline-marker fs-4" style="color: #800000;">
                         <?php if(in_array($detail['status'], ['Selesai', 'Donor Ditemukan'])): ?>
                             <i class="fa-solid fa-circle-check text-success"></i>
-                        <?php elseif($detail['status'] == 'Dibatalkan'): ?>
                             <i class="fa-solid fa-circle-xmark text-danger"></i>
                         <?php else: ?>
                             <i class="fa-solid fa-spinner fa-spin"></i>
@@ -165,9 +164,8 @@
                         <h6 class="mb-1 fw-bold" style="color: #800000;"><?= $detail['status'] ?></h6>
                         <p class="small mb-0 fw-medium" style="color: #800000;"><?= date('d M Y, H:i', strtotime($detail['updated_at'])) ?> &bull; Update status terakhir dari sistem PMI.</p>
                         
-                        <?php if($detail['status'] == 'Dibatalkan'): ?>
-                            <span class="badge bg-danger mt-2">Dibatalkan</span>
-                        <?php elseif($detail['status'] == 'Selesai'): ?>
+                        
+                        <?php if($detail['status'] == 'Selesai'): ?>
                             <span class="badge bg-success mt-2">Telah Selesai</span>
                         <?php else: ?>
                             <span class="badge mt-2" style="background-color: #800000;">Status Saat Ini</span>

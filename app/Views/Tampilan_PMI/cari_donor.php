@@ -19,9 +19,6 @@
         <a href="<?= base_url('pmi/tambah_donor') ?>" class="menu-item">
             <i class="fa-solid fa-user-plus"></i> Tambah Pendonor 
         </a>
-        <a href="<?= base_url('pmi/update_status_permintaan') ?>" class="menu-item">
-            <i class="fa-solid fa-file-pen"></i> Update Status Permintaan 
-        </a>
     </div>
 </aside>
 
@@ -37,51 +34,43 @@
             <input type="hidden" name="id_permintaan" value="<?= esc(request()->getGet('id_permintaan')) ?>">
         <?php endif; ?>
 
-        <div class="row g-3 mb-3">
-            <div class="col-md-4">
+        <!-- Tambahkan align-items-end agar tinggi tombol sejajar dengan input box, bukan dengan label -->
+        <div class="row g-3 align-items-end mb-3">
+            
+            <div class="col-md-3">
                 <label class="form-label text-muted small fw-medium mb-1">Golongan Darah</label>
                 <select name="gol_darah" class="form-select custom-filter-input">
-                    <option value="">-- Pilih Golongan Darah --</option>
-                    <!-- Menggunakan $sel_gol_darah dari Controller -->
+                    <option value="">-- Pilih Gol Darah --</option>
                     <option value="O" <?= (($sel_gol_darah ?? '') == 'O') ? 'selected' : '' ?>>O</option>
                     <option value="A" <?= (($sel_gol_darah ?? '') == 'A') ? 'selected' : '' ?>>A</option>
                     <option value="B" <?= (($sel_gol_darah ?? '') == 'B') ? 'selected' : '' ?>>B</option>
                     <option value="AB" <?= (($sel_gol_darah ?? '') == 'AB') ? 'selected' : '' ?>>AB</option>
                 </select>
             </div>
-            <div class="col-md-4">
+            
+            <div class="col-md-3">
                 <label class="form-label text-muted small fw-medium mb-1">Rhesus</label>
                 <select name="rhesus" class="form-select custom-filter-input">
                     <option value="">-- Pilih Rhesus --</option>
-                    <!-- Menggunakan $sel_rhesus dari Controller -->
                     <option value="+" <?= (($sel_rhesus ?? '') == '+') ? 'selected' : '' ?>>Positif (+)</option>
                     <option value="-" <?= (($sel_rhesus ?? '') == '-') ? 'selected' : '' ?>>Negatif (-)</option>
                 </select>
             </div>
             
-            <!-- (Bagian select Wilayah dan tombol lainnya biarkan sama seperti kodemu sebelumnya) -->
-
-        <div class="row g-3 align-items-end">
-            <div class="col-md-4">
-                <label class="form-label text-muted small fw-medium mb-1">Usia</label>
-                <div class="d-flex align-items-center gap-2">
-                    <input type="number" name="usia_min" class="form-control custom-filter-input text-center" value="<?= request()->getGet('usia_min') ?? '17' ?>" style="width: 80px;">
-                    <span class="text-muted small">s.d</span>
-                    <input type="number" name="usia_max" class="form-control custom-filter-input text-center" value="<?= request()->getGet('usia_max') ?? '60' ?>" style="width: 100px;">
-                    <span class="text-muted small">tahun</span>
-                </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <label class="form-label text-muted small fw-medium mb-1">Terakhir Donor</label>
                 <select name="terakhir_donor" class="form-select custom-filter-input">
                     <option value="Semua" <?= (request()->getGet('terakhir_donor') == 'Semua') ? 'selected' : '' ?>>Semua</option>
                     <option value="Layak" <?= (request()->getGet('terakhir_donor') == 'Layak') ? 'selected' : '' ?>>> 3 Bulan Lalu (Layak)</option>
                 </select>
             </div>
-            <div class="col-md-4 d-flex gap-2 justify-content-end mt-3 mt-md-0">
-                <button type="submit" class="btn btn-search-maroon px-4 py-2 fw-semibold">Cari</button>
-                <a href="<?= base_url('pmi/cari_donor') ?>" class="btn btn-reset-outline px-4 py-2 fw-semibold">Reset</a>
+
+            <!-- Tombol ditaruh di col-md-3 terakhir dan disetting justify-content-end agar ke kanan -->
+            <div class="col-md-3 d-flex gap-2 justify-content-end">
+                <button type="submit" class="btn btn-search-maroon px-4 py-2 fw-semibold w-100">Cari</button>
+                <a href="<?= base_url('pmi/cari_donor') ?>" class="btn btn-reset-outline px-4 py-2 fw-semibold w-100">Reset</a>
             </div>
+            
         </div>
     </form>
 
@@ -130,9 +119,45 @@
 
                 <div class="d-flex justify-content-between align-items-center mt-4 text-muted small">
                     <div>Menampilkan data hasil filter pencarian</div>
-                    <nav aria-label="Page navigation">
+                    <nav aria-label="Page navigation" class="custom-pagination">
+                        <style>
+                            /* Memaksa pagination default CI4 menjadi kotak-kotak rapi dengan warna Maroon */
+                            .custom-pagination .pagination {
+                                display: flex;
+                                padding-left: 0;
+                                list-style: none;
+                                margin: 0;
+                                gap: 4px;
+                            }
+                            .custom-pagination .pagination li a {
+                                position: relative;
+                                display: block;
+                                padding: 0.4rem 0.75rem;
+                                font-size: 0.875rem;
+                                color: #800000; /* Warna teks maroon */
+                                text-decoration: none;
+                                background-color: #fff;
+                                border: 1px solid #dee2e6;
+                                border-radius: 6px;
+                                font-weight: 500;
+                                transition: all 0.2s ease-in-out;
+                            }
+                            .custom-pagination .pagination li a:hover {
+                                color: #fff;
+                                background-color: #a00000;
+                                border-color: #a00000;
+                            }
+                            .custom-pagination .pagination li.active a {
+                                z-index: 3;
+                                color: #fff;
+                                background-color: #800000; /* Warna background aktif maroon */
+                                border-color: #800000;
+                            }
+                        </style>
+                        
                         <?= $pager->links('default', 'default_full') ?>
                     </nav>
+                
                 </div>
 
             <?php else: ?>

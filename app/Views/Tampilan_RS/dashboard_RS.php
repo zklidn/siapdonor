@@ -129,6 +129,7 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <div class="card card-content">
                 <div class="card-body p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -136,6 +137,9 @@
                         <a href="<?= base_url('rs/permintaan_darah') ?>" class="text-decoration-none text-danger fw-semibold small link-maroon">Lihat Semua</a>
                     </div>
                     <div class="row row-cols-2 row-cols-md-4 g-3 text-center">
+=======
+            <div class="row row-cols-5 g-3 text-center">
+>>>>>>> 3ea25696814c483a86460674d1fa33576e5c34fc
                         <?php 
                         // Menyusun 8 format default golongan darah
                         $default_mendesak = [
@@ -152,20 +156,32 @@
                         foreach ($mendesak as $gol => $kantong): 
                         ?>
                         <div class="col">
+<<<<<<< HEAD
                             <div class="p-3 rounded bg-light border-0 item-mendesak position-relative">
                                 <div class="position-relative d-inline-block mb-1">
                                     <i class="fa-solid fa-droplet text-danger" style="font-size: 3.5rem;"></i>
                                     <span class="position-absolute top-50 start-50 translate-middle text-white fw-bold" style="font-size: 0.85rem; margin-top: 0.4rem; letter-spacing: -0.5px;"><?= $gol ?></span>
                                 </div>
                                 <p class="small fw-medium mb-0 mt-2 text-dark"><?= $kantong ?> Kantong</p>
+=======
+                            <!-- Menghapus class item-mendesak dan position-relative yang lama -->
+                            <div class="p-3 rounded bg-light border-0 text-center" style="box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: 0.2s;">
+                                
+                                <!-- Menggabungkan Ikon dan Teks Golongan Darah agar berdampingan -->
+                                <div class="d-flex justify-content-center align-items-center gap-2 mb-1">
+                                    <i class="fa-solid fa-droplet text-danger fs-4"></i>
+                                    <span class="fw-bold fs-3 text-dark"><?= $gol ?></span>
+                                </div>
+                                
+                                <!-- Keterangan jumlah kantong -->
+                                <p class="small fw-medium mb-0 mt-2 text-muted">
+                                    <span class="text-danger fw-bold"><?= $kantong ?></span> Kantong
+                                </p>
+>>>>>>> 3ea25696814c483a86460674d1fa33576e5c34fc
                             </div>
                         </div>
                         <?php endforeach; ?>
                     </div>
-                </div>
-            </div>
-        </div>
-
         <div class="col-lg-4 d-flex flex-column gap-4">
             <div class="card card-content">
                 <div class="card-body p-4">

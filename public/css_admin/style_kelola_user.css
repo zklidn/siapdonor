@@ -40,3 +40,37 @@
 /* Bagian Bawah (Total & Pagination) */
 .pagination-wrapper { display: flex; justify-content: space-between; align-items: center; margin-top: 25px; font-size: 14px; color: #6b7280; flex-wrap: wrap; gap: 15px; }
 .pagination-links { display: flex; gap: 8px; align-items: center; overflow-x: auto; }
+
+
+
+    /* Mengubah desain paginasi bawaan CI4 dari menurun jadi menyamping */
+    .gaya-paginasi-ci4 nav ul {
+        display: flex;
+        gap: 8px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        align-items: center;
+    }
+    
+    .gaya-paginasi-ci4 nav ul li a {
+        padding: 6px 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        color: #4b5563;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    /* Mengubah warna tombol yang sedang aktif */
+    .gaya-paginasi-ci4 nav ul li.active a {
+        color: #2563eb;
+        font-weight: 600;
+        border-color: #2563eb;
+        background-color: #eff6ff;
+    }
+
+    /* Efek saat tombol di-hover (disentuh mouse) */
+    .gaya-paginasi-ci4 nav ul li a:hover {
+        background-color: #f9fafb;
+    }

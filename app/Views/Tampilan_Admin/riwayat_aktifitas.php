@@ -72,15 +72,13 @@
             </table>
         </div>
 
-        <div class="pagination-wrapper">
+        <div class="pagination-wrapper" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
             <div>Total Data: <b><?= esc($totalData) ?></b> aktivitas</div>
             
-            <div class="pagination-links">
-                <span class="page-nav"><i class="fa-solid fa-chevron-left"></i></span>
-                <span class="page-active">1</span>
-                <span class="page-nav"><i class="fa-solid fa-chevron-right"></i></span>
-                
-                </div>
+            <!-- Memanggil fungsi pager CI4 khusus untuk grup 'logs' -->
+            <div class="gaya-paginasi-ci4">
+                <?= $pager->links('logs') ?> 
+            </div>
         </div>
         
     </div>

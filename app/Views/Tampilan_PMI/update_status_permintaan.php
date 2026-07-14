@@ -93,7 +93,6 @@
                                 <option value="Donor Ditemukan" <?= ($permintaan['status'] == 'Donor Ditemukan') ? 'selected' : '' ?>>Donor Ditemukan</option>
                                 <option value="Selesai" <?= ($permintaan['status'] == 'Selesai') ? 'selected' : '' ?>>Selesai</option>
                                 <!-- Bagian ini yang diubah dari Ditolak menjadi Dibatalkan -->
-                                <option value="Dibatalkan" <?= ($permintaan['status'] == 'Dibatalkan') ? 'selected' : '' ?>>Dibatalkan</option>
                             </select>
                         </div>
 

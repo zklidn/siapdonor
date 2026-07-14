@@ -57,7 +57,7 @@ class CariDonor extends BaseController
         // Hanya tampilkan donor yang statusnya Aktif
         $builder->where('status', 'Aktif');
         
-        $data['hasil_pencarian'] = $builder->paginate(10);
+        $data['hasil_pencarian'] = $builder->paginate(5);
         $data['pager']           = $builder->pager;
 
         // Kirim variabel ke tampilan agar dropdown terpilih otomatis

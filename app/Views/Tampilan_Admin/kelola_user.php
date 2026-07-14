@@ -96,15 +96,13 @@
             </table>
         </div>
 
-        <div class="pagination-wrapper">
+        <div class="pagination-wrapper" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
             <div>Total Data: <b><?= esc($totalData) ?></b> user</div>
             
-            <div class="pagination-links">
-                <span class="page-nav"><i class="fa-solid fa-chevron-left"></i></span>
-                <span class="page-active">1</span>
-                <span class="page-nav"><i class="fa-solid fa-chevron-right"></i></span>
-                
-                </div>
+            <!-- Bungkus pager bawaan CI4 dengan class CSS yang baru kita buat -->
+            <div class="gaya-paginasi-ci4">
+                <?= $pager->links('users') ?> 
+            </div>
         </div>
         
     </div>
